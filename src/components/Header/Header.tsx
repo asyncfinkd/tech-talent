@@ -4,6 +4,7 @@ import { useToggle } from "../../lib/use-toggle";
 const Header: React.FC = () => {
   const [showProfile, setShowProfile] = useToggle();
   const [showHeader, setShowHeader] = useToggle();
+  const [showLanguage, setShowLanguage] = useToggle();
   return (
     <>
       <div className="root-0-2-4 fixed-0-2-5 onlyOnDesktop-0-2-6">
@@ -181,6 +182,7 @@ const Header: React.FC = () => {
               <button
                 className="root-0-2-46 button-0-2-66 weightLight-0-2-60 sizeZero-0-2-48 variantBlank-0-2-59"
                 type="button"
+                onClick={setShowLanguage}
               >
                 <span className="name-0-2-69">EN</span>
                 <svg
@@ -199,11 +201,13 @@ const Header: React.FC = () => {
                 data-popper-placement="bottom-end"
                 style={{
                   position: "absolute",
-                  visibility: "hidden",
-                  pointerEvents: "none",
+                  visibility: `${showLanguage ? "visible" : "hidden"}`,
+                  pointerEvents: `${showLanguage ? "visible" : "none"}`,
                   inset: "0px auto auto 0px",
                   margin: "0px",
-                  transform: "translate(0px, 8px)",
+                  transform: `translate(${
+                    showLanguage ? "1129.5px, 75px" : "0px 8px"
+                  }`,
                 }}
                 data-popper-reference-hidden=""
                 data-popper-escaped=""
@@ -215,7 +219,7 @@ const Header: React.FC = () => {
                   id="downshift-0-menu"
                 >
                   <li
-                    className="li-0-2-72"
+                    className={`li-0-2-72 ${showLanguage && "liActive-0-2-73"}`}
                     id="downshift-0-item-0"
                     role="option"
                     aria-selected="false"
