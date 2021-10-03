@@ -1,9 +1,13 @@
 import React from "react";
 import Footer from "../../components/Footer/Footer";
+import { Helmet } from "react-helmet";
 
 const LoginPages: React.FC = () => {
   return (
     <>
+      <Helmet>
+        <title>Welcome | Tech Talent</title>
+      </Helmet>
       <main className="main-0-2-2">
         <div className="marginOnMobile-0-2-134">
           <div className="form-0-2-234">
