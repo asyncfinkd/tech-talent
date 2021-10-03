@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useToggle } from "../../lib/use-toggle";
 import { Link } from "react-router-dom";
+import { ApplicationContext } from "../../context/Application/ApplicationContext";
 
 const Header: React.FC = () => {
   const [showProfile, setShowProfile] = useToggle();
   const [showHeader, setShowHeader] = useToggle();
   const [showLanguage, setShowLanguage] = useToggle();
   const [showClose, setShowClose] = useToggle();
+  const { jwtDecode } = useContext(ApplicationContext);
   return (
     <>
       <div className="root-0-2-4 fixed-0-2-5 onlyOnDesktop-0-2-6">
@@ -192,7 +194,7 @@ const Header: React.FC = () => {
                         </svg>
                       </div>
                     </div>
-                    <div>Nika Shamiladze</div>
+                    <div>{jwtDecode.fullName}</div>
                   </a>
                 </div>
               </>
@@ -539,10 +541,8 @@ const Header: React.FC = () => {
                     </div>
                   </div>
                   <div className="section-0-2-92">
-                    <div className="name-0-2-93">Nika Shamiladze</div>
-                    <div className="caption-0-2-94">
-                      zuckdeveloper@gmail.com
-                    </div>
+                    <div className="name-0-2-93">{jwtDecode.fullName}</div>
+                    <div className="caption-0-2-94">{jwtDecode.email}</div>
                   </div>
                 </div>
                 <div className="sectionLine-0-2-86"></div>
