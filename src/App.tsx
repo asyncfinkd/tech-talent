@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import LoginPages from "./pages/login/LoginPages";
 import "./styles/index/index.css";
 import ForgotPages from "./pages/forgot/ForgotPages";
+import ErrorPages from "./pages/Error/ErrorPages";
 
 const App: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const App: React.FC = () => {
             <Route path="/" exact component={IndexPages} />
             <Route path="/login" exact component={LoginPages} />
             <Route path="/forgot" exact component={ForgotPages} />
+            <Route exact component={ErrorPages} />
           </Switch>
         </BrowserRouter>
       </div>
