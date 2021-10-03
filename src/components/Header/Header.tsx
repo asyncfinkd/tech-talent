@@ -1,5 +1,6 @@
 import React from "react";
 import { useToggle } from "../../lib/use-toggle";
+import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
   const [showProfile, setShowProfile] = useToggle();
@@ -12,7 +13,7 @@ const Header: React.FC = () => {
           <div className="gap-0-2-8"></div>
           <header className="container-0-2-9 header-0-2-10 shadow-0-2-11">
             <div className="logo-0-2-12">
-              <a href="/">
+              <Link to="/">
                 <div className="root-0-2-18">
                   <svg
                     className="vector-0-2-19"
@@ -34,7 +35,7 @@ const Header: React.FC = () => {
                     <span className="secondaryText-0-2-21">Talent</span>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
             <div className="root-0-2-22 fieldList-0-2-13">
               <a className="field-0-2-23" href="/jobs">
@@ -160,12 +161,12 @@ const Header: React.FC = () => {
             </div>
             <div className="gapColumn-0-2-14"></div>
             <div className="root-0-2-37 profile-0-2-15">
-              <a
+              <Link
                 className="root-0-2-46 loginButton-0-2-40 animation-0-2-47 weightLight-0-2-60 sizeMd-0-2-51 variantOutline-0-2-57"
-                href="/login?cb=%2F"
+                to="/login"
               >
                 Login
-              </a>
+              </Link>
               <a
                 className="root-0-2-46 registerButton-0-2-41 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                 href="/register?cb=%2F"

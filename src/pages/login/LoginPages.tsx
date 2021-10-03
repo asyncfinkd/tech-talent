@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import Footer from "../../components/Footer/Footer";
-import RegistrationCompanyNotification from "../../components/Notification/RegistrationCompany/RegistrationCompanyNotification";
 import { Helmet } from "react-helmet";
 import { useLocation } from "react-router-dom";
+import FormLogin from "../../components/Login/Form/FormLogin";
 
-const IndexPages: React.FC = () => {
+const LoginPages: React.FC = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -13,12 +13,12 @@ const IndexPages: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Tech Talent</title>
+        <title>Welcome | Tech Talent</title>
       </Helmet>
-      <RegistrationCompanyNotification />
-      <Footer wantSponsors={true} />
+      <FormLogin />
+      <Footer />
     </>
   );
 };
 
-export default IndexPages;
+export default LoginPages;
