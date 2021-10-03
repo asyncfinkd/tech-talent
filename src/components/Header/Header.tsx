@@ -6,6 +6,7 @@ const Header: React.FC = () => {
   const [showProfile, setShowProfile] = useToggle();
   const [showHeader, setShowHeader] = useToggle();
   const [showLanguage, setShowLanguage] = useToggle();
+  const [showClose, setShowClose] = useToggle();
   return (
     <>
       <div className="root-0-2-4 fixed-0-2-5 onlyOnDesktop-0-2-6">
@@ -332,7 +333,10 @@ const Header: React.FC = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                onClick={setShowHeader}
+                onClick={() => {
+                  setShowHeader();
+                  setShowClose();
+                }}
               >
                 <path d="M21 8H3C2.44772 8 2 8.44772 2 9C2 9.55228 2.44772 10 3 10H21C21.5523 10 22 9.55228 22 9C22 8.44772 21.5523 8 21 8Z"></path>
                 <path d="M21 14H3C2.44772 14 2 14.4477 2 15C2 15.5523 2.44772 16 3 16H21C21.5523 16 22 15.5523 22 15C22 14.4477 21.5523 14 21 14Z"></path>
@@ -363,7 +367,7 @@ const Header: React.FC = () => {
                 </div>
               </Link>
             </div>
-            {showProfile ? (
+            {showClose ? (
               <>
                 <button className="root-0-2-46 menuButton-0-2-81 weightLight-0-2-60 sizeZero-0-2-48 variantBlank-0-2-59">
                   <svg
@@ -374,7 +378,14 @@ const Header: React.FC = () => {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                     style={{ opacity: "0.3" }}
-                    onClick={setShowProfile}
+                    onClick={() => {
+                      if (showHeader) {
+                        setShowHeader();
+                      } else {
+                        setShowProfile();
+                      }
+                      setShowClose();
+                    }}
                   >
                     <rect width="24" height="24" fill="white"></rect>
                     <path
@@ -394,7 +405,10 @@ const Header: React.FC = () => {
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    onClick={setShowProfile}
+                    onClick={() => {
+                      setShowProfile();
+                      setShowClose();
+                    }}
                   >
                     <path
                       fill-rule="evenodd"
