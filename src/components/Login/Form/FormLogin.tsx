@@ -28,12 +28,12 @@ const FormLogin: React.FC = () => {
       })
       .then((result: any) => {
         setSpinner();
-        console.log(result);
         if (result.data.success === false) {
           setShowMessage(true);
         } else {
           setShowMessage(false);
-          // true
+          localStorage.setItem("local", result.data.access_token);
+          window.location.href = "/";
         }
       });
   };
