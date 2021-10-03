@@ -1,7 +1,9 @@
 import React from "react";
-import "../../styles/Header/Header.css";
+import { useToggle } from "../../lib/use-toggle";
 
 const Header: React.FC = () => {
+  const [showProfile, setShowProfile] = useToggle();
+  const [showHeader, setShowHeader] = useToggle();
   return (
     <>
       <div className="root-0-2-4 fixed-0-2-5 onlyOnDesktop-0-2-6">
@@ -286,6 +288,7 @@ const Header: React.FC = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                onClick={setShowHeader}
               >
                 <path d="M21 8H3C2.44772 8 2 8.44772 2 9C2 9.55228 2.44772 10 3 10H21C21.5523 10 22 9.55228 22 9C22 8.44772 21.5523 8 21 8Z"></path>
                 <path d="M21 14H3C2.44772 14 2 14.4477 2 15C2 15.5523 2.44772 16 3 16H21C21.5523 16 22 15.5523 22 15C22 14.4477 21.5523 14 21 14Z"></path>
@@ -324,6 +327,7 @@ const Header: React.FC = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                onClick={setShowProfile}
               >
                 <path
                   fill-rule="evenodd"
@@ -340,7 +344,7 @@ const Header: React.FC = () => {
               position: "fixed",
               overflow: "scroll",
               transition: "all 0.2s ease-in-out 0s",
-              transform: "translateX(100vw)",
+              transform: `translateX(${showProfile ? "0" : "100vw"})`,
               backgroundColor: "white",
             }}
           >
@@ -422,7 +426,7 @@ const Header: React.FC = () => {
               position: "fixed",
               overflow: "scroll",
               transition: "all 0.2s ease-in-out 0s",
-              transform: "translateX(-100vw)",
+              transform: `translateX(${showHeader ? "0" : "-100vw"})`,
               backgroundColor: "white",
             }}
           >
