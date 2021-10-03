@@ -661,7 +661,10 @@ const Header: React.FC = () => {
                 <section className="section-0-2-85">
                   <a
                     className="root-0-2-46 option-0-2-87 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                    href="/profile/logout"
+                    onClick={() => {
+                      localStorage.clear();
+                      window.location.href = "/";
+                    }}
                   >
                     <svg
                       className="fill-0-2-36 optionIcon-0-2-89"
