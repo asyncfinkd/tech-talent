@@ -1,11 +1,12 @@
 import React from "react";
+import Footer from "../../components/Footer/Footer";
 import RegistrationCompanyNotification from "../../components/Notification/RegistrationCompany/RegistrationCompanyNotification";
-import "../../styles/index/indexPages.css";
 
 const IndexPages: React.FC = () => {
   return (
     <>
       <RegistrationCompanyNotification />
+      <Footer wantSponsors={true} />
     </>
   );
 };

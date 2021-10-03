@@ -1685,3 +1685,189 @@
   margin-bottom: 1.25rem;
   background-color: #eff3ff;
 }
+
+.form-0-2-234 {
+  margin-bottom: 1.25rem;
+}
+@media (min-width: 960px) {
+  .form-0-2-234 {
+    width: 500px;
+    margin: auto;
+  }
+}
+.h1-0-2-235 {
+  margin: 1rem 0 0.5rem 0;
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: MarkPro, Helvetica;
+  font-weight: bold;
+  line-height: 1.75rem;
+}
+@media (min-width: 1280px) {
+  .h1-0-2-235 {
+    margin: 3.125rem 0 1.25rem 0;
+    font-size: 3.125rem;
+    line-height: 4rem;
+  }
+}
+.h2-0-2-236 {
+  color: #171725;
+  margin: 0 0 1rem 0;
+  opacity: 0.5;
+  font-size: 1rem;
+  text-align: center;
+  font-family: MarkPro, Helvetica;
+  font-weight: 400;
+  line-height: 1.25rem;
+}
+@media (min-width: 1280px) {
+  .h2-0-2-236 {
+    margin: 0 0 1.875rem 0;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+  }
+}
+.buttonField-0-2-237 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (min-width: 960px) {
+  .buttonField-0-2-237 {
+    padding-bottom: 1.25rem;
+  }
+}
+.button-0-2-238 {
+  width: 120px;
+}
+.line-0-2-239 {
+  width: 100%;
+  height: 1px;
+  display: none;
+  position: relative;
+  margin-top: 32px;
+  margin-bottom: 37px;
+  background-color: #eaeaea;
+}
+.continue-0-2-240 {
+  top: -13px;
+  left: 120px;
+  color: rgba(0, 0, 0, 0.3);
+  display: none;
+  padding: 0 15px;
+  position: absolute;
+  font-size: 16px;
+  font-family: MarkPro, Helvetica;
+  background-color: #ffffff;
+}
+.socialButtonGroup-0-2-241 {
+  width: 100%;
+  display: none;
+  margin-top: 2rem;
+  justify-content: center;
+}
+.socialButton-0-2-242 {
+  width: 58px;
+  height: 58px;
+  margin-right: 1.5rem;
+}
+.forgotPassword-0-2-243 {
+  color: #696974;
+  display: block;
+  opacity: 0.8;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  font-family: MarkPro, Helvetica;
+  line-height: 1rem;
+  text-decoration: none;
+}
+@media (min-width: 960px) {
+  .forgotPassword-0-2-243 {
+    font-size: 1rem;
+    line-height: 1.25rem;
+  }
+}
+.forgotPassword-0-2-243:hover {
+  color: #44444f;
+}
+.errorMessage-0-2-244 {
+  color: #dd2222;
+  font-size: 0.875rem;
+  font-family: MarkPro, Helvetica;
+  line-height: 1rem;
+}
+.loading-0-2-245 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.spinner-0-2-246 {
+  width: 20px;
+  height: 20px;
+  stroke: #ffffff;
+  margin-right: 0.375rem;
+}
+
+.root-0-2-247 {
+  width: 100%;
+  margin-bottom: 1.25rem;
+}
+.label-0-2-248 {
+  color: #171725;
+  display: block;
+  font-size: 1rem;
+  font-family: MarkPro, Helvetica;
+  font-weight: bold;
+  line-height: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.asteriskValid-0-2-249 {
+  opacity: 0.2;
+}
+.asteriskInvalid-0-2-250 {
+  color: #dd2222;
+}
+.input-0-2-251 {
+  color: #171725;
+  width: 100%;
+  border: 2px solid transparent;
+  display: block;
+  padding: 1.375rem 1.5rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+  font-family: MarkPro, Helvetica;
+  line-height: 1.25rem;
+  border-radius: 15px;
+  background-color: #eff3ff;
+}
+.input-0-2-251:hover {
+  border: 2px solid #a6a7ee;
+  outline: none;
+}
+.input-0-2-251:focus {
+  border: 2px solid #7b7ce6;
+  outline: none;
+}
+.input-0-2-251:disabled {
+  color: #8c8c91;
+  opacity: 1;
+  -webkit-text-fill-color: #8c8c91;
+}
+.invalid-0-2-252 {
+  border: 2px solid #e44e4e;
+}
+.invalid-0-2-252:hover {
+  border: 2px solid #e44e4e !important;
+  outline: none;
+}
+.invalid-0-2-252:focus {
+  border: 2px solid #dd2222 !important;
+  outline: none;
+}
+.invalidMessage-0-2-253 {
+  color: #dd2222;
+  font-size: 0.875rem;
+  font-family: MarkPro, Helvetica;
+  line-height: 1rem;
+  padding-top: 0.5rem;
+}

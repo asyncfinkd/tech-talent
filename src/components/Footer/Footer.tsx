@@ -1,281 +1,304 @@
 import React from "react";
 
-const Footer: React.FC = () => {
+interface Props {
+  wantSponsors?: boolean;
+}
+
+const Footer: React.FC<Props> = ({ wantSponsors }) => {
   return (
     <>
       <footer className="root-0-2-201">
-        <div className="root-0-2-225 upper-0-2-203">
-          <a className="link-0-2-227" href="/c/omedia">
-            <img
-              className="image-0-2-226"
-              src="https://tt.ge/logos/omedia.png"
-              alt="omedia"
-            />
-          </a>
-          <a className="link-0-2-227" href="/c/phubber">
-            <img
-              className="image-0-2-226"
-              src="https://tt.ge/logos/phubber.png"
-              alt="phubber"
-            />
-          </a>
-          <a className="link-0-2-227" href="/c/lavapi">
-            <img
-              className="image-0-2-226"
-              src="https://tt.ge/logos/lavapi.png"
-              alt="lavapi"
-            />
-          </a>
-          <a className="link-0-2-227" href="/c/redberry">
-            <img
-              className="image-0-2-226"
-              src="https://tt.ge/logos/redberry.png"
-              alt="redberry"
-            />
-          </a>
-          <a className="link-0-2-227" href="/c/singular">
-            <img
-              className="image-0-2-226"
-              src="https://tt.ge/logos/singular.png"
-              alt="singular"
-            />
-          </a>
-          <a className="link-0-2-227" href="/c/echolize">
-            <img
-              className="image-0-2-226"
-              src="https://tt.ge/logos/echolize.png"
-              alt="echolize"
-            />
-          </a>
-          <a className="link-0-2-227" href="/c/meama">
-            <img
-              className="image-0-2-226"
-              src="https://tt.ge/logos/meama.png"
-              alt="meama"
-            />
-          </a>
-          <a className="link-0-2-227" href="/c/europebet">
-            <img
-              className="image-0-2-226"
-              src="https://tt.ge/logos/europebet.png"
-              alt="europebet"
-            />
-          </a>
-        </div>
-        <div className="marginOnMobile-0-2-134 lower-0-2-204">
-          <div className="middle-0-2-205">
-            <div className="left-0-2-211">
-              <div className="title-0-2-212">
-                Welcome to
-                <br />
-                Tech Talent
-              </div>
-              <div className="caption-0-2-213">
-                Tech companies use our platform <br /> to find people that fit
-                their culture.
-              </div>
-              <a
-                className="root-0-2-46 register-0-2-214 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-                href="/register"
-              >
-                Register
+        {wantSponsors && (
+          <>
+            <div className="root-0-2-225 upper-0-2-203">
+              <a className="link-0-2-227" href="/c/omedia">
+                <img
+                  className="image-0-2-226"
+                  src="https://tt.ge/logos/omedia.png"
+                  alt="omedia"
+                />
+              </a>
+              <a className="link-0-2-227" href="/c/phubber">
+                <img
+                  className="image-0-2-226"
+                  src="https://tt.ge/logos/phubber.png"
+                  alt="phubber"
+                />
+              </a>
+              <a className="link-0-2-227" href="/c/lavapi">
+                <img
+                  className="image-0-2-226"
+                  src="https://tt.ge/logos/lavapi.png"
+                  alt="lavapi"
+                />
+              </a>
+              <a className="link-0-2-227" href="/c/redberry">
+                <img
+                  className="image-0-2-226"
+                  src="https://tt.ge/logos/redberry.png"
+                  alt="redberry"
+                />
+              </a>
+              <a className="link-0-2-227" href="/c/singular">
+                <img
+                  className="image-0-2-226"
+                  src="https://tt.ge/logos/singular.png"
+                  alt="singular"
+                />
+              </a>
+              <a className="link-0-2-227" href="/c/echolize">
+                <img
+                  className="image-0-2-226"
+                  src="https://tt.ge/logos/echolize.png"
+                  alt="echolize"
+                />
+              </a>
+              <a className="link-0-2-227" href="/c/meama">
+                <img
+                  className="image-0-2-226"
+                  src="https://tt.ge/logos/meama.png"
+                  alt="meama"
+                />
+              </a>
+              <a className="link-0-2-227" href="/c/europebet">
+                <img
+                  className="image-0-2-226"
+                  src="https://tt.ge/logos/europebet.png"
+                  alt="europebet"
+                />
               </a>
             </div>
-            <div className="right-0-2-215">
-              <div className="colContainer-0-2-219">
-                <div className="col-0-2-220">
-                  <div>
-                    <a className="titleEntry-0-2-216" href="/jobs/dev">
-                      Development
-                    </a>
+            <div className="marginOnMobile-0-2-134 lower-0-2-204">
+              <div className="middle-0-2-205">
+                <div className="left-0-2-211">
+                  <div className="title-0-2-212">
+                    Welcome to
+                    <br />
+                    Tech Talent
                   </div>
-                  <div>
-                    <a className="entry-0-2-218" href="/jobs/dev/react">
-                      React
-                    </a>
+                  <div className="caption-0-2-213">
+                    Tech companies use our platform <br /> to find people that
+                    fit their culture.
                   </div>
-                  <div>
-                    <a className="entry-0-2-218" href="/jobs/dev/angular">
-                      Angular
-                    </a>
-                  </div>
-                  <div>
-                    <a className="entry-0-2-218" href="/jobs/dev/vue">
-                      Vue
-                    </a>
-                  </div>
-                  <div>
-                    <a className="entry-0-2-218" href="/jobs/dev/node">
-                      Node
-                    </a>
-                  </div>
-                  <div>
-                    <a className="entry-0-2-218" href="/jobs/dev/python">
-                      Python
-                    </a>
-                  </div>
-                  <div>
-                    <a className="entry-0-2-218" href="/jobs/dev/php">
-                      PHP
-                    </a>
-                  </div>
-                  <div>
-                    <a className="entry-0-2-218" href="/jobs/dev/dot-net">
-                      .NET
-                    </a>
-                  </div>
-                  <div>
-                    <a className="entry-0-2-218" href="/jobs/dev/java">
-                      Java
-                    </a>
-                  </div>
-                  <div>
-                    <a className="entry-0-2-218" href="/jobs/dev/ios">
-                      iOS
-                    </a>
-                  </div>
-                  <div>
-                    <a className="entry-0-2-218" href="/jobs/dev/android">
-                      Android
-                    </a>
-                  </div>
+                  <a
+                    className="root-0-2-46 register-0-2-214 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                    href="/register"
+                  >
+                    Register
+                  </a>
                 </div>
-                <div className="col-0-2-220">
-                  <div>
-                    <a className="titleEntry-0-2-216" href="/jobs/design">
-                      Design
-                    </a>
+                <div className="right-0-2-215">
+                  <div className="colContainer-0-2-219">
+                    <div className="col-0-2-220">
+                      <div>
+                        <a className="titleEntry-0-2-216" href="/jobs/dev">
+                          Development
+                        </a>
+                      </div>
+                      <div>
+                        <a className="entry-0-2-218" href="/jobs/dev/react">
+                          React
+                        </a>
+                      </div>
+                      <div>
+                        <a className="entry-0-2-218" href="/jobs/dev/angular">
+                          Angular
+                        </a>
+                      </div>
+                      <div>
+                        <a className="entry-0-2-218" href="/jobs/dev/vue">
+                          Vue
+                        </a>
+                      </div>
+                      <div>
+                        <a className="entry-0-2-218" href="/jobs/dev/node">
+                          Node
+                        </a>
+                      </div>
+                      <div>
+                        <a className="entry-0-2-218" href="/jobs/dev/python">
+                          Python
+                        </a>
+                      </div>
+                      <div>
+                        <a className="entry-0-2-218" href="/jobs/dev/php">
+                          PHP
+                        </a>
+                      </div>
+                      <div>
+                        <a className="entry-0-2-218" href="/jobs/dev/dot-net">
+                          .NET
+                        </a>
+                      </div>
+                      <div>
+                        <a className="entry-0-2-218" href="/jobs/dev/java">
+                          Java
+                        </a>
+                      </div>
+                      <div>
+                        <a className="entry-0-2-218" href="/jobs/dev/ios">
+                          iOS
+                        </a>
+                      </div>
+                      <div>
+                        <a className="entry-0-2-218" href="/jobs/dev/android">
+                          Android
+                        </a>
+                      </div>
+                    </div>
+                    <div className="col-0-2-220">
+                      <div>
+                        <a className="titleEntry-0-2-216" href="/jobs/design">
+                          Design
+                        </a>
+                      </div>
+                      <div>
+                        <a className="entry-0-2-218" href="/jobs/design/ui">
+                          UI
+                        </a>
+                      </div>
+                      <div>
+                        <a className="entry-0-2-218" href="/jobs/design/ux">
+                          UX
+                        </a>
+                      </div>
+                      <div>
+                        <a
+                          className="entry-0-2-218"
+                          href="/jobs/design/graphic"
+                        >
+                          Graphic
+                        </a>
+                      </div>
+                      <div>
+                        <a className="entry-0-2-218" href="/jobs/design/motion">
+                          Motion
+                        </a>
+                      </div>
+                      <div className="spacerEntry-0-2-217"></div>
+                      <div>
+                        <a
+                          className="titleEntry-0-2-216"
+                          href="/jobs/marketing"
+                        >
+                          Marketing
+                        </a>
+                      </div>
+                      <div>
+                        <a
+                          className="entry-0-2-218"
+                          href="/jobs/marketing/digital"
+                        >
+                          Digital
+                        </a>
+                      </div>
+                      <div>
+                        <a
+                          className="entry-0-2-218"
+                          href="/jobs/marketing/social"
+                        >
+                          Social
+                        </a>
+                      </div>
+                      <div>
+                        <a
+                          className="entry-0-2-218"
+                          href="/jobs/marketing/copy"
+                        >
+                          Copywriting
+                        </a>
+                      </div>
+                      <div>
+                        <a
+                          className="entry-0-2-218"
+                          href="/jobs/marketing/branding"
+                        >
+                          Branding
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <a className="entry-0-2-218" href="/jobs/design/ui">
-                      UI
-                    </a>
-                  </div>
-                  <div>
-                    <a className="entry-0-2-218" href="/jobs/design/ux">
-                      UX
-                    </a>
-                  </div>
-                  <div>
-                    <a className="entry-0-2-218" href="/jobs/design/graphic">
-                      Graphic
-                    </a>
-                  </div>
-                  <div>
-                    <a className="entry-0-2-218" href="/jobs/design/motion">
-                      Motion
-                    </a>
-                  </div>
-                  <div className="spacerEntry-0-2-217"></div>
-                  <div>
-                    <a className="titleEntry-0-2-216" href="/jobs/marketing">
-                      Marketing
-                    </a>
-                  </div>
-                  <div>
-                    <a className="entry-0-2-218" href="/jobs/marketing/digital">
-                      Digital
-                    </a>
-                  </div>
-                  <div>
-                    <a className="entry-0-2-218" href="/jobs/marketing/social">
-                      Social
-                    </a>
-                  </div>
-                  <div>
-                    <a className="entry-0-2-218" href="/jobs/marketing/copy">
-                      Copywriting
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      className="entry-0-2-218"
-                      href="/jobs/marketing/branding"
-                    >
-                      Branding
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="colContainer-0-2-219">
-                <div className="col-0-2-220">
-                  <div>
-                    <a className="titleEntry-0-2-216" href="/jobs/product">
-                      Product
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      className="entry-0-2-218"
-                      href="/jobs/product/product-owner"
-                    >
-                      Product Owner
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      className="entry-0-2-218"
-                      href="/jobs/product/scrum-master"
-                    >
-                      Scrum Master
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      className="entry-0-2-218"
-                      href="/jobs/product/project-manager"
-                    >
-                      Project Manager
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      className="entry-0-2-218"
-                      href="/jobs/product/business-analyst"
-                    >
-                      Business Analyst
-                    </a>
-                  </div>
-                  <div className="spacerEntry-0-2-217"></div>
-                  <div className="titleEntry-0-2-216">Other</div>
-                  <div>
-                    <a className="entry-0-2-218" href="/jobs/devops">
-                      DevOps
-                    </a>
-                  </div>
-                  <div>
-                    <a className="entry-0-2-218" href="/jobs/ai">
-                      AI
-                    </a>
-                  </div>{" "}
-                  <div>
-                    <a className="entry-0-2-218" href="/jobs/qa">
-                      QA
-                    </a>
-                  </div>
-                </div>
-                <div className="col-0-2-220">
-                  <div className="titleEntry-0-2-216">Company</div>
-                  <div>
-                    <a className="entry-0-2-218" href="/about">
-                      About
-                    </a>
-                  </div>
-                  <div>
-                    <a className="entry-0-2-218" href="/terms">
-                      Terms &amp; Conditions
-                    </a>
-                  </div>
-                  <div>
-                    <a className="entry-0-2-218" href="/privacy">
-                      Privacy Policy
-                    </a>
+                  <div className="colContainer-0-2-219">
+                    <div className="col-0-2-220">
+                      <div>
+                        <a className="titleEntry-0-2-216" href="/jobs/product">
+                          Product
+                        </a>
+                      </div>
+                      <div>
+                        <a
+                          className="entry-0-2-218"
+                          href="/jobs/product/product-owner"
+                        >
+                          Product Owner
+                        </a>
+                      </div>
+                      <div>
+                        <a
+                          className="entry-0-2-218"
+                          href="/jobs/product/scrum-master"
+                        >
+                          Scrum Master
+                        </a>
+                      </div>
+                      <div>
+                        <a
+                          className="entry-0-2-218"
+                          href="/jobs/product/project-manager"
+                        >
+                          Project Manager
+                        </a>
+                      </div>
+                      <div>
+                        <a
+                          className="entry-0-2-218"
+                          href="/jobs/product/business-analyst"
+                        >
+                          Business Analyst
+                        </a>
+                      </div>
+                      <div className="spacerEntry-0-2-217"></div>
+                      <div className="titleEntry-0-2-216">Other</div>
+                      <div>
+                        <a className="entry-0-2-218" href="/jobs/devops">
+                          DevOps
+                        </a>
+                      </div>
+                      <div>
+                        <a className="entry-0-2-218" href="/jobs/ai">
+                          AI
+                        </a>
+                      </div>{" "}
+                      <div>
+                        <a className="entry-0-2-218" href="/jobs/qa">
+                          QA
+                        </a>
+                      </div>
+                    </div>
+                    <div className="col-0-2-220">
+                      <div className="titleEntry-0-2-216">Company</div>
+                      <div>
+                        <a className="entry-0-2-218" href="/about">
+                          About
+                        </a>
+                      </div>
+                      <div>
+                        <a className="entry-0-2-218" href="/terms">
+                          Terms &amp; Conditions
+                        </a>
+                      </div>
+                      <div>
+                        <a className="entry-0-2-218" href="/privacy">
+                          Privacy Policy
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </>
+        )}
         <div className="line-0-2-208"></div>
         <div className="marginOnMobile-0-2-134">
           <div className="bottom-0-2-206">
