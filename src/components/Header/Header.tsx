@@ -13,7 +13,7 @@ const Header: React.FC = () => {
           <div className="gap-0-2-8"></div>
           <header className="container-0-2-9 header-0-2-10 shadow-0-2-11">
             <div className="logo-0-2-12">
-              <a href="/">
+              <Link to="/">
                 <div className="root-0-2-18">
                   <svg
                     className="vector-0-2-19"
@@ -35,7 +35,7 @@ const Header: React.FC = () => {
                     <span className="secondaryText-0-2-21">Talent</span>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
             <div className="root-0-2-22 fieldList-0-2-13">
               <a className="field-0-2-23" href="/jobs">
