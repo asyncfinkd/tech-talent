@@ -21,6 +21,9 @@ mongoose.connect(
   }
 );
 
+const Login = require("./router/user/UserRouter");
+app.use("/api", Login);
+
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {

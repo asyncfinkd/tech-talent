@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useToggle } from "../../../lib/use-toggle";
+import env from "../../../application/environment/env.json";
+import axios from "axios";
 
 type Input = {
   email: string;
@@ -10,6 +12,7 @@ type Input = {
 
 const FormLogin: React.FC = () => {
   const [spinner, setSpinner] = useToggle();
+  const [showMessage, setShowMessage] = useState<Boolean>(false);
   const {
     register,
     handleSubmit,
@@ -17,6 +20,20 @@ const FormLogin: React.FC = () => {
   } = useForm<Input>();
   const onSubmit = (data: any) => {
     setSpinner();
+
+    axios
+      .post(`${env.host}/api/login`, {
+        email: data.email,
+        password: data.password,
+      })
+      .then((result: any) => {
+        setSpinner();
+        if (result.data.success === false) {
+          setShowMessage(true);
+        } else {
+          // true
+        }
+      });
   };
   return (
     <>
@@ -156,6 +173,11 @@ const FormLogin: React.FC = () => {
                   )}
                 </div>
               </div>
+              {showMessage && (
+                <div className="errorMessage-0-2-111">
+                  Incorrect email or password
+                </div>
+              )}
               <div className="buttonField-0-2-237">
                 <Link className="forgotPassword-0-2-243" to="/forgot">
                   Forgot Password?
