@@ -1984,3 +1984,125 @@
     padding: 0;
   }
 }
+
+.form-0-2-101 {
+  margin-bottom: 1.25rem;
+}
+@media (min-width: 960px) {
+  .form-0-2-101 {
+    width: 500px;
+    margin: auto;
+  }
+}
+.h1-0-2-102 {
+  margin: 1rem 0 0.5rem 0;
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: MarkPro, Helvetica;
+  font-weight: bold;
+  line-height: 1.75rem;
+}
+@media (min-width: 1280px) {
+  .h1-0-2-102 {
+    margin: 3.125rem 0 1.25rem 0;
+    font-size: 3.125rem;
+    line-height: 4rem;
+  }
+}
+.h2-0-2-103 {
+  color: #171725;
+  margin: 0 0 1rem 0;
+  opacity: 0.5;
+  font-size: 1rem;
+  text-align: center;
+  font-family: MarkPro, Helvetica;
+  font-weight: 400;
+  line-height: 1.25rem;
+}
+@media (min-width: 1280px) {
+  .h2-0-2-103 {
+    margin: 0 0 1.875rem 0;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+  }
+}
+.buttonField-0-2-104 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (min-width: 960px) {
+  .buttonField-0-2-104 {
+    padding-bottom: 1.25rem;
+  }
+}
+.button-0-2-105 {
+  width: 120px;
+}
+.line-0-2-106 {
+  width: 100%;
+  height: 1px;
+  display: none;
+  position: relative;
+  margin-top: 32px;
+  margin-bottom: 37px;
+  background-color: #eaeaea;
+}
+.continue-0-2-107 {
+  top: -13px;
+  left: 120px;
+  color: rgba(0, 0, 0, 0.3);
+  display: none;
+  padding: 0 15px;
+  position: absolute;
+  font-size: 16px;
+  font-family: MarkPro, Helvetica;
+  background-color: #ffffff;
+}
+.socialButtonGroup-0-2-108 {
+  width: 100%;
+  display: none;
+  margin-top: 2rem;
+  justify-content: center;
+}
+.socialButton-0-2-109 {
+  width: 58px;
+  height: 58px;
+  margin-right: 1.5rem;
+}
+.forgotPassword-0-2-110 {
+  color: #696974;
+  display: block;
+  opacity: 0.8;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  font-family: MarkPro, Helvetica;
+  line-height: 1rem;
+  text-decoration: none;
+}
+@media (min-width: 960px) {
+  .forgotPassword-0-2-110 {
+    font-size: 1rem;
+    line-height: 1.25rem;
+  }
+}
+.forgotPassword-0-2-110:hover {
+  color: #44444f;
+}
+.errorMessage-0-2-111 {
+  color: #dd2222;
+  font-size: 0.875rem;
+  font-family: MarkPro, Helvetica;
+  line-height: 1rem;
+}
+.loading-0-2-112 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.spinner-0-2-113 {
+  width: 20px;
+  height: 20px;
+  stroke: #ffffff;
+  margin-right: 0.375rem;
+}

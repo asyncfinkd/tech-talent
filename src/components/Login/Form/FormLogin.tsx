@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { useToggle } from "../../../lib/use-toggle";
 
 type Input = {
   email: string;
@@ -8,13 +9,14 @@ type Input = {
 };
 
 const FormLogin: React.FC = () => {
+  const [spinner, setSpinner] = useToggle();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Input>();
   const onSubmit = (data: any) => {
-    console.log(data);
+    setSpinner();
   };
   return (
     <>
@@ -158,12 +160,48 @@ const FormLogin: React.FC = () => {
                 <Link className="forgotPassword-0-2-243" to="/forgot">
                   Forgot Password?
                 </Link>
-                <button
-                  className="root-0-2-46 button-0-2-238 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-                  type="submit"
-                >
-                  Login
-                </button>
+                {spinner ? (
+                  <button
+                    className="root-0-2-46 button-0-2-105 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                    type="submit"
+                  >
+                    <div className="loading-0-2-112">
+                      <svg
+                        className="stroke-0-2-35 spinner-0-2-113"
+                        width="100"
+                        height="100"
+                        viewBox="0 0 100 100"
+                        preserveAspectRatio="xMidYMid"
+                      >
+                        <circle
+                          cx="50"
+                          cy="50"
+                          fill="none"
+                          stroke-width="10"
+                          r="35"
+                          stroke-dasharray="164.93361431346415 56.97787143782138"
+                        >
+                          <animateTransform
+                            attributeName="transform"
+                            type="rotate"
+                            repeatCount="indefinite"
+                            dur="1s"
+                            values="0 50 50;360 50 50"
+                            keyTimes="0;1"
+                          ></animateTransform>
+                        </circle>
+                      </svg>
+                      <span>Loading</span>
+                    </div>
+                  </button>
+                ) : (
+                  <button
+                    className="root-0-2-46 button-0-2-238 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                    type="submit"
+                  >
+                    Login
+                  </button>
+                )}
               </div>
             </form>
           </div>
