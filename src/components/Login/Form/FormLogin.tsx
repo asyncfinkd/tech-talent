@@ -28,9 +28,11 @@ const FormLogin: React.FC = () => {
       })
       .then((result: any) => {
         setSpinner();
+        console.log(result);
         if (result.data.success === false) {
           setShowMessage(true);
         } else {
+          setShowMessage(false);
           // true
         }
       });
