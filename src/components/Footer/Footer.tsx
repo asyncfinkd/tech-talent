@@ -8,52 +8,56 @@ const Footer: React.FC = () => {
           <a className="link-0-2-227" href="/c/omedia">
             <img
               className="image-0-2-226"
-              src="/logos/omedia.png"
+              src="https://tt.ge/logos/omedia.png"
               alt="omedia"
             />
           </a>
           <a className="link-0-2-227" href="/c/phubber">
             <img
               className="image-0-2-226"
-              src="/logos/phubber.png"
+              src="https://tt.ge/logos/phubber.png"
               alt="phubber"
             />
           </a>
           <a className="link-0-2-227" href="/c/lavapi">
             <img
               className="image-0-2-226"
-              src="/logos/lavapi.png"
+              src="https://tt.ge/logos/lavapi.png"
               alt="lavapi"
             />
           </a>
           <a className="link-0-2-227" href="/c/redberry">
             <img
               className="image-0-2-226"
-              src="/logos/redberry.png"
+              src="https://tt.ge/logos/redberry.png"
               alt="redberry"
             />
           </a>
           <a className="link-0-2-227" href="/c/singular">
             <img
               className="image-0-2-226"
-              src="/logos/singular.png"
+              src="https://tt.ge/logos/singular.png"
               alt="singular"
             />
           </a>
           <a className="link-0-2-227" href="/c/echolize">
             <img
               className="image-0-2-226"
-              src="/logos/echolize.png"
+              src="https://tt.ge/logos/echolize.png"
               alt="echolize"
             />
           </a>
           <a className="link-0-2-227" href="/c/meama">
-            <img className="image-0-2-226" src="/logos/meama.png" alt="meama" />
+            <img
+              className="image-0-2-226"
+              src="https://tt.ge/logos/meama.png"
+              alt="meama"
+            />
           </a>
           <a className="link-0-2-227" href="/c/europebet">
             <img
               className="image-0-2-226"
-              src="/logos/europebet.png"
+              src="https://tt.ge/logos/europebet.png"
               alt="europebet"
             />
           </a>
