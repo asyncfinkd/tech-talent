@@ -8,6 +8,8 @@ import ForgotPages from "./pages/forgot/ForgotPages";
 import ErrorPages from "./pages/Error/ErrorPages";
 import jwt_decode from "jwt-decode";
 import { ApplicationContext } from "./context/Application/ApplicationContext";
+import RegisterPages from "./pages/register/RegisterPages";
+import RegisterCandidatePages from "./pages/register/RegisterCandidatePages";
 
 const App: React.FC = () => {
   const local = localStorage.getItem("local");
@@ -27,6 +29,12 @@ const App: React.FC = () => {
             <Switch>
               <Route path="/" exact component={IndexPages} />
               <Route path="/login" exact component={LoginPages} />
+              <Route path="/register" exact component={RegisterPages} />
+              <Route
+                path="/register/candidate"
+                exact
+                component={RegisterCandidatePages}
+              />
               <Route path="/forgot" exact component={ForgotPages} />
               <Route exact component={ErrorPages} />
             </Switch>
