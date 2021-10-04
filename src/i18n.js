@@ -10,6 +10,8 @@ const resources = {
       EDUCATION: "Education",
       LOGIN: "Login",
       REGISTER: "Register",
+      ABOUT: "About",
+      LANGUAGE: "Language",
     },
   },
   ka: {
@@ -20,6 +22,8 @@ const resources = {
       EDUCATION: "განათლება",
       LOGIN: "შესვლა",
       REGISTER: "რეგისტრაცია",
+      ABOUT: "ჩვენს შესახებ",
+      LANGUAGE: "ენა",
     },
   },
 };
