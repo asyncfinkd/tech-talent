@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useContext, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import env from "../../application/environment/env.json";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 
@@ -13,6 +13,11 @@ type Input = {
 };
 
 const RegisterCandidatePages: React.FC = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   const { setJwtDecode } = useContext(ApplicationContext);
   const history = useHistory();
   const {

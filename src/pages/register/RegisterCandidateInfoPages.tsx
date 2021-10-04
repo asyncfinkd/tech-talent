@@ -1,10 +1,15 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 import env from "../../application/environment/env.json";
 
 const RegisterCandidateInfoPages: React.FC = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   const { jwtDecode, setJwtDecode } = useContext(ApplicationContext);
   const [firstName, setFirstName] = useState<String>("");
   const [lastName, setLastName] = useState<String>("");
@@ -13,7 +18,7 @@ const RegisterCandidateInfoPages: React.FC = () => {
   const [socialNetwork, setSocialNetwork] = useState<String | any>("");
   const history = useHistory();
   useEffect(() => {
-    if (!jwtDecode.email) {
+    if (!localStorage.getItem("local")) {
       history.push("/login");
     }
   }, []);
