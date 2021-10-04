@@ -44,8 +44,8 @@ router.route("/register").post(async (req, res) => {
       if (result) {
         res.json("Email is already registered");
       } else {
-        const { email } = req.body;
-        const access_token = jwt.sign({ email }, env.ACCESS_TOKEN, {
+        const { email, interest } = req.body;
+        const access_token = jwt.sign({ email, interest }, env.ACCESS_TOKEN, {
           expiresIn: "12h",
         });
         const User = new UserSchema({
@@ -69,8 +69,17 @@ router
       try {
         const { fullName, phone, socialNetwork, firstName, lastName } =
           req.body;
+        const { email, interest } = req;
         const access_token = jwt.sign(
-          { fullName, phone, socialNetwork, firstName, lastName },
+          {
+            fullName,
+            phone,
+            socialNetwork,
+            firstName,
+            lastName,
+            email,
+            interest,
+          },
           env.ACCESS_TOKEN,
           {
             expiresIn: "12h",
