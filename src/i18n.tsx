@@ -53,6 +53,8 @@ const resources = {
       SUBMITYOURCONTACTINFORMATION:
         "Submit your contact information <br /> and we will contact you shortly",
       REGISTERCOMPANY: "Register Company",
+      TERMSANDCONDITIONS: "Terms & Conditions",
+      PRIVACYPOLICY: "Privacy Policy",
     },
   },
   ka: {
@@ -105,6 +107,8 @@ const resources = {
       SUBMITYOURCONTACTINFORMATION:
         "შეავსე რეგისტრაციის ფორმა <br /> და ჩვენ მალე დაგიკავშირებით",
       REGISTERCOMPANY: "კომპანიის რეგისტრაცია",
+      TERMSANDCONDITIONS: "წესები და პირობები",
+      PRIVACYPOLICY: "კონფიდენციალურობა",
     },
   },
 };

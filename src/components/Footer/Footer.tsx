@@ -1,10 +1,13 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 interface Props {
   wantSponsors?: boolean;
 }
 
 const Footer: React.FC<Props> = ({ wantSponsors }) => {
+  const { t } = useTranslation();
   return (
     <>
       <footer className="root-0-2-201">
@@ -80,12 +83,12 @@ const Footer: React.FC<Props> = ({ wantSponsors }) => {
                     Tech companies use our platform <br /> to find people that
                     fit their culture.
                   </div>
-                  <a
+                  <Link
                     className="root-0-2-46 register-0-2-214 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-                    href="/register"
+                    to="/register"
                   >
-                    Register
-                  </a>
+                    {t("REGISTER")}
+                  </Link>
                 </div>
                 <div className="right-0-2-215">
                   <div className="colContainer-0-2-219">
@@ -276,20 +279,20 @@ const Footer: React.FC<Props> = ({ wantSponsors }) => {
                       </div>
                     </div>
                     <div className="col-0-2-220">
-                      <div className="titleEntry-0-2-216">Company</div>
+                      <div className="titleEntry-0-2-216">{t("COMPANY")}</div>
                       <div>
                         <a className="entry-0-2-218" href="/about">
-                          About
+                          {t("ABOUT")}
                         </a>
                       </div>
                       <div>
                         <a className="entry-0-2-218" href="/terms">
-                          Terms &amp; Conditions
+                          {t("TERMSANDCONDITIONS")}
                         </a>
                       </div>
                       <div>
                         <a className="entry-0-2-218" href="/privacy">
-                          Privacy Policy
+                          {t("PRIVACYPOLICY")}
                         </a>
                       </div>
                     </div>
