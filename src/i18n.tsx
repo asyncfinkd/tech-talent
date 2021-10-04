@@ -48,6 +48,11 @@ const resources = {
       SENDPASSWORDRESETEMAIL: "Send password reset email",
       PASSWORDRESETISCOMPLETED: "Password reset process is completed",
       CHECKYOUREMAIL: "Check your email and open the password reset link",
+      DOYOUWANTOJOIN:
+        "Do you want to join <br /> the <span>Tech Talent</span> platform?",
+      SUBMITYOURCONTACTINFORMATION:
+        "Submit your contact information <br /> and we will contact you shortly",
+      REGISTERCOMPANY: "Register Company",
     },
   },
   ka: {
@@ -96,6 +101,10 @@ const resources = {
       SENDPASSWORDRESETEMAIL: "გამომიგზავნე პაროლის აღდგენის მეილი",
       PASSWORDRESETISCOMPLETED: "პაროლის აღდგენა დასრულებულია",
       CHECKYOUREMAIL: "შეიამოწმე მეილი და გახსენი პაროლის აღდგენის ლინკი",
+      DOYOUWANTOJOIN: "გინდა შემოუერთდე <br /> ჩვენს პლატფორმას?",
+      SUBMITYOURCONTACTINFORMATION:
+        "შეავსე რეგისტრაციის ფორმა <br /> და ჩვენ მალე დაგიკავშირებით",
+      REGISTERCOMPANY: "კომპანიის რეგისტრაცია",
     },
   },
 };
