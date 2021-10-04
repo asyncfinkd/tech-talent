@@ -11,7 +11,14 @@ const Header: React.FC = () => {
   const [showClose, setShowClose] = useToggle();
   const { jwtDecode } = useContext(ApplicationContext);
   const { t, i18n } = useTranslation();
-  const [language, setLanguage] = useState<String>("EN");
+  const renderLocal = () => {
+    if (!localStorage.getItem("tt-lang")) {
+      return "EN";
+    } else {
+      return localStorage.getItem("tt-lang")?.toUpperCase();
+    }
+  };
+  const [language, setLanguage] = useState<any>(renderLocal);
 
   const changeLanguage = (language: string) => {
     i18n.changeLanguage(language);
