@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useToggle } from "../../../lib/use-toggle";
 import env from "../../../application/environment/env.json";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
+import { ApplicationContext } from "../../../context/Application/ApplicationContext";
 
 type Input = {
   email: string;
@@ -18,6 +20,8 @@ const FormLogin: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<Input>();
+  const history = useHistory();
+  const { setJwtDecode } = useContext(ApplicationContext);
   const onSubmit = (data: any) => {
     setSpinner();
 
@@ -33,7 +37,8 @@ const FormLogin: React.FC = () => {
         } else {
           setShowMessage(false);
           localStorage.setItem("local", result.data.access_token);
-          window.location.href = "/";
+          setJwtDecode(result.data.access_token);
+          history.push("/");
         }
       });
   };

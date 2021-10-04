@@ -1,6 +1,5 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import Footer from "../../components/Footer/Footer";
 
 const RegisterPages: React.FC = () => {
   return (

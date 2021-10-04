@@ -1,8 +1,48 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useContext, useEffect } from "react";
+import { Helmet } from "react-helmet";
+import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
+import env from "../../application/environment/env.json";
+import { ApplicationContext } from "../../context/Application/ApplicationContext";
+
+type Input = {
+  email: string;
+  password: string;
+  repeatPassword: string;
+};
 
 const RegisterCandidatePages: React.FC = () => {
+  const { setJwtDecode } = useContext(ApplicationContext);
+  const history = useHistory();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Input>();
+  const [registeredEmailMessage, setRegisteredEmailMessage] =
+    useState<Boolean>(false);
+  const [interest, setInterest] = useState<String>("");
+  useEffect(() => {
+    if (interest === "") {
+      let locat = window.location.href.split("/");
+      let secondLocat = locat[4].split("=");
+      setInterest(secondLocat[2]);
+    }
+  }, [interest]);
+  const inputEmailClassNameRender = () => {
+    if (registeredEmailMessage || errors.email) {
+      return "input-0-2-251 invalid-0-2-252";
+    } else {
+      return "input-0-2-251";
+    }
+  };
   return (
     <>
+      <Helmet>
+        <title>Register | Tech Talent</title>
+      </Helmet>
       <main className="main-0-2-2">
         <div className="root-0-2-100">
           <div className="content-0-2-101">
@@ -15,24 +55,48 @@ const RegisterCandidatePages: React.FC = () => {
                     <label className="label-0-2-127">
                       Email{" "}
                       <span
-                        className="asteriskValid-0-2-128"
+                        className={
+                          errors.email || registeredEmailMessage
+                            ? "asteriskInvalid-0-2-250"
+                            : "asteriskValid-0-2-249"
+                        }
                         style={{ display: "inline" }}
                       >
                         *
                       </span>
                     </label>
                     <input
-                      type="email"
-                      autoComplete="email"
-                      className="input-0-2-130"
-                      required={true}
+                      type="text"
+                      className={inputEmailClassNameRender()}
+                      {...register("email", {
+                        required: "Valid email is required",
+                        pattern: {
+                          value:
+                            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                          message: "User with this email is already registered",
+                        },
+                      })}
                     />
+                    {errors.email && (
+                      <div className="invalidMessage-0-2-132">
+                        {errors.email.message}
+                      </div>
+                    )}
+                    {registeredEmailMessage && (
+                      <div className="invalidMessage-0-2-132">
+                        User with this email is already registered
+                      </div>
+                    )}
                   </div>
                   <div className="root-0-2-126 input-0-2-117">
                     <label className="label-0-2-127">
                       Password{" "}
                       <span
-                        className="asteriskValid-0-2-128"
+                        className={
+                          errors.password
+                            ? "asteriskInvalid-0-2-250"
+                            : "asteriskValid-0-2-249"
+                        }
                         style={{ display: "inline" }}
                       >
                         *
@@ -40,16 +104,28 @@ const RegisterCandidatePages: React.FC = () => {
                     </label>
                     <input
                       type="password"
-                      autoComplete="new-password"
-                      className="input-0-2-130"
-                      required={true}
+                      {...register("password", {
+                        required: true,
+                      })}
+                      className={`input-0-2-251 ${
+                        errors.password && "invalid-0-2-252"
+                      }`}
                     />
+                    {errors.password && (
+                      <div className="invalidMessage-0-2-132">
+                        Password is required
+                      </div>
+                    )}
                   </div>
                   <div className="root-0-2-126 input-0-2-117">
                     <label className="label-0-2-127">
                       Repeat Password{" "}
                       <span
-                        className="asteriskValid-0-2-128"
+                        className={
+                          errors.repeatPassword
+                            ? "asteriskInvalid-0-2-250"
+                            : "asteriskValid-0-2-249"
+                        }
                         style={{ display: "inline" }}
                       >
                         *
@@ -57,10 +133,21 @@ const RegisterCandidatePages: React.FC = () => {
                     </label>
                     <input
                       type="password"
-                      autoComplete="new-password"
-                      className="input-0-2-130"
-                      required={true}
+                      {...register("repeatPassword", {
+                        required: true,
+                        validate: (value) => {
+                          return value === watch("password");
+                        },
+                      })}
+                      className={`input-0-2-251 ${
+                        errors.repeatPassword && "invalid-0-2-252"
+                      }`}
                     />
+                    {errors.repeatPassword && (
+                      <div className="invalidMessage-0-2-132">
+                        Passwords do not match
+                      </div>
+                    )}
                   </div>
                   <div className="line-0-2-122">
                     <div className="continue-0-2-123">or continue with</div>
@@ -174,6 +261,29 @@ const RegisterCandidatePages: React.FC = () => {
                 <button
                   className="root-0-2-46 nextButton-0-2-110 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                   type="submit"
+                  onClick={handleSubmit((data: any) => {
+                    axios
+                      .post(`${env.host}/api/register`, {
+                        email: data.email,
+                        password: data.password,
+                        interest: interest,
+                      })
+                      .then((result: any) => {
+                        if (result.data === "Email is already registered") {
+                          setRegisteredEmailMessage(true);
+                        } else {
+                          setRegisteredEmailMessage(false);
+                          localStorage.setItem(
+                            "local",
+                            result.data.access_token
+                          );
+                          setJwtDecode(result.data.access_token);
+                          history.push(
+                            `/register/candidate/info?cb=%2F&fieldType=${interest}`
+                          );
+                        }
+                      });
+                  })}
                 >
                   Next
                 </button>
