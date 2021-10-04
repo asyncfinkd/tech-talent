@@ -377,7 +377,9 @@ const Header: React.FC = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 onClick={() => {
                   setShowHeader();
-                  setShowClose();
+                  if (!showProfile) {
+                    setShowClose();
+                  }
                 }}
               >
                 <path d="M21 8H3C2.44772 8 2 8.44772 2 9C2 9.55228 2.44772 10 3 10H21C21.5523 10 22 9.55228 22 9C22 8.44772 21.5523 8 21 8Z"></path>
@@ -426,7 +428,12 @@ const Header: React.FC = () => {
                       } else {
                         setShowProfile();
                       }
-                      setShowClose();
+                      if (!showHeader && showProfile) {
+                        setShowClose();
+                      }
+                      if (showHeader && !showProfile) {
+                        setShowClose();
+                      }
                     }}
                   >
                     <rect width="24" height="24" fill="white"></rect>
