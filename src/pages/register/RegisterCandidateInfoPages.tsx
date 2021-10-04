@@ -3,14 +3,16 @@ import React, { useContext, useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 import env from "../../application/environment/env.json";
+import { useTranslation } from "react-i18next";
 
 const RegisterCandidateInfoPages: React.FC = () => {
+  const { t } = useTranslation();
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-  const { jwtDecode, setJwtDecode } = useContext(ApplicationContext);
+  const { setJwtDecode } = useContext(ApplicationContext);
   const [firstName, setFirstName] = useState<String>("");
   const [lastName, setLastName] = useState<String>("");
   const [fullName, setFullName] = useState<String | any>("");
@@ -35,14 +37,14 @@ const RegisterCandidateInfoPages: React.FC = () => {
           <div className="content-0-2-277">
             <div className="marginOnMobile-0-2-134">
               <div className="root-0-2-312">
-                <h1 className="h1-0-2-313">Contact Information</h1>
+                <h1 className="h1-0-2-313">{t("CONTACTINFORMATION")}</h1>
                 <div className="caption-0-2-314">
-                  You can use this data when you apply for a job
+                  {t("SUBCONTACTINFORMATION")}
                 </div>
                 <div className="inputGroup-0-2-317">
                   <div className="root-0-2-250 input-0-2-318">
                     <label className="label-0-2-251">
-                      First Name &amp; Last Name{" "}
+                      {t("FULLNAME")}{" "}
                       <span
                         className="asteriskValid-0-2-252"
                         style={{ display: "none" }}
@@ -59,7 +61,7 @@ const RegisterCandidateInfoPages: React.FC = () => {
                   </div>
                   <div className="root-0-2-250 input-0-2-318">
                     <label className="label-0-2-251">
-                      Phone{" "}
+                      {t("PHONE")}{" "}
                       <span
                         className="asteriskValid-0-2-252"
                         style={{ display: "none" }}
@@ -87,7 +89,9 @@ const RegisterCandidateInfoPages: React.FC = () => {
                     <input
                       type="text"
                       className="input-0-2-254"
-                      placeholder="ex: https://www.linkedin.com/in/jane"
+                      placeholder={`${t(
+                        "EXAMPLE"
+                      )}https://www.linkedin.com/in/jane`}
                       value={socialNetwork}
                       onChange={(e) => setSocialNetwork(e.target.value)}
                     />
@@ -104,8 +108,8 @@ const RegisterCandidateInfoPages: React.FC = () => {
             <div className="marginOnMobile-0-2-134">
               <div className="left-0-2-282">
                 <div className="textGroup-0-2-283">
-                  <div className="h1-0-2-284">Tell us who you are</div>
-                  <div className="caption-0-2-285">Contact Information</div>
+                  <div className="h1-0-2-284">{t("TELLUS")}</div>
+                  <div className="caption-0-2-285">{t("CONTACTUS")}</div>
                 </div>
                 <button
                   className="root-0-2-46 nextButton-0-2-286 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
@@ -137,7 +141,7 @@ const RegisterCandidateInfoPages: React.FC = () => {
                       });
                   }}
                 >
-                  Next
+                  {t("NEXT")}
                 </button>
               </div>
             </div>

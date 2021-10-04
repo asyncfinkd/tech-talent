@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const RegisterPages: React.FC = () => {
+  const { t } = useTranslation();
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -18,9 +20,9 @@ const RegisterPages: React.FC = () => {
           <div className="content-0-2-234">
             <div className="marginOnMobile-0-2-134">
               <div className="root-0-2-244">
-                <h1 className="h1-0-2-245">Register</h1>
+                <h1 className="h1-0-2-245">{t("REGISTER")}</h1>
                 <div className="caption-0-2-246">
-                  Choose Link field of interest
+                  {t("CHOOSELINKFIELDOFINTEREST")}
                 </div>
                 <div className="grid-0-2-247">
                   <Link
@@ -317,7 +319,7 @@ const RegisterPages: React.FC = () => {
                           </svg>
                         </div>
                       </div>
-                      Other
+                      {t("OTHER")}
                     </div>
                   </Link>
                   <Link
@@ -350,7 +352,7 @@ const RegisterPages: React.FC = () => {
                           </svg>
                         </div>
                       </div>
-                      Company
+                      {t("COMPANY")}
                     </div>
                   </Link>
                 </div>

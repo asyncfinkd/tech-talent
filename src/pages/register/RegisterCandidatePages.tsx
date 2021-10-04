@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router-dom";
 import env from "../../application/environment/env.json";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
+import { useTranslation } from "react-i18next";
 
 type Input = {
   email: string;
@@ -13,6 +14,7 @@ type Input = {
 };
 
 const RegisterCandidatePages: React.FC = () => {
+  const { t } = useTranslation();
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -53,12 +55,14 @@ const RegisterCandidatePages: React.FC = () => {
           <div className="content-0-2-101">
             <div className="marginOnMobile-0-2-111">
               <div className="root-0-2-113">
-                <h1 className="h1-0-2-114">Register</h1>
-                <div className="caption-0-2-115">Enter Your Credentials</div>
+                <h1 className="h1-0-2-114">{t("REGISTER")}</h1>
+                <div className="caption-0-2-115">
+                  {t("ENTERYOURCREDENTIALS")}
+                </div>
                 <div className="inputGroup-0-2-116">
                   <div className="root-0-2-126 input-0-2-117">
                     <label className="label-0-2-127">
-                      Email{" "}
+                      {t("EMAIL")}{" "}
                       <span
                         className={
                           errors.email || registeredEmailMessage
@@ -74,11 +78,11 @@ const RegisterCandidatePages: React.FC = () => {
                       type="text"
                       className={inputEmailClassNameRender()}
                       {...register("email", {
-                        required: "Valid email is required",
+                        required: `${t("VALIDEMAIL")}`,
                         pattern: {
                           value:
                             /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                          message: "User with this email is already registered",
+                          message: `${t("VALIDALREADYREGISTERED")}`,
                         },
                       })}
                     />
@@ -89,13 +93,13 @@ const RegisterCandidatePages: React.FC = () => {
                     )}
                     {registeredEmailMessage && (
                       <div className="invalidMessage-0-2-132">
-                        User with this email is already registered
+                        {t("VALIDALREADYREGISTERED")}
                       </div>
                     )}
                   </div>
                   <div className="root-0-2-126 input-0-2-117">
                     <label className="label-0-2-127">
-                      Password{" "}
+                      {t("PASSWORD")}{" "}
                       <span
                         className={
                           errors.password
@@ -118,13 +122,13 @@ const RegisterCandidatePages: React.FC = () => {
                     />
                     {errors.password && (
                       <div className="invalidMessage-0-2-132">
-                        Password is required
+                        {t("VALIDPASSWORD")}
                       </div>
                     )}
                   </div>
                   <div className="root-0-2-126 input-0-2-117">
                     <label className="label-0-2-127">
-                      Repeat Password{" "}
+                      {t("REPEATPASSWORD")}{" "}
                       <span
                         className={
                           errors.repeatPassword
@@ -150,7 +154,7 @@ const RegisterCandidatePages: React.FC = () => {
                     />
                     {errors.repeatPassword && (
                       <div className="invalidMessage-0-2-132">
-                        Passwords do not match
+                        {t("VALIDREPEATPASSWORD")}
                       </div>
                     )}
                   </div>
@@ -260,8 +264,10 @@ const RegisterCandidatePages: React.FC = () => {
             <div className="marginOnMobile-0-2-111">
               <div className="left-0-2-106">
                 <div className="textGroup-0-2-107">
-                  <div className="h1-0-2-108">Create Your Account</div>
-                  <div className="caption-0-2-109">Enter Your Credentials</div>
+                  <div className="h1-0-2-108">{t("CREATEYOURACCOUNT")}</div>
+                  <div className="caption-0-2-109">
+                    {t("ENTERYOURCREDENTIALS")}
+                  </div>
                 </div>
                 <button
                   className="root-0-2-46 nextButton-0-2-110 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
@@ -290,7 +296,7 @@ const RegisterCandidatePages: React.FC = () => {
                       });
                   })}
                 >
-                  Next
+                  {t("NEXT")}
                 </button>
               </div>
             </div>
