@@ -279,6 +279,7 @@ const Header: React.FC = () => {
                       changeLanguage("en");
                       setShowLanguage();
                       setLanguage("EN");
+                      localStorage.setItem("tt-lang", "en");
                     }}
                     role="option"
                     aria-selected="false"
@@ -311,6 +312,7 @@ const Header: React.FC = () => {
                       changeLanguage("ka");
                       setShowLanguage();
                       setLanguage("KA");
+                      localStorage.setItem("tt-lang", "ka");
                     }}
                     role="option"
                     aria-selected="false"
