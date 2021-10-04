@@ -55,6 +55,7 @@ const resources = {
       REGISTERCOMPANY: "Register Company",
       TERMSANDCONDITIONS: "Terms & Conditions",
       PRIVACYPOLICY: "Privacy Policy",
+      SELECTPROFFESION: "Select profession",
     },
   },
   ka: {
@@ -109,6 +110,7 @@ const resources = {
       REGISTERCOMPANY: "კომპანიის რეგისტრაცია",
       TERMSANDCONDITIONS: "წესები და პირობები",
       PRIVACYPOLICY: "კონფიდენციალურობა",
+      SELECTPROFFESION: "აირჩიეთ პროფესია",
     },
   },
 };
