@@ -1,7 +1,11 @@
+import axios from "axios";
 import React from "react";
+import { useState } from "react";
 import { Helmet } from "react-helmet";
+import env from "../../application/environment/env.json";
 
 const ForgotPages: React.FC = () => {
+  const [email, setEmail] = useState<String | any>("");
   return (
     <>
       <Helmet>
@@ -11,7 +15,7 @@ const ForgotPages: React.FC = () => {
         <div className="root-0-2-254">
           <h1 className="h1-0-2-255">Forgot Password?</h1>
           <div className="caption-0-2-256">Enter Your Email</div>
-          <form>
+          <form onSubmit={(e) => e.preventDefault()}>
             <div className="inputGroup-0-2-257">
               <div className="root-0-2-117 input-0-2-258">
                 <label className="label-0-2-118">
@@ -28,10 +32,22 @@ const ForgotPages: React.FC = () => {
                   autoComplete="email"
                   className="input-0-2-121"
                   required={true}
-                  value=""
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <button className="root-0-2-46 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54">
+              <button
+                className="root-0-2-46 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                onClick={() => {
+                  axios
+                    .post(`${env.host}/api/forgot`, {
+                      email: email,
+                    })
+                    .then((result: any) => {
+                      console.log(result);
+                    });
+                }}
+              >
                 Send password reset email
               </button>
             </div>
