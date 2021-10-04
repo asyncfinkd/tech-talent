@@ -2,10 +2,13 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
+import { useHistory } from "react-router-dom";
 import env from "../../application/environment/env.json";
 
 const ForgotPages: React.FC = () => {
   const [email, setEmail] = useState<String | any>("");
+  const [showErrorMessage, setShowErrorMessage] = useState<Boolean>(false);
+  const history = useHistory();
   return (
     <>
       <Helmet>
@@ -21,7 +24,11 @@ const ForgotPages: React.FC = () => {
                 <label className="label-0-2-118">
                   Email{" "}
                   <span
-                    className="asteriskValid-0-2-119"
+                    className={
+                      showErrorMessage
+                        ? "asteriskInvalid-0-2-250"
+                        : "asteriskValid-0-2-249"
+                    }
                     style={{ display: "inline" }}
                   >
                     *
@@ -30,22 +37,37 @@ const ForgotPages: React.FC = () => {
                 <input
                   type="email"
                   autoComplete="email"
-                  className="input-0-2-121"
+                  className={`input-0-2-251 ${
+                    showErrorMessage && "invalid-0-2-252"
+                  }`}
                   required={true}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
+                {showErrorMessage && (
+                  <div className="invalidMessage-0-2-132">
+                    Email does not exist
+                  </div>
+                )}
               </div>
               <button
                 className="root-0-2-46 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                 onClick={() => {
-                  axios
-                    .post(`${env.host}/api/forgot`, {
-                      email: email,
-                    })
-                    .then((result: any) => {
-                      console.log(result);
-                    });
+                  if (email) {
+                    axios
+                      .post(`${env.host}/api/forgot`, {
+                        email: email,
+                      })
+                      .then((result: any) => {
+                        console.log(result);
+                        if (result.data === "Email does not exist") {
+                          setShowErrorMessage(true);
+                        } else {
+                          setShowErrorMessage(false);
+                          history.push("/forgot/thanks");
+                        }
+                      });
+                  }
                 }}
               >
                 Send password reset email

@@ -143,9 +143,7 @@ router.route("/forgot").post(async (req, res) => {
           console.log("email sent");
         }
       });
-
-      console.log(result);
-      console.log(num);
+      res.json({ success: true });
     }
   });
 });
