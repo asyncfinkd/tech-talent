@@ -13,7 +13,7 @@ const RegisterPages: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Register | Tech Talent</title>
+        <title>{t("REGISTERPAGESTITLE")}</title>
       </Helmet>
       <main className="main-0-2-2">
         <div className="root-0-2-233">

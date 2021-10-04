@@ -3,8 +3,10 @@ import Footer from "../../components/Footer/Footer";
 import { Helmet } from "react-helmet";
 import { useLocation } from "react-router-dom";
 import FormLogin from "../../components/Login/Form/FormLogin";
+import { useTranslation } from "react-i18next";
 
 const LoginPages: React.FC = () => {
+  const { t } = useTranslation();
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -13,7 +15,7 @@ const LoginPages: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Welcome | Tech Talent</title>
+        <title>{t("LOGINPAGESTITLE")}</title>
       </Helmet>
       <FormLogin />
       <Footer />

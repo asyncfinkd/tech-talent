@@ -4,6 +4,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 import env from "../../application/environment/env.json";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet";
 
 const RegisterCandidateInfoPages: React.FC = () => {
   const { t } = useTranslation();
@@ -32,6 +33,9 @@ const RegisterCandidateInfoPages: React.FC = () => {
   const local = localStorage.getItem("local");
   return (
     <>
+      <Helmet>
+        <title>{t("REGISTERPAGESTITLE")}</title>
+      </Helmet>
       <main className="main-0-2-2">
         <div className="root-0-2-276">
           <div className="content-0-2-277">

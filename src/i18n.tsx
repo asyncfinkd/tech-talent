@@ -34,6 +34,8 @@ const resources = {
       EXAMPLE: "ex: ",
       TELLUS: "Tell us who you are",
       CONTACTUS: "Contact Information",
+      LOGINPAGESTITLE: "Welcome | Tech Talent",
+      REGISTERPAGESTITLE: "Register | Tech Talent",
     },
   },
   ka: {
@@ -69,6 +71,8 @@ const resources = {
       EXAMPLE: "მაგ: ",
       TELLUS: "მოგვიყევი შენს შესახებ",
       CONTACTUS: "საკონტაქტო ინფორმაცია",
+      LOGINPAGESTITLE: "გამარჯობა | Tech Talent",
+      REGISTERPAGESTITLE: "რეგისტრაცია | Tech Talent",
     },
   },
 };
