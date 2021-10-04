@@ -36,6 +36,10 @@ const resources = {
       CONTACTUS: "Contact Information",
       LOGINPAGESTITLE: "Welcome | Tech Talent",
       REGISTERPAGESTITLE: "Register | Tech Talent",
+      WELCOMEBACK: "Welcome Back",
+      FORGOTPASSWORD: "Forgot Password?",
+      INCORRECTEMAILORPASSWORD: "Incorrect email or password",
+      LOADING: "Loading",
     },
   },
   ka: {
@@ -73,6 +77,10 @@ const resources = {
       CONTACTUS: "საკონტაქტო ინფორმაცია",
       LOGINPAGESTITLE: "გამარჯობა | Tech Talent",
       REGISTERPAGESTITLE: "რეგისტრაცია | Tech Talent",
+      WELCOMEBACK: "გამარჯობა",
+      FORGOTPASSWORD: "დაგავიწყდა პაროლი?",
+      INCORRECTEMAILORPASSWORD: "მეილი ან პაროლი არასწორია",
+      LOADING: "იტვირთება",
     },
   },
 };

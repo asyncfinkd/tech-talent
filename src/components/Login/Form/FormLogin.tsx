@@ -6,6 +6,7 @@ import env from "../../../application/environment/env.json";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { ApplicationContext } from "../../../context/Application/ApplicationContext";
+import { useTranslation } from "react-i18next";
 
 type Input = {
   email: string;
@@ -13,6 +14,7 @@ type Input = {
 };
 
 const FormLogin: React.FC = () => {
+  const { t } = useTranslation();
   const [spinner, setSpinner] = useToggle();
   const [showMessage, setShowMessage] = useState<Boolean>(false);
   const {
@@ -47,8 +49,8 @@ const FormLogin: React.FC = () => {
       <main className="main-0-2-2">
         <div className="marginOnMobile-0-2-134">
           <div className="form-0-2-234">
-            <h1 className="h1-0-2-235">Login</h1>
-            <h2 className="h2-0-2-236">Welcome Back</h2>
+            <h1 className="h1-0-2-235">{t("LOGIN")}</h1>
+            <h2 className="h2-0-2-236">{t("WELCOMEBACK")}</h2>
             <div className="socialButtonGroup-0-2-241">
               <div className="root-0-2-30 sizeLg-0-2-32 socialButton-0-2-242">
                 <div className="rectangle-0-2-33">
@@ -127,7 +129,7 @@ const FormLogin: React.FC = () => {
               <div>
                 <div className="root-0-2-247">
                   <label className="label-0-2-248">
-                    Email{" "}
+                    {t("EMAIL")}{" "}
                     <span
                       className={
                         errors.email
@@ -148,13 +150,13 @@ const FormLogin: React.FC = () => {
                   />
                   {errors.email && (
                     <div className="invalidMessage-0-2-253">
-                      Valid email is required
+                      {t("VALIDEMAIL")}
                     </div>
                   )}
                 </div>
                 <div className="root-0-2-247">
                   <label className="label-0-2-248">
-                    Password{" "}
+                    {t("PASSWORD")}{" "}
                     <span
                       className={
                         errors.password
@@ -175,19 +177,19 @@ const FormLogin: React.FC = () => {
                   />
                   {errors.password && (
                     <div className="invalidMessage-0-2-253">
-                      Password is required
+                      {t("VALIDPASSWORD")}
                     </div>
                   )}
                 </div>
               </div>
               {showMessage && (
                 <div className="errorMessage-0-2-111">
-                  Incorrect email or password
+                  {t("INCORRECTEMAILORPASSWORD")}
                 </div>
               )}
               <div className="buttonField-0-2-237">
                 <Link className="forgotPassword-0-2-243" to="/forgot">
-                  Forgot Password?
+                  {t("FORGOTPASSWORD")}
                 </Link>
                 {spinner ? (
                   <button
@@ -220,7 +222,7 @@ const FormLogin: React.FC = () => {
                           ></animateTransform>
                         </circle>
                       </svg>
-                      <span>Loading</span>
+                      <span>{t("LOADING")}</span>
                     </div>
                   </button>
                 ) : (
@@ -228,7 +230,7 @@ const FormLogin: React.FC = () => {
                     className="root-0-2-46 button-0-2-238 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                     type="submit"
                   >
-                    Login
+                    {t("LOGIN")}
                   </button>
                 )}
               </div>
