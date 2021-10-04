@@ -8,6 +8,7 @@ import env from "../../application/environment/env.json";
 const ForgotPages: React.FC = () => {
   const [email, setEmail] = useState<String | any>("");
   const [showErrorMessage, setShowErrorMessage] = useState<Boolean>(false);
+  const [spinner, setSpinner] = useState<Boolean>(false);
   const history = useHistory();
   return (
     <>
@@ -50,28 +51,64 @@ const ForgotPages: React.FC = () => {
                   </div>
                 )}
               </div>
-              <button
-                className="root-0-2-46 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-                onClick={() => {
-                  if (email) {
-                    axios
-                      .post(`${env.host}/api/forgot`, {
-                        email: email,
-                      })
-                      .then((result: any) => {
-                        console.log(result);
-                        if (result.data === "Email does not exist") {
-                          setShowErrorMessage(true);
-                        } else {
-                          setShowErrorMessage(false);
-                          history.push("/forgot/thanks");
-                        }
-                      });
-                  }
-                }}
-              >
-                Send password reset email
-              </button>
+              {spinner ? (
+                <>
+                  <button className="root-0-2-46 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54">
+                    <svg
+                      className="stroke-0-2-35 spinnerWhite-0-2-63"
+                      width="100"
+                      height="100"
+                      viewBox="0 0 100 100"
+                      preserveAspectRatio="xMidYMid"
+                    >
+                      <circle
+                        cx="50"
+                        cy="50"
+                        fill="none"
+                        stroke-width="10"
+                        r="35"
+                        stroke-dasharray="164.93361431346415 56.97787143782138"
+                      >
+                        <animateTransform
+                          attributeName="transform"
+                          type="rotate"
+                          repeatCount="indefinite"
+                          dur="1s"
+                          values="0 50 50;360 50 50"
+                          keyTimes="0;1"
+                        ></animateTransform>
+                      </circle>
+                    </svg>
+                    <span>Loading</span>
+                  </button>{" "}
+                </>
+              ) : (
+                <>
+                  <button
+                    className="root-0-2-46 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                    onClick={() => {
+                      if (email) {
+                        setSpinner(true);
+                        axios
+                          .post(`${env.host}/api/forgot`, {
+                            email: email,
+                          })
+                          .then((result: any) => {
+                            setSpinner(false);
+                            if (result.data === "Email does not exist") {
+                              setShowErrorMessage(true);
+                            } else {
+                              setShowErrorMessage(false);
+                              history.push("/forgot/thanks");
+                            }
+                          });
+                      }
+                    }}
+                  >
+                    Send password reset email
+                  </button>
+                </>
+              )}
             </div>
           </form>
         </div>
