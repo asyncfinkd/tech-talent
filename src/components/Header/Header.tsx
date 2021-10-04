@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useToggle } from "../../lib/use-toggle";
 import { Link } from "react-router-dom";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
+import { useTranslation } from "react-i18next";
 
 const Header: React.FC = () => {
   const [showProfile, setShowProfile] = useToggle();
@@ -9,6 +10,12 @@ const Header: React.FC = () => {
   const [showLanguage, setShowLanguage] = useToggle();
   const [showClose, setShowClose] = useToggle();
   const { jwtDecode } = useContext(ApplicationContext);
+  const { t, i18n } = useTranslation();
+  const [language, setLanguage] = useState<String>("EN");
+
+  const changeLanguage = (language: string) => {
+    i18n.changeLanguage(language);
+  };
   return (
     <>
       <div className="root-0-2-4 fixed-0-2-5 onlyOnDesktop-0-2-6">
@@ -69,7 +76,7 @@ const Header: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="fieldName-0-2-25">Jobs</div>
+                <div className="fieldName-0-2-25">{t("JOBS")}</div>
               </a>
               <a className="field-0-2-23" href="/companies">
                 <div
@@ -99,7 +106,7 @@ const Header: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="fieldName-0-2-25">Companies</div>
+                <div className="fieldName-0-2-25">{t("COMPANIES")}</div>
               </a>
               <a className="field-0-2-23" href="/courses/[[...slug]]">
                 <div
@@ -129,7 +136,7 @@ const Header: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="fieldName-0-2-25">Courses</div>
+                <div className="fieldName-0-2-25">{t("COURSES")}</div>
               </a>
               <a className="field-0-2-23" href="/edu">
                 <div
@@ -159,7 +166,7 @@ const Header: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="fieldName-0-2-25">Education</div>
+                <div className="fieldName-0-2-25">{t("EDUCATION")}</div>
               </a>
             </div>
             <div className="gapColumn-0-2-14"></div>
@@ -209,13 +216,13 @@ const Header: React.FC = () => {
                     className="root-0-2-46 loginButton-0-2-40 animation-0-2-47 weightLight-0-2-60 sizeMd-0-2-51 variantOutline-0-2-57"
                     to="/login"
                   >
-                    Login
+                    {t("LOGIN")}
                   </Link>
                   <Link
                     className="root-0-2-46 registerButton-0-2-41 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                     to="/register"
                   >
-                    Register
+                    {t("REGISTER")}
                   </Link>
                 </div>
               </>
@@ -231,7 +238,7 @@ const Header: React.FC = () => {
                 type="button"
                 onClick={setShowLanguage}
               >
-                <span className="name-0-2-69">EN</span>
+                <span className="name-0-2-69">{language}</span>
                 <svg
                   className="fill-0-2-36 caret-0-2-68"
                   width="10"
@@ -268,6 +275,11 @@ const Header: React.FC = () => {
                   <li
                     className={`li-0-2-72 ${showLanguage && "liActive-0-2-73"}`}
                     id="downshift-0-item-0"
+                    onClick={() => {
+                      changeLanguage("en");
+                      setShowLanguage();
+                      setLanguage("EN");
+                    }}
                     role="option"
                     aria-selected="false"
                   >
@@ -295,6 +307,11 @@ const Header: React.FC = () => {
                   <li
                     className="li-0-2-72"
                     id="downshift-0-item-1"
+                    onClick={() => {
+                      changeLanguage("ka");
+                      setShowLanguage();
+                      setLanguage("KA");
+                    }}
                     role="option"
                     aria-selected="false"
                   >
