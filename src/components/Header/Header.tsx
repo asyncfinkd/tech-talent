@@ -11,6 +11,7 @@ const Header: React.FC = () => {
   const { jwtDecode } = useContext(ApplicationContext);
   return (
     <>
+      {console.log(jwtDecode)}
       <div className="root-0-2-4 fixed-0-2-5 onlyOnDesktop-0-2-6">
         <div className="fluid-0-2-7">
           <div className="gap-0-2-8"></div>
