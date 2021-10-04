@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const RegisterPages: React.FC = () => {
+  const { t } = useTranslation();
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -11,16 +13,16 @@ const RegisterPages: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Register | Tech Talent</title>
+        <title>{t("REGISTERPAGESTITLE")}</title>
       </Helmet>
       <main className="main-0-2-2">
         <div className="root-0-2-233">
           <div className="content-0-2-234">
             <div className="marginOnMobile-0-2-134">
               <div className="root-0-2-244">
-                <h1 className="h1-0-2-245">Register</h1>
+                <h1 className="h1-0-2-245">{t("REGISTER")}</h1>
                 <div className="caption-0-2-246">
-                  Choose Link field of interest
+                  {t("CHOOSELINKFIELDOFINTEREST")}
                 </div>
                 <div className="grid-0-2-247">
                   <Link
@@ -317,7 +319,7 @@ const RegisterPages: React.FC = () => {
                           </svg>
                         </div>
                       </div>
-                      Other
+                      {t("OTHER")}
                     </div>
                   </Link>
                   <Link
@@ -350,7 +352,7 @@ const RegisterPages: React.FC = () => {
                           </svg>
                         </div>
                       </div>
-                      Company
+                      {t("COMPANY")}
                     </div>
                   </Link>
                 </div>
@@ -365,8 +367,8 @@ const RegisterPages: React.FC = () => {
             <div className="marginOnMobile-0-2-134">
               <div className="left-0-2-239">
                 <div className="textGroup-0-2-240">
-                  <div className="h1-0-2-241">Tell us who you are</div>
-                  <div className="caption-0-2-242">Select profession</div>
+                  <div className="h1-0-2-241">{t("TELLUS")}</div>
+                  <div className="caption-0-2-242">{t("SELECTPROFFESION")}</div>
                 </div>
               </div>
             </div>

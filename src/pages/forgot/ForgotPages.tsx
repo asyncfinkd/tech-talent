@@ -4,8 +4,10 @@ import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { useHistory } from "react-router-dom";
 import env from "../../application/environment/env.json";
+import { useTranslation } from "react-i18next";
 
 const ForgotPages: React.FC = () => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState<String | any>("");
   const [showErrorMessage, setShowErrorMessage] = useState<Boolean>(false);
   const [spinner, setSpinner] = useState<Boolean>(false);
@@ -13,17 +15,17 @@ const ForgotPages: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Forgot Password? | Tech Talent</title>
+        <title>{t("FORGOTPAGESTITLE")}</title>
       </Helmet>
       <main className="main-0-2-2">
         <div className="root-0-2-254">
-          <h1 className="h1-0-2-255">Forgot Password?</h1>
-          <div className="caption-0-2-256">Enter Your Email</div>
+          <h1 className="h1-0-2-255">{t("FORGOTPASSWORD")}</h1>
+          <div className="caption-0-2-256">{t("ENTERYOUREMAIL")}</div>
           <form onSubmit={(e) => e.preventDefault()}>
             <div className="inputGroup-0-2-257">
               <div className="root-0-2-117 input-0-2-258">
                 <label className="label-0-2-118">
-                  Email{" "}
+                  {t("EMAIL")}{" "}
                   <span
                     className={
                       showErrorMessage
@@ -47,7 +49,7 @@ const ForgotPages: React.FC = () => {
                 />
                 {showErrorMessage && (
                   <div className="invalidMessage-0-2-132">
-                    Email does not exist
+                    {t("EMAILDOESNOTEXIST")}
                   </div>
                 )}
               </div>
@@ -79,7 +81,7 @@ const ForgotPages: React.FC = () => {
                         ></animateTransform>
                       </circle>
                     </svg>
-                    <span>Loading</span>
+                    <span>{t("LOADING")}</span>
                   </button>{" "}
                 </>
               ) : (
@@ -105,7 +107,7 @@ const ForgotPages: React.FC = () => {
                       }
                     }}
                   >
-                    Send password reset email
+                    {t("SENDPASSWORDRESETEMAIL")}
                   </button>
                 </>
               )}
