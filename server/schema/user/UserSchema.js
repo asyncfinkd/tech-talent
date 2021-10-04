@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 
 const userSchema = mongoose.Schema({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
-  fullName: { type: String, required: true },
+  firstName: { type: String },
+  lastName: { type: String },
+  fullName: { type: String },
   email: {
     type: String,
     required: true,
@@ -13,6 +13,9 @@ const userSchema = mongoose.Schema({
     trim: true,
   },
   password: { type: String, required: true },
+  interest: { type: String },
+  phone: { type: String },
+  socialNetwork: { type: String }
 });
 
 const User = mongoose.model("users", userSchema);

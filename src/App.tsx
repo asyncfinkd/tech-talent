@@ -10,6 +10,7 @@ import jwt_decode from "jwt-decode";
 import { ApplicationContext } from "./context/Application/ApplicationContext";
 import RegisterPages from "./pages/register/RegisterPages";
 import RegisterCandidatePages from "./pages/register/RegisterCandidatePages";
+import RegisterCandidateInfoPages from "./pages/register/RegisterCandidateInfoPages";
 
 const App: React.FC = () => {
   const local = localStorage.getItem("local");
@@ -18,6 +19,7 @@ const App: React.FC = () => {
     if (local) {
       let decoded: any = jwt_decode(local);
       setJwtDecode(decoded);
+      console.log(decoded);
     }
   }, [local]);
   return (
@@ -34,6 +36,11 @@ const App: React.FC = () => {
                 path="/register/candidate"
                 exact
                 component={RegisterCandidatePages}
+              />
+              <Route
+                path="/register/candidate/info"
+                exact
+                component={RegisterCandidateInfoPages}
               />
               <Route path="/forgot" exact component={ForgotPages} />
               <Route exact component={ErrorPages} />

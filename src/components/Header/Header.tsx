@@ -194,7 +194,11 @@ const Header: React.FC = () => {
                         </svg>
                       </div>
                     </div>
-                    <div>{jwtDecode.fullName}</div>
+                    <div>
+                      {!jwtDecode.fullName
+                        ? jwtDecode.email
+                        : jwtDecode.fullName}
+                    </div>
                   </a>
                 </div>
               </>
@@ -207,12 +211,12 @@ const Header: React.FC = () => {
                   >
                     Login
                   </Link>
-                  <a
+                  <Link
                     className="root-0-2-46 registerButton-0-2-41 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-                    href="/register?cb=%2F"
+                    to="/register"
                   >
                     Register
-                  </a>
+                  </Link>
                 </div>
               </>
             )}
@@ -462,9 +466,13 @@ const Header: React.FC = () => {
             </div>
             <div className="sectionLine-0-2-86"></div>
             <section className="section-0-2-85">
-              <a
+              <Link
                 className="root-0-2-46 option-0-2-87 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                href="/register"
+                to="/register"
+                onClick={() => {
+                  setShowProfile();
+                  setShowClose();
+                }}
               >
                 <svg
                   className="fill-0-2-36 optionIcon-0-2-89"
@@ -481,11 +489,14 @@ const Header: React.FC = () => {
                   ></path>
                 </svg>
                 Register
-              </a>
+              </Link>
               <Link
                 className="root-0-2-46 option-0-2-87 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
                 to="/login"
-                onClick={setShowProfile}
+                onClick={() => {
+                  setShowProfile();
+                  setShowClose();
+                }}
               >
                 <svg
                   className="fill-0-2-36 optionIcon-0-2-89"

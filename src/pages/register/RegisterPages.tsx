@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import Footer from "../../components/Footer/Footer";
+import { Link, useLocation } from "react-router-dom";
 
 const RegisterPages: React.FC = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <>
       <Helmet>
@@ -15,12 +20,12 @@ const RegisterPages: React.FC = () => {
               <div className="root-0-2-244">
                 <h1 className="h1-0-2-245">Register</h1>
                 <div className="caption-0-2-246">
-                  Choose a field of interest
+                  Choose Link field of interest
                 </div>
                 <div className="grid-0-2-247">
-                  <a
+                  <Link
                     className="root-0-2-46 fieldButton-0-2-249 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                    href="/register/candidate?cb=%2F&amp;fieldType=dev"
+                    to="/register/candidate?cb=%2F&amp;fieldType=dev"
                   >
                     <div className="fieldLeft-0-2-248">
                       <div
@@ -50,10 +55,10 @@ const RegisterPages: React.FC = () => {
                       </div>
                       Development
                     </div>
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="root-0-2-46 fieldButton-0-2-249 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                    href="/register/candidate?cb=%2F&amp;fieldType=design"
+                    to="/register/candidate?cb=%2F&amp;fieldType=design"
                   >
                     <div className="fieldLeft-0-2-248">
                       <div
@@ -83,10 +88,10 @@ const RegisterPages: React.FC = () => {
                       </div>
                       Design
                     </div>
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="root-0-2-46 fieldButton-0-2-249 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                    href="/register/candidate?cb=%2F&amp;fieldType=marketing"
+                    to="/register/candidate?cb=%2F&amp;fieldType=marketing"
                   >
                     <div className="fieldLeft-0-2-248">
                       <div
@@ -116,10 +121,10 @@ const RegisterPages: React.FC = () => {
                       </div>
                       Marketing
                     </div>
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="root-0-2-46 fieldButton-0-2-249 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                    href="/register/candidate?cb=%2F&amp;fieldType=product"
+                    to="/register/candidate?cb=%2F&amp;fieldType=product"
                   >
                     <div className="fieldLeft-0-2-248">
                       <div
@@ -149,10 +154,10 @@ const RegisterPages: React.FC = () => {
                       </div>
                       Product
                     </div>
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="root-0-2-46 fieldButton-0-2-249 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                    href="/register/candidate?cb=%2F&amp;fieldType=ops"
+                    to="/register/candidate?cb=%2F&amp;fieldType=ops"
                   >
                     <div className="fieldLeft-0-2-248">
                       <div
@@ -182,10 +187,10 @@ const RegisterPages: React.FC = () => {
                       </div>
                       Operations
                     </div>
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="root-0-2-46 fieldButton-0-2-249 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                    href="/register/candidate?cb=%2F&amp;fieldType=qa"
+                    to="/register/candidate?cb=%2F&amp;fieldType=qa"
                   >
                     <div className="fieldLeft-0-2-248">
                       <div
@@ -215,10 +220,10 @@ const RegisterPages: React.FC = () => {
                       </div>
                       QA
                     </div>
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="root-0-2-46 fieldButton-0-2-249 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                    href="/register/candidate?cb=%2F&amp;fieldType=ai"
+                    to="/register/candidate?cb=%2F&amp;fieldType=ai"
                   >
                     <div className="fieldLeft-0-2-248">
                       <div
@@ -248,10 +253,10 @@ const RegisterPages: React.FC = () => {
                       </div>
                       AI
                     </div>
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="root-0-2-46 fieldButton-0-2-249 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                    href="/register/candidate?cb=%2F&amp;fieldType=support"
+                    to="/register/candidate?cb=%2F&amp;fieldType=support"
                   >
                     <div className="fieldLeft-0-2-248">
                       <div
@@ -281,10 +286,10 @@ const RegisterPages: React.FC = () => {
                       </div>
                       Support
                     </div>
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="root-0-2-46 fieldButton-0-2-249 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                    href="/register/candidate?cb=%2F"
+                    to="/register/candidate?cb=%2F"
                   >
                     <div className="fieldLeft-0-2-248">
                       <div
@@ -314,10 +319,10 @@ const RegisterPages: React.FC = () => {
                       </div>
                       Other
                     </div>
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="root-0-2-46 fieldButton-0-2-249 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                    href="/manager/register"
+                    to="/manager/register"
                   >
                     <div className="fieldLeft-0-2-248">
                       <div
@@ -347,7 +352,7 @@ const RegisterPages: React.FC = () => {
                       </div>
                       Company
                     </div>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
