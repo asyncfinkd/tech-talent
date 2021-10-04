@@ -37,6 +37,8 @@ const resources = {
       LOGINPAGESTITLE: "Welcome | Tech Talent",
       REGISTERPAGESTITLE: "Register | Tech Talent",
       FORGOTPAGESTITLE: "Forgot Password? | Tech Talent",
+      FORGOTTHANKSPAGESTITLE:
+        "Password reset process is completed | Tech Talent",
       WELCOMEBACK: "Welcome Back",
       FORGOTPASSWORD: "Forgot Password?",
       INCORRECTEMAILORPASSWORD: "Incorrect email or password",
@@ -44,6 +46,8 @@ const resources = {
       ENTERYOUREMAIL: "Enter Your Email",
       EMAILDOESNOTEXIST: "Email does not exist",
       SENDPASSWORDRESETEMAIL: "Send password reset email",
+      PASSWORDRESETISCOMPLETED: "Password reset process is completed",
+      CHECKYOUREMAIL: "Check your email and open the password reset link",
     },
   },
   ka: {
@@ -82,6 +86,7 @@ const resources = {
       LOGINPAGESTITLE: "გამარჯობა | Tech Talent",
       REGISTERPAGESTITLE: "რეგისტრაცია | Tech Talent",
       FORGOTPAGESTITLE: "დაგავიწყდა პაროლი? | Tech Talent",
+      FORGOTTHANKSPAGESTITLE: "პაროლის აღდგენა დასრულებულია | Tech Talent",
       WELCOMEBACK: "გამარჯობა",
       FORGOTPASSWORD: "დაგავიწყდა პაროლი?",
       INCORRECTEMAILORPASSWORD: "მეილი ან პაროლი არასწორია",
@@ -89,6 +94,8 @@ const resources = {
       ENTERYOUREMAIL: "შეიყვანე მეილი",
       EMAILDOESNOTEXIST: "მეილი არ არის რეგისტრირებული",
       SENDPASSWORDRESETEMAIL: "გამომიგზავნე პაროლის აღდგენის მეილი",
+      PASSWORDRESETISCOMPLETED: "პაროლის აღდგენა დასრულებულია",
+      CHECKYOUREMAIL: "შეიამოწმე მეილი და გახსენი პაროლის აღდგენის ლინკი",
     },
   },
 };
