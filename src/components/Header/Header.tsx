@@ -871,7 +871,6 @@ const Header: React.FC = () => {
                   className={renderLanguageClassName()}
                   onClick={() => {
                     changeLanguage("en");
-                    setShowLanguage();
                     setLanguage("en");
                     localStorage.setItem("tt-lang", "en");
                   }}
@@ -885,7 +884,6 @@ const Header: React.FC = () => {
                   } weightLight-0-2-60 sizeZero-0-2-48 variantBlank-0-2-59`}
                   onClick={() => {
                     changeLanguage("ka");
-                    setShowLanguage();
                     setLanguage("KA");
                     localStorage.setItem("tt-lang", "ka");
                   }}
