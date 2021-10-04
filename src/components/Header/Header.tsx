@@ -469,6 +469,10 @@ const Header: React.FC = () => {
               <Link
                 className="root-0-2-46 option-0-2-87 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
                 to="/register"
+                onClick={() => {
+                  setShowProfile();
+                  setShowClose();
+                }}
               >
                 <svg
                   className="fill-0-2-36 optionIcon-0-2-89"
