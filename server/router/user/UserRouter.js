@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const env = require("../../env.json");
 const bcrypt = require("bcrypt");
 const loginMiddleware = require("../../middlewares/LoginMiddleware");
+const nodemailer = require("nodemailer");
 
 router.route("/login").post(async (req, res) => {
   UserSchema.findOne({ email: req.body.email }).then((result) => {
@@ -97,5 +98,54 @@ router
       }
     });
   });
+
+router.route("/forgot").post(async (req, res) => {
+  const num = Math.random().toString(36).substring(2);
+
+  try {
+    var salt = await bcrypt.genSalt();
+    var hashedPassword = await bcrypt.hash(num, salt);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+
+  UserSchema.findOne({ email: req.body.email }).then((result) => {
+    if (result == null) {
+      res.json("Email does not exist");
+    } else {
+      result.password = hashedPassword;
+      result.save();
+
+      let transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: `${env.user}`,
+          pass: `${env.pass}`,
+        },
+      });
+
+      let mailOptions = {
+        from: `${env.user}`,
+        to: req.body.email,
+        subject: "Forgot password? | Tech Talent",
+        html: `
+        <h1>Hello.</h1>
+        <p>This is your password: <strong>${num}</strong></p>
+        
+        <p>We hope you enjoy our platform,</p>
+        <b>Tech Talent</b>`,
+      };
+
+      transporter.sendMail(mailOptions, function (err, data) {
+        if (err) {
+          console.log("error occurs: ", err);
+        } else {
+          console.log("email sent");
+        }
+      });
+      res.json({ success: true });
+    }
+  });
+});
 
 module.exports = router;

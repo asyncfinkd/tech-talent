@@ -11,6 +11,7 @@ import { ApplicationContext } from "./context/Application/ApplicationContext";
 import RegisterPages from "./pages/register/RegisterPages";
 import RegisterCandidatePages from "./pages/register/RegisterCandidatePages";
 import RegisterCandidateInfoPages from "./pages/register/RegisterCandidateInfoPages";
+import ForgotThanksPages from "./pages/forgot/ForgotThanksPages";
 
 const App: React.FC = () => {
   const local = localStorage.getItem("local");
@@ -43,6 +44,11 @@ const App: React.FC = () => {
                 component={RegisterCandidateInfoPages}
               />
               <Route path="/forgot" exact component={ForgotPages} />
+              <Route
+                path="/forgot/thanks"
+                exact
+                component={ForgotThanksPages}
+              />
               <Route exact component={ErrorPages} />
             </Switch>
           </BrowserRouter>
