@@ -18,6 +18,7 @@ module.exports = async function (req, res, next) {
       req.interest = decodedData.interest;
       req.phone = decodedData.phone;
       req.socialNetwork = decodedData.socialNetwork;
+      req._id = decodedData._id;
       next();
     }
   } catch (err) {

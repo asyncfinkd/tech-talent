@@ -1,8 +1,8 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import env from "../../application/environment/env.json";
 import { useTranslation } from "react-i18next";
 
@@ -12,6 +12,11 @@ const ForgotPages: React.FC = () => {
   const [showErrorMessage, setShowErrorMessage] = useState<Boolean>(false);
   const [spinner, setSpinner] = useState<Boolean>(false);
   const history = useHistory();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <>
       <Helmet>

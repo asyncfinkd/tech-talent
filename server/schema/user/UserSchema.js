@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 
+const FollowedCompaniesId = mongoose.Schema({
+  id: { type: String },
+});
+
 const userSchema = mongoose.Schema({
   firstName: { type: String },
   lastName: { type: String },
@@ -16,7 +20,9 @@ const userSchema = mongoose.Schema({
   interest: { type: String },
   phone: { type: String },
   socialNetwork: { type: String },
-  role: { type: String }
+  role: { type: String },
+  createdAt: { type: String },
+  followedCompaniesId: [FollowedCompaniesId],
 });
 
 const User = mongoose.model("users", userSchema);

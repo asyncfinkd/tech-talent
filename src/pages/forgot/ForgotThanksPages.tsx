@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import Footer from "../../components/Footer/Footer";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 
 const ForgotThanksPages: React.FC = () => {
   const { t } = useTranslation();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <>
       <Helmet>

@@ -21,8 +21,11 @@ mongoose.connect(
   }
 );
 
-const Login = require("./router/user/UserRouter");
-app.use("/api", Login);
+const User = require("./router/user/UserRouter");
+app.use("/api", User);
+
+const Companies = require("./router/companies/CompaniesRouter");
+app.use("/api", Companies);
 
 const PORT = process.env.PORT || 3001;
 
