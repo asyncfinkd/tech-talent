@@ -4,7 +4,7 @@ import Footer from "../../components/Footer/Footer";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 
 const ProfileInformationPages: React.FC = () => {
-  const { jwtDecode } = useContext(ApplicationContext);
+  const { jwtDecode, setJwtDecode } = useContext(ApplicationContext);
   const history = useHistory();
   useEffect(() => {
     const local = localStorage.getItem("local");
@@ -171,7 +171,11 @@ const ProfileInformationPages: React.FC = () => {
             <div className="horizontalLine-0-2-109"></div>
             <a
               className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-              href="/profile/logout"
+              onClick={() => {
+                localStorage.clear();
+                setJwtDecode("");
+                history.push("/");
+              }}
             >
               <svg
                 className="fill-0-2-36 icon-0-2-107"
