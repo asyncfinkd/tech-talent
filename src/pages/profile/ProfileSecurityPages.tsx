@@ -1,10 +1,38 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Footer from "../../components/Footer/Footer";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { ApplicationContext } from "../../context/Application/ApplicationContext";
+import { Helmet } from "react-helmet";
+import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
+
+type Input = {
+  currentPassword: string;
+  newPassword: string;
+  repeatPassword: string;
+};
 
 const ProfileSecurityPages: React.FC = () => {
+  const { jwtDecode } = useContext(ApplicationContext);
+  const { t } = useTranslation();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Input>();
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
   return (
     <>
+      <Helmet>
+        <title>Security | User | Tech Talent</title>
+      </Helmet>
       <main className="main-0-2-2">
         <div className="marginOnMobile-0-2-102 root-0-2-100">
           <div className="root-0-2-104">
@@ -31,8 +59,8 @@ const ProfileSecurityPages: React.FC = () => {
                 </div>
               </div>
               <div className="profilePair-0-2-112">
-                <div className="profileName-0-2-113">Nika Shamiladze</div>
-                <div className="profileCaption-0-2-114">qwewmml2@gmail.com</div>
+                <div className="profileName-0-2-113">{jwtDecode.fullName}</div>
+                <div className="profileCaption-0-2-114">{jwtDecode.email}</div>
               </div>
             </div>
             <div className="horizontalLine-0-2-109"></div>
@@ -182,7 +210,7 @@ const ProfileSecurityPages: React.FC = () => {
           <div className="body-0-2-101">
             <section className="root___0__2__183">
               <h2 className="h2-0-2-184">Security</h2>
-              <form>
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="inputGroup-0-2-185">
                   <div className="root-0-2-119">
                     <label className="label-0-2-120">
@@ -199,7 +227,7 @@ const ProfileSecurityPages: React.FC = () => {
                       autoComplete="email"
                       className="input-0-2-123"
                       disabled={true}
-                      value="qwewmml2@gmail.com"
+                      value={jwtDecode.email}
                     />
                   </div>
                   <div className="root-0-2-119">
@@ -214,10 +242,16 @@ const ProfileSecurityPages: React.FC = () => {
                     </label>
                     <input
                       type="password"
-                      autoComplete="current-password"
-                      className="input-0-2-123"
-                      value=""
+                      className={`input-0-2-251 ${
+                        errors.currentPassword && "invalid-0-2-252"
+                      }`}
+                      {...register("currentPassword", { required: true })}
                     />
+                    {errors.currentPassword && (
+                      <div className="invalidMessage-0-2-132">
+                        Current password is required
+                      </div>
+                    )}
                   </div>
                   <div className="root-0-2-119">
                     <label className="label-0-2-120">
@@ -231,10 +265,16 @@ const ProfileSecurityPages: React.FC = () => {
                     </label>
                     <input
                       type="password"
-                      autoComplete="new-password"
-                      className="input-0-2-123"
-                      value=""
+                      className={`input-0-2-251 ${
+                        errors.newPassword && "invalid-0-2-252"
+                      }`}
+                      {...register("newPassword", { required: true })}
                     />
+                    {errors.newPassword && (
+                      <div className="invalidMessage-0-2-132">
+                        New password is required
+                      </div>
+                    )}
                   </div>
                   <div className="root-0-2-119">
                     <label className="label-0-2-120">
@@ -248,10 +288,16 @@ const ProfileSecurityPages: React.FC = () => {
                     </label>
                     <input
                       type="password"
-                      autoComplete="new-password"
-                      className="input-0-2-123"
-                      value=""
+                      className={`input-0-2-251 ${
+                        errors.repeatPassword && "invalid-0-2-252"
+                      }`}
+                      {...register("repeatPassword", { required: true })}
                     />
+                    {errors.repeatPassword && (
+                      <div className="invalidMessage-0-2-132">
+                        Repeat password is required
+                      </div>
+                    )}
                   </div>
                   <button
                     className="root-0-2-46 button-0-2-186 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
