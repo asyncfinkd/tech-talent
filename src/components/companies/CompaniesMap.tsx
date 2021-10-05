@@ -8,20 +8,23 @@ const CompaniesMap: React.FC<any> = ({
   jwtDecode,
 }: any) => {
   const [followed, setFollowed] = useState<Boolean>(false);
+  const [unFollow, setUnFollow] = useState<Boolean>(false);
   const [followers, setFollowers] = useState<String | any>(
     item.followedUsersId.length
   );
   useEffect(() => {
-    if (item.followedUsersId.length != 0) {
-      item.followedUsersId.map((item: any) => {
-        console.log(jwtDecode._id);
-        console.log(item.id);
-        if (item.id == jwtDecode._id) {
-          setFollowed(true);
-        } else {
-          setFollowed(false);
-        }
-      });
+    if (!unFollow) {
+      if (item.followedUsersId.length != 0) {
+        item.followedUsersId.map((item: any) => {
+          if (item.id == jwtDecode._id) {
+            setFollowed(true);
+          } else {
+            setFollowed(false);
+          }
+        });
+      }
+    } else {
+      setFollowed(false);
     }
   });
   return (
@@ -74,7 +77,7 @@ const CompaniesMap: React.FC<any> = ({
                         )
                         .then((result: any) => {
                           if (result.data === "success") {
-                            setFollowed(!followed);
+                            setUnFollow(true);
                             setFollowers(followers - 1);
                           }
                         });
