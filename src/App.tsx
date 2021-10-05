@@ -13,6 +13,7 @@ import RegisterCandidatePages from "./pages/register/RegisterCandidatePages";
 import RegisterCandidateInfoPages from "./pages/register/RegisterCandidateInfoPages";
 import ForgotThanksPages from "./pages/forgot/ForgotThanksPages";
 import ProfileInformationPages from "./pages/profile/ProfileInformationPages";
+import ProfileSecurityPages from "./pages/profile/ProfileSecurityPages";
 
 const App: React.FC = () => {
   const local = localStorage.getItem("local");
@@ -54,6 +55,11 @@ const App: React.FC = () => {
                 path="/profile/information"
                 exact
                 component={ProfileInformationPages}
+              />
+              <Route
+                path="/profile/security"
+                exact
+                component={ProfileSecurityPages}
               />
               <Route exact component={ErrorPages} />
             </Switch>
