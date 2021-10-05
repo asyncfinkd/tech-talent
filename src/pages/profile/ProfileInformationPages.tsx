@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useCallback, useContext, useEffect, useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 import env from "../../application/environment/env.json";
@@ -97,9 +97,9 @@ const ProfileInformationPages: React.FC = () => {
               </div>
             </div>
             <div className="horizontalLine-0-2-109"></div>
-            <a
+            <Link
               className="root-0-2-46 button-0-2-105__profile buttonActive-0-2-106 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-              href="/profile/information"
+              to="/profile/information"
             >
               <svg
                 className="fill-0-2-36 icon-0-2-107"
@@ -116,10 +116,10 @@ const ProfileInformationPages: React.FC = () => {
                 ></path>
               </svg>
               Information<div className="verticalLine-0-2-108"></div>
-            </a>
-            <a
+            </Link>
+            <Link
               className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-              href="/profile/resume"
+              to="/profile/resume"
             >
               <svg
                 className="fill-0-2-36 icon-0-2-107"
@@ -136,10 +136,10 @@ const ProfileInformationPages: React.FC = () => {
                 ></path>
               </svg>
               Resume
-            </a>
-            <a
+            </Link>
+            <Link
               className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-              href="/profile/security"
+              to="/profile/security"
             >
               <svg
                 className="fill-0-2-36 icon-0-2-107"
@@ -156,11 +156,11 @@ const ProfileInformationPages: React.FC = () => {
                 ></path>
               </svg>
               Security
-            </a>
+            </Link>
             <div className="horizontalLine-0-2-109"></div>
-            <a
+            <Link
               className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-              href="/profile/applications"
+              to="/profile/applications"
             >
               <svg
                 className="fill-0-2-36 icon-0-2-107"
@@ -177,10 +177,10 @@ const ProfileInformationPages: React.FC = () => {
                 ></path>
               </svg>
               My Job Applications
-            </a>
-            <a
+            </Link>
+            <Link
               className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-              href="/profile/companies"
+              to="/profile/companies"
             >
               <svg
                 className="fill-0-2-36 icon-0-2-107"
@@ -197,10 +197,10 @@ const ProfileInformationPages: React.FC = () => {
                 ></path>
               </svg>
               Companies I Follow
-            </a>
-            <a
+            </Link>
+            <Link
               className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-              href="/profile/jobs"
+              to="/profile/jobs"
             >
               <svg
                 className="fill-0-2-36 icon-0-2-107"
@@ -217,10 +217,11 @@ const ProfileInformationPages: React.FC = () => {
                 ></path>
               </svg>
               Jobs For Me
-            </a>
+            </Link>
             <div className="horizontalLine-0-2-109"></div>
-            <a
+            <Link
               className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              to=""
               onClick={() => {
                 localStorage.clear();
                 setJwtDecode("");
@@ -242,7 +243,7 @@ const ProfileInformationPages: React.FC = () => {
                 ></path>
               </svg>
               Logout
-            </a>
+            </Link>
           </div>
           <div className="body-0-2-101">
             <section className="root-0-2-115">

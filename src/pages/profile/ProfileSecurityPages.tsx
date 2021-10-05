@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "../../components/Footer/Footer";
+import { Link } from "react-router-dom";
 
 const ProfileSecurityPages: React.FC = () => {
   return (
@@ -35,9 +36,9 @@ const ProfileSecurityPages: React.FC = () => {
               </div>
             </div>
             <div className="horizontalLine-0-2-109"></div>
-            <a
+            <Link
               className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-              href="/profile/information"
+              to="/profile/information"
             >
               <svg
                 className="fill-0-2-36 icon-0-2-107"
@@ -54,10 +55,10 @@ const ProfileSecurityPages: React.FC = () => {
                 ></path>
               </svg>
               Information
-            </a>
-            <a
+            </Link>
+            <Link
               className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-              href="/profile/resume"
+              to="/profile/resume"
             >
               <svg
                 className="fill-0-2-36 icon-0-2-107"
@@ -74,10 +75,10 @@ const ProfileSecurityPages: React.FC = () => {
                 ></path>
               </svg>
               Resume
-            </a>
-            <a
+            </Link>
+            <Link
               className="root-0-2-46 button-0-2-105__profile buttonActive-0-2-106 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-              href="/profile/security"
+              to="/profile/security"
             >
               <svg
                 className="fill-0-2-36 icon-0-2-107"
@@ -94,11 +95,11 @@ const ProfileSecurityPages: React.FC = () => {
                 ></path>
               </svg>
               Security<div className="verticalLine-0-2-108"></div>
-            </a>
+            </Link>
             <div className="horizontalLine-0-2-109"></div>
-            <a
+            <Link
               className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-              href="/profile/applications"
+              to="/profile/applications"
             >
               <svg
                 className="fill-0-2-36 icon-0-2-107"
@@ -115,10 +116,10 @@ const ProfileSecurityPages: React.FC = () => {
                 ></path>
               </svg>
               My Job Applications
-            </a>
-            <a
+            </Link>
+            <Link
               className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-              href="/profile/companies"
+              to="/profile/companies"
             >
               <svg
                 className="fill-0-2-36 icon-0-2-107"
@@ -135,10 +136,10 @@ const ProfileSecurityPages: React.FC = () => {
                 ></path>
               </svg>
               Companies I Follow
-            </a>
-            <a
+            </Link>
+            <Link
               className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-              href="/profile/jobs"
+              to="/profile/jobs"
             >
               <svg
                 className="fill-0-2-36 icon-0-2-107"
@@ -155,11 +156,11 @@ const ProfileSecurityPages: React.FC = () => {
                 ></path>
               </svg>
               Jobs For Me
-            </a>
+            </Link>
             <div className="horizontalLine-0-2-109"></div>
-            <a
+            <Link
               className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-              href="/profile/logout"
+              to="/profile/logout"
             >
               <svg
                 className="fill-0-2-36 icon-0-2-107"
@@ -176,7 +177,7 @@ const ProfileSecurityPages: React.FC = () => {
                 ></path>
               </svg>
               Logout
-            </a>
+            </Link>
           </div>
           <div className="body-0-2-101">
             <section className="root___0__2__183">
