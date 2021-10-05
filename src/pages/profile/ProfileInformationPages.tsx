@@ -1,7 +1,9 @@
+import axios from "axios";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
+import env from "../../application/environment/env.json";
 
 const ProfileInformationPages: React.FC = () => {
   const { pathname } = useLocation();
@@ -13,13 +15,27 @@ const ProfileInformationPages: React.FC = () => {
   const [fullName, setFullName] = useState<String | any>(jwtDecode.fullName);
   const [fullNameError, setFullNameError] = useState<Boolean>(false);
   const [phone, setPhone] = useState<String | any>(jwtDecode.phone);
+  const [firstName, setFirstName] = useState<String>("");
+  const [lastName, setLastName] = useState<String>("");
+  const local = localStorage.getItem("local");
+  const [socialNetwork, setSocialNetwork] = useState<String | any>(
+    jwtDecode.socialNetwork
+  );
   const history = useHistory();
+  useEffect(() => {
+    let splitName = fullName.split(" ");
+    setFirstName(splitName[0]);
+    setLastName(splitName[1]);
+  });
   useEffect(() => {
     if (fullName === undefined) {
       setFullName(jwtDecode.fullName);
     }
     if (phone === undefined) {
       setPhone(jwtDecode.phone);
+    }
+    if (socialNetwork === undefined) {
+      setSocialNetwork(jwtDecode.socialNetwork);
     }
   });
   const memorizedCallback = useCallback(() => {
@@ -223,7 +239,7 @@ const ProfileInformationPages: React.FC = () => {
           <div className="body-0-2-101">
             <section className="root-0-2-115">
               <h2 className="h2-0-2-116">Contact Information</h2>
-              <form>
+              <form onSubmit={(e) => e.preventDefault()}>
                 <div className="inputGroup-0-2-117">
                   <div className="root-0-2-119">
                     <label className="label-0-2-120">
@@ -278,11 +294,44 @@ const ProfileInformationPages: React.FC = () => {
                         *
                       </span>
                     </label>
-                    <input type="text" className="input-0-2-123" />
+                    <input
+                      type="text"
+                      className="input-0-2-123"
+                      value={socialNetwork}
+                      onChange={(e) => setSocialNetwork(e.target.value)}
+                    />
                   </div>
                   <button
                     className="root-0-2-46 MAX_WIDTH_F button-0-2-118 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                     type="submit"
+                    onClick={() => {
+                      if (!fullNameError) {
+                        axios
+                          .post(
+                            `${env.host}/api/update/user/info`,
+                            {
+                              firstName: firstName,
+                              lastName: lastName,
+                              fullName: fullName,
+                              phone: phone,
+                              socialNetwork: socialNetwork,
+                              role: "user",
+                            },
+                            {
+                              headers: { Authorization: `Bearer ${local}` },
+                            }
+                          )
+                          .then((result: any) => {
+                            if (result.data.success) {
+                              localStorage.setItem(
+                                "local",
+                                result.data.access_token
+                              );
+                              setJwtDecode(result.data.access_token);
+                            }
+                          });
+                      }
+                    }}
                   >
                     Save
                   </button>
