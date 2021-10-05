@@ -278,6 +278,7 @@ const RegisterCandidatePages: React.FC = () => {
                         email: data.email,
                         password: data.password,
                         interest: interest,
+                        role: "user",
                       })
                       .then((result: any) => {
                         if (result.data === "Email is already registered") {

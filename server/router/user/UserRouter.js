@@ -13,9 +13,10 @@ router.route("/login").post(async (req, res) => {
     } else if (result.password.length > 0) {
       bcrypt.compare(req.body.password, result.password, (err, verified) => {
         if (verified) {
-          const { email, firstName, lastName, fullName, interest } = result;
+          const { email, firstName, lastName, fullName, interest, role } =
+            result;
           const access_token = jwt.sign(
-            { email, firstName, lastName, fullName, interest },
+            { email, firstName, lastName, fullName, interest, role },
             env.ACCESS_TOKEN,
             {
               expiresIn: "12h",
@@ -45,14 +46,19 @@ router.route("/register").post(async (req, res) => {
       if (result) {
         res.json("Email is already registered");
       } else {
-        const { email, interest } = req.body;
-        const access_token = jwt.sign({ email, interest }, env.ACCESS_TOKEN, {
-          expiresIn: "12h",
-        });
+        const { email, interest, role } = req.body;
+        const access_token = jwt.sign(
+          { email, interest, role },
+          env.ACCESS_TOKEN,
+          {
+            expiresIn: "12h",
+          }
+        );
         const User = new UserSchema({
           email: req.body.email,
           password: hashedPassword,
           interest: req.body.interest,
+          role: req.body.role,
         }).save();
         res.json({ success: true, access_token: access_token });
       }
@@ -68,7 +74,7 @@ router
   .post(async (req, res) => {
     UserSchema.findOne({ email: req.email }).then((result) => {
       try {
-        const { fullName, phone, socialNetwork, firstName, lastName } =
+        const { fullName, phone, socialNetwork, firstName, lastName, role } =
           req.body;
         const { email, interest } = req;
         const access_token = jwt.sign(
@@ -80,6 +86,7 @@ router
             lastName,
             email,
             interest,
+            role,
           },
           env.ACCESS_TOKEN,
           {
