@@ -94,6 +94,7 @@ const CompaniesMap: React.FC<any> = ({
                         )
                         .then((result: any) => {
                           if (result.data === "success") {
+                            setUnFollow(false);
                             setFollowed(true);
                             setFollowers(followers + 1);
                           }
