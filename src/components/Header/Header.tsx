@@ -735,6 +735,8 @@ const Header: React.FC = () => {
                       localStorage.clear();
                       setJwtDecode("");
                       history.push("/");
+                      setShowProfile();
+                      setShowClose();
                     }}
                   >
                     <svg
