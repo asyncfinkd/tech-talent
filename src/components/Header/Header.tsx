@@ -192,9 +192,9 @@ const Header: React.FC = () => {
             {localStorage.getItem("local") ? (
               <>
                 <div className="root-0-2-37 profile-0-2-15">
-                  <a
+                  <Link
                     className="root-0-2-46 button-0-2-38 weightLight-0-2-60 sizeZero-0-2-48 variantBlank-0-2-59"
-                    href="/profile/information"
+                    to="/profile/information"
                   >
                     <div
                       className="root-0-2-30 sizeMd-0-2-31 capsule-0-2-42"
@@ -225,7 +225,7 @@ const Header: React.FC = () => {
                         ? jwtDecode.email
                         : jwtDecode.fullName}
                     </div>
-                  </a>
+                  </Link>
                 </div>
               </>
             ) : (

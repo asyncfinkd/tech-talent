@@ -13,10 +13,27 @@ router.route("/login").post(async (req, res) => {
     } else if (result.password.length > 0) {
       bcrypt.compare(req.body.password, result.password, (err, verified) => {
         if (verified) {
-          const { email, firstName, lastName, fullName, interest, role } =
-            result;
+          const {
+            email,
+            firstName,
+            lastName,
+            fullName,
+            interest,
+            role,
+            phone,
+            socialNetwork,
+          } = result;
           const access_token = jwt.sign(
-            { email, firstName, lastName, fullName, interest, role },
+            {
+              email,
+              firstName,
+              lastName,
+              fullName,
+              interest,
+              role,
+              phone,
+              socialNetwork,
+            },
             env.ACCESS_TOKEN,
             {
               expiresIn: "12h",

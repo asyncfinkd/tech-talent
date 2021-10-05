@@ -1,17 +1,45 @@
-import React, { useContext, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 
 const ProfileInformationPages: React.FC = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   const { jwtDecode, setJwtDecode } = useContext(ApplicationContext);
+  const [fullName, setFullName] = useState<String | any>(jwtDecode.fullName);
+  const [fullNameError, setFullNameError] = useState<Boolean>(false);
+  const [phone, setPhone] = useState<String | any>(jwtDecode.phone);
   const history = useHistory();
+  useEffect(() => {
+    if (fullName === undefined) {
+      setFullName(jwtDecode.fullName);
+    }
+    if (phone === undefined) {
+      setPhone(jwtDecode.phone);
+    }
+  });
+  const memorizedCallback = useCallback(() => {
+    if (fullName.length === 0) {
+      setFullNameError(true);
+    } else {
+      setFullNameError(false);
+    }
+  }, [fullName]);
   useEffect(() => {
     const local = localStorage.getItem("local");
     if (!local || !jwtDecode) {
-      history.push("/");
+      history.push("/login");
     }
   }, []);
+  useEffect(() => {
+    if (fullName !== undefined) {
+      memorizedCallback();
+    }
+  });
   return (
     <>
       <main className="main-0-2-2">
@@ -40,10 +68,8 @@ const ProfileInformationPages: React.FC = () => {
                 </div>
               </div>
               <div className="profilePair-0-2-112">
-                <div className="profileName-0-2-113">Nika Shamiladze</div>
-                <div className="profileCaption-0-2-114">
-                  zuckdeveloper@gmail.com
-                </div>
+                <div className="profileName-0-2-113">{jwtDecode.fullName}</div>
+                <div className="profileCaption-0-2-114">{jwtDecode.email}</div>
               </div>
             </div>
             <div className="horizontalLine-0-2-109"></div>
@@ -211,9 +237,19 @@ const ProfileInformationPages: React.FC = () => {
                     </label>
                     <input
                       type="text"
-                      className="input-0-2-123"
-                      value="Nika Shamiladze"
+                      className={`input-0-2-251 ${
+                        fullNameError && "invalid-0-2-252"
+                      }`}
+                      value={fullName}
+                      onChange={(e) => {
+                        setFullName(e.target.value);
+                      }}
                     />
+                    {fullNameError && (
+                      <div className="invalidMessage-0-2-132">
+                        Name is required
+                      </div>
+                    )}
                   </div>
                   <div className="root-0-2-119">
                     <label className="label-0-2-120">
@@ -228,7 +264,8 @@ const ProfileInformationPages: React.FC = () => {
                     <input
                       type="text"
                       className="input-0-2-123"
-                      value="557021708"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
                     />
                   </div>
                   <div className="root-0-2-119">
