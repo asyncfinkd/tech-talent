@@ -16,8 +16,6 @@ const CompaniesMap: React.FC<any> = ({
     if (!unFollow) {
       if (item.followedUsersId.length != 0) {
         item.followedUsersId.map((item: any) => {
-          console.log(item);
-          console.log(jwtDecode._id);
           if (item.id == jwtDecode._id) {
             setFollowed(true);
           }
