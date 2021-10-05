@@ -1,10 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Footer from "../../components/Footer/Footer";
 import { Link, useLocation } from "react-router-dom";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import axios from "axios";
+import env from "../../application/environment/env.json";
 
 type Input = {
   currentPassword: string;
@@ -15,6 +17,9 @@ type Input = {
 const ProfileSecurityPages: React.FC = () => {
   const { jwtDecode } = useContext(ApplicationContext);
   const { t } = useTranslation();
+  const local = localStorage.getItem("local");
+  const [inCorrectPassword, setInCorrectPassword] = useState<Boolean>(false);
+  const [spinner, setSpinner] = useState<Boolean>(false);
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -24,9 +29,36 @@ const ProfileSecurityPages: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm<Input>();
   const onSubmit = (data: any) => {
-    console.log(data);
+    setSpinner(true);
+    axios
+      .post(
+        `${env.host}/api/security`,
+        {
+          password: data.currentPassword,
+          newPassword: data.newPassword,
+        },
+        {
+          headers: { Authorization: `Bearer ${local}` },
+        }
+      )
+      .then((result: any) => {
+        setSpinner(false);
+        if (result.data === "Incorrect current password") {
+          setInCorrectPassword(true);
+        } else {
+          setInCorrectPassword(false);
+        }
+      });
+  };
+  const renderCurrentPasswordClassName = () => {
+    if (errors.currentPassword || inCorrectPassword) {
+      return "input-0-2-251 invalid-0-2-252";
+    } else {
+      return "input-0-2-251";
+    }
   };
   return (
     <>
@@ -242,14 +274,17 @@ const ProfileSecurityPages: React.FC = () => {
                     </label>
                     <input
                       type="password"
-                      className={`input-0-2-251 ${
-                        errors.currentPassword && "invalid-0-2-252"
-                      }`}
+                      className={renderCurrentPasswordClassName()}
                       {...register("currentPassword", { required: true })}
                     />
                     {errors.currentPassword && (
                       <div className="invalidMessage-0-2-132">
                         Current password is required
+                      </div>
+                    )}
+                    {inCorrectPassword && (
+                      <div className="invalidMessage-0-2-132">
+                        Incorrect current password
                       </div>
                     )}
                   </div>
@@ -291,20 +326,64 @@ const ProfileSecurityPages: React.FC = () => {
                       className={`input-0-2-251 ${
                         errors.repeatPassword && "invalid-0-2-252"
                       }`}
-                      {...register("repeatPassword", { required: true })}
+                      {...register("repeatPassword", {
+                        required: "Repeat password is required",
+                        validate: (value) => {
+                          return (
+                            value === watch("newPassword") ||
+                            "Passwords do not match"
+                          );
+                        },
+                      })}
                     />
                     {errors.repeatPassword && (
                       <div className="invalidMessage-0-2-132">
-                        Repeat password is required
+                        {errors.repeatPassword?.message}
                       </div>
                     )}
                   </div>
-                  <button
-                    className="root-0-2-46 button-0-2-186 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-                    type="submit"
-                  >
-                    Save
-                  </button>
+                  {spinner ? (
+                    <button
+                      className="root-0-2-46 button-0-2-186 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                      type="submit"
+                    >
+                      <div className="loading-0-2-112">
+                        <svg
+                          className="stroke-0-2-35 spinner-0-2-113"
+                          width="100"
+                          height="100"
+                          viewBox="0 0 100 100"
+                          preserveAspectRatio="xMidYMid"
+                        >
+                          <circle
+                            cx="50"
+                            cy="50"
+                            fill="none"
+                            stroke-width="10"
+                            r="35"
+                            stroke-dasharray="164.93361431346415 56.97787143782138"
+                          >
+                            <animateTransform
+                              attributeName="transform"
+                              type="rotate"
+                              repeatCount="indefinite"
+                              dur="1s"
+                              values="0 50 50;360 50 50"
+                              keyTimes="0;1"
+                            ></animateTransform>
+                          </circle>
+                        </svg>
+                        <span>Loading</span>
+                      </div>
+                    </button>
+                  ) : (
+                    <button
+                      className="root-0-2-46 button-0-2-186 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                      type="submit"
+                    >
+                      Save
+                    </button>
+                  )}
                 </div>
               </form>
             </section>
