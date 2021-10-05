@@ -15,6 +15,7 @@ const ProfileInformationPages: React.FC = () => {
   const [fullName, setFullName] = useState<String | any>(jwtDecode.fullName);
   const [fullNameError, setFullNameError] = useState<Boolean>(false);
   const [phone, setPhone] = useState<String | any>(jwtDecode.phone);
+  const [spinner, setSpinner] = useState<Boolean>(false);
   const [firstName, setFirstName] = useState<String>("");
   const [lastName, setLastName] = useState<String>("");
   const local = localStorage.getItem("local");
@@ -23,9 +24,11 @@ const ProfileInformationPages: React.FC = () => {
   );
   const history = useHistory();
   useEffect(() => {
-    let splitName = fullName.split(" ");
-    setFirstName(splitName[0]);
-    setLastName(splitName[1]);
+    if (fullName !== undefined) {
+      let splitName = fullName.split(" ");
+      setFirstName(splitName[0]);
+      setLastName(splitName[1]);
+    }
   });
   useEffect(() => {
     if (fullName === undefined) {
@@ -301,40 +304,78 @@ const ProfileInformationPages: React.FC = () => {
                       onChange={(e) => setSocialNetwork(e.target.value)}
                     />
                   </div>
-                  <button
-                    className="root-0-2-46 MAX_WIDTH_F button-0-2-118 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-                    type="submit"
-                    onClick={() => {
-                      if (!fullNameError) {
-                        axios
-                          .post(
-                            `${env.host}/api/update/user/info`,
-                            {
-                              firstName: firstName,
-                              lastName: lastName,
-                              fullName: fullName,
-                              phone: phone,
-                              socialNetwork: socialNetwork,
-                              role: "user",
-                            },
-                            {
-                              headers: { Authorization: `Bearer ${local}` },
-                            }
-                          )
-                          .then((result: any) => {
-                            if (result.data.success) {
-                              localStorage.setItem(
-                                "local",
-                                result.data.access_token
-                              );
-                              setJwtDecode(result.data.access_token);
-                            }
-                          });
-                      }
-                    }}
-                  >
-                    Save
-                  </button>
+                  {spinner ? (
+                    <button
+                      className="root-0-2-46 MAX_WIDTH_F button-0-2-118 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                      type="submit"
+                    >
+                      <div className="loading-0-2-112">
+                        <svg
+                          className="stroke-0-2-35 spinner-0-2-113"
+                          width="100"
+                          height="100"
+                          viewBox="0 0 100 100"
+                          preserveAspectRatio="xMidYMid"
+                        >
+                          <circle
+                            cx="50"
+                            cy="50"
+                            fill="none"
+                            stroke-width="10"
+                            r="35"
+                            stroke-dasharray="164.93361431346415 56.97787143782138"
+                          >
+                            <animateTransform
+                              attributeName="transform"
+                              type="rotate"
+                              repeatCount="indefinite"
+                              dur="1s"
+                              values="0 50 50;360 50 50"
+                              keyTimes="0;1"
+                            ></animateTransform>
+                          </circle>
+                        </svg>
+                        <span>Loading</span>
+                      </div>
+                    </button>
+                  ) : (
+                    <button
+                      className="root-0-2-46 MAX_WIDTH_F button-0-2-118 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                      type="submit"
+                      onClick={() => {
+                        if (!fullNameError) {
+                          setSpinner(true);
+                          axios
+                            .post(
+                              `${env.host}/api/update/user/info`,
+                              {
+                                firstName: firstName,
+                                lastName: lastName,
+                                fullName: fullName,
+                                phone: phone,
+                                socialNetwork: socialNetwork,
+                                role: "user",
+                              },
+                              {
+                                headers: { Authorization: `Bearer ${local}` },
+                              }
+                            )
+                            .then((result: any) => {
+                              if (result.data.success) {
+                                setSpinner(false);
+                                localStorage.setItem(
+                                  "local",
+                                  result.data.access_token
+                                );
+                                setJwtDecode(result.data.access_token);
+                              }
+                            });
+                        }
+                      }}
+                    >
+                      Save
+                    </button>
+                  )}
                 </div>
               </form>
             </section>
