@@ -128,6 +128,7 @@ const RegisterCandidateInfoPages: React.FC = () => {
                           fullName: fullName,
                           phone: phone,
                           socialNetwork: socialNetwork,
+                          role: "user",
                         },
                         {
                           headers: { Authorization: `Bearer ${local}` },

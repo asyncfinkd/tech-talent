@@ -51,7 +51,7 @@ const RegisterCandidatePages: React.FC = () => {
         <title>{t("REGISTERPAGESTITLE")}</title>
       </Helmet>
       <main className="main-0-2-2">
-        <div className="root-0-2-100">
+        <div>
           <div className="content-0-2-101">
             <div className="marginOnMobile-0-2-111">
               <div className="root-0-2-113">
@@ -278,6 +278,7 @@ const RegisterCandidatePages: React.FC = () => {
                         email: data.email,
                         password: data.password,
                         interest: interest,
+                        role: "user",
                       })
                       .then((result: any) => {
                         if (result.data === "Email is already registered") {
