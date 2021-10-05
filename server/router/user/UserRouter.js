@@ -22,6 +22,7 @@ router.route("/login").post(async (req, res) => {
             role,
             phone,
             socialNetwork,
+            _id,
           } = result;
           const access_token = jwt.sign(
             {
@@ -33,6 +34,7 @@ router.route("/login").post(async (req, res) => {
               role,
               phone,
               socialNetwork,
+              _id,
             },
             env.ACCESS_TOKEN,
             {
@@ -93,7 +95,7 @@ router
       try {
         const { fullName, phone, socialNetwork, firstName, lastName, role } =
           req.body;
-        const { email, interest } = req;
+        const { email, interest, _id } = req;
         const access_token = jwt.sign(
           {
             fullName,
@@ -104,6 +106,7 @@ router
             email,
             interest,
             role,
+            _id,
           },
           env.ACCESS_TOKEN,
           {

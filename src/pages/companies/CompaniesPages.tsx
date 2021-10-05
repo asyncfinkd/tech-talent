@@ -1,11 +1,33 @@
-import React from "react";
+import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import Footer from "../../components/Footer/Footer";
+import env from "../../application/environment/env.json";
+import { ApplicationContext } from "../../context/Application/ApplicationContext";
+import { useHistory, useLocation } from "react-router-dom";
+import CompaniesMap from "../../components/companies/CompaniesMap";
 
 const CompaniesPages: React.FC = () => {
+  const [data, setData] = useState<any>([]);
+  const { jwtDecode } = useContext(ApplicationContext);
+  const local = localStorage.getItem("local");
+  const history = useHistory();
+  useEffect(() => {
+    axios.get(`${env.host}/api/get/companies`).then((result: any) => {
+      setData(result.data);
+    });
+  }, []);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <>
+      <Helmet>
+        <title>Companies | Tech Talent</title>
+      </Helmet>
       <main className="main-0-2-2">
-        {/* (min-width: 1280px) */}
         <div className="new__MAIN__02-20">
           <div className="root-0-2-103">
             <div className="marginOnMobile-0-2-135">
@@ -91,7 +113,7 @@ const CompaniesPages: React.FC = () => {
                     type="submit"
                   >
                     <div className="countContainer-0-2-129">
-                      <div className="count-0-2-130">153</div>
+                      <div className="count-0-2-130">{data.length}</div>
                       <div className="countLabel-0-2-131">Companies</div>
                     </div>
                   </button>
@@ -102,438 +124,24 @@ const CompaniesPages: React.FC = () => {
           </div>
           <div className="marginOnMobile-0-2-135">
             <div className="grid-0-2-101">
-              <div className="superRoot-0-2-137">
-                <div className="root-0-2-138">
-                  <div className="container-0-2-139">
-                    <a href="/c/iigXZ">
-                      <img
-                        className="logo-0-2-140"
-                        src="https://s3.eu-central-1.amazonaws.com/public.tt.ge/images/uploads/f6c50e4e-062a-4f23-aa97-cfa98641a3eb.png?q=80"
-                      />
-                    </a>
-                    <div className="name-0-2-141">
-                      კომუნიკაციების ეროვნული კომისია
-                    </div>
-                    <div className="secondaryText-0-2-142">&nbsp;</div>
-                    <div className="stats-0-2-143">
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">1</div>
-                        <div className="label-0-2-146">Active Jobs</div>
-                      </div>
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">1</div>
-                        <div className="label-0-2-146">Followers</div>
-                      </div>
-                    </div>
-                    <div className="buttonGroup-0-2-147">
-                      <a
-                        className="root-0-2-46 viewJobsButton-0-2-148 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
-                        href="/c/iigXZ"
-                      >
-                        View Jobs
-                      </a>
-                      <button className="root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54">
-                        Follow
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="superRoot-0-2-137">
-                <div className="root-0-2-138">
-                  <div className="container-0-2-139">
-                    <a href="/c/u0QWg">
-                      <img
-                        className="logo-0-2-140"
-                        src="https://s3.eu-central-1.amazonaws.com/public.tt.ge/images/uploads/b0302b7e-c231-4e85-a0b7-151f48af37b1.jpg?q=80"
-                      />
-                    </a>
-                    <div className="name-0-2-141">Devy Digital UG</div>
-                    <div className="secondaryText-0-2-142">&nbsp;</div>
-                    <div className="stats-0-2-143">
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">1</div>
-                        <div className="label-0-2-146">Active Jobs</div>
-                      </div>
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">1</div>
-                        <div className="label-0-2-146">Followers</div>
-                      </div>
-                    </div>
-                    <div className="buttonGroup-0-2-147">
-                      <a
-                        className="root-0-2-46 viewJobsButton-0-2-148 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
-                        href="/c/u0QWg"
-                      >
-                        View Jobs
-                      </a>
-                      <button className="root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54">
-                        Follow
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="superRoot-0-2-137">
-                <div className="root-0-2-138">
-                  <div className="container-0-2-139">
-                    <a href="/c/cViv6">
-                      <img
-                        className="logo-0-2-140"
-                        src="https://s3.eu-central-1.amazonaws.com/public.tt.ge/images/uploads/fa4a274f-a82b-4737-9347-a0e8925cc29d.jpg?q=80"
-                      />
-                    </a>
-                    <div className="name-0-2-141">Fastlearn.ge</div>
-                    <div className="secondaryText-0-2-142">
-                      Development, LMS, e-Learning
-                    </div>
-                    <div className="stats-0-2-143">
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">3</div>
-                        <div className="label-0-2-146">Active Jobs</div>
-                      </div>
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">2</div>
-                        <div className="label-0-2-146">Followers</div>
-                      </div>
-                    </div>
-                    <div className="buttonGroup-0-2-147">
-                      <a
-                        className="root-0-2-46 viewJobsButton-0-2-148 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
-                        href="/c/cViv6"
-                      >
-                        View Jobs
-                      </a>
-                      <button className="root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54">
-                        Follow
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="superRoot-0-2-137">
-                <div className="root-0-2-138">
-                  <div className="container-0-2-139">
-                    <a href="/c/uN5Q7">
-                      <img
-                        className="logo-0-2-140"
-                        src="https://s3.eu-central-1.amazonaws.com/public.tt.ge/images/uploads/e1ca1d5b-19ec-4171-8fb8-1c1f92b15d59.png?q=80"
-                      />
-                    </a>
-                    <div className="name-0-2-141">PCL HEALTH</div>
-                    <div className="secondaryText-0-2-142">&nbsp;</div>
-                    <div className="stats-0-2-143">
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">1</div>
-                        <div className="label-0-2-146">Active Jobs</div>
-                      </div>
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">2</div>
-                        <div className="label-0-2-146">Followers</div>
-                      </div>
-                    </div>
-                    <div className="buttonGroup-0-2-147">
-                      <a
-                        className="root-0-2-46 viewJobsButton-0-2-148 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
-                        href="/c/uN5Q7"
-                      >
-                        View Jobs
-                      </a>
-                      <button className="root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54">
-                        Follow
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="superRoot-0-2-137">
-                <div className="root-0-2-138">
-                  <div className="container-0-2-139">
-                    <a href="/c/LfN6x">
-                      <img
-                        className="logo-0-2-140"
-                        src="https://s3.eu-central-1.amazonaws.com/public.tt.ge/images/uploads/187d4b4e-ef1d-4e1e-b205-c24fe044f677.jpg?q=80"
-                      />
-                    </a>
-                    <div className="name-0-2-141">
-                      სსიპ საჯარო რეესტრის ეროვნული სააგენტო
-                    </div>
-                    <div className="secondaryText-0-2-142">&nbsp;</div>
-                    <div className="stats-0-2-143">
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">5</div>
-                        <div className="label-0-2-146">Active Jobs</div>
-                      </div>
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">5</div>
-                        <div className="label-0-2-146">Followers</div>
-                      </div>
-                    </div>
-                    <div className="buttonGroup-0-2-147">
-                      <a
-                        className="root-0-2-46 viewJobsButton-0-2-148 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
-                        href="/c/LfN6x"
-                      >
-                        View Jobs
-                      </a>
-                      <button className="root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54">
-                        Follow
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="superRoot-0-2-137">
-                <div className="root-0-2-138">
-                  <div className="container-0-2-139">
-                    <a href="/c/TH2n9">
-                      <img
-                        className="logo-0-2-140"
-                        src="https://s3.eu-central-1.amazonaws.com/public.tt.ge/images/uploads/fd662877-3da5-450e-995a-a21629d832bb.png?q=80"
-                      />
-                    </a>
-                    <div className="name-0-2-141">megalab</div>
-                    <div className="secondaryText-0-2-142">&nbsp;</div>
-                    <div className="stats-0-2-143">
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">1</div>
-                        <div className="label-0-2-146">Active Jobs</div>
-                      </div>
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">2</div>
-                        <div className="label-0-2-146">Followers</div>
-                      </div>
-                    </div>
-                    <div className="buttonGroup-0-2-147">
-                      <a
-                        className="root-0-2-46 viewJobsButton-0-2-148 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
-                        href="/c/TH2n9"
-                      >
-                        View Jobs
-                      </a>
-                      <button className="root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54">
-                        Follow
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="superRoot-0-2-137">
-                <div className="root-0-2-138">
-                  <div className="container-0-2-139">
-                    <a href="/c/czyNe">
-                      <img
-                        className="logo-0-2-140"
-                        src="https://s3.eu-central-1.amazonaws.com/public.tt.ge/images/uploads/c225433d-3c66-4507-85f7-d3f9b157edb7.png?q=80"
-                      />
-                    </a>
-                    <div className="name-0-2-141">SAIT</div>
-                    <div className="secondaryText-0-2-142">&nbsp;</div>
-                    <div className="stats-0-2-143">
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">1</div>
-                        <div className="label-0-2-146">Active Jobs</div>
-                      </div>
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">2</div>
-                        <div className="label-0-2-146">Followers</div>
-                      </div>
-                    </div>
-                    <div className="buttonGroup-0-2-147">
-                      <a
-                        className="root-0-2-46 viewJobsButton-0-2-148 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
-                        href="/c/czyNe"
-                      >
-                        View Jobs
-                      </a>
-                      <button className="root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54">
-                        Follow
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="superRoot-0-2-137">
-                <div className="root-0-2-138">
-                  <div className="container-0-2-139">
-                    <a href="/c/wuxTm">
-                      <img
-                        className="logo-0-2-140"
-                        src="https://s3.eu-central-1.amazonaws.com/public.tt.ge/images/uploads/d193d3b0-5d8c-43f0-af61-f6495b6dfaa5.png?q=80"
-                      />
-                    </a>
-                    <div className="name-0-2-141">Lean Systems</div>
-                    <div className="secondaryText-0-2-142">&nbsp;</div>
-                    <div className="stats-0-2-143">
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">1</div>
-                        <div className="label-0-2-146">Active Jobs</div>
-                      </div>
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">2</div>
-                        <div className="label-0-2-146">Followers</div>
-                      </div>
-                    </div>
-                    <div className="buttonGroup-0-2-147">
-                      <a
-                        className="root-0-2-46 viewJobsButton-0-2-148 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
-                        href="/c/wuxTm"
-                      >
-                        View Jobs
-                      </a>
-                      <button className="root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54">
-                        Follow
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="superRoot-0-2-137">
-                <div className="root-0-2-138">
-                  <div className="container-0-2-139">
-                    <a href="/c/ZG34R">
-                      <img
-                        className="logo-0-2-140"
-                        src="https://s3.eu-central-1.amazonaws.com/public.tt.ge/images/uploads/2ffe3c6f-432b-4121-b559-10fd4c794dd7.png?q=80"
-                      />
-                    </a>
-                    <div className="name-0-2-141">Funding Souq</div>
-                    <div className="secondaryText-0-2-142">&nbsp;</div>
-                    <div className="stats-0-2-143">
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">2</div>
-                        <div className="label-0-2-146">Active Jobs</div>
-                      </div>
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">3</div>
-                        <div className="label-0-2-146">Followers</div>
-                      </div>
-                    </div>
-                    <div className="buttonGroup-0-2-147">
-                      <a
-                        className="root-0-2-46 viewJobsButton-0-2-148 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
-                        href="/c/ZG34R"
-                      >
-                        View Jobs
-                      </a>
-                      <button className="root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54">
-                        Follow
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="superRoot-0-2-137">
-                <div className="root-0-2-138">
-                  <div className="container-0-2-139">
-                    <a href="/c/1rtd7">
-                      <img
-                        className="logo-0-2-140"
-                        src="https://s3.eu-central-1.amazonaws.com/public.tt.ge/images/uploads/edb51c25-b1fa-4276-9d8e-8d8260da32da.png?q=80"
-                      />
-                    </a>
-                    <div className="name-0-2-141">AltexSoft</div>
-                    <div className="secondaryText-0-2-142">&nbsp;</div>
-                    <div className="stats-0-2-143">
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">13</div>
-                        <div className="label-0-2-146">Active Jobs</div>
-                      </div>
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">3</div>
-                        <div className="label-0-2-146">Followers</div>
-                      </div>
-                    </div>
-                    <div className="buttonGroup-0-2-147">
-                      <a
-                        className="root-0-2-46 viewJobsButton-0-2-148 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
-                        href="/c/1rtd7"
-                      >
-                        View Jobs
-                      </a>
-                      <button className="root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54">
-                        Follow
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="superRoot-0-2-137">
-                <div className="root-0-2-138">
-                  <div className="container-0-2-139">
-                    <a href="/c/exadel">
-                      <img
-                        className="logo-0-2-140"
-                        src="https://s3.eu-central-1.amazonaws.com/public.tt.ge/images/uploads/71781b71-1e7f-43d9-9e00-eb734c111984.png?q=80"
-                      />
-                    </a>
-                    <div className="name-0-2-141">Exadel</div>
-                    <div className="secondaryText-0-2-142">
-                      Software Engineering Company
-                    </div>
-                    <div className="stats-0-2-143">
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">9</div>
-                        <div className="label-0-2-146">Active Jobs</div>
-                      </div>
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">7</div>
-                        <div className="label-0-2-146">Followers</div>
-                      </div>
-                    </div>
-                    <div className="buttonGroup-0-2-147">
-                      <a
-                        className="root-0-2-46 viewJobsButton-0-2-148 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
-                        href="/c/exadel"
-                      >
-                        View Jobs
-                      </a>
-                      <button className="root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54">
-                        Follow
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="superRoot-0-2-137">
-                <div className="root-0-2-138">
-                  <div className="container-0-2-139">
-                    <a href="/c/caru">
-                      <img
-                        className="logo-0-2-140"
-                        src="https://s3.eu-central-1.amazonaws.com/public.tt.ge/images/uploads/5c44695a-a8a8-4899-9dc9-a66259f4e1ad.PNG?q=80"
-                      />
-                    </a>
-                    <div className="name-0-2-141">Caru</div>
-                    <div className="secondaryText-0-2-142">Automotive</div>
-                    <div className="stats-0-2-143">
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">2</div>
-                        <div className="label-0-2-146">Active Jobs</div>
-                      </div>
-                      <div className="stat-0-2-144">
-                        <div className="count-0-2-145">3</div>
-                        <div className="label-0-2-146">Followers</div>
-                      </div>
-                    </div>
-                    <div className="buttonGroup-0-2-147">
-                      <a
-                        className="root-0-2-46 viewJobsButton-0-2-148 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
-                        href="/c/caru"
-                      >
-                        View Jobs
-                      </a>
-                      <button className="root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54">
-                        Follow
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {data.map((item: any) => {
+                return (
+                  <>
+                    <CompaniesMap
+                      item={item}
+                      env={env}
+                      history={history}
+                      jwtDecode={jwtDecode}
+                    />
+                  </>
+                );
+              })}
             </div>
-            <button className="root-0-2-46 root-0-2-150 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantSecondary-0-2-55">
-              Load More
-            </button>
+            {data.length > 12 && (
+              <button className="root-0-2-46 root-0-2-150 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantSecondary-0-2-55">
+                Load More
+              </button>
+            )}
           </div>
         </div>
       </main>
