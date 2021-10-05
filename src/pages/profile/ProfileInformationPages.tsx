@@ -4,8 +4,15 @@ import { useHistory, useLocation } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 import env from "../../application/environment/env.json";
+import { Helmet } from "react-helmet";
 
 const ProfileInformationPages: React.FC = () => {
+  useEffect(() => {
+    const local = localStorage.getItem("local");
+    if (!local || !jwtDecode) {
+      history.push("/login");
+    }
+  }, []);
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -48,12 +55,7 @@ const ProfileInformationPages: React.FC = () => {
       setFullNameError(false);
     }
   }, [fullName]);
-  useEffect(() => {
-    const local = localStorage.getItem("local");
-    if (!local || !jwtDecode) {
-      history.push("/login");
-    }
-  }, []);
+
   useEffect(() => {
     if (fullName !== undefined) {
       memorizedCallback();
@@ -61,6 +63,9 @@ const ProfileInformationPages: React.FC = () => {
   });
   return (
     <>
+      <Helmet>
+        <title>Information | User | Tech Talent</title>
+      </Helmet>
       <main className="main-0-2-2">
         <div className="marginOnMobile-0-2-102 root-0-2-100">
           <div className="root-0-2-104">
