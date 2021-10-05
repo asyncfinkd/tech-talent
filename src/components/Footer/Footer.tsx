@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { ApplicationContext } from "../../context/Application/ApplicationContext";
 
 interface Props {
   wantSponsors?: boolean;
@@ -8,6 +9,7 @@ interface Props {
 
 const Footer: React.FC<Props> = ({ wantSponsors }) => {
   const { t } = useTranslation();
+  const { jwtDecode } = useContext(ApplicationContext);
   return (
     <>
       <footer className="root-0-2-201">
@@ -83,12 +85,21 @@ const Footer: React.FC<Props> = ({ wantSponsors }) => {
                     Tech companies use our platform <br /> to find people that
                     fit their culture.
                   </div>
-                  <Link
-                    className="root-0-2-46 register-0-2-214 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-                    to="/register"
-                  >
-                    {t("REGISTER")}
-                  </Link>
+                  {jwtDecode ? (
+                    <Link
+                      className="root-0-2-46 register-0-2-214 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                      to="/profile/information"
+                    >
+                      Profile
+                    </Link>
+                  ) : (
+                    <Link
+                      className="root-0-2-46 register-0-2-214 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                      to="/register"
+                    >
+                      {t("REGISTER")}
+                    </Link>
+                  )}
                 </div>
                 <div className="right-0-2-215">
                   <div className="colContainer-0-2-219">
@@ -281,19 +292,19 @@ const Footer: React.FC<Props> = ({ wantSponsors }) => {
                     <div className="col-0-2-220">
                       <div className="titleEntry-0-2-216">{t("COMPANY")}</div>
                       <div>
-                        <a className="entry-0-2-218" href="/about">
+                        <Link className="entry-0-2-218" to="/about">
                           {t("ABOUT")}
-                        </a>
+                        </Link>
                       </div>
                       <div>
-                        <a className="entry-0-2-218" href="/terms">
+                        <Link className="entry-0-2-218" to="/terms">
                           {t("TERMSANDCONDITIONS")}
-                        </a>
+                        </Link>
                       </div>
                       <div>
-                        <a className="entry-0-2-218" href="/privacy">
+                        <Link className="entry-0-2-218" to="/privacy">
                           {t("PRIVACYPOLICY")}
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>

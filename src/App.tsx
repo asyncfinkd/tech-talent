@@ -14,6 +14,9 @@ import RegisterCandidateInfoPages from "./pages/register/RegisterCandidateInfoPa
 import ForgotThanksPages from "./pages/forgot/ForgotThanksPages";
 import ProfileInformationPages from "./pages/profile/ProfileInformationPages";
 import ProfileSecurityPages from "./pages/profile/ProfileSecurityPages";
+import PrivacyPages from "./pages/privacy/PrivacyPages";
+import TermsAndConditions from "./pages/termsandconditions/TermsAndConditions";
+import AboutPages from "./pages/about/AboutPages";
 
 const App: React.FC = () => {
   const local = localStorage.getItem("local");
@@ -61,6 +64,9 @@ const App: React.FC = () => {
                 exact
                 component={ProfileSecurityPages}
               />
+              <Route path="/privacy" exact component={PrivacyPages} />
+              <Route path="/terms" exact component={TermsAndConditions} />
+              <Route path="/about" exact component={AboutPages} />
               <Route exact component={ErrorPages} />
             </Switch>
           </BrowserRouter>
