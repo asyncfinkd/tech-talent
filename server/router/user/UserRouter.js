@@ -172,4 +172,29 @@ router.route("/forgot").post(async (req, res) => {
   });
 });
 
+router
+  .route("/security")
+  .all(loginMiddleware)
+  .post(async (req, res) => {
+    try {
+      var salt = await bcrypt.genSalt();
+      var hashedPassword = await bcrypt.hash(req.body.newPassword, salt);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+
+    UserSchema.findOne({ email: req.email }).then((result) => {
+      bcrypt.compare(req.body.password, result.password, (err, verified) => {
+        if (verified) {
+          result.password = hashedPassword;
+          result.save();
+
+          res.json("Success");
+        } else {
+          res.json("Incorrect current password");
+        }
+      });
+    });
+  });
+
 module.exports = router;

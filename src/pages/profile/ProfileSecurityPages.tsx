@@ -1,70 +1,69 @@
-import axios from "axios";
-import React, { useCallback, useContext, useEffect, useState } from "react";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
 import Footer from "../../components/Footer/Footer";
+import { Link, useLocation } from "react-router-dom";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
-import env from "../../application/environment/env.json";
 import { Helmet } from "react-helmet";
+import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
+import axios from "axios";
+import env from "../../application/environment/env.json";
 
-const ProfileInformationPages: React.FC = () => {
-  useEffect(() => {
-    const local = localStorage.getItem("local");
-    if (!local || !jwtDecode) {
-      history.push("/login");
-    }
-  }, []);
+type Input = {
+  currentPassword: string;
+  newPassword: string;
+  repeatPassword: string;
+};
+
+const ProfileSecurityPages: React.FC = () => {
+  const { jwtDecode } = useContext(ApplicationContext);
+  const { t } = useTranslation();
+  const local = localStorage.getItem("local");
+  const [inCorrectPassword, setInCorrectPassword] = useState<Boolean>(false);
+  const [spinner, setSpinner] = useState<Boolean>(false);
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-  const { jwtDecode, setJwtDecode } = useContext(ApplicationContext);
-  const [fullName, setFullName] = useState<String | any>(jwtDecode.fullName);
-  const [fullNameError, setFullNameError] = useState<Boolean | any>(false);
-  const [phone, setPhone] = useState<String | any>(jwtDecode.phone);
-  const [spinner, setSpinner] = useState<Boolean>(false);
-  const [firstName, setFirstName] = useState<String>("");
-  const [lastName, setLastName] = useState<String>("");
-  const local = localStorage.getItem("local");
-  const [socialNetwork, setSocialNetwork] = useState<String | any>(
-    jwtDecode.socialNetwork
-  );
-  const history = useHistory();
-  useEffect(() => {
-    if (fullName !== undefined) {
-      let splitName = fullName.split(" ");
-      setFirstName(splitName[0]);
-      setLastName(splitName[1]);
-    }
-  });
-  useEffect(() => {
-    if (fullName === undefined) {
-      setFullName(jwtDecode.fullName);
-    }
-    if (phone === undefined) {
-      setPhone(jwtDecode.phone);
-    }
-    if (socialNetwork === undefined) {
-      setSocialNetwork(jwtDecode.socialNetwork);
-    }
-  });
-  const memorizedCallback = useCallback(() => {
-    if (fullName.length === 0) {
-      setFullNameError(true);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm<Input>();
+  const onSubmit = (data: any) => {
+    setSpinner(true);
+    axios
+      .post(
+        `${env.host}/api/security`,
+        {
+          password: data.currentPassword,
+          newPassword: data.newPassword,
+        },
+        {
+          headers: { Authorization: `Bearer ${local}` },
+        }
+      )
+      .then((result: any) => {
+        setSpinner(false);
+        if (result.data === "Incorrect current password") {
+          setInCorrectPassword(true);
+        } else {
+          setInCorrectPassword(false);
+        }
+      });
+  };
+  const renderCurrentPasswordClassName = () => {
+    if (errors.currentPassword || inCorrectPassword) {
+      return "input-0-2-251 invalid-0-2-252";
     } else {
-      setFullNameError(false);
+      return "input-0-2-251";
     }
-  }, [fullName]);
-
-  useEffect(() => {
-    if (fullName !== undefined) {
-      memorizedCallback();
-    }
-  });
+  };
   return (
     <>
       <Helmet>
-        <title>Information | User | Tech Talent</title>
+        <title>Security | User | Tech Talent</title>
       </Helmet>
       <main className="main-0-2-2">
         <div className="marginOnMobile-0-2-102 root-0-2-100">
@@ -98,7 +97,7 @@ const ProfileInformationPages: React.FC = () => {
             </div>
             <div className="horizontalLine-0-2-109"></div>
             <Link
-              className="root-0-2-46 button-0-2-105__profile buttonActive-0-2-106 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
               to="/profile/information"
             >
               <svg
@@ -115,7 +114,7 @@ const ProfileInformationPages: React.FC = () => {
                   d="M16.3346 2.00018H7.66561C4.26804 2.00018 2.00061 4.43278 2.00061 7.91618V16.0842C2.00061 19.5709 4.26198 22.0002 7.66561 22.0002H16.3336C19.7382 22.0002 22.0006 19.5709 22.0006 16.0842V7.91618C22.0006 4.42969 19.7384 2.00018 16.3346 2.00018ZM7.66561 3.50018H16.3346C18.8851 3.50018 20.5006 5.23515 20.5006 7.91618V16.0842C20.5006 18.7653 18.885 20.5002 16.3336 20.5002H7.66561C5.11537 20.5002 3.50061 18.7655 3.50061 16.0842V7.91618C3.50061 5.23856 5.12095 3.50018 7.66561 3.50018ZM11.9999 7.45428C12.4141 7.45428 12.7499 7.79007 12.7499 8.20428C12.7499 8.58398 12.4678 8.89777 12.1017 8.94744L11.9899 8.95428C11.5757 8.95428 11.2399 8.6185 11.2399 8.20428C11.2399 7.82459 11.5221 7.51079 11.8881 7.46113L11.9999 7.45428ZM11.9899 10.6271C12.3696 10.6271 12.6834 10.9092 12.7331 11.2753L12.7399 11.3771V15.7961C12.7399 16.2103 12.4041 16.5461 11.9899 16.5461C11.6102 16.5461 11.2964 16.2639 11.2468 15.8979L11.2399 15.7961V11.3771C11.2399 10.9629 11.5757 10.6271 11.9899 10.6271Z"
                 ></path>
               </svg>
-              Information<div className="verticalLine-0-2-108"></div>
+              Information
             </Link>
             <Link
               className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
@@ -138,7 +137,7 @@ const ProfileInformationPages: React.FC = () => {
               Resume
             </Link>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile buttonActive-0-2-106 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
               to="/profile/security"
             >
               <svg
@@ -155,7 +154,7 @@ const ProfileInformationPages: React.FC = () => {
                   d="M11.3853 2.10169L4.74174 4.37005C3.99797 4.62306 3.5 5.30545 3.5 6.07198V12.7097C3.5 14.7315 4.2529 16.6789 5.60912 18.196C6.24795 18.9121 7.06192 19.5077 8.04931 20.0259L11.6466 21.9118C11.8711 22.0295 12.1414 22.0294 12.3658 21.9116L15.9568 20.0269C16.9415 19.5095 17.7555 18.9127 18.3944 18.1964C19.7486 16.6804 20.5 14.7342 20.5 12.7136V6.07198C20.5 5.30545 20.002 4.62306 19.2574 4.36977L12.6156 2.10202C12.218 1.96605 11.7837 1.96605 11.3853 2.10169ZM12.1131 3.48951L18.7563 5.75777C18.8945 5.80477 18.9861 5.9303 18.9861 6.07198V12.7136C18.9861 14.3792 18.3668 15.9832 17.2508 17.2327L17.0525 17.4427C16.5722 17.9246 15.9672 18.3492 15.2369 18.7329L12.005 20.4283L8.76848 18.7316C7.9313 18.2922 7.26044 17.8013 6.75256 17.232C5.63446 15.9813 5.01389 14.3761 5.01389 12.7097V6.07198C5.01389 5.9303 5.1055 5.80477 5.24283 5.75805L11.8866 3.48962C11.9599 3.46466 12.0404 3.46466 12.1131 3.48951ZM15.7553 9.2399C15.4597 8.95269 14.9804 8.95269 14.6848 9.2399L11.2854 12.5422L9.91181 11.2062L9.82693 11.1349C9.53066 10.9212 9.11013 10.9448 8.84132 11.2059C8.54564 11.493 8.54551 11.9587 8.84104 12.246L10.7506 14.1023L10.8355 14.1735C11.1318 14.3872 11.5524 14.3636 11.8212 14.1024L15.7553 10.28L15.8286 10.1975C16.0485 9.90959 16.024 9.501 15.7553 9.2399Z"
                 ></path>
               </svg>
-              Security
+              Security<div className="verticalLine-0-2-108"></div>
             </Link>
             <div className="horizontalLine-0-2-109"></div>
             <Link
@@ -221,12 +220,7 @@ const ProfileInformationPages: React.FC = () => {
             <div className="horizontalLine-0-2-109"></div>
             <Link
               className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-              to=""
-              onClick={() => {
-                localStorage.clear();
-                setJwtDecode("");
-                history.push("/");
-              }}
+              to="/profile/logout"
             >
               <svg
                 className="fill-0-2-36 icon-0-2-107"
@@ -246,13 +240,13 @@ const ProfileInformationPages: React.FC = () => {
             </Link>
           </div>
           <div className="body-0-2-101">
-            <section className="root-0-2-115">
-              <h2 className="h2-0-2-116">Contact Information</h2>
-              <form onSubmit={(e) => e.preventDefault()}>
-                <div className="inputGroup-0-2-117">
+            <section className="root___0__2__183">
+              <h2 className="h2-0-2-184">Security</h2>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="inputGroup-0-2-185">
                   <div className="root-0-2-119">
                     <label className="label-0-2-120">
-                      First Name &amp; Last Name{" "}
+                      Email{" "}
                       <span
                         className="asteriskValid-0-2-121"
                         style={{ display: "none" }}
@@ -261,24 +255,42 @@ const ProfileInformationPages: React.FC = () => {
                       </span>
                     </label>
                     <input
-                      type="text"
-                      className={`input-0-2-251 ${
-                        fullNameError && "invalid-0-2-252"
-                      }`}
-                      value={fullName}
-                      onChange={(e) => {
-                        setFullName(e.target.value);
-                      }}
+                      type="email"
+                      autoComplete="email"
+                      className="input-0-2-123"
+                      disabled={true}
+                      value={jwtDecode.email}
                     />
-                    {fullNameError && (
+                  </div>
+                  <div className="root-0-2-119">
+                    <label className="label-0-2-120">
+                      Current Password{" "}
+                      <span
+                        className="asteriskValid-0-2-121"
+                        style={{ display: "none" }}
+                      >
+                        *
+                      </span>
+                    </label>
+                    <input
+                      type="password"
+                      className={renderCurrentPasswordClassName()}
+                      {...register("currentPassword", { required: true })}
+                    />
+                    {errors.currentPassword && (
                       <div className="invalidMessage-0-2-132">
-                        Name is required
+                        Current password is required
+                      </div>
+                    )}
+                    {inCorrectPassword && (
+                      <div className="invalidMessage-0-2-132">
+                        Incorrect current password
                       </div>
                     )}
                   </div>
                   <div className="root-0-2-119">
                     <label className="label-0-2-120">
-                      Phone{" "}
+                      New Password{" "}
                       <span
                         className="asteriskValid-0-2-121"
                         style={{ display: "none" }}
@@ -287,15 +299,21 @@ const ProfileInformationPages: React.FC = () => {
                       </span>
                     </label>
                     <input
-                      type="text"
-                      className="input-0-2-123"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
+                      type="password"
+                      className={`input-0-2-251 ${
+                        errors.newPassword && "invalid-0-2-252"
+                      }`}
+                      {...register("newPassword", { required: true })}
                     />
+                    {errors.newPassword && (
+                      <div className="invalidMessage-0-2-132">
+                        New password is required
+                      </div>
+                    )}
                   </div>
                   <div className="root-0-2-119">
                     <label className="label-0-2-120">
-                      LinkedIn/Dribbble/Behance{" "}
+                      Repeat Password{" "}
                       <span
                         className="asteriskValid-0-2-121"
                         style={{ display: "none" }}
@@ -304,17 +322,30 @@ const ProfileInformationPages: React.FC = () => {
                       </span>
                     </label>
                     <input
-                      type="text"
-                      className="input-0-2-123"
-                      value={socialNetwork}
-                      onChange={(e) => setSocialNetwork(e.target.value)}
+                      type="password"
+                      className={`input-0-2-251 ${
+                        errors.repeatPassword && "invalid-0-2-252"
+                      }`}
+                      {...register("repeatPassword", {
+                        required: "Repeat password is required",
+                        validate: (value) => {
+                          return (
+                            value === watch("newPassword") ||
+                            "Passwords do not match"
+                          );
+                        },
+                      })}
                     />
+                    {errors.repeatPassword && (
+                      <div className="invalidMessage-0-2-132">
+                        {errors.repeatPassword?.message}
+                      </div>
+                    )}
                   </div>
                   {spinner ? (
                     <button
-                      className="root-0-2-46 MAX_WIDTH_F button-0-2-118 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                      className="root-0-2-46 button-0-2-186 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                       type="submit"
-                      disabled={fullNameError}
                     >
                       <div className="loading-0-2-112">
                         <svg
@@ -347,39 +378,8 @@ const ProfileInformationPages: React.FC = () => {
                     </button>
                   ) : (
                     <button
-                      className="root-0-2-46 MAX_WIDTH_F button-0-2-118 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                      className="root-0-2-46 button-0-2-186 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                       type="submit"
-                      disabled={fullNameError}
-                      onClick={() => {
-                        if (!fullNameError) {
-                          setSpinner(true);
-                          axios
-                            .post(
-                              `${env.host}/api/update/user/info`,
-                              {
-                                firstName: firstName,
-                                lastName: lastName,
-                                fullName: fullName,
-                                phone: phone,
-                                socialNetwork: socialNetwork,
-                                role: "user",
-                              },
-                              {
-                                headers: { Authorization: `Bearer ${local}` },
-                              }
-                            )
-                            .then((result: any) => {
-                              if (result.data.success) {
-                                setSpinner(false);
-                                localStorage.setItem(
-                                  "local",
-                                  result.data.access_token
-                                );
-                                setJwtDecode(result.data.access_token);
-                              }
-                            });
-                        }
-                      }}
                     >
                       Save
                     </button>
@@ -395,4 +395,4 @@ const ProfileInformationPages: React.FC = () => {
   );
 };
 
-export default ProfileInformationPages;
+export default ProfileSecurityPages;

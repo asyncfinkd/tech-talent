@@ -3095,3 +3095,44 @@
 .MAX_WIDTH_F {
   width: 100% !important;
 }
+
+.root-0-2-183, .root___0__2__183 {
+  padding: 0;
+  background: #ffffff;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 1280px) {
+  .root-0-2-183, .root___0__2__183 {
+    width: 500px;
+    padding: 2.75rem 2.125rem;
+    box-shadow: 0px 4px 60px 10px #f0f3fb;
+    margin-bottom: 2.5rem;
+  }
+}
+.h2-0-2-184 {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.25rem;
+  font-family: MarkPro, Helvetica;
+  font-weight: bold;
+  line-height: 1.25;
+}
+@media (min-width: 1280px) {
+  .h2-0-2-184 {
+    margin: 0 0 2.5rem 0;
+    font-size: 1.75rem;
+  }
+}
+.inputGroup-0-2-185 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+@media (min-width: 1280px) {
+  .inputGroup-0-2-185 {
+    margin-left: 0.625rem;
+  }
+}
+.button-0-2-186 {
+  margin-top: 1.25rem;
+}
