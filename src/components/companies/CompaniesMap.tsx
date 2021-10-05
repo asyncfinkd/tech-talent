@@ -8,6 +8,9 @@ const CompaniesMap: React.FC<any> = ({
   jwtDecode,
 }: any) => {
   const [followed, setFollowed] = useState<Boolean>(false);
+  const [followers, setFollowers] = useState<String | any>(
+    item.followedUsersId.length
+  );
   useEffect(() => {
     if (item.followedUsersId.length != 0) {
       item.followedUsersId.map((item: any) => {
@@ -40,9 +43,7 @@ const CompaniesMap: React.FC<any> = ({
                 <div className="label-0-2-146">Active Jobs</div>
               </div>
               <div className="stat-0-2-144">
-                <div className="count-0-2-145">
-                  {item.followedUsersId.length}
-                </div>
+                <div className="count-0-2-145">{followers}</div>
                 <div className="label-0-2-146">Followers</div>
               </div>
             </div>
@@ -61,7 +62,22 @@ const CompaniesMap: React.FC<any> = ({
                   } else {
                     const local = localStorage.getItem("local");
                     if (followed) {
-                      console.log(1);
+                      axios
+                        .post(
+                          `${env.host}/api/unfollow/companies`,
+                          {
+                            id: item._id,
+                          },
+                          {
+                            headers: { Authorization: `Bearer ${local}` },
+                          }
+                        )
+                        .then((result: any) => {
+                          if (result.data === "success") {
+                            setFollowed(!followed);
+                            setFollowers(followers - 1);
+                          }
+                        });
                     } else {
                       axios
                         .post(
@@ -74,8 +90,9 @@ const CompaniesMap: React.FC<any> = ({
                           }
                         )
                         .then((result: any) => {
-                          if (result.data == "success") {
+                          if (result.data === "success") {
                             setFollowed(true);
+                            setFollowers(followers + 1);
                           }
                         });
                     }

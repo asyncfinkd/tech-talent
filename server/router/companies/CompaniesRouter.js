@@ -30,4 +30,19 @@ router
     res.json("success");
   });
 
+router
+  .route("/unfollow/companies")
+  .all(loginMiddleware)
+  .post(async (req, res) => {
+    CompaniesSchema.findOne({ _id: req.body.id }).then((result) => {
+      result.followedUsersId.map((item) => {
+        if (item.id == req._id) {
+          item.remove();
+        }
+        result.save();
+      });
+    });
+    res.json("success");
+  });
+
 module.exports = router;
