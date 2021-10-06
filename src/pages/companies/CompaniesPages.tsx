@@ -6,6 +6,7 @@ import env from "../../application/environment/env.json";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 import { useHistory, useLocation } from "react-router-dom";
 import CompaniesMap from "../../components/companies/CompaniesMap";
+import Header from "../../components/Header/Header";
 
 const CompaniesPages: React.FC = () => {
   const [data, setData] = useState<any>([]);
@@ -27,6 +28,7 @@ const CompaniesPages: React.FC = () => {
       <Helmet>
         <title>Companies | Tech Talent</title>
       </Helmet>
+      <Header />
       <main className="main-0-2-2">
         <div className="new__MAIN__02-20">
           <div className="root-0-2-103">

@@ -5,6 +5,7 @@ import Footer from "../../components/Footer/Footer";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 import env from "../../application/environment/env.json";
 import { Helmet } from "react-helmet";
+import Header from "../../components/Header/Header";
 
 const ProfileInformationPages: React.FC = () => {
   useEffect(() => {
@@ -66,6 +67,7 @@ const ProfileInformationPages: React.FC = () => {
       <Helmet>
         <title>Information | User | Tech Talent</title>
       </Helmet>
+      <Header />
       <main className="main-0-2-2">
         <div className="marginOnMobile-0-2-102 root-0-2-100">
           <div className="root-0-2-104">

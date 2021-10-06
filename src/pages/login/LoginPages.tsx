@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import { useLocation } from "react-router-dom";
 import FormLogin from "../../components/Login/Form/FormLogin";
 import { useTranslation } from "react-i18next";
+import Header from "../../components/Header/Header";
 
 const LoginPages: React.FC = () => {
   const { t } = useTranslation();
@@ -17,6 +18,7 @@ const LoginPages: React.FC = () => {
       <Helmet>
         <title>{t("LOGINPAGESTITLE")}</title>
       </Helmet>
+      <Header />
       <FormLogin />
       <Footer />
     </>

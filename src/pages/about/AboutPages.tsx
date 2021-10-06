@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useLocation } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/Header";
 
 const AboutPages: React.FC = () => {
   const { pathname } = useLocation();
@@ -14,6 +15,7 @@ const AboutPages: React.FC = () => {
       <Helmet>
         <title>About | Tech Talent</title>
       </Helmet>
+      <Header />
       <main className="main-0-2-2">
         <div className="marginOnMobile-0-2-102">
           <div className="root-0-2-163" style={{ margin: "2rem 0px" }}>

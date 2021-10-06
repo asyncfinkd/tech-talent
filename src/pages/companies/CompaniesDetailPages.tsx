@@ -6,6 +6,7 @@ import { ApplicationContext } from "../../context/Application/ApplicationContext
 import { useHistory } from "react-router-dom";
 import DOMPurify from "dompurify";
 import { Helmet } from "react-helmet";
+import Header from "../../components/Header/Header";
 
 const CompaniesDetailPages: React.FC = () => {
   const [data, setData] = useState<any>({});
@@ -45,6 +46,7 @@ const CompaniesDetailPages: React.FC = () => {
       <Helmet>
         {data.name && <title>{`${data.name} | Tech Talent`}</title>}
       </Helmet>
+      <Header ShowLine={true} />
       <main className="main-0-2-2">
         <div className="root__SECONDONON">
           <div className="root__ONON">

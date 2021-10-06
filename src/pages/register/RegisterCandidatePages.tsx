@@ -6,6 +6,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import env from "../../application/environment/env.json";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 import { useTranslation } from "react-i18next";
+import Header from "../../components/Header/Header";
 
 type Input = {
   email: string;
@@ -50,6 +51,7 @@ const RegisterCandidatePages: React.FC = () => {
       <Helmet>
         <title>{t("REGISTERPAGESTITLE")}</title>
       </Helmet>
+      <Header />
       <main className="main-0-2-2">
         <div>
           <div className="content-0-2-101">

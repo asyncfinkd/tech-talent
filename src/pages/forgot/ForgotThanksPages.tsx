@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import Footer from "../../components/Footer/Footer";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
+import Header from "../../components/Header/Header";
 
 const ForgotThanksPages: React.FC = () => {
   const { t } = useTranslation();
@@ -16,6 +17,7 @@ const ForgotThanksPages: React.FC = () => {
       <Helmet>
         <title>{t("FORGOTTHANKSPAGESTITLE")}</title>
       </Helmet>
+      <Header />
       <main className="main-0-2-2">
         <div className="marginOnMobile-0-2-111">
           <div className="root-0-2-279" style={{ margin: "2rem 0px" }}>

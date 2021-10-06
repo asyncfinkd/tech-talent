@@ -5,6 +5,7 @@ import { ApplicationContext } from "../../context/Application/ApplicationContext
 import env from "../../application/environment/env.json";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet";
+import Header from "../../components/Header/Header";
 
 const RegisterCandidateInfoPages: React.FC = () => {
   const { t } = useTranslation();
@@ -36,6 +37,7 @@ const RegisterCandidateInfoPages: React.FC = () => {
       <Helmet>
         <title>{t("REGISTERPAGESTITLE")}</title>
       </Helmet>
+      <Header />
       <main className="main-0-2-2">
         <div className="root-0-2-276">
           <div className="content-0-2-277">

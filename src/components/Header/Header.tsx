@@ -5,7 +5,11 @@ import { ApplicationContext } from "../../context/Application/ApplicationContext
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 
-const Header: React.FC = () => {
+interface Props {
+  ShowLine?: boolean;
+}
+
+const Header: React.FC<Props> = ({ ShowLine }) => {
   const [showProfile, setShowProfile] = useToggle();
   const [showHeader, setShowHeader] = useToggle();
   const [showLanguage, setShowLanguage] = useToggle();
@@ -372,7 +376,7 @@ const Header: React.FC = () => {
           </header>
           <div className="gap-0-2-8"></div>
         </div>
-        <div className="line-0-2-17"></div>
+        {ShowLine && <div className="line-0-2-17"></div>}
       </div>
 
       <header className="root-0-2-75 onlyOnMobile-0-2-76">

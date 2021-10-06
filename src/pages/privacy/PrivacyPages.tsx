@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { useLocation } from "react-router-dom";
 import ComingSoon from "../../components/ComingSoon/ComingSoon";
 import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/Header";
 
 const PrivacyPages: React.FC = () => {
   const { pathname } = useLocation();
@@ -15,6 +16,7 @@ const PrivacyPages: React.FC = () => {
       <Helmet>
         <title>Terms & Conditions | Tech Talent</title>
       </Helmet>
+      <Header />
       <ComingSoon />
       <Footer wantSponsors={true} />
     </>

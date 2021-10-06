@@ -3,6 +3,7 @@ import Footer from "../../components/Footer/Footer";
 import RegistrationCompanyNotification from "../../components/Notification/RegistrationCompany/RegistrationCompanyNotification";
 import { Helmet } from "react-helmet";
 import { useLocation } from "react-router-dom";
+import Header from "../../components/Header/Header";
 
 const IndexPages: React.FC = () => {
   const { pathname } = useLocation();
@@ -15,6 +16,7 @@ const IndexPages: React.FC = () => {
       <Helmet>
         <title>Tech Talent</title>
       </Helmet>
+      <Header />
       <RegistrationCompanyNotification />
       <Footer wantSponsors={true} />
     </>

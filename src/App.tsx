@@ -35,7 +35,6 @@ const App: React.FC = () => {
       <ApplicationContext.Provider value={{ jwtDecode, setJwtDecode }}>
         <div className="root-0-2-1">
           <BrowserRouter>
-            <Header />
             <Switch>
               <Route path="/" exact component={IndexPages} />
               <Route path="/companies" exact component={CompaniesPages} />

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import Header from "../../components/Header/Header";
 
 const RegisterPages: React.FC = () => {
   const { t } = useTranslation();
@@ -15,6 +16,7 @@ const RegisterPages: React.FC = () => {
       <Helmet>
         <title>{t("REGISTERPAGESTITLE")}</title>
       </Helmet>
+      <Header />
       <main className="main-0-2-2">
         <div className="root-0-2-233">
           <div className="content-0-2-234">

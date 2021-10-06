@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import { useHistory, useLocation } from "react-router-dom";
 import env from "../../application/environment/env.json";
 import { useTranslation } from "react-i18next";
+import Header from "../../components/Header/Header";
 
 const ForgotPages: React.FC = () => {
   const { t } = useTranslation();
@@ -22,6 +23,7 @@ const ForgotPages: React.FC = () => {
       <Helmet>
         <title>{t("FORGOTPAGESTITLE")}</title>
       </Helmet>
+      <Header />
       <main className="main-0-2-2">
         <div className="root-0-2-254">
           <h1 className="h1-0-2-255">{t("FORGOTPASSWORD")}</h1>
