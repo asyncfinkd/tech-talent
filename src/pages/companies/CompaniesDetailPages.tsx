@@ -350,7 +350,7 @@ const CompaniesDetailPages: React.FC = () => {
                   </div>
                   <div className="expandedContentBottom-0-2-125">
                     <div className="aboutLabel-0-2-133">About</div>
-                    <div className="aboutContent-0-2-134"></div>
+                    <div className="aboutContent-0-2-134">{data.about != null && data.about}</div>
                   </div>
                 </div>
               </div>
