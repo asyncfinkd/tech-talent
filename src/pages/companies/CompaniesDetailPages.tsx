@@ -5,6 +5,7 @@ import env from "../../application/environment/env.json";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 import { useHistory } from "react-router-dom";
 import DOMPurify from "dompurify";
+import { Helmet } from "react-helmet";
 
 const CompaniesDetailPages: React.FC = () => {
   const [data, setData] = useState<any>({});
@@ -41,7 +42,9 @@ const CompaniesDetailPages: React.FC = () => {
   });
   return (
     <>
-      {console.log(data)}
+      <Helmet>
+        {data.name && <title>{`${data.name} | Tech Talent`}</title>}
+      </Helmet>
       <main className="main-0-2-2">
         <div className="root__SECONDONON">
           <div className="root__ONON">
@@ -338,19 +341,17 @@ const CompaniesDetailPages: React.FC = () => {
                       </div>
                       <div className="capsuleLabelValuePair-0-2-129">
                         <div className="capsuleLabel-0-2-130">Founded</div>
-                        <div
-                          className="capsuleValueSecondary-0-2-132"
-                        >
-                            {
-                              data.founded != null && data.founded
-                            }
+                        <div className="capsuleValueSecondary-0-2-132">
+                          {data.founded != null && data.founded}
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="expandedContentBottom-0-2-125">
                     <div className="aboutLabel-0-2-133">About</div>
-                    <div className="aboutContent-0-2-134">{data.about != null && data.about}</div>
+                    <div className="aboutContent-0-2-134">
+                      {data.about != null && data.about}
+                    </div>
                   </div>
                 </div>
               </div>
