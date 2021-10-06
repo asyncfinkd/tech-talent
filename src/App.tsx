@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import IndexPages from "./pages/index/IndexPages";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Header from "./components/Header/Header";
 import LoginPages from "./pages/login/LoginPages";
 import "./styles/index/index.css";
 import ForgotPages from "./pages/forgot/ForgotPages";
@@ -19,6 +18,8 @@ import TermsAndConditions from "./pages/termsandconditions/TermsAndConditions";
 import AboutPages from "./pages/about/AboutPages";
 import CompaniesPages from "./pages/companies/CompaniesPages";
 import CompaniesDetailPages from "./pages/companies/CompaniesDetailPages";
+import axios from "axios";
+import env from "./application/environment/env.json";
 
 const App: React.FC = () => {
   const local = localStorage.getItem("local");
@@ -30,6 +31,21 @@ const App: React.FC = () => {
       console.log(decoded);
     }
   }, [local]);
+  useEffect(() => {
+    if (jwtDecode.email) {
+      if (!jwtDecode._id) {
+        console.log(jwtDecode);
+        axios
+          .post(`${env.host}/api/update/user/id`, {
+            email: jwtDecode.email,
+          })
+          .then((result: any) => {
+            localStorage.setItem("local", result.data);
+            setJwtDecode(result.data);
+          });
+      }
+    }
+  });
   return (
     <>
       <ApplicationContext.Provider value={{ jwtDecode, setJwtDecode }}>

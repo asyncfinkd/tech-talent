@@ -87,6 +87,44 @@ router.route("/register").post(async (req, res) => {
   }
 });
 
+router.route("/update/user/id").post(async (req, res) => {
+  UserSchema.findOne({ email: req.body.email }).then((result) => {
+    if (result != null) {
+      const {
+        email,
+        interest,
+        role,
+        firstName,
+        lastName,
+        fullName,
+        _id,
+        phone,
+        socialNetwork,
+        followedCompaniesId,
+      } = result;
+      const access_token = jwt.sign(
+        {
+          email,
+          interest,
+          role,
+          firstName,
+          lastName,
+          fullName,
+          _id,
+          phone,
+          socialNetwork,
+          followedCompaniesId,
+        },
+        env.ACCESS_TOKEN,
+        {
+          expiresIn: "12h",
+        }
+      );
+      res.json(access_token);
+    }
+  });
+});
+
 router
   .route("/update/user/info")
   .all(loginMiddleware)
