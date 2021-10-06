@@ -91,8 +91,8 @@ const CompaniesDetailPages: React.FC = () => {
                       <button
                         className={
                           followed
-                            ? "root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
-                            : "root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54"
+                            ? "root-0-2-46 button-0-2-136 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
+                            : "root-0-2-46 button-0-2-136 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                         }
                         onClick={() => {
                           if (!jwtDecode) {
