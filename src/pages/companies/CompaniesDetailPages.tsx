@@ -3,7 +3,7 @@ import axios from "axios";
 import Footer from "../../components/Footer/Footer";
 import env from "../../application/environment/env.json";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import DOMPurify from "dompurify";
 import { Helmet } from "react-helmet";
 import Header from "../../components/Header/Header";
@@ -17,6 +17,11 @@ const CompaniesDetailPages: React.FC = () => {
   const [followers, setFollowers] = useState<String | any>(
     data.followedUsersId
   );
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   const { jwtDecode } = useContext(ApplicationContext);
   useEffect(() => {
     let splitURL = window.location.pathname.split("/");

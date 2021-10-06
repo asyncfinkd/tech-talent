@@ -10,10 +10,14 @@ const CompaniesMap: React.FC<any> = ({
 }: any) => {
   const [followed, setFollowed] = useState<Boolean>(false);
   const [unFollow, setUnFollow] = useState<Boolean>(false);
+  const [changed, setChanged] = useState<Boolean>(false);
   const [followers, setFollowers] = useState<String | any>(
     item.followedUsersId.length
   );
   useEffect(() => {
+    if (!changed) {
+      setFollowers(item.followedUsersId.length);
+    }
     if (!unFollow) {
       if (item.followedUsersId.length != 0) {
         item.followedUsersId.map((item: any) => {
@@ -66,6 +70,7 @@ const CompaniesMap: React.FC<any> = ({
                   if (!jwtDecode) {
                     history.push("/register");
                   } else {
+                    setChanged(true);
                     const local = localStorage.getItem("local");
                     if (followed) {
                       axios

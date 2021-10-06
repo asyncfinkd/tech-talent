@@ -10,12 +10,14 @@ import Header from "../../components/Header/Header";
 
 const CompaniesPages: React.FC = () => {
   const [data, setData] = useState<any>([]);
+  const [result, setResult] = useState<any>([]);
   const { jwtDecode } = useContext(ApplicationContext);
-  const local = localStorage.getItem("local");
+  const [search, setSearch] = useState<String | any>("");
   const history = useHistory();
   useEffect(() => {
     axios.get(`${env.host}/api/get/companies`).then((result: any) => {
       setData(result.data);
+      setResult(result.data);
     });
   }, []);
   const { pathname } = useLocation();
@@ -23,6 +25,25 @@ const CompaniesPages: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+  const identificationSearch = () => {
+    if (search.length == 0) {
+      setData(result);
+    } else {
+      setData(
+        result.filter((val: any) => {
+          if (search == "") {
+            return val;
+          } else if (val.name.toLowerCase().includes(search.toLowerCase())) {
+            return val;
+          }
+        })
+      );
+    }
+  };
+
+  useEffect(() => {
+    identificationSearch();
+  }, [search]);
   return (
     <>
       <Helmet>
@@ -106,8 +127,9 @@ const CompaniesPages: React.FC = () => {
                     <input
                       type="text"
                       className="input-0-2-112"
-                      value=""
                       placeholder="Find your future employer"
+                      value={search}
+                      onChange={(e: any) => setSearch(e.target.value)}
                     />
                   </div>
                   <button

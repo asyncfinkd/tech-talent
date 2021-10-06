@@ -17,6 +17,7 @@ type Input = {
 const RegisterCandidatePages: React.FC = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
+  const urlParameters = new URLSearchParams(useLocation().search);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,12 +32,10 @@ const RegisterCandidatePages: React.FC = () => {
   } = useForm<Input>();
   const [registeredEmailMessage, setRegisteredEmailMessage] =
     useState<Boolean>(false);
-  const [interest, setInterest] = useState<String>("");
+  const [interest, setInterest] = useState<String | any>("");
   useEffect(() => {
     if (interest === "") {
-      let locat = window.location.href.split("/");
-      let secondLocat = locat[4].split("=");
-      setInterest(secondLocat[2]);
+      setInterest(urlParameters.get("fieldType"));
     }
   }, [interest]);
   const inputEmailClassNameRender = () => {
