@@ -18,6 +18,7 @@ import PrivacyPages from "./pages/privacy/PrivacyPages";
 import TermsAndConditions from "./pages/termsandconditions/TermsAndConditions";
 import AboutPages from "./pages/about/AboutPages";
 import CompaniesPages from "./pages/companies/CompaniesPages";
+import CompaniesDetailPages from "./pages/companies/CompaniesDetailPages";
 
 const App: React.FC = () => {
   const local = localStorage.getItem("local");
@@ -69,6 +70,7 @@ const App: React.FC = () => {
               <Route path="/privacy" exact component={PrivacyPages} />
               <Route path="/terms" exact component={TermsAndConditions} />
               <Route path="/about" exact component={AboutPages} />
+              <Route path="/c/:id" exact component={CompaniesDetailPages} />
               <Route exact component={ErrorPages} />
             </Switch>
           </BrowserRouter>

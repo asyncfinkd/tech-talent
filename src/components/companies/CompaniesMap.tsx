@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const CompaniesMap: React.FC<any> = ({
   item,
@@ -30,12 +31,12 @@ const CompaniesMap: React.FC<any> = ({
       <div className="superRoot-0-2-137">
         <div className="root-0-2-138">
           <div className="container-0-2-139">
-            <a href="/c/u0QWg">
+            <Link to={`/c/${item.slug}`}>
               <img
                 className="logo-0-2-140"
                 src={`${env.server}${item.logoUrl}`}
               />
-            </a>
+            </Link>
             <div className="name-0-2-141">{item.name}</div>
             <div className="secondaryText-0-2-142">&nbsp;</div>
             <div className="stats-0-2-143">
@@ -49,12 +50,12 @@ const CompaniesMap: React.FC<any> = ({
               </div>
             </div>
             <div className="buttonGroup-0-2-147">
-              <a
+              <Link
                 className="root-0-2-46 viewJobsButton-0-2-148 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
-                href="/c/u0QWg"
+                to={`/c/${item.slug}`}
               >
                 View Jobs
-              </a>
+              </Link>
               <button
                 className={
                   followed

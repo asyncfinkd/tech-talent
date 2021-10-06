@@ -372,6 +372,7 @@ const Header: React.FC = () => {
           </header>
           <div className="gap-0-2-8"></div>
         </div>
+        <div className="line-0-2-17"></div>
       </div>
 
       <header className="root-0-2-75 onlyOnMobile-0-2-76">

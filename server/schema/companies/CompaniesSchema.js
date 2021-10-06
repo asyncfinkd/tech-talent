@@ -27,6 +27,11 @@ const companiesSchema = mongoose.Schema({
   url: { type: String },
   slug: { type: String },
   followedUsersId: [FollowedUsersId],
+  backgroundColor: { type: String },
+  primaryText: { type: String },
+  primaryTextColor: { type: String },
+  secondaryText: { type: String },
+  secondaryTextColor: { type: String },
 });
 
 const Companies = mongoose.model("companies", companiesSchema);
