@@ -171,7 +171,7 @@ const CompaniesDetailPages: React.FC = () => {
                             : "root-0-2-46 button-0-2-136 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                         }
                         onClick={() => {
-                          if (!jwtDecode) {
+                          if (!localStorage.getItem("local")) {
                             history.push("/register");
                           } else {
                             const local = localStorage.getItem("local");
