@@ -4,11 +4,13 @@ import Footer from "../../components/Footer/Footer";
 import env from "../../application/environment/env.json";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 import { useHistory } from "react-router-dom";
+import DOMPurify from "dompurify";
 
 const CompaniesDetailPages: React.FC = () => {
   const [data, setData] = useState<any>({});
   const [followed, setFollowed] = useState<Boolean>(false);
   const [unFollow, setUnFollow] = useState<Boolean>(false);
+  const sanitizer = DOMPurify.sanitize;
   const history = useHistory();
   const [followers, setFollowers] = useState<String | any>(
     data.followedUsersId
@@ -39,6 +41,7 @@ const CompaniesDetailPages: React.FC = () => {
   });
   return (
     <>
+      {console.log(data)}
       <main className="main-0-2-2">
         <div className="root__SECONDONON">
           <div className="root__ONON">
@@ -70,8 +73,22 @@ const CompaniesDetailPages: React.FC = () => {
                           <div className="label-0-2-115">Head Office</div>
                         </div>
                         <div>
-                          <div className="value-0-2-116">Yes</div>
-                          <div className="value-0-2-116">&nbsp;</div>
+                          <div
+                            className="value-0-2-116"
+                            dangerouslySetInnerHTML={{
+                              __html: sanitizer(
+                                data.remoteFriendly ? "Yes" : "&nbsp;"
+                              ),
+                            }}
+                          ></div>
+                          <div
+                            className="value-0-2-116"
+                            dangerouslySetInnerHTML={{
+                              __html: sanitizer(
+                                data.hq != null ? data.hq : "&nbsp;"
+                              ),
+                            }}
+                          ></div>
                         </div>
                       </div>
                       <div className="column-0-2-114">
@@ -80,8 +97,24 @@ const CompaniesDetailPages: React.FC = () => {
                           <div className="label-0-2-115">Employees</div>
                         </div>
                         <div>
-                          <div className="value-0-2-116">&nbsp;</div>
-                          <div className="value-0-2-116">&nbsp;</div>
+                          <div
+                            className="value-0-2-116"
+                            dangerouslySetInnerHTML={{
+                              __html: sanitizer(
+                                data.industry != null ? data.industry : "&nbsp;"
+                              ),
+                            }}
+                          ></div>
+                          <div
+                            className="value-0-2-116"
+                            dangerouslySetInnerHTML={{
+                              __html: sanitizer(
+                                data.employees != null
+                                  ? data.employees
+                                  : "&nbsp;"
+                              ),
+                            }}
+                          ></div>
                         </div>
                       </div>
                     </div>
@@ -201,7 +234,9 @@ const CompaniesDetailPages: React.FC = () => {
                         <div className="capsuleLabel-0-2-130">
                           Remote Friendly
                         </div>
-                        <div className="capsuleValuePrimary-0-2-131">Yes</div>
+                        <div className="capsuleValuePrimary-0-2-131">
+                          {data.remoteFriendly && "Yes"}
+                        </div>
                       </div>
                     </div>
                     <div className="capsuleGroup-0-2-126">
@@ -225,7 +260,9 @@ const CompaniesDetailPages: React.FC = () => {
                       </div>
                       <div className="capsuleLabelValuePair-0-2-129">
                         <div className="capsuleLabel-0-2-130">Head Office</div>
-                        <div className="capsuleValuePrimary-0-2-131"></div>
+                        <div className="capsuleValuePrimary-0-2-131">
+                          {data.hq != null && data.hq}
+                        </div>
                       </div>
                     </div>
                     <div className="capsuleGroup-0-2-126">
@@ -249,7 +286,9 @@ const CompaniesDetailPages: React.FC = () => {
                       </div>
                       <div className="capsuleLabelValuePair-0-2-129">
                         <div className="capsuleLabel-0-2-130">Employees</div>
-                        <div className="capsuleValueSecondary-0-2-132"></div>
+                        <div className="capsuleValueSecondary-0-2-132">
+                          {data.employees != null && data.employees}
+                        </div>
                       </div>
                     </div>
                     <div className="capsuleGroup-0-2-126">
@@ -273,7 +312,9 @@ const CompaniesDetailPages: React.FC = () => {
                       </div>
                       <div className="capsuleLabelValuePair-0-2-129">
                         <div className="capsuleLabel-0-2-130">Industry</div>
-                        <div className="capsuleValueSecondary-0-2-132"></div>
+                        <div className="capsuleValueSecondary-0-2-132">
+                          {data.industry != null && data.industry}
+                        </div>
                       </div>
                     </div>
                     <div className="capsuleGroup-0-2-126">
@@ -297,7 +338,13 @@ const CompaniesDetailPages: React.FC = () => {
                       </div>
                       <div className="capsuleLabelValuePair-0-2-129">
                         <div className="capsuleLabel-0-2-130">Founded</div>
-                        <div className="capsuleValueSecondary-0-2-132"></div>
+                        <div
+                          className="capsuleValueSecondary-0-2-132"
+                        >
+                            {
+                              data.founded != null && data.founded
+                            }
+                        </div>
                       </div>
                     </div>
                   </div>
