@@ -16,7 +16,7 @@ const IndexPages: React.FC = () => {
       <Helmet>
         <title>Tech Talent</title>
       </Helmet>
-      <Header />
+      <Header ShowShadow={true} />
       <RegistrationCompanyNotification />
       <Footer wantSponsors={true} />
     </>

@@ -4,7 +4,7 @@ import Header from "../../components/Header/Header";
 const ErrorPages: React.FC = () => {
   return (
     <>
-      <Header />
+      <Header ShowShadow={true} />
       <main className="main-0-2-103">
         <div className="marginOnMobile-0-2-201">
           <div className="root-0-2-203" style={{ margin: "2rem 0px" }}>

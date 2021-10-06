@@ -15,7 +15,7 @@ const AboutPages: React.FC = () => {
       <Helmet>
         <title>About | Tech Talent</title>
       </Helmet>
-      <Header />
+      <Header ShowShadow={true} />
       <main className="main-0-2-2">
         <div className="marginOnMobile-0-2-102">
           <div className="root-0-2-163" style={{ margin: "2rem 0px" }}>

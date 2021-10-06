@@ -67,7 +67,7 @@ const ProfileInformationPages: React.FC = () => {
       <Helmet>
         <title>Information | User | Tech Talent</title>
       </Helmet>
-      <Header />
+      <Header ShowShadow={true} />
       <main className="main-0-2-2">
         <div className="marginOnMobile-0-2-102 root-0-2-100">
           <div className="root-0-2-104">

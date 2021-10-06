@@ -18,7 +18,7 @@ const LoginPages: React.FC = () => {
       <Helmet>
         <title>{t("LOGINPAGESTITLE")}</title>
       </Helmet>
-      <Header />
+      <Header ShowShadow={true} />
       <FormLogin />
       <Footer />
     </>

@@ -5,6 +5,7 @@ const env = require("../../env.json");
 const bcrypt = require("bcrypt");
 const loginMiddleware = require("../../middlewares/LoginMiddleware");
 const nodemailer = require("nodemailer");
+const CompaniesSchema = require("../../schema/companies/CompaniesSchema");
 
 router.route("/login").post(async (req, res) => {
   UserSchema.findOne({ email: req.body.email }).then((result) => {
@@ -236,6 +237,28 @@ router
         }
       });
     });
+  });
+
+router
+  .route("/get/followed/companies")
+  .all(loginMiddleware)
+  .post(async (req, res) => {
+    UserSchema.findOne({ _id: req._id }).then((result) => {
+      let data = [];
+      result.followedCompaniesId.map((item) => {
+        CompaniesSchema.find().then((result2) => {
+          result2.map((resMap) => {
+            if (resMap._id == item.id) {
+              data.push(resMap);
+            }
+          });
+          if (data.length == result.followedCompaniesId.length) {
+            res.json(data);
+          }
+        });
+      });
+    });
+    // res.json(data);
   });
 
 module.exports = router;

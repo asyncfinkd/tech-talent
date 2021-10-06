@@ -1,70 +1,37 @@
-import React, { useContext, useEffect, useState } from "react";
-import Footer from "../../components/Footer/Footer";
-import { Link, useLocation } from "react-router-dom";
-import { ApplicationContext } from "../../context/Application/ApplicationContext";
-import { Helmet } from "react-helmet";
-import { useForm } from "react-hook-form";
-import { useTranslation } from "react-i18next";
 import axios from "axios";
-import env from "../../application/environment/env.json";
+import React, { useContext, useState } from "react";
+import { useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
+import { ApplicationContext } from "../../context/Application/ApplicationContext";
+import env from "../../application/environment/env.json";
+import { Helmet } from "react-helmet";
 
-type Input = {
-  currentPassword: string;
-  newPassword: string;
-  repeatPassword: string;
-};
-
-const ProfileSecurityPages: React.FC = () => {
-  const { jwtDecode } = useContext(ApplicationContext);
-  const { t } = useTranslation();
+const ProfileCompaniesPages: React.FC = () => {
+  const { jwtDecode, setJwtDecode } = useContext(ApplicationContext);
+  const [spinner, setSpinner] = useState<Boolean>(true);
+  const [data, setData] = useState<any>([]);
   const local = localStorage.getItem("local");
-  const [inCorrectPassword, setInCorrectPassword] = useState<Boolean>(false);
-  const [spinner, setSpinner] = useState<Boolean>(false);
-  const { pathname } = useLocation();
-
+  const history = useHistory();
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    watch,
-  } = useForm<Input>();
-  const onSubmit = (data: any) => {
-    setSpinner(true);
     axios
       .post(
-        `${env.host}/api/security`,
-        {
-          password: data.currentPassword,
-          newPassword: data.newPassword,
-        },
+        `${env.host}/api/get/followed/companies`,
+        {},
         {
           headers: { Authorization: `Bearer ${local}` },
         }
       )
       .then((result: any) => {
+        setData(result.data);
         setSpinner(false);
-        if (result.data === "Incorrect current password") {
-          setInCorrectPassword(true);
-        } else {
-          setInCorrectPassword(false);
-        }
       });
-  };
-  const renderCurrentPasswordClassName = () => {
-    if (errors.currentPassword || inCorrectPassword) {
-      return "input-0-2-251 invalid-0-2-252";
-    } else {
-      return "input-0-2-251";
-    }
-  };
+  }, []);
   return (
     <>
       <Helmet>
-        <title>Security | User | Tech Talent</title>
+        <title>followed | User | Tech Talent</title>
       </Helmet>
       <Header ShowShadow={true} />
       <main className="main-0-2-2">
@@ -139,7 +106,7 @@ const ProfileSecurityPages: React.FC = () => {
               Resume
             </Link>
             <Link
-              className="root-0-2-46 button-0-2-105__profile buttonActive-0-2-106 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
               to="/profile/security"
             >
               <svg
@@ -156,7 +123,7 @@ const ProfileSecurityPages: React.FC = () => {
                   d="M11.3853 2.10169L4.74174 4.37005C3.99797 4.62306 3.5 5.30545 3.5 6.07198V12.7097C3.5 14.7315 4.2529 16.6789 5.60912 18.196C6.24795 18.9121 7.06192 19.5077 8.04931 20.0259L11.6466 21.9118C11.8711 22.0295 12.1414 22.0294 12.3658 21.9116L15.9568 20.0269C16.9415 19.5095 17.7555 18.9127 18.3944 18.1964C19.7486 16.6804 20.5 14.7342 20.5 12.7136V6.07198C20.5 5.30545 20.002 4.62306 19.2574 4.36977L12.6156 2.10202C12.218 1.96605 11.7837 1.96605 11.3853 2.10169ZM12.1131 3.48951L18.7563 5.75777C18.8945 5.80477 18.9861 5.9303 18.9861 6.07198V12.7136C18.9861 14.3792 18.3668 15.9832 17.2508 17.2327L17.0525 17.4427C16.5722 17.9246 15.9672 18.3492 15.2369 18.7329L12.005 20.4283L8.76848 18.7316C7.9313 18.2922 7.26044 17.8013 6.75256 17.232C5.63446 15.9813 5.01389 14.3761 5.01389 12.7097V6.07198C5.01389 5.9303 5.1055 5.80477 5.24283 5.75805L11.8866 3.48962C11.9599 3.46466 12.0404 3.46466 12.1131 3.48951ZM15.7553 9.2399C15.4597 8.95269 14.9804 8.95269 14.6848 9.2399L11.2854 12.5422L9.91181 11.2062L9.82693 11.1349C9.53066 10.9212 9.11013 10.9448 8.84132 11.2059C8.54564 11.493 8.54551 11.9587 8.84104 12.246L10.7506 14.1023L10.8355 14.1735C11.1318 14.3872 11.5524 14.3636 11.8212 14.1024L15.7553 10.28L15.8286 10.1975C16.0485 9.90959 16.024 9.501 15.7553 9.2399Z"
                 ></path>
               </svg>
-              Security<div className="verticalLine-0-2-108"></div>
+              Security
             </Link>
             <div className="horizontalLine-0-2-109"></div>
             <Link
@@ -180,7 +147,7 @@ const ProfileSecurityPages: React.FC = () => {
               My Job Applications
             </Link>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile buttonActive-0-2-106 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
               to="/profile/companies"
             >
               <svg
@@ -197,7 +164,7 @@ const ProfileSecurityPages: React.FC = () => {
                   d="M3.5 8.389C3.5 7.117 4.54 6.081 5.817 6.081H18.183C19.455 6.081 20.49 7.117 20.49 8.389V11.446C18.847 12.467 16.953 13.182 14.959 13.533C14.411 12.426 13.271 11.7 11.99 11.7C10.72 11.7 9.575 12.423 9.011 13.524C7.029 13.175 5.142 12.463 3.5 11.446V8.389ZM10.704 3.5H13.286C13.958 3.5 14.521 3.961 14.688 4.581H9.301C9.469 3.961 10.031 3.5 10.704 3.5ZM9.384 15.101C9.764 15.154 10.111 14.92 10.211 14.556C10.434 13.744 11.149 13.2 11.99 13.2C12.822 13.2 13.544 13.756 13.746 14.552C13.832 14.888 14.134 15.118 14.473 15.118C14.507 15.118 14.542 15.116 14.576 15.111C17.145 14.755 19.592 13.846 21.654 12.482C21.864 12.342 21.99 12.108 21.99 11.856V8.389C21.99 6.289 20.282 4.581 18.183 4.581H16.206C16.019 3.13 14.788 2 13.286 2H10.704C9.202 2 7.972 3.129 7.784 4.581H5.817C3.712 4.581 2 6.289 2 8.389V11.856C2 12.108 2.126 12.343 2.337 12.482C4.396 13.84 6.833 14.745 9.384 15.101ZM11.2451 15.3841V16.6781C11.2451 17.0921 11.5811 17.4281 11.9951 17.4281C12.4091 17.4281 12.7451 17.0921 12.7451 16.6781V15.3841C12.7451 14.9701 12.4091 14.6341 11.9951 14.6341C11.5811 14.6341 11.2451 14.9701 11.2451 15.3841ZM20.5086 15.4169C20.5386 15.0329 20.8516 14.7269 21.2446 14.7269C21.6576 14.7269 21.9926 15.0619 21.9926 15.4749C21.9926 15.4813 21.9807 15.6353 21.963 15.8639C21.9198 16.4213 21.8423 17.4221 21.8196 17.8079C21.7626 18.7459 21.3986 19.7029 20.8456 20.3689C20.0756 21.2969 19.0946 21.7309 17.7606 21.7339C17.1416 21.7349 14.5836 21.7359 12.0246 21.7359C9.4666 21.7359 6.9076 21.7349 6.2896 21.7339C4.9546 21.7309 3.9736 21.2969 3.2036 20.3679C2.6516 19.7029 2.2866 18.7459 2.2306 17.8079C2.20754 17.4277 2.13173 16.4502 2.08816 15.8884C2.06939 15.6464 2.0566 15.4815 2.0566 15.4749C2.0566 15.0619 2.3916 14.7269 2.8046 14.7269C3.1976 14.7269 3.5106 15.0329 3.5406 15.4169C3.5406 15.4169 3.6946 17.1659 3.7276 17.7179C3.7646 18.3289 4.0126 18.9939 4.3586 19.4099C4.8486 20.0009 5.3906 20.2319 6.2916 20.2339C7.5276 20.2359 16.5206 20.2359 17.7576 20.2339C18.6596 20.2319 19.2016 20.0009 19.6906 19.4109C20.0376 18.9939 20.2856 18.3289 20.3226 17.7179C20.3546 17.1659 20.5086 15.4169 20.5086 15.4169Z"
                 ></path>
               </svg>
-              Companies I Follow
+              Companies I Follow<div className="verticalLine-0-2-108"></div>
             </Link>
             <Link
               className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
@@ -222,7 +189,12 @@ const ProfileSecurityPages: React.FC = () => {
             <div className="horizontalLine-0-2-109"></div>
             <Link
               className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-              to="/profile/logout"
+              to=""
+              onClick={() => {
+                localStorage.clear();
+                setJwtDecode("");
+                history.push("/");
+              }}
             >
               <svg
                 className="fill-0-2-36 icon-0-2-107"
@@ -242,153 +214,124 @@ const ProfileSecurityPages: React.FC = () => {
             </Link>
           </div>
           <div className="body-0-2-101">
-            <section className="root___0__2__183">
-              <h2 className="h2-0-2-184">Security</h2>
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="inputGroup-0-2-185">
-                  <div className="root-0-2-119">
-                    <label className="label-0-2-120">
-                      Email{" "}
-                      <span
-                        className="asteriskValid-0-2-121"
-                        style={{ display: "none" }}
-                      >
-                        *
-                      </span>
-                    </label>
-                    <input
-                      type="email"
-                      autoComplete="email"
-                      className="input-0-2-123"
-                      disabled={true}
-                      value={jwtDecode.email}
-                    />
-                  </div>
-                  <div className="root-0-2-119">
-                    <label className="label-0-2-120">
-                      Current Password{" "}
-                      <span
-                        className="asteriskValid-0-2-121"
-                        style={{ display: "none" }}
-                      >
-                        *
-                      </span>
-                    </label>
-                    <input
-                      type="password"
-                      className={renderCurrentPasswordClassName()}
-                      {...register("currentPassword", { required: true })}
-                    />
-                    {errors.currentPassword && (
-                      <div className="invalidMessage-0-2-132">
-                        Current password is required
-                      </div>
-                    )}
-                    {inCorrectPassword && (
-                      <div className="invalidMessage-0-2-132">
-                        Incorrect current password
-                      </div>
-                    )}
-                  </div>
-                  <div className="root-0-2-119">
-                    <label className="label-0-2-120">
-                      New Password{" "}
-                      <span
-                        className="asteriskValid-0-2-121"
-                        style={{ display: "none" }}
-                      >
-                        *
-                      </span>
-                    </label>
-                    <input
-                      type="password"
-                      className={`input-0-2-251 ${
-                        errors.newPassword && "invalid-0-2-252"
-                      }`}
-                      {...register("newPassword", { required: true })}
-                    />
-                    {errors.newPassword && (
-                      <div className="invalidMessage-0-2-132">
-                        New password is required
-                      </div>
-                    )}
-                  </div>
-                  <div className="root-0-2-119">
-                    <label className="label-0-2-120">
-                      Repeat Password{" "}
-                      <span
-                        className="asteriskValid-0-2-121"
-                        style={{ display: "none" }}
-                      >
-                        *
-                      </span>
-                    </label>
-                    <input
-                      type="password"
-                      className={`input-0-2-251 ${
-                        errors.repeatPassword && "invalid-0-2-252"
-                      }`}
-                      {...register("repeatPassword", {
-                        required: "Repeat password is required",
-                        validate: (value) => {
-                          return (
-                            value === watch("newPassword") ||
-                            "Passwords do not match"
-                          );
-                        },
-                      })}
-                    />
-                    {errors.repeatPassword && (
-                      <div className="invalidMessage-0-2-132">
-                        {errors.repeatPassword?.message}
-                      </div>
-                    )}
-                  </div>
-                  {spinner ? (
-                    <button
-                      className="root-0-2-46 button-0-2-186 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-                      type="submit"
+            <div>
+              {spinner ? (
+                <>
+                  <div className="loading-0-2-1">
+                    <svg
+                      className="stroke-0-2-37 spinner-0-2-2"
+                      width="100"
+                      height="100"
+                      viewBox="0 0 100 100"
+                      preserveAspectRatio="xMidYMid"
                     >
-                      <div className="loading-0-2-112">
-                        <svg
-                          className="stroke-0-2-35 spinner-0-2-113"
-                          width="100"
-                          height="100"
-                          viewBox="0 0 100 100"
-                          preserveAspectRatio="xMidYMid"
-                        >
-                          <circle
-                            cx="50"
-                            cy="50"
-                            fill="none"
-                            stroke-width="10"
-                            r="35"
-                            stroke-dasharray="164.93361431346415 56.97787143782138"
-                          >
-                            <animateTransform
-                              attributeName="transform"
-                              type="rotate"
-                              repeatCount="indefinite"
-                              dur="1s"
-                              values="0 50 50;360 50 50"
-                              keyTimes="0;1"
-                            ></animateTransform>
-                          </circle>
-                        </svg>
-                        <span>Loading</span>
+                      <circle
+                        cx="50"
+                        cy="50"
+                        fill="none"
+                        stroke-width="10"
+                        r="35"
+                        stroke-dasharray="164.93361431346415 56.97787143782138"
+                      >
+                        <animateTransform
+                          attributeName="transform"
+                          type="rotate"
+                          repeatCount="indefinite"
+                          dur="1s"
+                          values="0 50 50;360 50 50"
+                          keyTimes="0;1"
+                        ></animateTransform>
+                      </circle>
+                    </svg>
+                    <span>Loading</span>
+                  </div>
+                </>
+              ) : (
+                <>
+                  {data.length == 0 ? (
+                    <div
+                      className="root-0-2-416"
+                      style={{ margin: "2rem 0px" }}
+                    >
+                      <img
+                        src="https://tt.ge/images/empty-jobs.png"
+                        alt="You don’t have followed any company yet"
+                        className="image-0-2-417"
+                      />
+                      <h1 className="h1-0-2-418">
+                        You don’t have followed any company yet
+                      </h1>
+                      <div className="caption-0-2-419">
+                        If you want to follow company, go to companies page
                       </div>
-                    </button>
+                      <a
+                        className="root-0-2-46 button-0-2-420 animation-0-2-47 weightMedium-0-2-61 sizeLg-0-2-53 variantPrimary-0-2-54"
+                        href="/companies?cb=%2Fprofile%2Fcompanies"
+                      >
+                        Search companies
+                      </a>
+                    </div>
                   ) : (
-                    <button
-                      className="root-0-2-46 button-0-2-186 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-                      type="submit"
-                    >
-                      Save
-                    </button>
+                    <div className="root-0-2-215">
+                      <div className="root-0-2-216">
+                        {data.map((item: any) => {
+                          return (
+                            <>
+                              <div className="root-0-2-223 rootSlice-0-2-224 root-0-2-217">
+                                <div className="header-0-2-225">
+                                  <div className="IMAGE_0_2_226__ imageSlice-0-2-227 image-0-2-218">
+                                    <Link to={`/c/${item.slug}`}>
+                                      <img
+                                        className="image-0-2-218"
+                                        src={`${env.server}${item.logoUrl}`}
+                                        alt={item.name}
+                                      />
+                                    </Link>
+                                  </div>
+                                  <div className="primaryColumn-0-2-238">
+                                    <div className="primaryColumnTop-0-2-239">
+                                      <Link
+                                        className="companyName-0-2-219"
+                                        to={`/c/${item.slug}`}
+                                      >
+                                        {item.name}
+                                      </Link>
+                                    </div>
+                                    <div className="primaryColumnBottom-0-2-240">
+                                      {item.industry != null && item.industry}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="lineFirst-0-2-234 lineFirstSlice-0-2-235"></div>
+                                <div className="secondaryColumn-0-2-241">
+                                  <div className="secondaryColumnTop-0-2-242">
+                                    {item.primaryText != null &&
+                                      item.primaryText}
+                                  </div>
+                                  <div className="secondaryColumnBottom-0-2-243">
+                                    {item.secondaryText != null &&
+                                      item.secondaryText}
+                                  </div>
+                                </div>
+                                <div className="lineSecond-0-2-236 lineSecondSlice-0-2-237"></div>
+                                <div className="tertiaryColumn-0-2-244">
+                                  <div className="secondaryButton-0-2-245"></div>
+                                  <div className="primaryButton-0-2-246">
+                                    <button className="root-0-2-48 animation-0-2-49 weightMedium-0-2-63 sizeSm-0-2-52 variantSecondary-0-2-57">
+                                      Unfollow
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </>
+                          );
+                        })}
+                      </div>
+                    </div>
                   )}
-                </div>
-              </form>
-            </section>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </main>
@@ -397,4 +340,4 @@ const ProfileSecurityPages: React.FC = () => {
   );
 };
 
-export default ProfileSecurityPages;
+export default ProfileCompaniesPages;

@@ -17,7 +17,7 @@ const ForgotThanksPages: React.FC = () => {
       <Helmet>
         <title>{t("FORGOTTHANKSPAGESTITLE")}</title>
       </Helmet>
-      <Header />
+      <Header ShowShadow={true} />
       <main className="main-0-2-2">
         <div className="marginOnMobile-0-2-111">
           <div className="root-0-2-279" style={{ margin: "2rem 0px" }}>

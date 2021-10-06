@@ -23,7 +23,7 @@ const ForgotPages: React.FC = () => {
       <Helmet>
         <title>{t("FORGOTPAGESTITLE")}</title>
       </Helmet>
-      <Header />
+      <Header ShowShadow={true} />
       <main className="main-0-2-2">
         <div className="root-0-2-254">
           <h1 className="h1-0-2-255">{t("FORGOTPASSWORD")}</h1>

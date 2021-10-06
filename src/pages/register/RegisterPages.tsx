@@ -16,7 +16,7 @@ const RegisterPages: React.FC = () => {
       <Helmet>
         <title>{t("REGISTERPAGESTITLE")}</title>
       </Helmet>
-      <Header />
+      <Header ShowShadow={true} />
       <main className="main-0-2-2">
         <div className="root-0-2-233">
           <div className="content-0-2-234">

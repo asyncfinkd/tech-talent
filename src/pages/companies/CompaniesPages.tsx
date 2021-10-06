@@ -49,7 +49,7 @@ const CompaniesPages: React.FC = () => {
       <Helmet>
         <title>Companies | Tech Talent</title>
       </Helmet>
-      <Header />
+      <Header ShowShadow={true} />
       <main className="main-0-2-2">
         <div className="new__MAIN__02-20">
           <div className="root-0-2-103">

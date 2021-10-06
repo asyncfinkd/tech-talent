@@ -16,7 +16,7 @@ const TermsAndConditions: React.FC = () => {
       <Helmet>
         <title>Terms & Conditions | Tech Talent</title>
       </Helmet>
-      <Header />
+      <Header ShowShadow={true} />
       <ComingSoon />
       <Footer wantSponsors={true} />
     </>

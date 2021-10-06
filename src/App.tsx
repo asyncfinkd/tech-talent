@@ -20,6 +20,7 @@ import CompaniesPages from "./pages/companies/CompaniesPages";
 import CompaniesDetailPages from "./pages/companies/CompaniesDetailPages";
 import axios from "axios";
 import env from "./application/environment/env.json";
+import ProfileCompaniesPages from "./pages/profile/ProfileCompaniesPages";
 
 const App: React.FC = () => {
   const local = localStorage.getItem("local");
@@ -81,6 +82,11 @@ const App: React.FC = () => {
                 path="/profile/security"
                 exact
                 component={ProfileSecurityPages}
+              />
+              <Route
+                path="/profile/companies"
+                exact
+                component={ProfileCompaniesPages}
               />
               <Route path="/privacy" exact component={PrivacyPages} />
               <Route path="/terms" exact component={TermsAndConditions} />
