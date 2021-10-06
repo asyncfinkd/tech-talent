@@ -52,19 +52,40 @@ const CompaniesDetailPages: React.FC = () => {
       <Helmet>
         {data.name && <title>{`${data.name} | Tech Talent`}</title>}
       </Helmet>
-      <Header ShowLine={true} />
+      <Header ShowLine={true} ShowShadow={false} />
       <main className="main-0-2-2">
         <div className="root__SECONDONON">
           <div className="root__ONON">
-            <div>
+            <div
+              style={{
+                backgroundColor: `${
+                  data.backgroundColor != null
+                    ? data.backgroundColor
+                    : "transparent"
+                }`,
+              }}
+            >
               <div className="alwaysNoMargin-0-2-138 container-0-2-104">
                 <div
                   className="primaryText-0-2-105"
-                  style={{ color: "rgb(23, 23, 37)" }}
+                  style={{
+                    color: `${
+                      data.primaryTextColor != null
+                        ? data.primaryTextColor
+                        : "rgb(23, 23, 37)"
+                    }`,
+                  }}
+                  dangerouslySetInnerHTML={{
+                    __html: sanitizer(
+                      data.primaryText != null ? data.primaryText : "&nbsp;"
+                    ),
+                  }}
+                ></div>
+                <div
+                  className={`headerContent-0-2-106 ${
+                    data.backgroundColor == null && "headerContentWhite-0-2-107"
+                  }`}
                 >
-                  &nbsp;
-                </div>
-                <div className="headerContent-0-2-106 headerContentWhite-0-2-107">
                   <img
                     className="logo-0-2-108"
                     src={`${env.server}${data.logoUrl}`}
@@ -73,10 +94,21 @@ const CompaniesDetailPages: React.FC = () => {
                     <div className="name-0-2-111">{data.name}</div>
                     <div
                       className="secondaryText-0-2-112"
-                      style={{ color: "rgb(123, 124, 230)" }}
-                    >
-                      &nbsp;
-                    </div>
+                      style={{
+                        color: `${
+                          data.secondaryTextColor != null
+                            ? data.secondaryTextColor
+                            : "rgb(123, 124, 230)"
+                        }`,
+                      }}
+                      dangerouslySetInnerHTML={{
+                        __html: sanitizer(
+                          data.secondaryText != null
+                            ? data.secondaryText
+                            : "&nbsp;"
+                        ),
+                      }}
+                    ></div>
                     <div className="row-0-2-113">
                       <div className="column-0-2-114">
                         <div>

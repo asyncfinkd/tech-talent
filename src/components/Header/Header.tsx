@@ -7,9 +7,10 @@ import { useHistory } from "react-router-dom";
 
 interface Props {
   ShowLine?: boolean;
+  ShowShadow?: boolean;
 }
 
-const Header: React.FC<Props> = ({ ShowLine }) => {
+const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
   const [showProfile, setShowProfile] = useToggle();
   const [showHeader, setShowHeader] = useToggle();
   const [showLanguage, setShowLanguage] = useToggle();
@@ -45,7 +46,11 @@ const Header: React.FC<Props> = ({ ShowLine }) => {
       <div className="root-0-2-4 fixed-0-2-5 onlyOnDesktop-0-2-6">
         <div className="fluid-0-2-7">
           <div className="gap-0-2-8"></div>
-          <header className="container-0-2-9 header-0-2-10 shadow-0-2-11">
+          <header
+            className={`container-0-2-9 header-0-2-10 ${
+              ShowShadow == true && "shadow-0-2-11"
+            }`}
+          >
             <div className="logo-0-2-12">
               <NavLink to="/">
                 <div className="root-0-2-18">
