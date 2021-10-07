@@ -27,6 +27,9 @@ app.use("/api", User);
 const Companies = require("./router/companies/CompaniesRouter");
 app.use("/api", Companies);
 
+const Edu = require("./router/edu/EduRouter");
+app.use("/api", Edu);
+
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {

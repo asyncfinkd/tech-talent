@@ -175,7 +175,11 @@ const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
                 </div>
                 <div className="fieldName-0-2-25">{t("COURSES")}</div>
               </a>
-              <a className="field-0-2-23" href="/edu">
+              <NavLink
+                className="field-0-2-23"
+                to="/edu"
+                activeClassName="active__NAVLINK__HEADER__EDUCATION"
+              >
                 <div
                   className="root-0-2-30 sizeMd-0-2-31 capsule-0-2-26"
                   style={{ backgroundColor: "rgb(204, 224, 255)" }}
@@ -200,11 +204,15 @@ const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
                           d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM12 3.44774C16.7233 3.44774 20.5523 7.27672 20.5523 12C20.5523 16.7233 16.7233 20.5523 12 20.5523C7.27672 20.5523 3.44774 16.7233 3.44774 12C3.44774 7.27672 7.27672 3.44774 12 3.44774ZM15.0084 8.08461L10.0964 9.6218C9.87 9.69266 9.69266 9.87 9.6218 10.0964L8.08461 15.0084C7.91011 15.566 8.43404 16.0899 8.99164 15.9154L13.9036 14.3782C14.13 14.3073 14.3073 14.13 14.3782 13.9036L15.9154 8.99164C16.0899 8.43404 15.566 7.91011 15.0084 8.08461ZM14.1204 9.87856L13.109 13.109L9.87856 14.1204L10.8901 10.8901L14.1204 9.87856Z"
                         ></path>
                       </svg>
+                      <div
+                        className="selectionLine-0-2-29 hiddeN__FOR__SELECTHEADER__EDU"
+                        style={{ backgroundColor: "#0062FF" }}
+                      ></div>
                     </div>
                   </div>
                 </div>
                 <div className="fieldName-0-2-25">{t("EDUCATION")}</div>
-              </a>
+              </NavLink>
             </div>
             <div className="gapColumn-0-2-14"></div>
             {localStorage.getItem("local") ? (

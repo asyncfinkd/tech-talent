@@ -21,6 +21,7 @@ import CompaniesDetailPages from "./pages/companies/CompaniesDetailPages";
 import axios from "axios";
 import env from "./application/environment/env.json";
 import ProfileCompaniesPages from "./pages/profile/ProfileCompaniesPages";
+import EduPages from "./pages/edu/EduPages";
 
 const App: React.FC = () => {
   const local = localStorage.getItem("local");
@@ -92,6 +93,7 @@ const App: React.FC = () => {
               <Route path="/terms" exact component={TermsAndConditions} />
               <Route path="/about" exact component={AboutPages} />
               <Route path="/c/:id" exact component={CompaniesDetailPages} />
+              <Route path="/edu" exact component={EduPages} />
               <Route exact component={ErrorPages} />
             </Switch>
           </BrowserRouter>
