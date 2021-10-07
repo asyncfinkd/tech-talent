@@ -182,9 +182,11 @@ const CoursesPages: React.FC = () => {
                 );
               })}
             </div>
-            <button className="root-0-2-46 root-0-2-270 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantSecondary-0-2-55">
-              Load More
-            </button>
+            {data.length > 10 && (
+              <button className="root-0-2-46 root-0-2-270 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantSecondary-0-2-55">
+                Load More
+              </button>
+            )}
           </div>
         </div>
       </main>
