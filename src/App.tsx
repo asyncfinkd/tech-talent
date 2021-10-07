@@ -23,10 +23,19 @@ import env from "./application/environment/env.json";
 import ProfileCompaniesPages from "./pages/profile/ProfileCompaniesPages";
 import EduPages from "./pages/edu/EduPages";
 import EduDetailPages from "./pages/edu/EduDetailPages";
+import CoursesPages from "./pages/courses/CoursesPages";
 
 const App: React.FC = () => {
   const local = localStorage.getItem("local");
   const [jwtDecode, setJwtDecode] = useState<any>({});
+  //   const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+
+  // const firstDate = new Date(2021, 05, 05);
+  // const secondDate = new Date(2021, 10, 7);
+
+  // const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+
+  // console.log(diffDays);
   useEffect(() => {
     if (local) {
       let decoded: any = jwt_decode(local);
@@ -96,6 +105,7 @@ const App: React.FC = () => {
               <Route path="/c/:id" exact component={CompaniesDetailPages} />
               <Route path="/edu" exact component={EduPages} />
               <Route path="/e/:id" exact component={EduDetailPages} />
+              <Route path="/courses" exact component={CoursesPages} />
               <Route exact component={ErrorPages} />
             </Switch>
           </BrowserRouter>

@@ -145,7 +145,7 @@ const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
                 </div>
                 <div className="fieldName-0-2-25">{t("COMPANIES")}</div>
               </NavLink>
-              <a className="field-0-2-23" href="/courses/[[...slug]]">
+              <Link className="field-0-2-23" to="/courses">
                 <div
                   className="root-0-2-30 sizeMd-0-2-31 capsule-0-2-26"
                   style={{ backgroundColor: "rgb(255, 213, 201)" }}
@@ -174,7 +174,7 @@ const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
                   </div>
                 </div>
                 <div className="fieldName-0-2-25">{t("COURSES")}</div>
-              </a>
+              </Link>
               <NavLink
                 className="field-0-2-23"
                 to="/edu"
