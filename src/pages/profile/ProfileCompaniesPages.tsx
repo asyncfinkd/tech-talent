@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
@@ -14,6 +14,11 @@ const ProfileCompaniesPages: React.FC = () => {
   const [spinner, setSpinner] = useState<Boolean>(true);
   const [data, setData] = useState<any>([]);
   const local = localStorage.getItem("local");
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   const history = useHistory();
   useEffect(() => {
     axios
@@ -29,7 +34,7 @@ const ProfileCompaniesPages: React.FC = () => {
         setSpinner(false);
       });
   }, []);
- 
+
   return (
     <>
       <Helmet>
