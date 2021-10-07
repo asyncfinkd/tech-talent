@@ -5,6 +5,7 @@ import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import env from "../../application/environment/env.json";
 import CoursesMap from "../../components/Courses/CoursesMap";
+import { Helmet } from "react-helmet";
 
 const CoursesPages: React.FC = () => {
   const [data, setData] = useState<any>([]);
@@ -38,6 +39,9 @@ const CoursesPages: React.FC = () => {
   }, [search]);
   return (
     <>
+      <Helmet>
+        <title>Courses | Tech Talent</title>
+      </Helmet>
       <Header ShowShadow={true} />
       <main className="main-0-2-2">
         <div>
