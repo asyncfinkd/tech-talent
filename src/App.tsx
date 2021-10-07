@@ -28,14 +28,6 @@ import CoursesPages from "./pages/courses/CoursesPages";
 const App: React.FC = () => {
   const local = localStorage.getItem("local");
   const [jwtDecode, setJwtDecode] = useState<any>({});
-  //   const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-
-  // const firstDate = new Date(2021, 05, 05);
-  // const secondDate = new Date(2021, 10, 7);
-
-  // const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
-
-  // console.log(diffDays);
   useEffect(() => {
     if (local) {
       let decoded: any = jwt_decode(local);
