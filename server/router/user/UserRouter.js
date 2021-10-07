@@ -258,7 +258,6 @@ router
         });
       });
     });
-    // res.json(data);
   });
 
 module.exports = router;

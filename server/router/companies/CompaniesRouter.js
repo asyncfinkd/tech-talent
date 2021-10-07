@@ -42,6 +42,16 @@ router
         result.save();
       });
     });
+    CompaniesSchema.findOne({ _id: req.body.id }).then((result) => {
+      UserSchema.findOne({ _id: req._id }).then((result2) => {
+        result2.followedCompaniesId.map((item) => {
+          if (result._id == item.id) {
+            item.remove();
+          }
+          result2.save();
+        });
+      });
+    });
     res.json("success");
   });
 

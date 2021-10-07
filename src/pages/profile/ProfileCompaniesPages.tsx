@@ -7,6 +7,7 @@ import Header from "../../components/Header/Header";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 import env from "../../application/environment/env.json";
 import { Helmet } from "react-helmet";
+import ProfileCompaniesMap from "../../components/Profile/ProfileCompaniesMap";
 
 const ProfileCompaniesPages: React.FC = () => {
   const { jwtDecode, setJwtDecode } = useContext(ApplicationContext);
@@ -28,6 +29,7 @@ const ProfileCompaniesPages: React.FC = () => {
         setSpinner(false);
       });
   }, []);
+ 
   return (
     <>
       <Helmet>
@@ -277,52 +279,7 @@ const ProfileCompaniesPages: React.FC = () => {
                         {data.map((item: any) => {
                           return (
                             <>
-                              <div className="root-0-2-223 rootSlice-0-2-224 root-0-2-217">
-                                <div className="header-0-2-225">
-                                  <div className="IMAGE_0_2_226__ imageSlice-0-2-227 image-0-2-218">
-                                    <Link to={`/c/${item.slug}`}>
-                                      <img
-                                        className="image-0-2-218"
-                                        src={`${env.server}${item.logoUrl}`}
-                                        alt={item.name}
-                                      />
-                                    </Link>
-                                  </div>
-                                  <div className="primaryColumn-0-2-238">
-                                    <div className="primaryColumnTop-0-2-239">
-                                      <Link
-                                        className="companyName-0-2-219"
-                                        to={`/c/${item.slug}`}
-                                      >
-                                        {item.name}
-                                      </Link>
-                                    </div>
-                                    <div className="primaryColumnBottom-0-2-240">
-                                      {item.industry != null && item.industry}
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="lineFirst-0-2-234 lineFirstSlice-0-2-235"></div>
-                                <div className="secondaryColumn-0-2-241">
-                                  <div className="secondaryColumnTop-0-2-242">
-                                    {item.primaryText != null &&
-                                      item.primaryText}
-                                  </div>
-                                  <div className="secondaryColumnBottom-0-2-243">
-                                    {item.secondaryText != null &&
-                                      item.secondaryText}
-                                  </div>
-                                </div>
-                                <div className="lineSecond-0-2-236 lineSecondSlice-0-2-237"></div>
-                                <div className="tertiaryColumn-0-2-244">
-                                  <div className="secondaryButton-0-2-245"></div>
-                                  <div className="primaryButton-0-2-246">
-                                    <button className="root-0-2-48 animation-0-2-49 weightMedium-0-2-63 sizeSm-0-2-52 variantSecondary-0-2-57">
-                                      Unfollow
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
+                              <ProfileCompaniesMap item={item} env={env} />
                             </>
                           );
                         })}
