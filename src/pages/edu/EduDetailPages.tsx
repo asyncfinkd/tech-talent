@@ -6,6 +6,7 @@ import env from "../../application/environment/env.json";
 import DOMPurify from "dompurify";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 import { useHistory, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const EduDetailPages: React.FC = () => {
   const { pathname } = useLocation();
@@ -49,6 +50,9 @@ const EduDetailPages: React.FC = () => {
   });
   return (
     <>
+      <Helmet>
+        <title>{data.name && `${data.name} | Tech Talent`}</title>
+      </Helmet>
       <Header ShowLine={true} />
       <main className="main-0-2-2">
         <div className="root-0-2-442">
