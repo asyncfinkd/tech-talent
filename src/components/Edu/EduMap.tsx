@@ -12,7 +12,6 @@ const EduMap: React.FC<any> = ({ item, env }: any) => {
   const [followers, setFollowers] = useState<String | any>(
     item.followedUsersId.length
   );
-  const local = localStorage.getItem("local");
   useEffect(() => {
     if (!changed) {
       setFollowers(item.followedUsersId.length);
