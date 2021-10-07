@@ -5,9 +5,14 @@ import Header from "../../components/Header/Header";
 import env from "../../application/environment/env.json";
 import DOMPurify from "dompurify";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 const EduDetailPages: React.FC = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   const [data, setData] = useState<any>([]);
   const [followed, setFollowed] = useState<Boolean>(false);
   const [unFollow, setUnFollow] = useState<Boolean>(false);
