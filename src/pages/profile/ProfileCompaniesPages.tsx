@@ -10,10 +10,15 @@ import { Helmet } from "react-helmet";
 import ProfileCompaniesMap from "../../components/Profile/ProfileCompaniesMap";
 
 const ProfileCompaniesPages: React.FC = () => {
+  const local = localStorage.getItem("local");
+  useEffect(() => {
+    if (!local || !jwtDecode) {
+      history.push("/login");
+    }
+  }, []);
   const { jwtDecode, setJwtDecode } = useContext(ApplicationContext);
   const [spinner, setSpinner] = useState<Boolean>(true);
   const [data, setData] = useState<any>([]);
-  const local = localStorage.getItem("local");
   const { pathname } = useLocation();
 
   useEffect(() => {

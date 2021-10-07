@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Footer from "../../components/Footer/Footer";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
@@ -16,9 +16,15 @@ type Input = {
 };
 
 const ProfileSecurityPages: React.FC = () => {
+  const local = localStorage.getItem("local");
+  const history = useHistory();
+  useEffect(() => {
+    if (!local || !jwtDecode) {
+      history.push("/login");
+    }
+  }, []);
   const { jwtDecode } = useContext(ApplicationContext);
   const { t } = useTranslation();
-  const local = localStorage.getItem("local");
   const [inCorrectPassword, setInCorrectPassword] = useState<Boolean>(false);
   const [spinner, setSpinner] = useState<Boolean>(false);
   const { pathname } = useLocation();
