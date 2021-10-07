@@ -8,11 +8,33 @@ import EduMap from "../../components/Edu/EduMap";
 
 const EduPages: React.FC = () => {
   const [data, setData] = useState<any>([]);
+  const [search, setSearch] = useState<String | any>("");
+  const [result, setResult] = useState<any>([]);
   useEffect(() => {
     axios.post(`${env.host}/api/get/edu`).then((result: any) => {
       setData(result.data);
+      setResult(result.data);
     });
   }, []);
+  const identificationSearch = () => {
+    if (search.length == 0) {
+      setData(result);
+    } else {
+      setData(
+        result.filter((val: any) => {
+          if (search == "") {
+            return val;
+          } else if (val.name.toLowerCase().includes(search.toLowerCase())) {
+            return val;
+          }
+        })
+      );
+    }
+  };
+
+  useEffect(() => {
+    identificationSearch();
+  }, [search]);
   return (
     <>
       <Header ShowShadow={true} />
@@ -94,7 +116,8 @@ const EduPages: React.FC = () => {
                       className="input-0-2-111"
                       type="text"
                       placeholder="Find an educational facility tailored for you"
-                      value=""
+                      value={search}
+                      onChange={(e: any) => setSearch(e.target.value)}
                     />
                   </div>
                   <button
@@ -102,7 +125,7 @@ const EduPages: React.FC = () => {
                     type="submit"
                   >
                     <div className="countContainer-0-2-128">
-                      <div className="count-0-2-129">5</div>
+                      <div className="count-0-2-129">{data.length}</div>
                       <div className="countLabel-0-2-130">Results</div>
                     </div>
                   </button>
