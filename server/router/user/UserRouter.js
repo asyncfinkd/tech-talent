@@ -244,19 +244,23 @@ router
   .all(loginMiddleware)
   .post(async (req, res) => {
     UserSchema.findOne({ _id: req._id }).then((result) => {
-      let data = [];
-      result.followedCompaniesId.map((item) => {
-        CompaniesSchema.find().then((result2) => {
-          result2.map((resMap) => {
-            if (resMap._id == item.id) {
-              data.push(resMap);
+      if (result.followedCompaniesId.length == 0) {
+        res.json([]);
+      } else {
+        let data = [];
+        result.followedCompaniesId.map((item) => {
+          CompaniesSchema.find().then((result2) => {
+            result2.map((resMap) => {
+              if (resMap._id == item.id) {
+                data.push(resMap);
+              }
+            });
+            if (data.length == result.followedCompaniesId.length) {
+              res.json(data);
             }
           });
-          if (data.length == result.followedCompaniesId.length) {
-            res.json(data);
-          }
         });
-      });
+      }
     });
   });
 
