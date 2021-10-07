@@ -8,13 +8,34 @@ import CoursesMap from "../../components/Courses/CoursesMap";
 
 const CoursesPages: React.FC = () => {
   const [data, setData] = useState<any>([]);
+  const [search, setSearch] = useState<any>([]);
+  const [result, setResult] = useState<any>([]);
   useEffect(() => {
     axios.post(`${env.host}/api/get/courses`).then((result: any) => {
       setData(result.data);
+      setResult(result.data);
       console.log(result.data);
     });
   }, []);
+  const identificationSearch = () => {
+    if (search.length == 0) {
+      setData(result);
+    } else {
+      setData(
+        result.filter((val: any) => {
+          if (search == "") {
+            return val;
+          } else if (val.name.toLowerCase().includes(search.toLowerCase())) {
+            return val;
+          }
+        })
+      );
+    }
+  };
 
+  useEffect(() => {
+    identificationSearch();
+  }, [search]);
   return (
     <>
       <Header ShowShadow={true} />
@@ -155,7 +176,8 @@ const CoursesPages: React.FC = () => {
                       className="input-0-2-239"
                       type="text"
                       placeholder="Find your dream course"
-                      value=""
+                      value={search}
+                      onChange={(e: any) => setSearch(e.target.value)}
                     />
                   </div>
                   <button
