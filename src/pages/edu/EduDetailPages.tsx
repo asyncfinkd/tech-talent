@@ -1,20 +1,46 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import env from "../../application/environment/env.json";
 import DOMPurify from "dompurify";
+import { ApplicationContext } from "../../context/Application/ApplicationContext";
+import { useHistory } from "react-router-dom";
 
 const EduDetailPages: React.FC = () => {
   const [data, setData] = useState<any>([]);
+  const [followed, setFollowed] = useState<Boolean>(false);
+  const [unFollow, setUnFollow] = useState<Boolean>(false);
+  const [changed, setChanged] = useState<Boolean>(false);
   const sanitizer = DOMPurify.sanitize;
   const [collapse, setCollapse] = useState<Boolean>(false);
+  const history = useHistory();
+  const [followers, setFollowers] = useState<String | any>(
+    data?.followedUsersId?.length
+  );
+  const { jwtDecode } = useContext(ApplicationContext);
   useEffect(() => {
     let splitURL = window.location.pathname.split("/");
     axios.get(`${env.host}/api/get/edu/${splitURL[2]}`).then((result: any) => {
       setData(result.data[0]);
       console.log(result.data[0]);
     });
+  });
+  useEffect(() => {
+    if (!changed) {
+      setFollowers(data?.followedUsersId?.length);
+    }
+    if (!unFollow) {
+      if (data?.followedUsersId?.length != 0) {
+        data?.followedUsersId?.map((item: any) => {
+          if (item.id == jwtDecode._id) {
+            setFollowed(true);
+          }
+        });
+      }
+    } else {
+      setFollowed(false);
+    }
   });
   return (
     <>
@@ -77,14 +103,68 @@ const EduDetailPages: React.FC = () => {
                   </div>
                   <div className="buttonGroup-0-2-460">
                     <div className="buttonContainer-0-2-461">
-                      <button className="root-0-2-46 button-0-2-478 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54">
-                        Follow
+                      <button
+                        className={
+                          followed
+                            ? "root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
+                            : "root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54"
+                        }
+                        onClick={() => {
+                          if (!localStorage.getItem("local")) {
+                            history.push("/register");
+                          } else {
+                            setChanged(true);
+                            const local = localStorage.getItem("local");
+                            if (followed) {
+                              axios
+                                .post(
+                                  `${env.host}/api/unfollow/edus`,
+                                  {
+                                    id: data._id,
+                                  },
+                                  {
+                                    headers: {
+                                      Authorization: `Bearer ${local}`,
+                                    },
+                                  }
+                                )
+                                .then((result: any) => {
+                                  if (result.data === "success") {
+                                    setUnFollow(true);
+                                    setFollowers(followers - 1);
+                                  }
+                                });
+                            } else {
+                              axios
+                                .post(
+                                  `${env.host}/api/follow/edus`,
+                                  {
+                                    id: data._id,
+                                  },
+                                  {
+                                    headers: {
+                                      Authorization: `Bearer ${local}`,
+                                    },
+                                  }
+                                )
+                                .then((result: any) => {
+                                  if (result.data === "success") {
+                                    setUnFollow(false);
+                                    setFollowed(true);
+                                    setFollowers(followers + 1);
+                                  }
+                                });
+                            }
+                          }
+                        }}
+                      >
+                        {followed ? "Unfollow" : " Follow"}
                       </button>
                       <div style={{ width: "0.5rem" }}></div>
                       <button
                         className="root-0-2-46 button-0-2-478 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantSecondary-0-2-55"
                         onClick={() => {
-                          window.open(data.url, '_blank');
+                          window.open(data.url, "_blank");
                         }}
                       >
                         Website
@@ -165,7 +245,7 @@ const EduDetailPages: React.FC = () => {
                       <div className="capsuleLabelValuePair-0-2-471">
                         <div className="capsuleLabel-0-2-472">Followers</div>
                         <div className="capsuleValuePrimary-0-2-473">
-                          {/* {data.followedUsersId.length} */}2
+                          {followers}
                         </div>
                       </div>
                     </div>
