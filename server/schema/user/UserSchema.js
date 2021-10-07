@@ -5,6 +5,10 @@ const FollowedCompaniesId = mongoose.Schema({
   id: { type: String },
 });
 
+const FollowedEdusId = mongoose.Schema({
+  id: { type: String },
+});
+
 const userSchema = mongoose.Schema({
   firstName: { type: String },
   lastName: { type: String },
@@ -23,6 +27,7 @@ const userSchema = mongoose.Schema({
   role: { type: String },
   createdAt: { type: String },
   followedCompaniesId: [FollowedCompaniesId],
+  followedEdusId: [FollowedEdusId],
 });
 
 const User = mongoose.model("users", userSchema);
