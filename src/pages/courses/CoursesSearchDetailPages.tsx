@@ -13,7 +13,10 @@ const CoursesSearchDetailPages: React.FC = () => {
   const { pathname } = useLocation();
   const [text, setText] = useState<string>("");
   const [spinner, setSpinner] = useState<boolean>(true);
+  const [result, setResult] = useState<any>([]);
   const splitedUrlHead = window.location.pathname.split("/");
+  const [slice, setSlice] = useState<number>(10);
+  const [search, setSearch] = useState("");
   useEffect(() => {
     setSpinner(true);
     axios
@@ -22,6 +25,7 @@ const CoursesSearchDetailPages: React.FC = () => {
       )
       .then((result: any) => {
         setData(result.data);
+        setResult(result.data);
         setSpinner(false);
       });
   }, [pathname]);
@@ -35,6 +39,43 @@ const CoursesSearchDetailPages: React.FC = () => {
       return "n";
     }
   };
+  const renderButton = () => {
+    if (data.length > slice) {
+      return (
+        <>
+          <button
+            className="root-0-2-46 root-0-2-270 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantSecondary-0-2-55"
+            onClick={() => {
+              if (data.length != slice) {
+                setSlice(slice + 10);
+              }
+            }}
+          >
+            Load More
+          </button>
+        </>
+      );
+    }
+  };
+  const identificationSearch = () => {
+    if (search.length == 0) {
+      setData(result);
+    } else {
+      setData(
+        result.filter((val: any) => {
+          if (search == "") {
+            return val;
+          } else if (val.name.toLowerCase().includes(search.toLowerCase())) {
+            return val;
+          }
+        })
+      );
+    }
+  };
+
+  useEffect(() => {
+    identificationSearch();
+  }, [search]);
   return (
     <>
       <Header ShowShadow={true} />
@@ -118,8 +159,8 @@ const CoursesSearchDetailPages: React.FC = () => {
                       className="input-0-2-239"
                       type="text"
                       placeholder="Find your dream course"
-                      //   value={search}
-                      //   onChange={(e: any) => setSearch(e.target.value)}
+                      value={search}
+                      onChange={(e: any) => setSearch(e.target.value)}
                     />
                   </div>
                   {spinner ? (
@@ -181,7 +222,7 @@ const CoursesSearchDetailPages: React.FC = () => {
           </div>
           <div className="marginOnMobile-0-2-139">
             <div className="root-0-2-194">
-              {data?.map((item: any) => {
+              {data?.slice(0, slice).map((item: any) => {
                 return (
                   <>
                     <CoursesMap item={item} env={env} />
@@ -189,7 +230,7 @@ const CoursesSearchDetailPages: React.FC = () => {
                 );
               })}
             </div>
-            {/* {renderButton()} */}
+            {renderButton()}
           </div>
         </div>
       </main>
