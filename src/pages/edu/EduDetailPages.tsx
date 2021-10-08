@@ -7,6 +7,7 @@ import DOMPurify from "dompurify";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 import { useHistory, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import EduDetailMap from "../../components/Edu/EduDetailMap";
 
 const EduDetailPages: React.FC = () => {
   const { pathname } = useLocation();
@@ -15,6 +16,7 @@ const EduDetailPages: React.FC = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
   const [data, setData] = useState<any>([]);
+  const [courses, setCourses] = useState<any>([]);
   const [followed, setFollowed] = useState<Boolean>(false);
   const [unFollow, setUnFollow] = useState<Boolean>(false);
   const [changed, setChanged] = useState<Boolean>(false);
@@ -31,7 +33,14 @@ const EduDetailPages: React.FC = () => {
       setData(result.data[0]);
       console.log(result.data[0]);
     });
-  });
+    axios
+      .post(`${env.host}/api/get/edu/posts`, {
+        id: data._id,
+      })
+      .then((result: any) => {
+        setCourses(result.data);
+      });
+  }, []);
   useEffect(() => {
     if (!changed) {
       setFollowers(data?.followedUsersId?.length);
@@ -368,6 +377,22 @@ const EduDetailPages: React.FC = () => {
                     <div className="aboutContent-0-2-476">
                       {data.about != null && data.about}
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="marginOnMobile-0-2-134">
+              <div className="body-0-2-275">
+                <div className="root-0-2-281 hideOnMobile-0-2-280">
+                  <h2 className="h2-0-2-282">Latest Courses</h2>
+                  <div className="grid-0-2-283">
+                    {courses.map((item: any) => {
+                      return (
+                        <>
+                          <EduDetailMap item={item} />
+                        </>
+                      );
+                    })}
                   </div>
                 </div>
               </div>

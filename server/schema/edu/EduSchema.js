@@ -9,6 +9,10 @@ const FollowedUsersId = mongoose.Schema({
   id: { type: String },
 });
 
+const CoursesId = mongoose.Schema({
+  id: { type: String },
+});
+
 const EduSchema = mongoose.Schema({
   about: { type: String },
   address: { type: String },
@@ -31,6 +35,7 @@ const EduSchema = mongoose.Schema({
   tags: [Tags],
   url: { type: String },
   followedUsersId: [FollowedUsersId],
+  coursesId: [CoursesId],
 });
 
 const Edu = mongoose.model("edus", EduSchema);
