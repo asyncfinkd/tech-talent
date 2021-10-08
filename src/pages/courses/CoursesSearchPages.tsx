@@ -11,6 +11,8 @@ const CoursesSearchPages: React.FC = () => {
   const [data, setData] = useState<any>([]);
   const [text, setText] = useState<string>("tech");
   const [spinner, setSpinner] = useState<boolean>(true);
+  const [search, setSearch] = useState<string>("");
+  const [result, setResult] = useState<any>([]);
   const { pathname } = useLocation();
   useEffect(() => {
     let splitUrl = window.location.pathname.split("/");
@@ -19,6 +21,7 @@ const CoursesSearchPages: React.FC = () => {
       .get(`${env.host}/api/get/courses/${splitUrl[2]}`)
       .then((result: any) => {
         setData(result.data);
+        setResult(result.data);
         setSpinner(false);
       });
   }, [pathname]);
@@ -64,6 +67,25 @@ const CoursesSearchPages: React.FC = () => {
       }
     });
   }, [pathname]);
+  const identificationSearch = () => {
+    if (search.length == 0) {
+      setData(result);
+    } else {
+      setData(
+        result.filter((val: any) => {
+          if (search == "") {
+            return val;
+          } else if (val.name.toLowerCase().includes(search.toLowerCase())) {
+            return val;
+          }
+        })
+      );
+    }
+  };
+
+  useEffect(() => {
+    identificationSearch();
+  }, [search]);
   return (
     <>
       <Header ShowShadow={true} />
@@ -148,8 +170,8 @@ const CoursesSearchPages: React.FC = () => {
                       className="input-0-2-239"
                       type="text"
                       placeholder="Find your dream course"
-                      //   value={search}
-                      //   onChange={(e: any) => setSearch(e.target.value)}
+                      value={search}
+                      onChange={(e: any) => setSearch(e.target.value)}
                     />
                   </div>
                   {spinner ? (
