@@ -1,16 +1,22 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Header from "../../components/Header/Header";
 
 const RegisterPages: React.FC = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
+  const history = useHistory();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+  useEffect(() => {
+    if (localStorage.getItem("local")) {
+      history.push("/");
+    }
+  });
   return (
     <>
       <Helmet>

@@ -25,7 +25,7 @@ const CoursesSchema = mongoose.Schema({
   name: { type: String },
   platformId: { type: String },
   ogImageUrl: { type: String },
-  price: { type: String },
+  price: { type: Number },
   reviewState: { type: String },
   slug: { type: String },
   slugName: { type: String },
