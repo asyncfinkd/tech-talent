@@ -33,14 +33,20 @@ const EduDetailPages: React.FC = () => {
       setData(result.data[0]);
       console.log(result.data[0]);
     });
-    axios
-      .post(`${env.host}/api/get/edu/posts`, {
-        id: data._id,
-      })
-      .then((result: any) => {
-        setCourses(result.data);
-      });
   }, []);
+  useEffect(() => {
+    if (courses.length == 0) {
+      if (data._id != "" && data._id != undefined) {
+        axios
+          .post(`${env.host}/api/get/edu/posts`, {
+            id: data._id,
+          })
+          .then((result: any) => {
+            setCourses(result.data);
+          });
+      }
+    }
+  }, [data]);
   useEffect(() => {
     if (!changed) {
       setFollowers(data?.followedUsersId?.length);

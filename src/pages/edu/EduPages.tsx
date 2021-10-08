@@ -6,6 +6,7 @@ import env from "../../application/environment/env.json";
 import { useState } from "react";
 import EduMap from "../../components/Edu/EduMap";
 import { Helmet } from "react-helmet";
+import { useLocation } from "react-router-dom";
 
 const EduPages: React.FC = () => {
   const [data, setData] = useState<any>([]);
@@ -36,11 +37,15 @@ const EduPages: React.FC = () => {
   useEffect(() => {
     identificationSearch();
   }, [search]);
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title>Education | Tech Talent</title>
-    </Helmet>
+      </Helmet>
       <Header ShowShadow={true} />
       <main className="main-0-2-2">
         <div className="root-0-2-233">

@@ -69,16 +69,18 @@ router.route("/get/edu/:id").get(async (req, res) => {
 });
 
 router.route("/get/edu/posts").post(async (req, res) => {
-  EduSchema.findOne({ id: req.body.id }).then((result) => {
+  EduSchema.findOne({ _id: req.body.id }).then((result) => {
     CoursesSchema.find().then((result2) => {
       let data = [];
-      result.coursesId.map((item) => {
-        result2.map((item2) => {
-          if (item.id == item2._id) {
-            data.push(item2);
-          }
+      if (result.coursesId.length != 0) {
+        result?.coursesId?.map((item) => {
+          result2.map((item2) => {
+            if (item.id == item2._id) {
+              data.push(item2);
+            }
+          });
         });
-      });
+      }
       res.json(data);
     });
   });
