@@ -25,6 +25,7 @@ import EduPages from "./pages/edu/EduPages";
 import EduDetailPages from "./pages/edu/EduDetailPages";
 import CoursesPages from "./pages/courses/CoursesPages";
 import CoursesSearchPages from "./pages/courses/CoursesSearchPages";
+import CoursesSearchDetailPages from "./pages/courses/CoursesSearchDetailPages";
 
 const App: React.FC = () => {
   const local = localStorage.getItem("local");
@@ -100,6 +101,11 @@ const App: React.FC = () => {
               <Route path="/e/:id" exact component={EduDetailPages} />
               <Route path="/courses" exact component={CoursesPages} />
               <Route path="/courses/:id" exact component={CoursesSearchPages} />
+              <Route
+                path="/courses/:id/:type"
+                exact
+                component={CoursesSearchDetailPages}
+              />
               <Route exact component={ErrorPages} />
             </Switch>
           </BrowserRouter>

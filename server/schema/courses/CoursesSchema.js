@@ -34,6 +34,7 @@ const CoursesSchema = mongoose.Schema({
   tags: [Tags],
   url: { type: String },
   youtubeUrl: { type: String },
+  category: { name: { type: String }, slug: { type: String } },
 });
 
 const Courses = mongoose.model("courses", CoursesSchema);

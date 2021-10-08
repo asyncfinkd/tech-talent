@@ -19,4 +19,16 @@ router.route("/get/courses/:type").get(async (req, res) => {
   });
 });
 
+router.route("/get/courses/:type/:id").get(async (req, res) => {
+  CoursesSchema.find().then((result) => {
+    let data = [];
+    result.map((item) => {
+      if (req.params.id == item.category.slug) {
+        data.push(item);
+      }
+    });
+    res.json(data);
+  });
+});
+
 module.exports = router;
