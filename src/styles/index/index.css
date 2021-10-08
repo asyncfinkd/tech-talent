@@ -5941,3 +5941,16 @@
 .noPrice-0-2-190 {
   color: #DCDCDC;
 }
+
+.COURSES__CLASSNAME__ACTIVE {
+  color: rgb(255, 94, 54);
+  font-weight: 500;
+}
+
+.hide__COURSES__CLASSNAME__ACTIVE {
+  display: none;
+}
+
+.COURSES__CLASSNAME__ACTIVE .hide__COURSES__CLASSNAME__ACTIVE {
+  display: block;
+}

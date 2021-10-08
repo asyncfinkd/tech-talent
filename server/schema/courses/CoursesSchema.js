@@ -1,11 +1,6 @@
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 
-const Field = mongoose.Schema({
-  name: { type: String },
-  slug: { type: String },
-});
-
 const Tags = mongoose.Schema({
   text: { type: String },
 });
@@ -24,7 +19,7 @@ const CoursesSchema = mongoose.Schema({
   description: { type: String },
   durationInWeeks: { type: String },
   endDate: { type: String },
-  field: { Field },
+  field: { name: { type: String }, slug: { type: String } },
   isInstallmentAvailable: { type: Boolean },
   lecturers: [],
   name: { type: String },

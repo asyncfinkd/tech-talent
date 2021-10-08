@@ -12,6 +12,7 @@ const CoursesMap: React.FC<any> = ({ item, env }: any) => {
     const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
     setDate(diffDays - 1);
   });
+  // {Field}
   return (
     <>
       <div className="root-0-2-156 rootSlice-0-2-157 root-0-2-266">

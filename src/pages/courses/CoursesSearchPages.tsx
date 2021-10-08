@@ -1,74 +1,71 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import env from "../../application/environment/env.json";
 import CoursesMap from "../../components/Courses/CoursesMap";
-import { Helmet } from "react-helmet";
-import { Link, NavLink, useLocation } from "react-router-dom";
 import CoursesSearchHeader from "../../components/Courses/CoursesSearchHeader";
+import { useLocation } from "react-router-dom";
 
-const CoursesPages: React.FC = () => {
+const CoursesSearchPages: React.FC = () => {
   const [data, setData] = useState<any>([]);
-  const [search, setSearch] = useState<any>([]);
-  const [slice, setSlice] = useState<number>(10);
+  const [text, setText] = useState<string>("tech");
   const [spinner, setSpinner] = useState<boolean>(true);
-  const [result, setResult] = useState<any>([]);
-  useEffect(() => {
-    axios.post(`${env.host}/api/get/courses`).then((result: any) => {
-      setData(result.data);
-      setResult(result.data);
-      setSpinner(false);
-    });
-  }, []);
-  const identificationSearch = () => {
-    if (search.length == 0) {
-      setData(result);
-    } else {
-      setData(
-        result.filter((val: any) => {
-          if (search == "") {
-            return val;
-          } else if (val.name.toLowerCase().includes(search.toLowerCase())) {
-            return val;
-          }
-        })
-      );
-    }
-  };
-
-  useEffect(() => {
-    identificationSearch();
-  }, [search]);
   const { pathname } = useLocation();
-
   useEffect(() => {
-    window.scrollTo(0, 0);
+    let splitUrl = window.location.pathname.split("/");
+    setSpinner(true);
+    axios
+      .get(`${env.host}/api/get/courses/${splitUrl[2]}`)
+      .then((result: any) => {
+        setData(result.data);
+        setSpinner(false);
+      });
   }, [pathname]);
-  const renderButton = () => {
-    if (data.length > slice) {
-      return (
-        <>
-          <button
-            className="root-0-2-46 root-0-2-270 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantSecondary-0-2-55"
-            onClick={() => {
-              if (data.length != slice) {
-                setSlice(slice + 10);
-              }
-            }}
-          >
-            Load More
-          </button>
-        </>
-      );
-    }
-  };
+  useEffect(() => {
+    const data = [
+      {
+        condition: "dev",
+        put: "development",
+      },
+      {
+        condition: "design",
+        put: "design",
+      },
+      {
+        condition: "marketing",
+        put: "marketing",
+      },
+      {
+        condition: "product",
+        put: "product",
+      },
+      {
+        condition: "ops",
+        put: "operations",
+      },
+      {
+        condition: "qa",
+        put: "QA",
+      },
+      {
+        condition: "ai",
+        put: "AI",
+      },
+      {
+        condition: "support",
+        put: "support",
+      },
+    ];
+    let splitUrl = window.location.pathname.split("/");
+    data.map((item: any) => {
+      if (item.condition == splitUrl[2]) {
+        setText(item.put);
+      }
+    });
+  }, [pathname]);
   return (
     <>
-      <Helmet>
-        <title>Courses | Tech Talent</title>
-      </Helmet>
       <Header ShowShadow={true} />
       <main className="main-0-2-2">
         <div>
@@ -77,7 +74,8 @@ const CoursesPages: React.FC = () => {
               <form>
                 <div className="header-0-2-231">
                   <h1 className="h1-0-2-232">
-                    Find a <span>tech </span>course <br />
+                    Find a{text == "AI" && "n"} <span>{text} </span>course{" "}
+                    <br />
                     that suits your passion
                   </h1>
                   <div className="buttonGroup-0-2-243"></div>
@@ -150,8 +148,8 @@ const CoursesPages: React.FC = () => {
                       className="input-0-2-239"
                       type="text"
                       placeholder="Find your dream course"
-                      value={search}
-                      onChange={(e: any) => setSearch(e.target.value)}
+                      //   value={search}
+                      //   onChange={(e: any) => setSearch(e.target.value)}
                     />
                   </div>
                   {spinner ? (
@@ -208,7 +206,7 @@ const CoursesPages: React.FC = () => {
           </div>
           <div className="marginOnMobile-0-2-139">
             <div className="root-0-2-194">
-              {data?.slice(0, slice).map((item: any) => {
+              {data?.map((item: any) => {
                 return (
                   <>
                     <CoursesMap item={item} env={env} />
@@ -216,7 +214,7 @@ const CoursesPages: React.FC = () => {
                 );
               })}
             </div>
-            {renderButton()}
+            {/* {renderButton()} */}
           </div>
         </div>
       </main>
@@ -225,4 +223,4 @@ const CoursesPages: React.FC = () => {
   );
 };
 
-export default CoursesPages;
+export default CoursesSearchPages;
