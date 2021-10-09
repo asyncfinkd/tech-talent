@@ -45,6 +45,17 @@ const RegisterCandidatePages: React.FC = () => {
       return "input-0-2-251";
     }
   };
+  const renderLinks = () => {
+    if (urlParameters.get("return_to") != null) {
+      return `/register/candidate/info?return_to=${urlParameters.get(
+        "return_to"
+      )}&fieldType=${urlParameters.get("fieldType")}`;
+    } else {
+      return `/register/candidate/info?fieldType=${urlParameters.get(
+        "fieldType"
+      )}`;
+    }
+  };
   return (
     <>
       <Helmet>
@@ -291,9 +302,7 @@ const RegisterCandidatePages: React.FC = () => {
                             result.data.access_token
                           );
                           setJwtDecode(result.data.access_token);
-                          history.push(
-                            `/register/candidate/info?cb=%2F&fieldType=${interest}`
-                          );
+                          history.push(renderLinks());
                         }
                       });
                   })}

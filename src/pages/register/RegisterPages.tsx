@@ -17,6 +17,16 @@ const RegisterPages: React.FC = () => {
       history.push("/");
     }
   });
+  const urlParameters = new URLSearchParams(useLocation().search);
+  const renderLinks = (type: string) => {
+    if (urlParameters.get("return_to") != null) {
+      return `/register/candidate?return_to=${urlParameters.get(
+        "return_to"
+      )}&fieldType=${type}`;
+    } else {
+      return `/register/candidate?fieldType=${type}`;
+    }
+  };
   return (
     <>
       <Helmet>
@@ -35,7 +45,7 @@ const RegisterPages: React.FC = () => {
                 <div className="grid-0-2-247">
                   <Link
                     className="root-0-2-46 fieldButton-0-2-249 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                    to="/register/candidate?cb=%2F&amp;fieldType=dev"
+                    to={renderLinks("dev")}
                   >
                     <div className="fieldLeft-0-2-248">
                       <div
@@ -68,7 +78,7 @@ const RegisterPages: React.FC = () => {
                   </Link>
                   <Link
                     className="root-0-2-46 fieldButton-0-2-249 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                    to="/register/candidate?cb=%2F&amp;fieldType=design"
+                    to={renderLinks("design")}
                   >
                     <div className="fieldLeft-0-2-248">
                       <div
@@ -101,7 +111,7 @@ const RegisterPages: React.FC = () => {
                   </Link>
                   <Link
                     className="root-0-2-46 fieldButton-0-2-249 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                    to="/register/candidate?cb=%2F&amp;fieldType=marketing"
+                    to={renderLinks("marketing")}
                   >
                     <div className="fieldLeft-0-2-248">
                       <div
@@ -134,7 +144,7 @@ const RegisterPages: React.FC = () => {
                   </Link>
                   <Link
                     className="root-0-2-46 fieldButton-0-2-249 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                    to="/register/candidate?cb=%2F&amp;fieldType=product"
+                    to={renderLinks("product")}
                   >
                     <div className="fieldLeft-0-2-248">
                       <div
@@ -167,7 +177,7 @@ const RegisterPages: React.FC = () => {
                   </Link>
                   <Link
                     className="root-0-2-46 fieldButton-0-2-249 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                    to="/register/candidate?cb=%2F&amp;fieldType=ops"
+                    to={renderLinks("ops")}
                   >
                     <div className="fieldLeft-0-2-248">
                       <div
@@ -200,7 +210,7 @@ const RegisterPages: React.FC = () => {
                   </Link>
                   <Link
                     className="root-0-2-46 fieldButton-0-2-249 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                    to="/register/candidate?cb=%2F&amp;fieldType=qa"
+                    to={renderLinks("qa")}
                   >
                     <div className="fieldLeft-0-2-248">
                       <div
@@ -233,7 +243,7 @@ const RegisterPages: React.FC = () => {
                   </Link>
                   <Link
                     className="root-0-2-46 fieldButton-0-2-249 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                    to="/register/candidate?cb=%2F&amp;fieldType=ai"
+                    to={renderLinks("ai")}
                   >
                     <div className="fieldLeft-0-2-248">
                       <div
@@ -266,7 +276,7 @@ const RegisterPages: React.FC = () => {
                   </Link>
                   <Link
                     className="root-0-2-46 fieldButton-0-2-249 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                    to="/register/candidate?cb=%2F&amp;fieldType=support"
+                    to={renderLinks("support")}
                   >
                     <div className="fieldLeft-0-2-248">
                       <div

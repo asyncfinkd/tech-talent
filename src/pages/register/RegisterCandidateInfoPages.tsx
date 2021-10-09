@@ -16,6 +16,7 @@ const RegisterCandidateInfoPages: React.FC = () => {
   }, [pathname]);
   const { setJwtDecode } = useContext(ApplicationContext);
   const [firstName, setFirstName] = useState<String>("");
+  const urlParameters = new URLSearchParams(useLocation().search);
   const [lastName, setLastName] = useState<String>("");
   const [fullName, setFullName] = useState<String | any>("");
   const [phone, setPhone] = useState<String | any>("");
@@ -32,6 +33,13 @@ const RegisterCandidateInfoPages: React.FC = () => {
     setLastName(splitName[1]);
   });
   const local = localStorage.getItem("local");
+  const renderLinks = () => {
+    if (urlParameters.get("return_to") != null) {
+      return `/${urlParameters.get("return_to")}`;
+    } else {
+      return `/`;
+    }
+  };
   return (
     <>
       <Helmet>
@@ -143,7 +151,7 @@ const RegisterCandidateInfoPages: React.FC = () => {
                             result.data.access_token
                           );
                           setJwtDecode(result.data.access_token);
-                          history.push("/");
+                          history.push(renderLinks());
                         }
                       });
                   }}

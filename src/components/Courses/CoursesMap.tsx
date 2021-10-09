@@ -114,7 +114,11 @@ const CoursesMap: React.FC<any> = ({ item, env }: any) => {
               <button
                 className="root-0-2-46 hide-0-2-184 normal-0-2-187 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantSecondary-0-2-55"
                 onClick={() => {
-                  history.push("/register");
+                  history.push(
+                    `/register?return_to=${
+                      window.location.pathname.split("/")[1]
+                    }`
+                  );
                 }}
               >
                 <svg
