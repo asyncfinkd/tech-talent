@@ -140,7 +140,11 @@ const EduDetailMap: React.FC<any> = ({ item }: any) => {
                   className="root-0-2-46 hide-0-2-177 normal-0-2-180 animation-0-2-47 weightMedium-0-2-61 variantSecondary-0-2-55"
                   style={{ borderRadius: "10px" }}
                   onClick={() => {
-                    history.push("/register");
+                    history.push(
+                      `/register?return_to=${`${
+                        window.location.pathname.split("/")[1]
+                      }/${window.location.pathname.split("/")[2]}`}`
+                    );
                   }}
                 >
                   <svg

@@ -172,7 +172,11 @@ const CompaniesDetailPages: React.FC = () => {
                         }
                         onClick={() => {
                           if (!localStorage.getItem("local")) {
-                            history.push("/register");
+                            history.push(
+                              `/register?return_to=${`${
+                                window.location.pathname.split("/")[1]
+                              }/${window.location.pathname.split("/")[2]}`}`
+                            );
                           } else {
                             const local = localStorage.getItem("local");
                             if (followed) {
