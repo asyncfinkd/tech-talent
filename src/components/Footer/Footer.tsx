@@ -85,7 +85,7 @@ const Footer: React.FC<Props> = ({ wantSponsors }) => {
                     Tech companies use our platform <br /> to find people that
                     fit their culture.
                   </div>
-                  {jwtDecode ? (
+                  {localStorage.getItem("local") ? (
                     <Link
                       className="root-0-2-46 register-0-2-214 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                       to="/profile/information"
