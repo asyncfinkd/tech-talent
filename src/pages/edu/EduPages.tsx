@@ -7,19 +7,21 @@ import { useState } from "react";
 import EduMap from "../../components/Edu/EduMap";
 import { Helmet } from "react-helmet";
 import { useLocation } from "react-router-dom";
+import { useQuery } from "react-query";
 
 const EduPages: React.FC = () => {
   const [data, setData] = useState<any>([]);
   const [search, setSearch] = useState<String | any>("");
   const [result, setResult] = useState<any>([]);
   const [spinner, setSpinner] = useState<boolean>(true);
-  useEffect(() => {
+  const fetchEdu = () => {
     axios.post(`${env.host}/api/get/edu`).then((result: any) => {
       setData(result.data);
       setResult(result.data);
       setSpinner(false);
     });
-  }, []);
+  };
+  const {} = useQuery("Edu", fetchEdu);
   const identificationSearch = () => {
     if (search.length == 0) {
       setData(result);
