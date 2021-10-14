@@ -328,7 +328,9 @@ const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
                   id="downshift-0-menu"
                 >
                   <li
-                    className={`li-0-2-72 ${showLanguage && "liActive-0-2-73"}`}
+                    className={`li-0-2-72 ${
+                      language == "EN" && "liActive-0-2-73"
+                    }`}
                     id="downshift-0-item-0"
                     onClick={() => {
                       changeLanguage("en");
@@ -361,7 +363,9 @@ const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
                     </button>
                   </li>
                   <li
-                    className="li-0-2-72"
+                    className={`li-0-2-72 ${
+                      language == "KA" && "liActive-0-2-73"
+                    }`}
                     id="downshift-0-item-1"
                     onClick={() => {
                       changeLanguage("ka");
