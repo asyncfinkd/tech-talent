@@ -35,6 +35,14 @@ const EduDetailPages: React.FC = () => {
     });
   }, []);
   useEffect(() => {
+    console.log(courses.length);
+    if (courses.length != 0) {
+      setCollapse(false);
+    } else {
+      setCollapse(true);
+    }
+  });
+  useEffect(() => {
     if (courses.length == 0) {
       if (data._id != "" && data._id != undefined) {
         axios
@@ -427,10 +435,65 @@ const EduDetailPages: React.FC = () => {
                         Be first to get notified
                       </div>
                       <a
-                        className="root-0-2-46 button-0-2-292 animation-0-2-47 weightMedium-0-2-61 sizeLg-0-2-53 variantPrimary-0-2-54"
-                        href="/register?cb=%2Fe%2Ftbcitacademy"
+                        className={
+                          followed
+                            ? "root-0-2-46 button-0-2-292 animation-0-2-47 weightMedium-0-2-61 sizeLg-0-2-53 variantSecondary-0-2-55"
+                            : "root-0-2-46 button-0-2-292 animation-0-2-47 weightMedium-0-2-61 sizeLg-0-2-53 variantPrimary-0-2-54"
+                        }
+                        onClick={() => {
+                          if (!localStorage.getItem("local")) {
+                            history.push(
+                              `/register?return_to=${`${
+                                window.location.pathname.split("/")[1]
+                              }/${window.location.pathname.split("/")[2]}`}`
+                            );
+                          } else {
+                            setChanged(true);
+                            const local = localStorage.getItem("local");
+                            if (followed) {
+                              axios
+                                .post(
+                                  `${env.host}/api/unfollow/edus`,
+                                  {
+                                    id: data._id,
+                                  },
+                                  {
+                                    headers: {
+                                      Authorization: `Bearer ${local}`,
+                                    },
+                                  }
+                                )
+                                .then((result: any) => {
+                                  if (result.data === "success") {
+                                    setUnFollow(true);
+                                    setFollowers(followers - 1);
+                                  }
+                                });
+                            } else {
+                              axios
+                                .post(
+                                  `${env.host}/api/follow/edus`,
+                                  {
+                                    id: data._id,
+                                  },
+                                  {
+                                    headers: {
+                                      Authorization: `Bearer ${local}`,
+                                    },
+                                  }
+                                )
+                                .then((result: any) => {
+                                  if (result.data === "success") {
+                                    setUnFollow(false);
+                                    setFollowed(true);
+                                    setFollowers(followers + 1);
+                                  }
+                                });
+                            }
+                          }
+                        }}
                       >
-                        Follow
+                        {followed ? "Unfollow" : "Follow"}
                       </a>
                     </div>
                   </div>
