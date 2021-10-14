@@ -2,12 +2,14 @@ import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
+import { useCookies } from "react-cookie";
 
 interface Props {
   wantSponsors?: boolean;
 }
 
 const Footer: React.FC<Props> = ({ wantSponsors }) => {
+  const [cookies, setCookie] = useCookies(["local"]);
   const { t } = useTranslation();
   const { jwtDecode } = useContext(ApplicationContext);
   return (
@@ -85,7 +87,7 @@ const Footer: React.FC<Props> = ({ wantSponsors }) => {
                     Tech companies use our platform <br /> to find people that
                     fit their culture.
                   </div>
-                  {localStorage.getItem("local") ? (
+                  {cookies.local ? (
                     <Link
                       className="root-0-2-46 register-0-2-214 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                       to="/profile/information"

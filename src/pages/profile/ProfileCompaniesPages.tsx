@@ -8,9 +8,11 @@ import { ApplicationContext } from "../../context/Application/ApplicationContext
 import env from "../../application/environment/env.json";
 import { Helmet } from "react-helmet";
 import ProfileCompaniesMap from "../../components/Profile/ProfileCompaniesMap";
+import { useCookies } from "react-cookie";
 
 const ProfileCompaniesPages: React.FC = () => {
-  const local = localStorage.getItem("local");
+  const [cookie, setCookie] = useCookies(["local"]);
+  const local = cookie.local;
   useEffect(() => {
     if (!local || !jwtDecode) {
       history.push("/login");

@@ -6,10 +6,12 @@ import { ApplicationContext } from "../../context/Application/ApplicationContext
 import env from "../../application/environment/env.json";
 import { Helmet } from "react-helmet";
 import Header from "../../components/Header/Header";
+import { useCookies } from "react-cookie";
 
 const ProfileInformationPages: React.FC = () => {
+  const [cookie, setCookie] = useCookies(["local"]);
   useEffect(() => {
-    const local = localStorage.getItem("local");
+    const local = cookie.local;
     if (!local || !jwtDecode) {
       history.push("/login");
     }
@@ -26,7 +28,7 @@ const ProfileInformationPages: React.FC = () => {
   const [spinner, setSpinner] = useState<Boolean>(false);
   const [firstName, setFirstName] = useState<String>("");
   const [lastName, setLastName] = useState<String>("");
-  const local = localStorage.getItem("local");
+  const local = cookie.local;
   const [socialNetwork, setSocialNetwork] = useState<String | any>(
     jwtDecode.socialNetwork
   );
@@ -373,10 +375,7 @@ const ProfileInformationPages: React.FC = () => {
                             .then((result: any) => {
                               if (result.data.success) {
                                 setSpinner(false);
-                                localStorage.setItem(
-                                  "local",
-                                  result.data.access_token
-                                );
+                                setCookie("local", result.data.access_token);
                                 setJwtDecode(result.data.access_token);
                               }
                             });

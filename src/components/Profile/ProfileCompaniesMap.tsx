@@ -2,12 +2,14 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
+import { useCookies } from "react-cookie";
 
 const ProfileCompaniesMap: React.FC<any> = ({ item, env }: any) => {
   const [followed, setFollowed] = useState<Boolean>(false);
   const [unFollow, setUnFollow] = useState<Boolean>(false);
   const { jwtDecode } = useContext(ApplicationContext);
   const history = useHistory();
+  const [cookies, setCookie] = useCookies(["local"]);
 
   useEffect(() => {
     if (!unFollow) {
@@ -66,10 +68,10 @@ const ProfileCompaniesMap: React.FC<any> = ({ item, env }: any) => {
                   : "root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54"
               }
               onClick={() => {
-                if (!localStorage.getItem("local")) {
+                if (!cookies.local) {
                   history.push("/register");
                 } else {
-                  const local = localStorage.getItem("local");
+                  const local = cookies.local;
                   if (followed) {
                     axios
                       .post(

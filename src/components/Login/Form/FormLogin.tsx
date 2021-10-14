@@ -7,6 +7,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { ApplicationContext } from "../../../context/Application/ApplicationContext";
 import { useTranslation } from "react-i18next";
+import { useCookies } from "react-cookie";
 
 type Input = {
   email: string;
@@ -14,6 +15,7 @@ type Input = {
 };
 
 const FormLogin: React.FC = () => {
+  const [cookies, setCookie] = useCookies(["local"]);
   const { t } = useTranslation();
   const [spinner, setSpinner] = useToggle();
   const [showMessage, setShowMessage] = useState<Boolean>(false);
@@ -38,7 +40,7 @@ const FormLogin: React.FC = () => {
           setShowMessage(true);
         } else {
           setShowMessage(false);
-          localStorage.setItem("local", result.data.access_token);
+          setCookie("local", result.data.access_token);
           setJwtDecode(result.data.access_token);
           history.push("/");
         }

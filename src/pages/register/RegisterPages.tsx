@@ -3,8 +3,10 @@ import { Helmet } from "react-helmet";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Header from "../../components/Header/Header";
+import { useCookies } from "react-cookie";
 
 const RegisterPages: React.FC = () => {
+  const [cookie, setCookie] = useCookies(["local"]);
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const history = useHistory();
@@ -13,7 +15,7 @@ const RegisterPages: React.FC = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
   useEffect(() => {
-    if (localStorage.getItem("local")) {
+    if (cookie.local) {
       history.push("/");
     }
   });

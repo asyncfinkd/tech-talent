@@ -8,10 +8,11 @@ import { ApplicationContext } from "../../context/Application/ApplicationContext
 import { useHistory, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import EduDetailMap from "../../components/Edu/EduDetailMap";
+import { useCookies } from "react-cookie";
 
 const EduDetailPages: React.FC = () => {
   const { pathname } = useLocation();
-
+  const [cookies, setCookie] = useCookies(["local"]);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
@@ -141,7 +142,7 @@ const EduDetailPages: React.FC = () => {
                             : "root-0-2-46 button-0-2-136 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                         }
                         onClick={() => {
-                          if (!localStorage.getItem("local")) {
+                          if (!cookies.local) {
                             history.push(
                               `/register?return_to=${`${
                                 window.location.pathname.split("/")[1]
@@ -149,7 +150,7 @@ const EduDetailPages: React.FC = () => {
                             );
                           } else {
                             setChanged(true);
-                            const local = localStorage.getItem("local");
+                            const local = cookies.local;
                             if (followed) {
                               axios
                                 .post(
@@ -440,7 +441,7 @@ const EduDetailPages: React.FC = () => {
                             : "root-0-2-46 button-0-2-292 animation-0-2-47 weightMedium-0-2-61 sizeLg-0-2-53 variantPrimary-0-2-54"
                         }
                         onClick={() => {
-                          if (!localStorage.getItem("local")) {
+                          if (!cookies.local) {
                             history.push(
                               `/register?return_to=${`${
                                 window.location.pathname.split("/")[1]
@@ -448,7 +449,7 @@ const EduDetailPages: React.FC = () => {
                             );
                           } else {
                             setChanged(true);
-                            const local = localStorage.getItem("local");
+                            const local = cookies.local;
                             if (followed) {
                               axios
                                 .post(

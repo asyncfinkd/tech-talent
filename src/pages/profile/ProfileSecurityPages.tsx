@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import axios from "axios";
 import env from "../../application/environment/env.json";
 import Header from "../../components/Header/Header";
+import { useCookies } from "react-cookie";
 
 type Input = {
   currentPassword: string;
@@ -16,7 +17,8 @@ type Input = {
 };
 
 const ProfileSecurityPages: React.FC = () => {
-  const local = localStorage.getItem("local");
+  const [cookie, setCookie] = useCookies(["local"]);
+  const local = cookie.local;
   const history = useHistory();
   useEffect(() => {
     if (!local || !jwtDecode) {

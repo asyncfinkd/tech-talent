@@ -6,8 +6,10 @@ import env from "../../application/environment/env.json";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet";
 import Header from "../../components/Header/Header";
+import { useCookies } from "react-cookie";
 
 const RegisterCandidateInfoPages: React.FC = () => {
+  const [cookie, setCookie] = useCookies(["local"]);
   const { t } = useTranslation();
   const { pathname } = useLocation();
 
@@ -23,7 +25,7 @@ const RegisterCandidateInfoPages: React.FC = () => {
   const [socialNetwork, setSocialNetwork] = useState<String | any>("");
   const history = useHistory();
   useEffect(() => {
-    if (!localStorage.getItem("local")) {
+    if (!cookie.local) {
       history.push("/login");
     }
   }, []);
@@ -32,7 +34,7 @@ const RegisterCandidateInfoPages: React.FC = () => {
     setFirstName(splitName[0]);
     setLastName(splitName[1]);
   });
-  const local = localStorage.getItem("local");
+  const local = cookie.local;
   const renderLinks = () => {
     if (urlParameters.get("return_to") != null) {
       return `/${urlParameters.get("return_to")}`;
@@ -146,10 +148,7 @@ const RegisterCandidateInfoPages: React.FC = () => {
                       )
                       .then((result: any) => {
                         if (result.data.success) {
-                          localStorage.setItem(
-                            "local",
-                            result.data.access_token
-                          );
+                          setCookie("local", result.data.access_token);
                           setJwtDecode(result.data.access_token);
                           history.push(renderLinks());
                         }
