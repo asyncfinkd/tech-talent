@@ -14,11 +14,13 @@ const CompaniesPages: React.FC = () => {
   const [result, setResult] = useState<any>([]);
   const { jwtDecode } = useContext(ApplicationContext);
   const [search, setSearch] = useState<String | any>("");
+  const [fetched, setFetched] = useState<boolean>(false);
   const history = useHistory();
   const fetchCompanies = () => {
     axios.get(`${env.host}/api/get/companies`).then((result: any) => {
       setResult(result.data);
       setData(result.data);
+      setFetched(true);
     });
   };
   const { isFetched } = useQuery("Companies", fetchCompanies);
@@ -48,7 +50,7 @@ const CompaniesPages: React.FC = () => {
   }, [search]);
   return (
     <>
-      {isFetched && (
+      {fetched ? (
         <>
           <Helmet>
             <title>Companies | Tech Talent</title>
@@ -175,6 +177,8 @@ const CompaniesPages: React.FC = () => {
           </main>
           <Footer wantSponsors={true} />
         </>
+      ) : (
+        <p style={{ marginLeft: "15px" }}>Please wait...</p>
       )}
     </>
   );
