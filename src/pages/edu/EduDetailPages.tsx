@@ -391,22 +391,52 @@ const EduDetailPages: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="marginOnMobile-0-2-134">
-              <div className="body-0-2-275">
-                <div className="root-0-2-281 hideOnMobile-0-2-280">
-                  <h2 className="h2-0-2-282">Latest Courses</h2>
-                  <div className="grid-0-2-283">
-                    {courses.map((item: any) => {
-                      return (
-                        <>
-                          <EduDetailMap item={item} />
-                        </>
-                      );
-                    })}
+            {courses.length != 0 ? (
+              <>
+                <div className="marginOnMobile-0-2-134">
+                  <div className="body-0-2-275">
+                    <div className="root-0-2-281 hideOnMobile-0-2-280">
+                      <h2 className="h2-0-2-282">Latest Courses</h2>
+                      <div className="grid-0-2-283">
+                        {courses.map((item: any) => {
+                          return (
+                            <>
+                              <EduDetailMap item={item} />
+                            </>
+                          );
+                        })}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </>
+            ) : (
+              <>
+                <div className="marginOnMobile-0-2-134">
+                  <div className="body-0-2-284">
+                    <div className="root-0-2-288 placeholder-0-2-250">
+                      <img
+                        src="https://tt.ge/images/empty-jobs.png"
+                        alt="New courses are coming soon"
+                        className="image-0-2-289"
+                      />
+                      <h1 className="h1-0-2-290">
+                        New courses are coming soon
+                      </h1>
+                      <div className="caption-0-2-291">
+                        Be first to get notified
+                      </div>
+                      <a
+                        className="root-0-2-46 button-0-2-292 animation-0-2-47 weightMedium-0-2-61 sizeLg-0-2-53 variantPrimary-0-2-54"
+                        href="/register?cb=%2Fe%2Ftbcitacademy"
+                      >
+                        Follow
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </main>
