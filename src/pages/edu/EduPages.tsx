@@ -12,10 +12,12 @@ const EduPages: React.FC = () => {
   const [data, setData] = useState<any>([]);
   const [search, setSearch] = useState<String | any>("");
   const [result, setResult] = useState<any>([]);
+  const [spinner, setSpinner] = useState<boolean>(true);
   useEffect(() => {
     axios.post(`${env.host}/api/get/edu`).then((result: any) => {
       setData(result.data);
       setResult(result.data);
+      setSpinner(false);
     });
   }, []);
   const identificationSearch = () => {
@@ -129,15 +131,51 @@ const EduPages: React.FC = () => {
                       onChange={(e: any) => setSearch(e.target.value)}
                     />
                   </div>
-                  <button
-                    className="root-0-2-46 button-0-2-116 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-                    type="submit"
-                  >
-                    <div className="countContainer-0-2-128">
-                      <div className="count-0-2-129">{data.length}</div>
-                      <div className="countLabel-0-2-130">Results</div>
-                    </div>
-                  </button>
+                  {spinner ? (
+                    <button
+                      className="root-0-2-46 button-0-2-116 buttonLoading-0-2-117 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                      type="submit"
+                    >
+                      <div className="loading-0-2-131">
+                        <svg
+                          className="stroke-0-2-35 spinner-0-2-133"
+                          width="100"
+                          height="100"
+                          viewBox="0 0 100 100"
+                          preserveAspectRatio="xMidYMid"
+                        >
+                          <circle
+                            cx="50"
+                            cy="50"
+                            fill="none"
+                            stroke-width="10"
+                            r="35"
+                            stroke-dasharray="164.93361431346415 56.97787143782138"
+                          >
+                            <animateTransform
+                              attributeName="transform"
+                              type="rotate"
+                              repeatCount="indefinite"
+                              dur="1s"
+                              values="0 50 50;360 50 50"
+                              keyTimes="0;1"
+                            ></animateTransform>
+                          </circle>
+                        </svg>
+                        <span className="loadingLabel-0-2-132">Loading</span>
+                      </div>
+                    </button>
+                  ) : (
+                    <button
+                      className="root-0-2-46 button-0-2-116 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                      type="submit"
+                    >
+                      <div className="countContainer-0-2-128">
+                        <div className="count-0-2-129">{data.length}</div>
+                        <div className="countLabel-0-2-130">Results</div>
+                      </div>
+                    </button>
+                  )}
                 </div>
               </form>
             </div>
