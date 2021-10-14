@@ -6,10 +6,22 @@ import env from "../../application/environment/env.json";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet";
 import Header from "../../components/Header/Header";
-import { useCookies } from "react-cookie";
+import { useMutation } from "react-query";
 
 const RegisterCandidateInfoPages: React.FC = () => {
-  const [cookie, setCookie] = useCookies(["local"]);
+  const mutation = useMutation((identification: any) => {
+    return axios
+      .post(`${env.host}/api/update/user/info`, identification, {
+        headers: { Authorization: `Bearer ${local}` },
+      })
+      .then((result: any) => {
+        if (result.data.success) {
+          localStorage.setItem("local", result.data.access_token);
+          setJwtDecode(result.data.access_token);
+          history.push(renderLinks());
+        }
+      });
+  });
   const { t } = useTranslation();
   const { pathname } = useLocation();
 
@@ -25,7 +37,7 @@ const RegisterCandidateInfoPages: React.FC = () => {
   const [socialNetwork, setSocialNetwork] = useState<String | any>("");
   const history = useHistory();
   useEffect(() => {
-    if (!cookie.local) {
+    if (!localStorage.getItem("local")) {
       history.push("/login");
     }
   }, []);
@@ -34,7 +46,7 @@ const RegisterCandidateInfoPages: React.FC = () => {
     setFirstName(splitName[0]);
     setLastName(splitName[1]);
   });
-  const local = cookie.local;
+  const local = localStorage.getItem("local");
   const renderLinks = () => {
     if (urlParameters.get("return_to") != null) {
       return `/${urlParameters.get("return_to")}`;
@@ -131,28 +143,14 @@ const RegisterCandidateInfoPages: React.FC = () => {
                   className="root-0-2-46 nextButton-0-2-286 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                   type="submit"
                   onClick={() => {
-                    axios
-                      .post(
-                        `${env.host}/api/update/user/info`,
-                        {
-                          firstName: firstName,
-                          lastName: lastName,
-                          fullName: fullName,
-                          phone: phone,
-                          socialNetwork: socialNetwork,
-                          role: "user",
-                        },
-                        {
-                          headers: { Authorization: `Bearer ${local}` },
-                        }
-                      )
-                      .then((result: any) => {
-                        if (result.data.success) {
-                          setCookie("local", result.data.access_token);
-                          setJwtDecode(result.data.access_token);
-                          history.push(renderLinks());
-                        }
-                      });
+                    mutation.mutate({
+                      firstName: firstName,
+                      lastName: lastName,
+                      fullName: fullName,
+                      phone: phone,
+                      socialNetwork: socialNetwork,
+                      role: "user",
+                    });
                   }}
                 >
                   {t("NEXT")}

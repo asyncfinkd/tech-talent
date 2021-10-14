@@ -7,7 +7,7 @@ import env from "../../application/environment/env.json";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 import { useTranslation } from "react-i18next";
 import Header from "../../components/Header/Header";
-import { useCookies } from "react-cookie";
+import { useMutation } from "react-query";
 
 type Input = {
   email: string;
@@ -16,7 +16,20 @@ type Input = {
 };
 
 const RegisterCandidatePages: React.FC = () => {
-  const [cookie, setCookie] = useCookies(["local"]);
+  const mutation = useMutation((identification: any) => {
+    return axios
+      .post(`${env.host}/api/register`, identification)
+      .then((result: any) => {
+        if (result.data === "Email is already registered") {
+          setRegisteredEmailMessage(true);
+        } else {
+          setRegisteredEmailMessage(false);
+          localStorage.setItem("local", result.data.access_token);
+          setJwtDecode(result.data.access_token);
+          history.push(renderLinks());
+        }
+      });
+  });
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const urlParameters = new URLSearchParams(useLocation().search);
@@ -286,24 +299,13 @@ const RegisterCandidatePages: React.FC = () => {
                 <button
                   className="root-0-2-46 nextButton-0-2-110 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                   type="submit"
-                  onClick={handleSubmit((data: any) => {
-                    axios
-                      .post(`${env.host}/api/register`, {
-                        email: data.email,
-                        password: data.password,
-                        interest: interest,
-                        role: "user",
-                      })
-                      .then((result: any) => {
-                        if (result.data === "Email is already registered") {
-                          setRegisteredEmailMessage(true);
-                        } else {
-                          setRegisteredEmailMessage(false);
-                          setCookie("local", result.data.access_token);
-                          setJwtDecode(result.data.access_token);
-                          history.push(renderLinks());
-                        }
-                      });
+                  onClick={handleSubmit((data: Input) => {
+                    mutation.mutate({
+                      email: data.email,
+                      password: data.password,
+                      interest: interest,
+                      role: "user",
+                    });
                   })}
                 >
                   {t("NEXT")}
