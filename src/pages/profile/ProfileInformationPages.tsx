@@ -9,7 +9,7 @@ import Header from "../../components/Header/Header";
 import { useCookies } from "react-cookie";
 
 const ProfileInformationPages: React.FC = () => {
-  const [cookie, setCookie] = useCookies(["local"]);
+  const [cookie, setCookie, removeCookie] = useCookies(["local"]);
   useEffect(() => {
     const local = cookie.local;
     if (!local || !jwtDecode) {
@@ -227,7 +227,7 @@ const ProfileInformationPages: React.FC = () => {
               className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
               to=""
               onClick={() => {
-                localStorage.clear();
+                removeCookie("local");
                 setJwtDecode("");
                 history.push("/");
               }}
