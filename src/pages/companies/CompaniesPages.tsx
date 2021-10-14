@@ -7,6 +7,7 @@ import { ApplicationContext } from "../../context/Application/ApplicationContext
 import { useHistory, useLocation } from "react-router-dom";
 import CompaniesMap from "../../components/companies/CompaniesMap";
 import Header from "../../components/Header/Header";
+import { useQuery } from "react-query";
 
 const CompaniesPages: React.FC = () => {
   const [data, setData] = useState<any>([]);
@@ -14,12 +15,19 @@ const CompaniesPages: React.FC = () => {
   const { jwtDecode } = useContext(ApplicationContext);
   const [search, setSearch] = useState<String | any>("");
   const history = useHistory();
-  useEffect(() => {
+  const fetchCompanies = () => {
     axios.get(`${env.host}/api/get/companies`).then((result: any) => {
-      setData(result.data);
       setResult(result.data);
+      setData(result.data);
     });
-  }, []);
+  };
+  const { isLoading } = useQuery("Companies", fetchCompanies);
+  // useEffect(() => {
+  //   axios.get(`${env.host}/api/get/companies`).then((result: any) => {
+  //     setData(result.data);
+  //     setResult(result.data);
+  //   });
+  // }, []);
   const { pathname } = useLocation();
 
   useEffect(() => {
