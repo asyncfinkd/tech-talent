@@ -7,7 +7,6 @@ import { useHistory, useLocation } from "react-router-dom";
 import DOMPurify from "dompurify";
 import { Helmet } from "react-helmet";
 import Header from "../../components/Header/Header";
-import { useCookies } from "react-cookie";
 
 const CompaniesDetailPages: React.FC = () => {
   const [data, setData] = useState<any>({});
@@ -19,7 +18,6 @@ const CompaniesDetailPages: React.FC = () => {
   const [followers, setFollowers] = useState<String | any>(
     data.followedUsersId
   );
-  const [cookies, setCookie] = useCookies(["local"]);
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -173,14 +171,14 @@ const CompaniesDetailPages: React.FC = () => {
                             : "root-0-2-46 button-0-2-136 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                         }
                         onClick={() => {
-                          if (!cookies.local) {
+                          if (!localStorage.getItem("local")) {
                             history.push(
                               `/register?return_to=${`${
                                 window.location.pathname.split("/")[1]
                               }/${window.location.pathname.split("/")[2]}`}`
                             );
                           } else {
-                            const local = cookies.local;
+                            const local = localStorage.getItem("local");
                             if (followed) {
                               axios
                                 .post(

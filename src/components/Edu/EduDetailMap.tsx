@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useCookies } from "react-cookie";
 
 const EduDetailMap: React.FC<any> = ({ item }: any) => {
   const [date, setDate] = useState<any>("");
-  const [cookies, setCookie] = useCookies(["local"]);
 
   useEffect(() => {
     const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
@@ -90,7 +88,7 @@ const EduDetailMap: React.FC<any> = ({ item }: any) => {
         <div className="lineSecond-0-2-158"></div>
         <div className="tertiaryColumn-0-2-166">
           <div className="secondaryButton-0-2-167">
-            {cookies.local ? (
+            {localStorage.getItem("local") ? (
               <>
                 {item.price != null ? (
                   <>

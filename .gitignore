@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+src/components/Login/Form/FormLogin.tsx
+*.tsx
+src/components/Login/Form/FormLogin.tsx

@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
-import { useCookies } from "react-cookie";
 
 const EduMap: React.FC<any> = ({ item, env }: any) => {
   const [followed, setFollowed] = useState<Boolean>(false);
@@ -13,7 +12,6 @@ const EduMap: React.FC<any> = ({ item, env }: any) => {
   const [followers, setFollowers] = useState<String | any>(
     item.followedUsersId.length
   );
-  const [cookies, setCookie] = useCookies(["local"]);
   useEffect(() => {
     if (!changed) {
       setFollowers(item.followedUsersId.length);
@@ -67,7 +65,7 @@ const EduMap: React.FC<any> = ({ item, env }: any) => {
                     : "root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54"
                 }
                 onClick={() => {
-                  if (!cookies.local) {
+                  if (!localStorage.getItem("local")) {
                     history.push(
                       `/register?return_to=${
                         window.location.pathname.split("/")[1]
@@ -75,7 +73,7 @@ const EduMap: React.FC<any> = ({ item, env }: any) => {
                     );
                   } else {
                     setChanged(true);
-                    const local = cookies.local;
+                    const local = localStorage.getItem("local");
                     if (followed) {
                       axios
                         .post(

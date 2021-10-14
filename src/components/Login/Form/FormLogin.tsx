@@ -7,45 +7,54 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { ApplicationContext } from "../../../context/Application/ApplicationContext";
 import { useTranslation } from "react-i18next";
-import { useCookies } from "react-cookie";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useMutation } from "react-query";
 
 type Input = {
   email: string;
   password: string;
 };
 
+const schema = yup
+  .object()
+  .shape({
+    email: yup
+      .string()
+      .trim()
+      .required("შეიყვანეთ ელექტრონული ფოსტა")
+      .matches(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        "არასწორი ფორმატი"
+      ),
+    password: yup.string().required("შეიყვანეთ პაროლი"),
+  })
+  .required();
+
 const FormLogin: React.FC = () => {
-  const [cookies, setCookie] = useCookies(["local"]);
+  const { setJwtDecode } = useContext(ApplicationContext);
+  const mutation = useMutation((identification: any) => {
+    return axios
+      .post(`${env.host}/api/login`, identification)
+      .then((result) => {
+        if (result.data.success === false) {
+          setShowMessage(true);
+        } else {
+          setShowMessage(false);
+          localStorage.setItem("local", result.data.access_token);
+          setJwtDecode(result.data.access_token);
+          history.push("/");
+        }
+      });
+  });
   const { t } = useTranslation();
-  const [spinner, setSpinner] = useToggle();
   const [showMessage, setShowMessage] = useState<Boolean>(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Input>();
+  } = useForm<Input>({ resolver: yupResolver(schema) });
   const history = useHistory();
-  const { setJwtDecode } = useContext(ApplicationContext);
-  const onSubmit = (data: any) => {
-    setSpinner();
-
-    axios
-      .post(`${env.host}/api/login`, {
-        email: data.email,
-        password: data.password,
-      })
-      .then((result: any) => {
-        setSpinner();
-        if (result.data.success === false) {
-          setShowMessage(true);
-        } else {
-          setShowMessage(false);
-          setCookie("local", result.data.access_token);
-          setJwtDecode(result.data.access_token);
-          history.push("/");
-        }
-      });
-  };
   return (
     <>
       <main className="main-0-2-2">
@@ -127,7 +136,11 @@ const FormLogin: React.FC = () => {
             <div className="line-0-2-239">
               <div className="continue-0-2-240">or continue with</div>
             </div>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form
+              onSubmit={handleSubmit((data: Input) => {
+                mutation.mutate({ email: data.email, password: data.password });
+              })}
+            >
               <div>
                 <div className="root-0-2-247">
                   <label className="label-0-2-248">
@@ -148,7 +161,7 @@ const FormLogin: React.FC = () => {
                     className={`input-0-2-251 ${
                       errors.email && "invalid-0-2-252"
                     }`}
-                    {...register("email", { required: true })}
+                    {...register("email")}
                   />
                   {errors.email && (
                     <div className="invalidMessage-0-2-253">
@@ -175,7 +188,7 @@ const FormLogin: React.FC = () => {
                     className={`input-0-2-251 ${
                       errors.password && "invalid-0-2-252"
                     }`}
-                    {...register("password", { required: true })}
+                    {...register("password")}
                   />
                   {errors.password && (
                     <div className="invalidMessage-0-2-253">
@@ -193,7 +206,7 @@ const FormLogin: React.FC = () => {
                 <Link className="forgotPassword-0-2-243" to="/forgot">
                   {t("FORGOTPASSWORD")}
                 </Link>
-                {spinner ? (
+                {mutation.isLoading ? (
                   <button
                     className="root-0-2-46 button-0-2-105 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                     type="submit"

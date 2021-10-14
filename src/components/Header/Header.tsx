@@ -4,7 +4,6 @@ import { Link, NavLink } from "react-router-dom";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
-import { useCookies } from "react-cookie";
 
 interface Props {
   ShowLine?: boolean;
@@ -13,7 +12,6 @@ interface Props {
 
 const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
   const [showProfile, setShowProfile] = useToggle();
-  const [cookies, setCookie] = useCookies(["local"]);
   const [showHeader, setShowHeader] = useToggle();
   const [showLanguage, setShowLanguage] = useToggle();
   const [showClose, setShowClose] = useToggle();
@@ -225,7 +223,7 @@ const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
               </NavLink>
             </div>
             <div className="gapColumn-0-2-14"></div>
-            {cookies.local ? (
+            {localStorage.getItem("local") ? (
               <>
                 <div className="root-0-2-37 profile-0-2-15">
                   <Link
@@ -602,7 +600,7 @@ const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
               </Link>
             </section>
           </div>
-          {cookies.local && (
+          {localStorage.getItem("local") && (
             <>
               <div
                 className="root-0-2-84"

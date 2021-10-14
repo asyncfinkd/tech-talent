@@ -6,12 +6,10 @@ import { ApplicationContext } from "../../context/Application/ApplicationContext
 import env from "../../application/environment/env.json";
 import { Helmet } from "react-helmet";
 import Header from "../../components/Header/Header";
-import { useCookies } from "react-cookie";
 
 const ProfileInformationPages: React.FC = () => {
-  const [cookie, setCookie, removeCookie] = useCookies(["local"]);
   useEffect(() => {
-    const local = cookie.local;
+    const local = localStorage.getItem("local");
     if (!local || !jwtDecode) {
       history.push("/login");
     }
@@ -28,7 +26,7 @@ const ProfileInformationPages: React.FC = () => {
   const [spinner, setSpinner] = useState<Boolean>(false);
   const [firstName, setFirstName] = useState<String>("");
   const [lastName, setLastName] = useState<String>("");
-  const local = cookie.local;
+  const local = localStorage.getItem("local");
   const [socialNetwork, setSocialNetwork] = useState<String | any>(
     jwtDecode.socialNetwork
   );
@@ -102,7 +100,7 @@ const ProfileInformationPages: React.FC = () => {
             </div>
             <div className="horizontalLine-0-2-109"></div>
             <Link
-              className="root-0-2-46 button-0-2-105__profile buttonActive-0-2-106 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile buttonActive-0-2-106 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/information"
             >
               <svg
@@ -122,7 +120,7 @@ const ProfileInformationPages: React.FC = () => {
               Information<div className="verticalLine-0-2-108"></div>
             </Link>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/resume"
             >
               <svg
@@ -142,7 +140,7 @@ const ProfileInformationPages: React.FC = () => {
               Resume
             </Link>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/security"
             >
               <svg
@@ -163,7 +161,7 @@ const ProfileInformationPages: React.FC = () => {
             </Link>
             <div className="horizontalLine-0-2-109"></div>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/applications"
             >
               <svg
@@ -183,7 +181,7 @@ const ProfileInformationPages: React.FC = () => {
               My Job Applications
             </Link>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/companies"
             >
               <svg
@@ -203,7 +201,7 @@ const ProfileInformationPages: React.FC = () => {
               Companies I Follow
             </Link>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/jobs"
             >
               <svg
@@ -224,10 +222,10 @@ const ProfileInformationPages: React.FC = () => {
             </Link>
             <div className="horizontalLine-0-2-109"></div>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to=""
               onClick={() => {
-                removeCookie("local");
+                localStorage.clear();
                 setJwtDecode("");
                 history.push("/");
               }}
@@ -375,7 +373,10 @@ const ProfileInformationPages: React.FC = () => {
                             .then((result: any) => {
                               if (result.data.success) {
                                 setSpinner(false);
-                                setCookie("local", result.data.access_token);
+                                localStorage.setItem(
+                                  "local",
+                                  result.data.access_token
+                                );
                                 setJwtDecode(result.data.access_token);
                               }
                             });

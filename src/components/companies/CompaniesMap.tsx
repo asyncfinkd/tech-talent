@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useCookies } from "react-cookie";
 
 const CompaniesMap: React.FC<any> = ({
   item,
@@ -9,7 +8,6 @@ const CompaniesMap: React.FC<any> = ({
   history,
   jwtDecode,
 }: any) => {
-  const [cookies, setCookie] = useCookies(["local"]);
   const [followed, setFollowed] = useState<Boolean>(false);
   const [unFollow, setUnFollow] = useState<Boolean>(false);
   const [changed, setChanged] = useState<Boolean>(false);
@@ -69,7 +67,7 @@ const CompaniesMap: React.FC<any> = ({
                     : "root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54"
                 }
                 onClick={() => {
-                  if (!cookies.local) {
+                  if (!localStorage.getItem("local")) {
                     history.push(
                       `/register?return_to=${
                         window.location.pathname.split("/")[1]
@@ -77,7 +75,7 @@ const CompaniesMap: React.FC<any> = ({
                     );
                   } else {
                     setChanged(true);
-                    const local = cookies.local;
+                    const local = localStorage.getItem("local");
                     if (followed) {
                       axios
                         .post(

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useCookies } from "react-cookie";
 
 const CoursesMap: React.FC<any> = ({ item, env }: any) => {
   const [date, setDate] = useState<any>("");
@@ -15,7 +14,6 @@ const CoursesMap: React.FC<any> = ({ item, env }: any) => {
     setDate(diffDays - 1);
   });
   const history = useHistory();
-  const [cookies, setCookie] = useCookies(["local"]);
   return (
     <>
       <div className="root-0-2-156 rootSlice-0-2-157 root-0-2-266">
@@ -68,7 +66,7 @@ const CoursesMap: React.FC<any> = ({ item, env }: any) => {
         <div className="lineSecond-0-2-169 lineSecondSlice-0-2-170"></div>
         <div className="tertiaryColumn-0-2-177">
           <div className="secondaryButton-0-2-178">
-            {cookies.local ? (
+            {localStorage.getItem("local") ? (
               <>
                 {item.price != null ? (
                   <div className="show-0-2-176">

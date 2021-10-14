@@ -8,7 +8,6 @@ import { useTranslation } from "react-i18next";
 import axios from "axios";
 import env from "../../application/environment/env.json";
 import Header from "../../components/Header/Header";
-import { useCookies } from "react-cookie";
 
 type Input = {
   currentPassword: string;
@@ -17,8 +16,7 @@ type Input = {
 };
 
 const ProfileSecurityPages: React.FC = () => {
-  const [cookie, setCookie] = useCookies(["local"]);
-  const local = cookie.local;
+  const local = localStorage.getItem("local");
   const history = useHistory();
   useEffect(() => {
     if (!local || !jwtDecode) {
@@ -107,7 +105,7 @@ const ProfileSecurityPages: React.FC = () => {
             </div>
             <div className="horizontalLine-0-2-109"></div>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/information"
             >
               <svg
@@ -127,7 +125,7 @@ const ProfileSecurityPages: React.FC = () => {
               Information
             </Link>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/resume"
             >
               <svg
@@ -147,7 +145,7 @@ const ProfileSecurityPages: React.FC = () => {
               Resume
             </Link>
             <Link
-              className="root-0-2-46 button-0-2-105__profile buttonActive-0-2-106 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile buttonActive-0-2-106 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/security"
             >
               <svg
@@ -168,7 +166,7 @@ const ProfileSecurityPages: React.FC = () => {
             </Link>
             <div className="horizontalLine-0-2-109"></div>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/applications"
             >
               <svg
@@ -188,7 +186,7 @@ const ProfileSecurityPages: React.FC = () => {
               My Job Applications
             </Link>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/companies"
             >
               <svg
@@ -208,7 +206,7 @@ const ProfileSecurityPages: React.FC = () => {
               Companies I Follow
             </Link>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/jobs"
             >
               <svg
@@ -229,7 +227,7 @@ const ProfileSecurityPages: React.FC = () => {
             </Link>
             <div className="horizontalLine-0-2-109"></div>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/logout"
             >
               <svg

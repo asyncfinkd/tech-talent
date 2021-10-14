@@ -27,15 +27,17 @@ import CoursesPages from "./pages/courses/CoursesPages";
 import CoursesSearchPages from "./pages/courses/CoursesSearchPages";
 import CoursesSearchDetailPages from "./pages/courses/CoursesSearchDetailPages";
 import { CookiesProvider } from "react-cookie";
-import { useCookies } from "react-cookie";
+import { ReactQueryDevtools } from "react-query/devtools";
+import { QueryClientProvider, QueryClient } from "react-query";
+
+const client = new QueryClient();
 
 const App: React.FC = () => {
-  const [cookies, setCookie] = useCookies(["local"]);
-  const local: any = cookies;
+  const local: any = localStorage.getItem("local");
   const [jwtDecode, setJwtDecode] = useState<any>({});
   useEffect(() => {
-    if (cookies.local) {
-      let decoded: any = jwt_decode(local.local);
+    if (local) {
+      let decoded: any = jwt_decode(local);
       setJwtDecode(decoded);
       console.log(decoded);
     }
@@ -49,7 +51,6 @@ const App: React.FC = () => {
             email: jwtDecode.email,
           })
           .then((result: any) => {
-            setCookie("local", result.data);
             localStorage.setItem("local", result.data);
             setJwtDecode(result.data);
           });
@@ -59,67 +60,70 @@ const App: React.FC = () => {
   return (
     <>
       <CookiesProvider>
-        <ApplicationContext.Provider value={{ jwtDecode, setJwtDecode }}>
-          <div className="root-0-2-1">
-            <BrowserRouter>
-              <Switch>
-                <Route path="/" exact component={IndexPages} />
-                <Route path="/companies" exact component={CompaniesPages} />
-                <Route path="/login" exact component={LoginPages} />
-                <Route path="/register" exact component={RegisterPages} />
-                <Route
-                  path="/register/candidate"
-                  exact
-                  component={RegisterCandidatePages}
-                />
-                <Route
-                  path="/register/candidate/info"
-                  exact
-                  component={RegisterCandidateInfoPages}
-                />
-                <Route path="/forgot" exact component={ForgotPages} />
-                <Route
-                  path="/forgot/thanks"
-                  exact
-                  component={ForgotThanksPages}
-                />
-                <Route
-                  path="/profile/information"
-                  exact
-                  component={ProfileInformationPages}
-                />
-                <Route
-                  path="/profile/security"
-                  exact
-                  component={ProfileSecurityPages}
-                />
-                <Route
-                  path="/profile/companies"
-                  exact
-                  component={ProfileCompaniesPages}
-                />
-                <Route path="/privacy" exact component={PrivacyPages} />
-                <Route path="/terms" exact component={TermsAndConditions} />
-                <Route path="/about" exact component={AboutPages} />
-                <Route path="/c/:id" exact component={CompaniesDetailPages} />
-                <Route path="/edu" exact component={EduPages} />
-                <Route path="/e/:id" exact component={EduDetailPages} />
-                <Route path="/courses" exact component={CoursesPages} />
-                <Route
-                  path="/courses/:id"
-                  exact
-                  component={CoursesSearchPages}
-                />
-                <Route
-                  path="/courses/:id/:type"
-                  exact
-                  component={CoursesSearchDetailPages}
-                />
-                <Route exact component={ErrorPages} />
-              </Switch>
-            </BrowserRouter>
-          </div>
-        </ApplicationContext.Provider>
+        <QueryClientProvider client={client}>
+          <ApplicationContext.Provider value={{ jwtDecode, setJwtDecode }}>
+            <div className="root-0-2-1">
+              <BrowserRouter>
+                <Switch>
+                  <Route path="/" exact component={IndexPages} />
+                  <Route path="/companies" exact component={CompaniesPages} />
+                  <Route path="/login" exact component={LoginPages} />
+                  <Route path="/register" exact component={RegisterPages} />
+                  <Route
+                    path="/register/candidate"
+                    exact
+                    component={RegisterCandidatePages}
+                  />
+                  <Route
+                    path="/register/candidate/info"
+                    exact
+                    component={RegisterCandidateInfoPages}
+                  />
+                  <Route path="/forgot" exact component={ForgotPages} />
+                  <Route
+                    path="/forgot/thanks"
+                    exact
+                    component={ForgotThanksPages}
+                  />
+                  <Route
+                    path="/profile/information"
+                    exact
+                    component={ProfileInformationPages}
+                  />
+                  <Route
+                    path="/profile/security"
+                    exact
+                    component={ProfileSecurityPages}
+                  />
+                  <Route
+                    path="/profile/companies"
+                    exact
+                    component={ProfileCompaniesPages}
+                  />
+                  <Route path="/privacy" exact component={PrivacyPages} />
+                  <Route path="/terms" exact component={TermsAndConditions} />
+                  <Route path="/about" exact component={AboutPages} />
+                  <Route path="/c/:id" exact component={CompaniesDetailPages} />
+                  <Route path="/edu" exact component={EduPages} />
+                  <Route path="/e/:id" exact component={EduDetailPages} />
+                  <Route path="/courses" exact component={CoursesPages} />
+                  <Route
+                    path="/courses/:id"
+                    exact
+                    component={CoursesSearchPages}
+                  />
+                  <Route
+                    path="/courses/:id/:type"
+                    exact
+                    component={CoursesSearchDetailPages}
+                  />
+                  <Route exact component={ErrorPages} />
+                </Switch>
+              </BrowserRouter>
+            </div>
+            <ReactQueryDevtools initialIsOpen={false} />
+          </ApplicationContext.Provider>
+        </QueryClientProvider>
       </CookiesProvider>
     </>
   );

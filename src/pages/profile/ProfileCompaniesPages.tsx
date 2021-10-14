@@ -8,11 +8,9 @@ import { ApplicationContext } from "../../context/Application/ApplicationContext
 import env from "../../application/environment/env.json";
 import { Helmet } from "react-helmet";
 import ProfileCompaniesMap from "../../components/Profile/ProfileCompaniesMap";
-import { useCookies } from "react-cookie";
 
 const ProfileCompaniesPages: React.FC = () => {
-  const [cookie, setCookie] = useCookies(["local"]);
-  const local = cookie.local;
+  const local = localStorage.getItem("local");
   useEffect(() => {
     if (!local || !jwtDecode) {
       history.push("/login");
@@ -80,7 +78,7 @@ const ProfileCompaniesPages: React.FC = () => {
             </div>
             <div className="horizontalLine-0-2-109"></div>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/information"
             >
               <svg
@@ -100,7 +98,7 @@ const ProfileCompaniesPages: React.FC = () => {
               Information
             </Link>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/resume"
             >
               <svg
@@ -120,7 +118,7 @@ const ProfileCompaniesPages: React.FC = () => {
               Resume
             </Link>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/security"
             >
               <svg
@@ -141,7 +139,7 @@ const ProfileCompaniesPages: React.FC = () => {
             </Link>
             <div className="horizontalLine-0-2-109"></div>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/applications"
             >
               <svg
@@ -161,7 +159,7 @@ const ProfileCompaniesPages: React.FC = () => {
               My Job Applications
             </Link>
             <Link
-              className="root-0-2-46 button-0-2-105__profile buttonActive-0-2-106 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile buttonActive-0-2-106 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/companies"
             >
               <svg
@@ -181,7 +179,7 @@ const ProfileCompaniesPages: React.FC = () => {
               Companies I Follow<div className="verticalLine-0-2-108"></div>
             </Link>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/jobs"
             >
               <svg
@@ -202,7 +200,7 @@ const ProfileCompaniesPages: React.FC = () => {
             </Link>
             <div className="horizontalLine-0-2-109"></div>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to=""
               onClick={() => {
                 localStorage.clear();
