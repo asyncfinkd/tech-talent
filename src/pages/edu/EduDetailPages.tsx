@@ -35,13 +35,12 @@ const EduDetailPages: React.FC = () => {
     });
   }, []);
   useEffect(() => {
-    console.log(courses.length);
     if (courses.length != 0) {
       setCollapse(false);
     } else {
       setCollapse(true);
     }
-  });
+  }, [courses]);
   useEffect(() => {
     if (courses.length == 0) {
       if (data._id != "" && data._id != undefined) {
