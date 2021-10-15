@@ -6,6 +6,7 @@ import { ApplicationContext } from "../../context/Application/ApplicationContext
 import env from "../../application/environment/env.json";
 import { Helmet } from "react-helmet";
 import Header from "../../components/Header/Header";
+import { useMutation } from "react-query";
 
 const ProfileInformationPages: React.FC = () => {
   useEffect(() => {
@@ -61,6 +62,20 @@ const ProfileInformationPages: React.FC = () => {
     if (fullName !== undefined) {
       memorizedCallback();
     }
+  });
+  const mutation = useMutation((identification: any) => {
+    return axios
+      .post(`${env.host}/api/update/user/info`, identification, {
+        headers: {
+          Authorization: `Bearer ${local}`,
+        },
+      })
+      .then((result: any) => {
+        if (result.data.success) {
+          localStorage.setItem("local", result.data.access_token);
+          setJwtDecode(result.data.access_token);
+        }
+      });
   });
   return (
     <>
@@ -312,7 +327,7 @@ const ProfileInformationPages: React.FC = () => {
                       onChange={(e) => setSocialNetwork(e.target.value)}
                     />
                   </div>
-                  {spinner ? (
+                  {mutation.isLoading ? (
                     <button
                       className="root-0-2-46 MAX_WIDTH_F button-0-2-118 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                       type="submit"
@@ -354,32 +369,14 @@ const ProfileInformationPages: React.FC = () => {
                       disabled={fullNameError}
                       onClick={() => {
                         if (!fullNameError) {
-                          setSpinner(true);
-                          axios
-                            .post(
-                              `${env.host}/api/update/user/info`,
-                              {
-                                firstName: firstName,
-                                lastName: lastName,
-                                fullName: fullName,
-                                phone: phone,
-                                socialNetwork: socialNetwork,
-                                role: "user",
-                              },
-                              {
-                                headers: { Authorization: `Bearer ${local}` },
-                              }
-                            )
-                            .then((result: any) => {
-                              if (result.data.success) {
-                                setSpinner(false);
-                                localStorage.setItem(
-                                  "local",
-                                  result.data.access_token
-                                );
-                                setJwtDecode(result.data.access_token);
-                              }
-                            });
+                          mutation.mutate({
+                            firstName: firstName,
+                            lastName: lastName,
+                            fullName: fullName,
+                            phone: phone,
+                            socialNetwork: socialNetwork,
+                            role: "user",
+                          });
                         }
                       }}
                     >
