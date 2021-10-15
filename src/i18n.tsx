@@ -85,6 +85,9 @@ const resources = {
       SEARCHCOMPANIES: "Search companies",
       UNFOLLOW: "Unfollow",
       FOLLOW: "Follow",
+      JOBSFORME: "Jobs For Me",
+      COMINGSOON: "Coming Soon",
+      JOBSFORMEPAGE__HELMET: "Jobs | User | Tech Talent",
     },
   },
   ka: {
@@ -169,6 +172,9 @@ const resources = {
       SEARCHCOMPANIES: "ძიება",
       UNFOLLOW: "გაუქმება",
       FOLLOW: "გამოწერა",
+      JOBSFORME: "ვაკანსიები ჩემთვის",
+      COMINGSOON: "მზადების პროცესში",
+      JOBSFORMEPAGE__HELMET: "ვაკანსიები | მომხმარებელი | Tech Talent",
     },
   },
 };
