@@ -7,10 +7,12 @@ import { useHistory, useLocation } from "react-router-dom";
 import DOMPurify from "dompurify";
 import { Helmet } from "react-helmet";
 import Header from "../../components/Header/Header";
+import { useTranslation } from "react-i18next";
 
 const CompaniesDetailPages: React.FC = () => {
   const [data, setData] = useState<any>({});
   const [followed, setFollowed] = useState<Boolean>(false);
+  const { t } = useTranslation();
   const [collapse, setCollapse] = useState<Boolean>(true);
   const [unFollow, setUnFollow] = useState<Boolean>(false);
   const sanitizer = DOMPurify.sanitize;
@@ -112,15 +114,17 @@ const CompaniesDetailPages: React.FC = () => {
                     <div className="row-0-2-113">
                       <div className="column-0-2-114">
                         <div>
-                          <div className="label-0-2-115">Remote Friendly</div>
-                          <div className="label-0-2-115">Head Office</div>
+                          <div className="label-0-2-115">
+                            {t("REMOTEFRIENDLY")}
+                          </div>
+                          <div className="label-0-2-115">{t("HEADOFFICE")}</div>
                         </div>
                         <div>
                           <div
                             className="value-0-2-116"
                             dangerouslySetInnerHTML={{
                               __html: sanitizer(
-                                data.remoteFriendly ? "Yes" : "&nbsp;"
+                                data.remoteFriendly ? t("TEXT__YES") : "&nbsp;"
                               ),
                             }}
                           ></div>
@@ -136,8 +140,8 @@ const CompaniesDetailPages: React.FC = () => {
                       </div>
                       <div className="column-0-2-114">
                         <div>
-                          <div className="label-0-2-115">Industry</div>
-                          <div className="label-0-2-115">Employees</div>
+                          <div className="label-0-2-115">{t("INDUSTRY")}</div>
+                          <div className="label-0-2-115">{t("EMPLOYEES")}</div>
                         </div>
                         <div>
                           <div
@@ -222,7 +226,7 @@ const CompaniesDetailPages: React.FC = () => {
                           }
                         }}
                       >
-                        {followed ? "Unfollow" : " Follow"}
+                        {followed ? t("UNFOLLOW") : t("FOLLOW")}
                       </button>
                     </div>
                     <button
@@ -231,7 +235,7 @@ const CompaniesDetailPages: React.FC = () => {
                         setCollapse(!collapse);
                       }}
                     >
-                      <span>{collapse ? "Collapse" : "Expand"}</span>
+                      <span>{collapse ? t("COLLAPSE") : t("EXPAND")}</span>
                       <div className="caret-0-2-122">
                         <svg
                           className="fill-0-2-36"
@@ -292,10 +296,10 @@ const CompaniesDetailPages: React.FC = () => {
                       </div>
                       <div className="capsuleLabelValuePair-0-2-129">
                         <div className="capsuleLabel-0-2-130">
-                          Remote Friendly
+                          {t("REMOTEFRIENDLY")}
                         </div>
                         <div className="capsuleValuePrimary-0-2-131">
-                          {data.remoteFriendly && "Yes"}
+                          {data.remoteFriendly && t("TEXT__YES")}
                         </div>
                       </div>
                     </div>
@@ -319,7 +323,9 @@ const CompaniesDetailPages: React.FC = () => {
                         </div>
                       </div>
                       <div className="capsuleLabelValuePair-0-2-129">
-                        <div className="capsuleLabel-0-2-130">Head Office</div>
+                        <div className="capsuleLabel-0-2-130">
+                          {t("HEADOFFICE")}
+                        </div>
                         <div className="capsuleValuePrimary-0-2-131">
                           {data.hq != null && data.hq}
                         </div>
@@ -345,7 +351,9 @@ const CompaniesDetailPages: React.FC = () => {
                         </div>
                       </div>
                       <div className="capsuleLabelValuePair-0-2-129">
-                        <div className="capsuleLabel-0-2-130">Employees</div>
+                        <div className="capsuleLabel-0-2-130">
+                          {t("EMPLOYEES")}
+                        </div>
                         <div className="capsuleValueSecondary-0-2-132">
                           {data.employees != null && data.employees}
                         </div>
@@ -371,7 +379,9 @@ const CompaniesDetailPages: React.FC = () => {
                         </div>
                       </div>
                       <div className="capsuleLabelValuePair-0-2-129">
-                        <div className="capsuleLabel-0-2-130">Industry</div>
+                        <div className="capsuleLabel-0-2-130">
+                          {t("INDUSTRY")}
+                        </div>
                         <div className="capsuleValueSecondary-0-2-132">
                           {data.industry != null && data.industry}
                         </div>
@@ -397,7 +407,9 @@ const CompaniesDetailPages: React.FC = () => {
                         </div>
                       </div>
                       <div className="capsuleLabelValuePair-0-2-129">
-                        <div className="capsuleLabel-0-2-130">Founded</div>
+                        <div className="capsuleLabel-0-2-130">
+                          {t("FOUNDED")}
+                        </div>
                         <div className="capsuleValueSecondary-0-2-132">
                           {data.founded != null && data.founded}
                         </div>
@@ -405,7 +417,9 @@ const CompaniesDetailPages: React.FC = () => {
                     </div>
                   </div>
                   <div className="expandedContentBottom-0-2-125">
-                    <div className="aboutLabel-0-2-133">About</div>
+                    <div className="aboutLabel-0-2-133">
+                      {t("ABOUT__COMPANIES")}
+                    </div>
                     <div className="aboutContent-0-2-134">
                       {data.about != null && data.about}
                     </div>
