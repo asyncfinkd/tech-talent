@@ -24,7 +24,6 @@ const ProfileInformationPages: React.FC = () => {
   const [fullName, setFullName] = useState<String | any>(jwtDecode.fullName);
   const [fullNameError, setFullNameError] = useState<Boolean | any>(false);
   const [phone, setPhone] = useState<String | any>(jwtDecode.phone);
-  const [spinner, setSpinner] = useState<Boolean>(false);
   const [firstName, setFirstName] = useState<String>("");
   const [lastName, setLastName] = useState<String>("");
   const local = localStorage.getItem("local");

@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import axios from "axios";
 import env from "../../application/environment/env.json";
 import Header from "../../components/Header/Header";
+import { useMutation } from "react-query";
 
 type Input = {
   currentPassword: string;
@@ -28,6 +29,19 @@ const ProfileSecurityPages: React.FC = () => {
   const [inCorrectPassword, setInCorrectPassword] = useState<Boolean>(false);
   const [spinner, setSpinner] = useState<Boolean>(false);
   const { pathname } = useLocation();
+  const mutation = useMutation((identification: any) => {
+    return axios
+      .post(`${env.host}/api/security`, identification, {
+        headers: { Authorization: `Bearer ${local}` },
+      })
+      .then((result: any) => {
+        if (result.data === "Incorrect current password") {
+          setInCorrectPassword(true);
+        } else {
+          setInCorrectPassword(false);
+        }
+      });
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -38,27 +52,11 @@ const ProfileSecurityPages: React.FC = () => {
     formState: { errors },
     watch,
   } = useForm<Input>();
-  const onSubmit = (data: any) => {
-    setSpinner(true);
-    axios
-      .post(
-        `${env.host}/api/security`,
-        {
-          password: data.currentPassword,
-          newPassword: data.newPassword,
-        },
-        {
-          headers: { Authorization: `Bearer ${local}` },
-        }
-      )
-      .then((result: any) => {
-        setSpinner(false);
-        if (result.data === "Incorrect current password") {
-          setInCorrectPassword(true);
-        } else {
-          setInCorrectPassword(false);
-        }
-      });
+  const onSubmit = (data: Input) => {
+    mutation.mutate({
+      password: data.currentPassword,
+      newPassword: data.newPassword,
+    });
   };
   const renderCurrentPasswordClassName = () => {
     if (errors.currentPassword || inCorrectPassword) {
@@ -355,7 +353,7 @@ const ProfileSecurityPages: React.FC = () => {
                       </div>
                     )}
                   </div>
-                  {spinner ? (
+                  {mutation.isLoading ? (
                     <button
                       className="root-0-2-46 button-0-2-186 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                       type="submit"
