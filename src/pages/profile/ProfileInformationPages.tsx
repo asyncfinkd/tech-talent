@@ -80,7 +80,7 @@ const ProfileInformationPages: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Information | User | Tech Talent</title>
+        <title>{t("PROFILE__INFORMATION__HELMET")}</title>
       </Helmet>
       <Header ShowShadow={true} />
       <main className="main-0-2-2">

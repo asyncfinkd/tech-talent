@@ -90,7 +90,7 @@ const Footer: React.FC<Props> = ({ wantSponsors }) => {
                       className="root-0-2-46 register-0-2-214 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                       to="/profile/information"
                     >
-                      Profile
+                      {t("PROFILE__FOOTER")}
                     </Link>
                   ) : (
                     <Link

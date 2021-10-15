@@ -65,6 +65,11 @@ const resources = {
       COMPANIESIFOLLOW__NAV: "Companies I Follow",
       JOBSFORME__NAV: "Jobs For Me",
       LOGOUT__NAV: "Logout",
+      PROFILE__INFORMATION__HELMET: "Information | User | Tech Talent",
+      PROFILE__FOOTER: "Profile",
+      PAGENOTFOUND: "Page not found",
+      PAGENOTFOUND__SUBTITLE: "Are you sure this is what you are looking for?",
+      PAGENOTFOUND__TITLE: "Page not found | Tech Talent",
     },
   },
   ka: {
@@ -129,6 +134,11 @@ const resources = {
       COMPANIESIFOLLOW__NAV: "კომპანიები",
       JOBSFORME__NAV: "ვაკანსიები ჩემთვის",
       LOGOUT__NAV: "გამოსვლა",
+      PROFILE__INFORMATION__HELMET: "უსაფრთხოება | მომხმარებელი | Tech Talent",
+      PROFILE__FOOTER: "პროფილი",
+      PAGENOTFOUND: "გვერდი ვერ მოიძებნა",
+      PAGENOTFOUND__SUBTITLE: "დამწმუნებული ხარ რომ ამ გვერდს ეძებ?",
+      PAGENOTFOUND__TITLE: "გვერდი ვერ მოიძებნა | Tech Talent",
     },
   },
 };
