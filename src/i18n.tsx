@@ -92,6 +92,9 @@ const resources = {
       FINDYOUREMPLOYER: "Find your future employer",
       COMPANIES__SEARCH: "Companies",
       COMPANIES__HELMET: "Companies | Tech Talent",
+      ACTIVEJOBS: "Active Jobs",
+      FOLLOWERS: "Followers",
+      VIEWJOBS: "View Jobs",
     },
   },
   ka: {
@@ -183,6 +186,9 @@ const resources = {
       FINDYOUREMPLOYER: "იპოვნე მომავალი დამსაქმებელი",
       COMPANIES__SEARCH: "კომპანია",
       COMPANIES__HELMET: "კომპანიები | Tech Talent",
+      ACTIVEJOBS: "ვაკანსიები",
+      FOLLOWERS: "გამომწერები",
+      VIEWJOBS: "ვაკანსიები",
     },
   },
 };

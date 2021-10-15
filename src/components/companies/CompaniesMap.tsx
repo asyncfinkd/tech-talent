@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 const CompaniesMap: React.FC<any> = ({
@@ -10,6 +11,7 @@ const CompaniesMap: React.FC<any> = ({
 }: any) => {
   const [followed, setFollowed] = useState<Boolean>(false);
   const [unFollow, setUnFollow] = useState<Boolean>(false);
+  const { t } = useTranslation();
   const [changed, setChanged] = useState<Boolean>(false);
   const [followers, setFollowers] = useState<String | any>(
     item.followedUsersId.length
@@ -46,11 +48,11 @@ const CompaniesMap: React.FC<any> = ({
             <div className="stats-0-2-143">
               <div className="stat-0-2-144">
                 <div className="count-0-2-145">{item.jobCount}</div>
-                <div className="label-0-2-146">Active Jobs</div>
+                <div className="label-0-2-146">{t("ACTIVEJOBS")}</div>
               </div>
               <div className="stat-0-2-144">
                 <div className="count-0-2-145">{followers}</div>
-                <div className="label-0-2-146">Followers</div>
+                <div className="label-0-2-146">{t("FOLLOWERS")}</div>
               </div>
             </div>
             <div className="buttonGroup-0-2-147">
@@ -58,7 +60,7 @@ const CompaniesMap: React.FC<any> = ({
                 className="root-0-2-46 viewJobsButton-0-2-148 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
                 to={`/c/${item.slug}`}
               >
-                View Jobs
+                {t("VIEWJOBS")}
               </Link>
               <button
                 className={
@@ -115,7 +117,7 @@ const CompaniesMap: React.FC<any> = ({
                   }
                 }}
               >
-                {followed ? "Unfollow" : " Follow"}
+                {followed ? t("UNFOLLOW") : t("FOLLOW")}
               </button>
             </div>
           </div>
