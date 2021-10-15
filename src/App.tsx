@@ -29,6 +29,7 @@ import CoursesSearchDetailPages from "./pages/courses/CoursesSearchDetailPages";
 import { CookiesProvider } from "react-cookie";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { QueryClientProvider, QueryClient } from "react-query";
+import ProfileJobsForMePages from "./pages/profile/ProfileJobsForMePages";
 
 const client = new QueryClient();
 
@@ -99,6 +100,11 @@ const App: React.FC = () => {
                     path="/profile/companies"
                     exact
                     component={ProfileCompaniesPages}
+                  />
+                  <Route
+                    path="/profile/jobs"
+                    exact
+                    component={ProfileJobsForMePages}
                   />
                   <Route path="/privacy" exact component={PrivacyPages} />
                   <Route path="/terms" exact component={TermsAndConditions} />
