@@ -280,12 +280,12 @@ const ProfileCompaniesPages: React.FC = () => {
                       <div className="caption-0-2-419">
                         {t("FOLLOWEDCOMPANIES__SUBTITLE")}
                       </div>
-                      <a
+                      <Link
                         className="root-0-2-46 button-0-2-420 animation-0-2-47 weightMedium-0-2-61 sizeLg-0-2-53 variantPrimary-0-2-54"
-                        href="/companies?cb=%2Fprofile%2Fcompanies"
+                        to="/companies"
                       >
                         {t("SEARCHCOMPANIES")}
-                      </a>
+                      </Link>
                     </div>
                   ) : (
                     <div className="root-0-2-215">

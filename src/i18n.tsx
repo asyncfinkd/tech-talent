@@ -83,6 +83,8 @@ const resources = {
       FOLLOWEDCOMPANIES__SUBTITLE:
         "If you want to follow company, go to companies page",
       SEARCHCOMPANIES: "Search companies",
+      UNFOLLOW: "Unfollow",
+      FOLLOW: "Follow",
     },
   },
   ka: {
@@ -165,6 +167,8 @@ const resources = {
       FOLLOWEDCOMPANIES__SUBTITLE:
         "თუ გინდათ გამოიწეროთ კომპანია, გადადით კომპანიების გვერდზე",
       SEARCHCOMPANIES: "ძიება",
+      UNFOLLOW: "გაუქმება",
+      FOLLOW: "გამოწერა",
     },
   },
 };

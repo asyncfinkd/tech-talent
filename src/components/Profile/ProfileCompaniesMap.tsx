@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useHistory } from "react-router-dom";
 import { ApplicationContext } from "../../context/Application/ApplicationContext";
 
@@ -8,7 +9,7 @@ const ProfileCompaniesMap: React.FC<any> = ({ item, env }: any) => {
   const [unFollow, setUnFollow] = useState<Boolean>(false);
   const { jwtDecode } = useContext(ApplicationContext);
   const history = useHistory();
-
+  const { t } = useTranslation();
   useEffect(() => {
     if (!unFollow) {
       if (item.followedUsersId.length != 0) {
@@ -107,7 +108,7 @@ const ProfileCompaniesMap: React.FC<any> = ({ item, env }: any) => {
                 }
               }}
             >
-              {followed ? "Unfollow" : " Follow"}
+              {followed ? t("UNFOLLOW") : t("FOLLOW")}
             </button>
           </div>
         </div>
