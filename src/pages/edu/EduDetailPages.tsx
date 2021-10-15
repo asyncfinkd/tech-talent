@@ -30,7 +30,6 @@ const EduDetailPages: React.FC = () => {
     let splitURL = window.location.pathname.split("/");
     axios.get(`${env.host}/api/get/edu/${splitURL[2]}`).then((result: any) => {
       setData(result.data[0]);
-      console.log(result.data[0]);
     });
   }, []);
   useEffect(() => {

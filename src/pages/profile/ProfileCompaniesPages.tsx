@@ -8,6 +8,7 @@ import { ApplicationContext } from "../../context/Application/ApplicationContext
 import env from "../../application/environment/env.json";
 import { Helmet } from "react-helmet";
 import ProfileCompaniesMap from "../../components/Profile/ProfileCompaniesMap";
+import { useQuery } from "react-query";
 
 const ProfileCompaniesPages: React.FC = () => {
   const local = localStorage.getItem("local");
@@ -25,7 +26,8 @@ const ProfileCompaniesPages: React.FC = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
   const history = useHistory();
-  useEffect(() => {
+  const fetchProfileCompanies = () => {
+    setSpinner(true);
     axios
       .post(
         `${env.host}/api/get/followed/companies`,
@@ -35,10 +37,11 @@ const ProfileCompaniesPages: React.FC = () => {
         }
       )
       .then((result: any) => {
-        setData(result.data);
         setSpinner(false);
+        setData(result.data);
       });
-  }, []);
+  };
+  const { isFetching } = useQuery("Profile Companies", fetchProfileCompanies);
 
   return (
     <>
