@@ -430,7 +430,7 @@ const CompaniesDetailPages: React.FC = () => {
             <div className="marginOnMobile-0-2-137">
               <div className="body-0-2-135">
                 <div className="root-0-2-141 root-0-2-139">
-                  <h2 className="h2-0-2-142">Latest Jobs</h2>
+                  <h2 className="h2-0-2-142">{t("LATESTJOBS")}</h2>
                   <div className="grid-0-2-143">
                     <div className="root-0-2-149 root-0-2-146">
                       <div className="header-0-2-151">

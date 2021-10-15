@@ -104,6 +104,7 @@ const resources = {
       EMPLOYEES: "Employees",
       FOUNDED: "Founded",
       ABOUT__COMPANIES: "About",
+      LATESTJOBS: "Latest Jobs",
     },
   },
   ka: {
@@ -207,6 +208,7 @@ const resources = {
       EMPLOYEES: "თანამშრომლები",
       FOUNDED: "დაარსება",
       ABOUT__COMPANIES: "ჩვენს შესახებ",
+      LATESTJOBS: "უახლესი ვაკანსიები",
     },
   },
 };
