@@ -23,7 +23,7 @@ const ProfileSecurityPages: React.FC = () => {
       history.push("/login");
     }
   }, []);
-  const { jwtDecode } = useContext(ApplicationContext);
+  const { jwtDecode, setJwtDecode } = useContext(ApplicationContext);
   const { t } = useTranslation();
   const [inCorrectPassword, setInCorrectPassword] = useState<Boolean>(false);
   const [spinner, setSpinner] = useState<Boolean>(false);
@@ -228,7 +228,12 @@ const ProfileSecurityPages: React.FC = () => {
             <div className="horizontalLine-0-2-109"></div>
             <Link
               className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
-              to="/profile/logout"
+              to=""
+              onClick={() => {
+                localStorage.clear();
+                setJwtDecode("");
+                history.push("/");
+              }}
             >
               <svg
                 className="fill-0-2-36 icon-0-2-107"
