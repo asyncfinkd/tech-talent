@@ -88,6 +88,10 @@ const resources = {
       JOBSFORME: "Jobs For Me",
       COMINGSOON: "Coming Soon",
       JOBSFORMEPAGE__HELMET: "Jobs | User | Tech Talent",
+      FINDACOMPANY: "Find a <span>company </span>that you trust",
+      FINDYOUREMPLOYER: "Find your future employer",
+      COMPANIES__SEARCH: "Companies",
+      COMPANIES__HELMET: "Companies | Tech Talent",
     },
   },
   ka: {
@@ -175,6 +179,10 @@ const resources = {
       JOBSFORME: "ვაკანსიები ჩემთვის",
       COMINGSOON: "მზადების პროცესში",
       JOBSFORMEPAGE__HELMET: "ვაკანსიები | მომხმარებელი | Tech Talent",
+      FINDACOMPANY: "იპოვნე <span>კომპანია </span>",
+      FINDYOUREMPLOYER: "იპოვნე მომავალი დამსაქმებელი",
+      COMPANIES__SEARCH: "კომპანია",
+      COMPANIES__HELMET: "კომპანიები | Tech Talent",
     },
   },
 };

@@ -8,8 +8,11 @@ import { useHistory, useLocation } from "react-router-dom";
 import CompaniesMap from "../../components/companies/CompaniesMap";
 import Header from "../../components/Header/Header";
 import { useQuery } from "react-query";
+import { useTranslation } from "react-i18next";
+import DOMPurify from "dompurify";
 
 const CompaniesPages: React.FC = () => {
+  const sanitizer = DOMPurify.sanitize;
   const [data, setData] = useState<any>([]);
   const [result, setResult] = useState<any>([]);
   const { jwtDecode } = useContext(ApplicationContext);
@@ -25,6 +28,7 @@ const CompaniesPages: React.FC = () => {
   };
   const { isFetched } = useQuery("Companies", fetchCompanies);
   const { pathname } = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -51,7 +55,7 @@ const CompaniesPages: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Companies | Tech Talent</title>
+        <title>{`${t("COMPANIES__HELMET")}`}</title>
       </Helmet>
       <Header ShowShadow={true} />
       <main className="main-0-2-2">
@@ -60,9 +64,12 @@ const CompaniesPages: React.FC = () => {
             <div className="marginOnMobile-0-2-135">
               <form>
                 <div className="header-0-2-104">
-                  <h1 className="h1-0-2-105">
-                    Find a <span>company </span>that you trust
-                  </h1>
+                  <h1
+                    className="h1-0-2-105"
+                    dangerouslySetInnerHTML={{
+                      __html: sanitizer(`${t("FINDACOMPANY")}`),
+                    }}
+                  ></h1>
                   <div className="buttonGroup-0-2-116"></div>
                 </div>
                 <div className="topLine-0-2-113"></div>
@@ -131,7 +138,7 @@ const CompaniesPages: React.FC = () => {
                     <input
                       type="text"
                       className="input-0-2-112"
-                      placeholder="Find your future employer"
+                      placeholder={`${t("FINDYOUREMPLOYER")}`}
                       value={search}
                       onChange={(e: any) => setSearch(e.target.value)}
                     />
@@ -168,7 +175,9 @@ const CompaniesPages: React.FC = () => {
                               ></animateTransform>
                             </circle>
                           </svg>
-                          <span className="loadingLabel-0-2-132">Loading</span>
+                          <span className="loadingLabel-0-2-132">
+                            {t("LOADING")}
+                          </span>
                         </div>
                       </button>
                     </>
@@ -179,7 +188,9 @@ const CompaniesPages: React.FC = () => {
                     >
                       <div className="countContainer-0-2-129">
                         <div className="count-0-2-130">{data.length}</div>
-                        <div className="countLabel-0-2-131">Companies</div>
+                        <div className="countLabel-0-2-131">
+                          {t("COMPANIES__SEARCH")}
+                        </div>
                       </div>
                     </button>
                   )}
