@@ -78,6 +78,11 @@ const resources = {
       PASSWORD__MATCH__REQUIRED: "Passwords do not match",
       INCORRECT__CURRENT__PASSWORD: "Incorrect current password",
       SECURITY__PAGE__HELMET: "Security | User | Tech Talent",
+      FOLLOWEDCOMPANIES__HELMET: "followed | User | Tech Talent",
+      FOLLOWEDCOMPANIES__TITLE: "You don’t have followed any company yet",
+      FOLLOWEDCOMPANIES__SUBTITLE:
+        "If you want to follow company, go to companies page",
+      SEARCHCOMPANIES: "Search companies",
     },
   },
   ka: {
@@ -155,6 +160,11 @@ const resources = {
       PASSWORD__MATCH__REQUIRED: "პაროლები არ ემთხვევა ერთმანეთს",
       INCORRECT__CURRENT__PASSWORD: "არსებული პაროლი არასწორია",
       SECURITY__PAGE__HELMET: "უსაფრთხოება | მომხმარებელი | Tech Talent",
+      FOLLOWEDCOMPANIES__HELMET: "followed | მომხმარებელი | Tech Talent",
+      FOLLOWEDCOMPANIES__TITLE: "თქვენ ჯერ არ გამოგიწერიათ კომპანია",
+      FOLLOWEDCOMPANIES__SUBTITLE:
+        "თუ გინდათ გამოიწეროთ კომპანია, გადადით კომპანიების გვერდზე",
+      SEARCHCOMPANIES: "ძიება",
     },
   },
 };
