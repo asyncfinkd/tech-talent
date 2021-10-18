@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import CoursesMap from "../../components/Courses/CoursesMap";
-import CoursesSearchDetailHeader from "../../components/Courses/CoursesSearchDetailHeader";
-import CoursesSearchHeader from "../../components/Courses/CoursesSearchHeader";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
-import env from "../../application/environment/env.json";
+import CoursesMap from "components/Courses/CoursesMap";
+import CoursesSearchDetailHeader from "components/Courses/CoursesSearchDetailHeader";
+import CoursesSearchHeader from "components/Courses/CoursesSearchHeader";
+import Footer from "components/Footer/Footer";
+import Header from "components/Header/Header";
+import env from "application/environment/env.json";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 

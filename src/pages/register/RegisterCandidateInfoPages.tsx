@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import { ApplicationContext } from "../../context/Application/ApplicationContext";
-import env from "../../application/environment/env.json";
+import { ApplicationContext } from "context/Application/ApplicationContext";
+import env from "application/environment/env.json";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet";
-import Header from "../../components/Header/Header";
+import Header from "components/Header/Header";
 import { useMutation } from "react-query";
 
 const RegisterCandidateInfoPages: React.FC = () => {

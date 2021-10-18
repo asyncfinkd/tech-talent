@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import Footer from "../../components/Footer/Footer";
+import Footer from "components/Footer/Footer";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import { ApplicationContext } from "../../context/Application/ApplicationContext";
+import { ApplicationContext } from "context/Application/ApplicationContext";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
-import env from "../../application/environment/env.json";
-import Header from "../../components/Header/Header";
+import env from "application/environment/env.json";
+import Header from "components/Header/Header";
 import { useMutation } from "react-query";
 
 type Input = {

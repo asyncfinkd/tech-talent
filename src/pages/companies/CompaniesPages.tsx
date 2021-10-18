@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import Footer from "../../components/Footer/Footer";
-import env from "../../application/environment/env.json";
-import { ApplicationContext } from "../../context/Application/ApplicationContext";
+import Footer from "components/Footer/Footer";
+import env from "application/environment/env.json";
+import { ApplicationContext } from "context/Application/ApplicationContext";
 import { useHistory, useLocation } from "react-router-dom";
-import CompaniesMap from "../../components/companies/CompaniesMap";
-import Header from "../../components/Header/Header";
+import CompaniesMap from "components/companies/CompaniesMap";
+import Header from "components/Header/Header";
 import { useQuery } from "react-query";
 import { useTranslation } from "react-i18next";
 import DOMPurify from "dompurify";

@@ -1,13 +1,13 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
-import env from "../../application/environment/env.json";
+import Footer from "components/Footer/Footer";
+import Header from "components/Header/Header";
+import env from "application/environment/env.json";
 import DOMPurify from "dompurify";
-import { ApplicationContext } from "../../context/Application/ApplicationContext";
+import { ApplicationContext } from "context/Application/ApplicationContext";
 import { useHistory, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import EduDetailMap from "../../components/Edu/EduDetailMap";
+import EduDetailMap from "components/Edu/EduDetailMap";
 import { useQuery } from "react-query";
 
 const EduDetailPages: React.FC = () => {

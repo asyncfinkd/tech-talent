@@ -3,9 +3,9 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { useHistory, useLocation } from "react-router-dom";
-import env from "../../application/environment/env.json";
+import env from "application/environment/env.json";
 import { useTranslation } from "react-i18next";
-import Header from "../../components/Header/Header";
+import Header from "components/Header/Header";
 
 const ForgotPages: React.FC = () => {
   const { t } = useTranslation();

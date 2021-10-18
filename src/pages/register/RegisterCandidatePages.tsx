@@ -3,10 +3,10 @@ import React, { useState, useContext, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router-dom";
-import env from "../../application/environment/env.json";
-import { ApplicationContext } from "../../context/Application/ApplicationContext";
+import env from "application/environment/env.json";
+import { ApplicationContext } from "context/Application/ApplicationContext";
 import { useTranslation } from "react-i18next";
-import Header from "../../components/Header/Header";
+import Header from "components/Header/Header";
 import { useMutation } from "react-query";
 
 type Input = {

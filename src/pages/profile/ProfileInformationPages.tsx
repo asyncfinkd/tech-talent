@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import Footer from "../../components/Footer/Footer";
-import { ApplicationContext } from "../../context/Application/ApplicationContext";
-import env from "../../application/environment/env.json";
+import Footer from "components/Footer/Footer";
+import { ApplicationContext } from "context/Application/ApplicationContext";
+import env from "application/environment/env.json";
 import { Helmet } from "react-helmet";
-import Header from "../../components/Header/Header";
+import Header from "components/Header/Header";
 import { useMutation } from "react-query";
 import { useTranslation } from "react-i18next";
 

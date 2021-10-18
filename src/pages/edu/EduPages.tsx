@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
+import Footer from "components/Footer/Footer";
+import Header from "components/Header/Header";
 import axios from "axios";
-import env from "../../application/environment/env.json";
+import env from "application/environment/env.json";
 import { useState } from "react";
-import EduMap from "../../components/Edu/EduMap";
+import EduMap from "components/Edu/EduMap";
 import { Helmet } from "react-helmet";
 import { useLocation } from "react-router-dom";
 import { useQuery } from "react-query";

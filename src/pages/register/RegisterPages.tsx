@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import Header from "../../components/Header/Header";
+import Header from "components/Header/Header";
 
 const RegisterPages: React.FC = () => {
   const { t } = useTranslation();

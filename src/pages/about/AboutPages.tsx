@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useLocation } from "react-router-dom";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
+import Footer from "components/Footer/Footer";
+import Header from "components/Header/Header";
 
 const AboutPages: React.FC = () => {
   const { pathname } = useLocation();

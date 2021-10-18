@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import Footer from "../../components/Footer/Footer";
-import env from "../../application/environment/env.json";
-import { ApplicationContext } from "../../context/Application/ApplicationContext";
+import Footer from "components/Footer/Footer";
+import env from "application/environment/env.json";
+import { ApplicationContext } from "context/Application/ApplicationContext";
 import { useHistory, useLocation } from "react-router-dom";
 import DOMPurify from "dompurify";
 import { Helmet } from "react-helmet";
-import Header from "../../components/Header/Header";
+import Header from "components/Header/Header";
 import { useTranslation } from "react-i18next";
 
 const CompaniesDetailPages: React.FC = () => {

@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
-import env from "../../application/environment/env.json";
-import CoursesMap from "../../components/Courses/CoursesMap";
-import CoursesSearchHeader from "../../components/Courses/CoursesSearchHeader";
+import Footer from "components/Footer/Footer";
+import Header from "components/Header/Header";
+import env from "application/environment/env.json";
+import CoursesMap from "components/Courses/CoursesMap";
+import CoursesSearchHeader from "components/Courses/CoursesSearchHeader";
 import { NavLink, useLocation } from "react-router-dom";
-import CoursesSearchDetailHeader from "../../components/Courses/CoursesSearchDetailHeader";
+import CoursesSearchDetailHeader from "components/Courses/CoursesSearchDetailHeader";
 
 const CoursesSearchPages: React.FC = () => {
   const [data, setData] = useState<any>([]);
