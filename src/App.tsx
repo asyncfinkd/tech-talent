@@ -30,6 +30,7 @@ import { CookiesProvider } from "react-cookie";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { QueryClientProvider, QueryClient } from "react-query";
 import ProfileJobsForMePages from "pages/profile/ProfileJobsForMePages";
+import ProfileResumePages from "pages/profile/ProfileResumePages";
 
 const client = new QueryClient();
 
@@ -100,6 +101,11 @@ const App: React.FC = () => {
                     path="/profile/companies"
                     exact
                     component={ProfileCompaniesPages}
+                  />
+                  <Route
+                    path="/profile/resume"
+                    exact
+                    component={ProfileResumePages}
                   />
                   <Route
                     path="/profile/jobs"
