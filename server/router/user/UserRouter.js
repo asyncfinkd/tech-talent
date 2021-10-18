@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt");
 const loginMiddleware = require("../../middlewares/LoginMiddleware");
 const nodemailer = require("nodemailer");
 const CompaniesSchema = require("../../schema/companies/CompaniesSchema");
+const path = require("path");
 
 router.route("/login").post(async (req, res) => {
   UserSchema.findOne({ email: req.body.email }).then((result) => {
@@ -261,6 +262,18 @@ router
           });
         });
       }
+    });
+  });
+
+router
+  .route("/add/resume")
+  .all(loginMiddleware)
+  .post(async (req, res) => {
+    const file = req.body.image;
+    const dir = path.join(__dirname, "../../public/");
+
+    UserSchema.findOne({ _id: req._id }).then((result) => {
+      console.log(result);
     });
   });
 

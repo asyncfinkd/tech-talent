@@ -1,17 +1,37 @@
+import axios from "axios";
 import Footer from "components/Footer/Footer";
 import Header from "components/Header/Header";
 import { ApplicationContext } from "context/Application/ApplicationContext";
-import React, { useContext } from "react";
+import React, { useContext, useState, useRef } from "react";
 import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
+import { useMutation } from "react-query";
 import { Link, useHistory } from "react-router-dom";
+import env from "application/environment/env.json";
 
 const ProfileResumePages: React.FC = () => {
+  const inputRef = useRef<any>(null);
   const { jwtDecode, setJwtDecode } = useContext(ApplicationContext);
   const { t } = useTranslation();
+  const [newImage, setNewImage] = useState("");
   const history = useHistory();
+  const mutation = useMutation((identification: any) => {
+    return axios.post(`${env.host}/api/add/resume`, identification, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("local")}` },
+    });
+  });
+  const onChangeState = (e: any) => {
+    let fileReader = new FileReader();
+    fileReader.onload = () => {
+      let fileURL: any = fileReader.result;
+      setNewImage(fileURL);
+    };
+    fileReader.readAsDataURL(e.target.files[0]);
+    console.log(e.target.files[0].name);
+  };
   return (
     <>
+      {console.log(newImage)}
       <Helmet>
         <title>Resume | User | Tech Talent</title>
       </Helmet>
@@ -199,7 +219,14 @@ const ProfileResumePages: React.FC = () => {
           <div className="body-0-2-101">
             <section className="root-0-2-271">
               <h1 className="h1-0-2-272">Resume</h1>
-              <input type="file" accept=".pdf" hidden={true} id="tfq$QML" />
+              <input
+                type="file"
+                accept=".pdf"
+                ref={inputRef}
+                hidden={true}
+                onChange={onChangeState}
+                id="tfq$QML"
+              />
               <div className="box-0-2-277">
                 <button
                   className="root-0-2-46 browseButton-0-2-279 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
