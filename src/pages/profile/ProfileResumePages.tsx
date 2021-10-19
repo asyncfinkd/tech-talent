@@ -326,17 +326,32 @@ const ProfileResumePages: React.FC = () => {
                       <span>Loading</span>
                     </button>
                   ) : (
-                    <button
-                      className="root-0-2-46 primaryButton-0-2-278 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-                      type="submit"
-                      onClick={() => {
-                        const data = new FormData();
-                        data.append("file", newImage);
-                        mutation.mutate(data);
-                      }}
-                    >
-                      Save
-                    </button>
+                    <>
+                      {fileName.length == 0 || jwtDecode.cv ? (
+                        <>
+                          <button
+                            className="root-0-2-46 primaryButton-0-2-278 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantSecondary-0-2-55"
+                            type="submit"
+                          >
+                            Replace
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <button
+                            className="root-0-2-46 primaryButton-0-2-278 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                            type="submit"
+                            onClick={() => {
+                              const data = new FormData();
+                              data.append("file", newImage);
+                              mutation.mutate(data);
+                            }}
+                          >
+                            Save
+                          </button>
+                        </>
+                      )}
+                    </>
                   )}
                 </section>
               </>
