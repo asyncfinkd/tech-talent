@@ -80,6 +80,7 @@ router.route("/register").post(async (req, res) => {
           password: hashedPassword,
           interest: req.body.interest,
           role: req.body.role,
+          cv: "",
         }).save();
         res.json({ success: true, access_token: access_token });
       }
@@ -275,22 +276,27 @@ router
 
     UserSchema.findOne({ _id: req._id }).then((result) => {
       let splitFullName = result.fullName.split(" ").join("_").toLowerCase();
-      file.mv(`${dir}${splitFullName}_resume.${type}`, (err) => {
-        if (err) return res.json(err);
-      });
+      const num = Math.random().toString(36).substring(2);
+      file.mv(
+        `${dir}${splitFullName == "" ? num : splitFullName}_resume.${type}`,
+        (err) => {
+          if (err) return res.json(err);
+        }
+      );
 
       let dataFile = "";
       if (file) {
-        dataFile = `${splitFullName}_resume.${type}`;
+        dataFile = `${
+          splitFullName == "" ? num : splitFullName
+        }_resume.${type}`;
       } else {
         dataFile = "";
       }
 
-      const NewUserSchema = new UserSchema({
-        cv_url: dataFile,
-      }).save();
+      result.cv = dataFile;
+      result.save();
 
-      res.json({ success: true });
+      res.status(200).json({ success: true });
     });
   });
 

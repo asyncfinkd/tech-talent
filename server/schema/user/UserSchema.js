@@ -27,7 +27,7 @@ const userSchema = mongoose.Schema({
   createdAt: { type: String },
   followedCompaniesId: [FollowedCompaniesId],
   followedEdusId: [FollowedEdusId],
-  cv_url: { type: String },
+  cv: { type: String },
 });
 
 const User = mongoose.model("users", userSchema);
