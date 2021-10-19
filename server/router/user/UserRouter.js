@@ -335,4 +335,50 @@ router
     });
   });
 
+router
+  .route("/delete/resume")
+  .all(loginMiddleware)
+  .post(async (req, res) => {
+    UserSchema.findOne({ _id: req._id }).then((result) => {
+      const {
+        email,
+        interest,
+        role,
+        firstName,
+        lastName,
+        fullName,
+        _id,
+        phone,
+        socialNetwork,
+        followedCompaniesId,
+        cv,
+      } = result;
+
+      const access_token = jwt.sign(
+        {
+          email,
+          interest,
+          role,
+          firstName,
+          lastName,
+          fullName,
+          _id,
+          phone,
+          socialNetwork,
+          followedCompaniesId,
+          cv,
+        },
+        env.ACCESS_TOKEN,
+        {
+          expiresIn: "12h",
+        }
+      );
+
+      result.cv = "";
+      result.save();
+
+      res.status(200).json({ success: true, access_token: access_token });
+    });
+  });
+
 module.exports = router;
