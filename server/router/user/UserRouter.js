@@ -269,11 +269,28 @@ router
   .route("/add/resume")
   .all(loginMiddleware)
   .post(async (req, res) => {
-    const file = req.body.image;
+    const file = req.files.file;
     const dir = path.join(__dirname, "../../public/");
+    const type = file.name.split(".").pop();
 
     UserSchema.findOne({ _id: req._id }).then((result) => {
-      console.log(result);
+      let splitFullName = result.fullName.split(" ").join("_").toLowerCase();
+      file.mv(`${dir}${splitFullName}_resume.${type}`, (err) => {
+        if (err) return res.json(err);
+      });
+
+      let dataFile = "";
+      if (file) {
+        dataFile = `${splitFullName}_resume.${type}`;
+      } else {
+        dataFile = "";
+      }
+
+      const NewUserSchema = new UserSchema({
+        cv_url: dataFile,
+      }).save();
+
+      res.json({ success: true });
     });
   });
 

@@ -7033,3 +7033,227 @@
     margin-top: 0;
   }
 }
+
+.root-0-2-257 {
+  display: flex;
+  padding: 0;
+  background: #ffffff;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+  flex-direction: column;
+}
+@media (min-width: 1280px) {
+  .root-0-2-257 {
+    width: 500px;
+    padding: 2.75rem 2.125rem;
+    box-shadow: 0px 4px 60px 10px #f0f3fb;
+    margin-bottom: 2.5rem;
+  }
+}
+.h1-0-2-258 {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.25rem;
+  font-family: MarkPro, Helvetica;
+  font-weight: bold;
+  line-height: 1.25;
+}
+@media (min-width: 1280px) {
+  .h1-0-2-258 {
+    margin: 0 0 2.5rem 0;
+    font-size: 1.75rem;
+  }
+}
+.file-0-2-259 {
+  display: flex;
+  padding: 0.875rem 1rem;
+  align-items: center;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  justify-content: space-between;
+  background-color: #f5f8ff;
+}
+.fileName-0-2-260 {
+  color: #323233;
+  font-size: 1rem;
+  font-family: MarkPro, Helvetica;
+  line-height: 1.25;
+  margin-left: 0.625rem;
+}
+.buttonBox-0-2-261 {
+  display: flex;
+}
+.button-0-2-262 {
+  padding: 0.5rem;
+  margin-left: 0.25rem;
+  border-radius: 1.25rem;
+}
+.button-0-2-262:hover {
+  background-color: #ffffff;
+}
+.button-0-2-262:focus {
+  color: #6667e2;
+  background-color: #ffffff;
+}
+.button-0-2-262:active {
+  color: #5051de;
+}
+.box-0-2-263 {
+  border: 2px dashed #e0e5f2;
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  border-radius: 20px;
+  justify-content: center;
+}
+@media (min-width: 1280px) {
+  .box-0-2-263 {
+    padding: 4rem 2rem;
+  }
+}
+.attachIcon-0-2-264 {
+  fill: #171725;
+}
+@media (min-width: 1280px) {
+  .attachIcon-0-2-264 {
+    margin-right: 0.5rem;
+  }
+}
+.browseButton-0-2-265 {
+  color: #171725;
+  border: 2px solid #eff3ff;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-family: MarkPro, Helvetica;
+  font-weight: bold;
+  line-height: 1.25;
+  background-color: #ffffff;
+}
+.browseButton-0-2-265:hover {
+  background-color: #fafafb;
+}
+.browseButton-0-2-265:focus {
+  border: 2px solid #eaeaef;
+}
+.browseButton-0-2-265:active {
+  transform: scale(0.98);
+  background-color: #f1f1f5;
+}
+@media (min-width: 1280px) {
+  .browseButton-0-2-265 {
+    padding: 1.25rem 1.75rem;
+    font-size: 1rem;
+  }
+}
+.deleteResumeButton-0-2-266 {
+  background-color: #e44e4e;
+}
+.deleteResumeButton-0-2-266:hover {
+  background-color: #dd2222;
+}
+.deleteResumeButton-0-2-266:focus {
+  box-shadow: 0px 0px 0px 2px #e44e4e;
+  background-color: #cb1f1f;
+}
+.deleteResumeButton-0-2-266:active {
+  background-color: #c21e1e;
+}
+.resumeBox-0-2-267 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+@media (min-width: 1280px) {
+  .resumeBox-0-2-267 {
+    border: 2px solid #eff3ff;
+    padding: 1.25rem;
+    border-radius: 20px;
+    flex-direction: row;
+  }
+}
+.resumeCapsule-0-2-268 {
+  display: none;
+  margin-right: 0.75rem;
+}
+@media (min-width: 1280px) {
+  .resumeCapsule-0-2-268 {
+    display: flex;
+  }
+}
+.resumeTitle-0-2-269 {
+  color: #171725;
+  font-size: 1rem;
+  font-family: MarkPro, Helvetica;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 0.25rem;
+}
+.resumeCaption-0-2-270 {
+  color: #171725;
+  display: flex;
+  font-size: 0.75rem;
+  align-items: center;
+  font-family: MarkPro, Helvetica;
+  line-height: 1.25;
+}
+.circle-0-2-271 {
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 0.25rem;
+  border-radius: 0.25rem;
+}
+.circlePending-0-2-272 {
+  background-color: #ffb47d;
+}
+.circleActive-0-2-273 {
+  background-color: #18c729;
+}
+.downloadButton-0-2-274 {
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 10;
+}
+.actionIcon-0-2-275 {
+  fill: #ffffff;
+  width: 18px;
+  height: 18px;
+}
+.clearButton-0-2-276 {
+  padding: 0.5rem;
+  border-radius: 10;
+  background-color: #e44e4e;
+}
+.clearButton-0-2-276:hover {
+  background: #dd2222;
+}
+.clearButton-0-2-276:focus {
+  background: #cb1f1f;
+}
+.clearButton-0-2-276:active {
+  background: #c21e1e;
+}
+.resumeColumn-0-2-277 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+@media (min-width: 1280px) {
+  .resumeColumn-0-2-277 {
+    align-items: flex-start;
+    margin-right: 0.75rem;
+  }
+}
+.primaryButton-0-2-278 {
+  margin-top: 2rem;
+}
+.nameGroup-0-2-279 {
+  display: flex;
+}
+.buttonGroup-0-2-280 {
+  display: flex;
+  margin-top: 0.5rem;
+}
+@media (min-width: 1280px) {
+  .buttonGroup-0-2-280 {
+    margin-top: 0;
+  }
+}

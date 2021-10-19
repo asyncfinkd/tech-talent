@@ -15,12 +15,11 @@ const userSchema = mongoose.Schema({
   fullName: { type: String },
   email: {
     type: String,
-    required: true,
     unique: true,
     lowercase: true,
     trim: true,
   },
-  password: { type: String, required: true },
+  password: { type: String },
   interest: { type: String },
   phone: { type: String },
   socialNetwork: { type: String },
@@ -28,6 +27,7 @@ const userSchema = mongoose.Schema({
   createdAt: { type: String },
   followedCompaniesId: [FollowedCompaniesId],
   followedEdusId: [FollowedEdusId],
+  cv_url: { type: String },
 });
 
 const User = mongoose.model("users", userSchema);
