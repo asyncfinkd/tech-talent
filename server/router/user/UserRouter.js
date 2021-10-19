@@ -339,6 +339,8 @@ router
   .route("/delete/resume")
   .all(loginMiddleware)
   .post(async (req, res) => {
+    const dir = path.join(__dirname, "../../public/");
+
     UserSchema.findOne({ _id: req._id }).then((result) => {
       const {
         email,
@@ -351,8 +353,9 @@ router
         phone,
         socialNetwork,
         followedCompaniesId,
-        cv,
       } = result;
+
+      const cv = "";
 
       const access_token = jwt.sign(
         {
@@ -373,6 +376,13 @@ router
           expiresIn: "12h",
         }
       );
+
+      console.log(cv);
+
+      require("fs").unlink(`${dir}${result.cv}`, function (err) {
+        if (err) res.status(404).json(err);
+        console.log("deleted file succesfully");
+      });
 
       result.cv = "";
       result.save();

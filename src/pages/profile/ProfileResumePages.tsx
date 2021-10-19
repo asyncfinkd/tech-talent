@@ -51,6 +51,7 @@ const ProfileResumePages: React.FC = () => {
           setFileName("");
           setNewImage("");
           setDeletePage(false);
+          localStorage.setItem("local", result.data.access_token);
           setJwtDecode(result.data.access_token);
         }
       });
