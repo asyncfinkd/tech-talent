@@ -104,7 +104,9 @@ router.route("/update/user/id").post(async (req, res) => {
         phone,
         socialNetwork,
         followedCompaniesId,
+        cv,
       } = result;
+
       const access_token = jwt.sign(
         {
           email,
@@ -117,6 +119,7 @@ router.route("/update/user/id").post(async (req, res) => {
           phone,
           socialNetwork,
           followedCompaniesId,
+          cv,
         },
         env.ACCESS_TOKEN,
         {
@@ -275,10 +278,14 @@ router
     const type = file.name.split(".").pop();
 
     UserSchema.findOne({ _id: req._id }).then((result) => {
-      let splitFullName = result.fullName.split(" ").join("_").toLowerCase();
+      let splitFullName = result.fullName?.split(" ").join("_").toLowerCase();
       const num = Math.random().toString(36).substring(2);
       file.mv(
-        `${dir}${splitFullName == "" ? num : splitFullName}_resume.${type}`,
+        `${dir}${
+          splitFullName == undefined || splitFullName == ""
+            ? num
+            : splitFullName
+        }_resume.${type}`,
         (err) => {
           if (err) return res.json(err);
         }
@@ -287,7 +294,9 @@ router
       let dataFile = "";
       if (file) {
         dataFile = `${
-          splitFullName == "" ? num : splitFullName
+          splitFullName == undefined || splitFullName == ""
+            ? num
+            : splitFullName
         }_resume.${type}`;
       } else {
         dataFile = "";
@@ -376,8 +385,6 @@ router
           expiresIn: "12h",
         }
       );
-
-      console.log(cv);
 
       require("fs").unlink(`${dir}${result.cv}`, function (err) {
         if (err) res.status(404).json(err);
