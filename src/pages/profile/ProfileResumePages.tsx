@@ -10,6 +10,12 @@ import { Link, useHistory } from "react-router-dom";
 import env from "application/environment/env.json";
 
 const ProfileResumePages: React.FC = () => {
+  const local = localStorage.getItem("local");
+  useEffect(() => {
+    if (!local || !jwtDecode) {
+      history.push("/login");
+    }
+  }, []);
   const inputRef = useRef<any>(null);
   const { jwtDecode, setJwtDecode } = useContext(ApplicationContext);
   const { t } = useTranslation();
