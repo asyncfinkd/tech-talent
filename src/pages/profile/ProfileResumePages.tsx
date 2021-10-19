@@ -26,7 +26,11 @@ const ProfileResumePages: React.FC = () => {
         },
       })
       .then((result: any) => {
-        setResponse(true);
+        if (result.data.success) {
+          setResponse(true);
+          localStorage.setItem("local", result.data.access_token);
+          setJwtDecode(result.data.access_token);
+        }
       });
   });
   const onChangeState = (e: any) => {
@@ -35,7 +39,6 @@ const ProfileResumePages: React.FC = () => {
   };
   return (
     <>
-      {console.log(newImage)}
       <Helmet>
         <title>Resume | User | Tech Talent</title>
       </Helmet>
@@ -221,7 +224,7 @@ const ProfileResumePages: React.FC = () => {
             </Link>
           </div>
           <div className="body-0-2-101">
-            {fileName.length > 0 ? (
+            {fileName.length > 0 || jwtDecode.length != 0 ? (
               <>
                 <section className="root-0-2-257">
                   <h1 className="h1-0-2-258">Resume</h1>
@@ -251,16 +254,20 @@ const ProfileResumePages: React.FC = () => {
                           </div>
                         </div>
                         <div className="resumeColumn-0-2-277">
-                          <div className="resumeTitle-0-2-269">{fileName}</div>
+                          <div className="resumeTitle-0-2-269">
+                            {fileName || jwtDecode.cv}
+                          </div>
                           <div className="resumeCaption-0-2-270">
                             <div
                               className={
-                                response
+                                response || jwtDecode.cv != ""
                                   ? "circle-0-2-129 circleActive-0-2-131"
                                   : "circle-0-2-271 circlePending-0-2-272"
                               }
                             ></div>
-                            {response ? "Active" : "Unsaved"}
+                            {response || jwtDecode.cv != ""
+                              ? "Active"
+                              : "Unsaved"}
                           </div>
                         </div>
                       </div>

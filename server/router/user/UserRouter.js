@@ -293,10 +293,45 @@ router
         dataFile = "";
       }
 
+      const {
+        email,
+        interest,
+        role,
+        firstName,
+        lastName,
+        fullName,
+        _id,
+        phone,
+        socialNetwork,
+        followedCompaniesId,
+      } = result;
+
+      const cv = dataFile;
+
+      const access_token = jwt.sign(
+        {
+          email,
+          interest,
+          role,
+          firstName,
+          lastName,
+          fullName,
+          _id,
+          phone,
+          socialNetwork,
+          followedCompaniesId,
+          cv,
+        },
+        env.ACCESS_TOKEN,
+        {
+          expiresIn: "12h",
+        }
+      );
+
       result.cv = dataFile;
       result.save();
 
-      res.status(200).json({ success: true });
+      res.status(200).json({ success: true, access_token: access_token });
     });
   });
 
