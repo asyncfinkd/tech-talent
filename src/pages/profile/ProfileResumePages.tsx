@@ -2,7 +2,7 @@ import axios from "axios";
 import Footer from "components/Footer/Footer";
 import Header from "components/Header/Header";
 import { ApplicationContext } from "context/Application/ApplicationContext";
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
 import { useMutation } from "react-query";
@@ -26,10 +26,7 @@ const ProfileResumePages: React.FC = () => {
         },
       })
       .then((result: any) => {
-        if (result.success == true) {
-          setResponse(true);
-        }
-        console.log(result);
+        setResponse(true);
       });
   });
   const onChangeState = (e: any) => {
