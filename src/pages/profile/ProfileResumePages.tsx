@@ -92,7 +92,7 @@ const ProfileResumePages: React.FC = () => {
               {t("INFORMATION__NAV")}
             </Link>
             <Link
-              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
+              className="root-0-2-46 button-0-2-105__profile buttonActive-0-2-106 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/resume"
             >
               <svg
@@ -110,9 +110,10 @@ const ProfileResumePages: React.FC = () => {
                 ></path>
               </svg>
               {t("RESUME__NAV")}
+              <div className="verticalLine-0-2-108"></div>
             </Link>
             <Link
-              className="root-0-2-46 button-0-2-105__profile buttonActive-0-2-106 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
+              className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed"
               to="/profile/security"
             >
               <svg
@@ -130,7 +131,6 @@ const ProfileResumePages: React.FC = () => {
                 ></path>
               </svg>
               {t("SECURITY__NAV")}
-              <div className="verticalLine-0-2-108"></div>
             </Link>
             <div className="horizontalLine-0-2-109"></div>
             <Link
