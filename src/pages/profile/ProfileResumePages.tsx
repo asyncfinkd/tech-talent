@@ -30,6 +30,7 @@ const ProfileResumePages: React.FC = () => {
           setResponse(true);
           localStorage.setItem("local", result.data.access_token);
           setJwtDecode(result.data.access_token);
+          setFileName("");
         }
       });
   });
@@ -224,7 +225,7 @@ const ProfileResumePages: React.FC = () => {
             </Link>
           </div>
           <div className="body-0-2-101">
-            {fileName.length > 0 || jwtDecode.length != 0 ? (
+            {fileName.length != 0 || jwtDecode.cv ? (
               <>
                 <section className="root-0-2-257">
                   <h1 className="h1-0-2-258">Resume</h1>
