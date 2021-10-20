@@ -17,7 +17,6 @@ const EduSchema = mongoose.Schema({
   about: { type: String },
   address: { type: String },
   backgroundColor: { type: String },
-  courseCount: { type: Number },
   createdAt: { type: String },
   founded: { type: String },
   location: { type: String },
