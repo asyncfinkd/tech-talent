@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 interface Props {
   wantSponsors?: boolean;
@@ -80,21 +81,21 @@ const Footer: React.FC<Props> = ({ wantSponsors }) => {
                     Tech companies use our platform <br /> to find people that
                     fit their culture.
                   </div>
-                  {localStorage.getItem("local") ? (
+                  {/* {localStorage.getItem("local") ? (
                     <a
                       className="root-0-2-46 register-0-2-214 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                       href="/profile/information"
                     >
                       Profile
                     </a>
-                  ) : (
-                    <a
-                      className="root-0-2-46 register-0-2-214 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-                      href="/register"
-                    >
-                      Register
-                    </a>
-                  )}
+                  ) : ( */}
+                  <a
+                    className="root-0-2-46 register-0-2-214 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                    href="/register"
+                  >
+                    Register
+                  </a>
+                  {/* )} */}
                 </div>
                 <div className="right-0-2-215">
                   <div className="colContainer-0-2-219">
@@ -287,19 +288,19 @@ const Footer: React.FC<Props> = ({ wantSponsors }) => {
                     <div className="col-0-2-220">
                       <div className="titleEntry-0-2-216">Company</div>
                       <div>
-                        <a className="entry-0-2-218" href="/about">
-                          About
-                        </a>
+                        <Link href="/about">
+                          <a className="entry-0-2-218">About</a>
+                        </Link>
                       </div>
                       <div>
-                        <a className="entry-0-2-218" href="/terms">
-                          Terms & Conditions
-                        </a>
+                        <Link href="/terms">
+                          <a className="entry-0-2-218">Terms & Conditions</a>
+                        </Link>
                       </div>
                       <div>
-                        <a className="entry-0-2-218" href="/privacy">
-                          Privacy Policy
-                        </a>
+                        <Link href="/privacy">
+                          <a className="entry-0-2-218">Privacy Policy</a>
+                        </Link>
                       </div>
                     </div>
                   </div>
