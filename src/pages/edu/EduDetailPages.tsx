@@ -9,6 +9,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import EduDetailMap from "components/Edu/EduDetailMap";
 import { useQuery } from "react-query";
+import EduDetailPagesMap from "components/Edu/EduDetailPagesMap";
 
 const EduDetailPages: React.FC = () => {
   const { pathname } = useLocation();
@@ -415,7 +416,7 @@ const EduDetailPages: React.FC = () => {
                         <div className="root-0-2-281 hideOnMobile-0-2-280">
                           <h2 className="h2-0-2-282">Latest Courses</h2>
                           <div className="grid-0-2-283">
-                            {courses.map((item: any) => {
+                            {courses.slice(0, 4).map((item: any) => {
                               return (
                                 <>
                                   <EduDetailMap item={item} />
@@ -423,6 +424,20 @@ const EduDetailPages: React.FC = () => {
                               );
                             })}
                           </div>
+                        </div>
+                      </div>
+                      <div>
+                        <h2 className="header-0-2-273">
+                          All Active Courses ({courses.length})
+                        </h2>
+                        <div className="root-0-2-194">
+                          {courses.map((item: any) => {
+                            return (
+                              <>
+                                <EduDetailPagesMap item={item} />
+                              </>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
