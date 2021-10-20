@@ -6,6 +6,7 @@ import { useQuery } from "react-query";
 import env from "application/environment/env.json";
 import DOMPurify from "dompurify";
 import { ApplicationContext } from "context/Application/ApplicationContext";
+import { Link } from "react-router-dom";
 
 const EduFeed: React.FC = () => {
   const sanitizer = DOMPurify.sanitize;
@@ -423,12 +424,12 @@ const EduFeed: React.FC = () => {
                             </>
                           ) : (
                             <>
-                              <a
+                              <Link
                                 className="root-0-2-46 xs-0-2-272 salaryButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantSecondary-0-2-55"
-                                href="/register?cb=%2Fe%2Fcommschool%2Fim2gE-introduction-to-front-end-development"
+                                to={`/register?return_to=e/${data.academy.slug}/${data.slug}/${data.slugName}`}
                               >
                                 Show
-                              </a>
+                              </Link>
                             </>
                           )}
                         </div>
