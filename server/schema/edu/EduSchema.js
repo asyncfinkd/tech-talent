@@ -35,14 +35,6 @@ const EduSchema = mongoose.Schema({
   url: { type: String },
   followedUsersId: [FollowedUsersId],
   coursesId: [CoursesId],
-  category: {
-    iconUrl: { type: String },
-    imageUrl: { type: String },
-    name: { type: String },
-  },
-  sessionDurationInHours: { type: String },
-  sessionCount: { type: String },
-  durationInWeeks: { type: String },
 });
 
 const Edu = mongoose.model("edus", EduSchema);

@@ -7902,6 +7902,10 @@
   background: #171725;
 }
 
+.svivmqmvkqelwqmel {
+visibility: visible !important;
+}
+
 .tt-content .editor-toolbar {
   border-top: 0;
   border-left: 0;
@@ -8004,4 +8008,83 @@
     line-height: 1.25rem;
     border-radius: 10px;
   }
+}
+
+.root-0-2-152 {
+  width: 320px;
+  border: 1px solid #f7f9ff;
+  padding: 1rem 1.375rem 1rem 1.375rem;
+  z-index: 6;
+  background: #ffffff;
+  border-radius: 1rem;
+}
+.shareTop-0-2-153 {
+  display: flex;
+  font-size: 1.125rem;
+  font-style: normal;
+  text-align: center;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+}
+.closeButton-0-2-154 {
+  background: #ffffff;
+}
+.closeButton-0-2-154:hover,
+.closeButton-0-2-154:focus {
+  background: #ffffff;
+}
+.closeIcon-0-2-155 {
+  fill: #92929d;
+  width: 18px;
+  height: 18px;
+}
+.shareMid-0-2-156 {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.input-0-2-157 {
+  border: 1px solid #92929d;
+  height: 24px;
+  display: flex;
+  padding: 0.625rem;
+  overflow: hidden;
+  position: relative;
+  flex-grow: 1;
+  font-size: 1rem;
+  font-style: normal;
+  text-align: center;
+  align-items: center;
+  font-weight: normal;
+  border-radius: 0.5rem 0rem 0rem 0.5rem;
+  text-overflow: ellipsis;
+}
+.input-0-2-157:focus {
+  border: 1px solid #92929d;
+  outline: none;
+}
+.copyButton-0-2-158 {
+  border: 1px solid #92929d;
+  height: 20px;
+  padding: 1.375rem;
+  border-left: 0px solid #92929d;
+  border-radius: 0rem 0.5rem 0.5rem 0rem;
+}
+.copyIcon-0-2-159 {
+  stroke: #171725;
+}
+.shareBot-0-2-160 {
+  color: #92929d;
+  display: flex;
+  font-size: 0.875rem;
+  font-style: normal;
+  align-items: center;
+  font-weight: bold;
+  justify-content: space-between;
+}
+.shareBotHidden-0-2-161 {
+  visibility: hidden;
 }

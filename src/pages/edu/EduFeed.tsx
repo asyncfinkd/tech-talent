@@ -10,6 +10,8 @@ const EduFeed: React.FC = () => {
   const sanitizer = DOMPurify.sanitize;
   const [data, setData] = useState<any>({});
   const [page, setPage] = useState<boolean>(false);
+  const [share, setShare] = useState<boolean>(false);
+  const [copied, setCopied] = useState<boolean>(false);
   const fetchEduFeed = () => {
     const splitURL = window.location.pathname.split("/");
     const $unicalURL = splitURL[4];
@@ -31,7 +33,9 @@ const EduFeed: React.FC = () => {
             <div className="root-0-2-221">
               <div
                 className="header-0-2-222"
-                style={{ backgroundColor: "rgb(43, 179, 114)" }}
+                style={{
+                  backgroundColor: `${data?.academy?.backgroundColor}`,
+                }}
               >
                 <div></div>
                 <div className="alwaysNoMargin-0-2-135 container-0-2-224">
@@ -232,7 +236,12 @@ const EduFeed: React.FC = () => {
                         </div>
                       </div>
                       <div className="buttonGroup-0-2-251">
-                        <button className="root-0-2-46 share-0-2-252 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantSecondary-0-2-55">
+                        <button
+                          className="root-0-2-46 share-0-2-252 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantSecondary-0-2-55"
+                          onClick={() => {
+                            alert(1);
+                          }}
+                        >
                           <svg
                             className="fill-0-2-36"
                             width="24"
@@ -253,70 +262,6 @@ const EduFeed: React.FC = () => {
                           </svg>
                           Share
                         </button>
-                        <div
-                          className="root-0-2-263"
-                          data-popper-reference-hidden=""
-                          data-popper-escaped=""
-                          data-popper-placement="bottom-start"
-                          style={{
-                            position: "absolute",
-                            visibility: "hidden",
-                            inset: "0px auto auto 0px",
-                            margin: "0px",
-                            transform: "translate(0px, 8px);",
-                          }}
-                        >
-                          <div className="shareTop-0-2-264">
-                            <span>Share Course</span>
-                            <div>
-                              <svg
-                                className="fill-0-2-36 closeIcon-0-2-266"
-                                width="10"
-                                height="10"
-                                viewBox="0 0 10 10"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path d="M9.69867 9.70138C9.33342 10.0633 8.76187 10.0962 8.35911 9.8001L8.24372 9.70138L5 6.46105L1.75628 9.70138C1.39103 10.0633 0.819478 10.0962 0.416718 9.8001L0.301331 9.70138C-0.0639191 9.33943 -0.0971222 8.77302 0.201717 8.37389L0.301331 8.25954L4.27252 4.29862C4.63777 3.93666 5.20933 3.90375 5.61209 4.1999L5.72748 4.29862L9.69867 8.25954C10.1004 8.65769 10.1004 9.30323 9.69867 9.70138Z"></path>
-                                <path d="M0.30133 0.298616C0.66658 -0.0633426 1.23813 -0.0962481 1.64089 0.1999L1.75628 0.298616L5 3.53895L8.24372 0.298616C8.60897 -0.0633426 9.18052 -0.0962481 9.58328 0.1999L9.69867 0.298616C10.0639 0.660574 10.0971 1.22698 9.79828 1.62611L9.69867 1.74046L5.72748 5.70138C5.36223 6.06334 4.79067 6.09625 4.38791 5.8001L4.27252 5.70138L0.30133 1.74046C-0.100443 1.34231 -0.100443 0.69677 0.30133 0.298616Z"></path>
-                              </svg>
-                            </div>
-                          </div>
-                          <div className="shareMid-0-2-267">
-                            <input
-                              className="input-0-2-268"
-                              value="https://tt.ge/p/im2gE"
-                            />
-                            <button className="root-0-2-46 copyButton-0-2-269 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59">
-                              <svg
-                                className="stroke-0-2-35 copyIcon-0-2-270"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  fill-rule="evenodd"
-                                  clip-rule="evenodd"
-                                  d="M14.736 2.76172H8.084C6.025 2.76172 4.25 4.43072 4.25 6.49072V17.2277C4.25 19.4037 5.908 21.1147 8.084 21.1147H16.072C18.132 21.1147 19.802 19.2877 19.802 17.2277V8.03772L14.736 2.76172Z"
-                                  stroke-width="1.5"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                ></path>
-                                <path
-                                  d="M14.4727 2.75V5.659C14.4727 7.079 15.6217 8.231 17.0417 8.234C18.3577 8.237 19.7047 8.238 19.7957 8.232"
-                                  stroke-width="1.5"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                ></path>
-                              </svg>
-                            </button>
-                          </div>
-                          <div className="shareBot-0-2-271 shareBotHidden-0-2-272">
-                            <p>Link has been copied</p>
-                          </div>
-                        </div>
                         <button className="root-0-2-46 apply-0-2-253 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54">
                           Learn More
                         </button>
@@ -467,7 +412,12 @@ const EduFeed: React.FC = () => {
                       </div>
                     </div>
                     <div className="buttonGroup-0-2-251">
-                      <button className="root-0-2-46 share-0-2-252 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantSecondary-0-2-55">
+                      <button
+                        className="root-0-2-46 share-0-2-252 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantSecondary-0-2-55"
+                        onClick={() => {
+                          setShare(!share);
+                        }}
+                      >
                         <svg
                           className="fill-0-2-36"
                           width="24"
@@ -488,70 +438,94 @@ const EduFeed: React.FC = () => {
                         </svg>
                         Share
                       </button>
-                      <div
-                        className="root-0-2-263"
-                        data-popper-placement="bottom-start"
-                        style={{
-                          position: "absolute",
-                          visibility: "hidden",
-                          inset: "0px auto auto 0px",
-                          margin: "0px",
-                          transform: "translate(0px, 8px)",
-                        }}
-                        data-popper-reference-hidden=""
-                        data-popper-escaped=""
-                      >
-                        <div className="shareTop-0-2-264">
-                          <span>Share Course</span>
-                          <div>
-                            <svg
-                              className="fill-0-2-36 closeIcon-0-2-266"
-                              width="10"
-                              height="10"
-                              viewBox="0 0 10 10"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
+                      {share && (
+                        <>
+                          <div
+                            className="clickaway-0-2-261"
+                            onClick={() => {
+                              setShare(!share);
+                            }}
+                          ></div>
+                          <div
+                            className="root-0-2-152"
+                            data-popper-placement="bottom-start"
+                            style={{
+                              position: "absolute",
+                              visibility: "visible",
+                              inset: "0px auto auto 0px",
+                              margin: "0px",
+                              transform: "translate(30px, 324px)",
+                            }}
+                          >
+                            <div className="shareTop-0-2-153">
+                              <span>Share Course</span>
+                              <div
+                                onClick={() => {
+                                  setShare(!share);
+                                }}
+                              >
+                                <svg
+                                  className="fill-0-2-36 closeIcon-0-2-155"
+                                  width="10"
+                                  height="10"
+                                  viewBox="0 0 10 10"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path d="M9.69867 9.70138C9.33342 10.0633 8.76187 10.0962 8.35911 9.8001L8.24372 9.70138L5 6.46105L1.75628 9.70138C1.39103 10.0633 0.819478 10.0962 0.416718 9.8001L0.301331 9.70138C-0.0639191 9.33943 -0.0971222 8.77302 0.201717 8.37389L0.301331 8.25954L4.27252 4.29862C4.63777 3.93666 5.20933 3.90375 5.61209 4.1999L5.72748 4.29862L9.69867 8.25954C10.1004 8.65769 10.1004 9.30323 9.69867 9.70138Z"></path>
+                                  <path d="M0.30133 0.298616C0.66658 -0.0633426 1.23813 -0.0962481 1.64089 0.1999L1.75628 0.298616L5 3.53895L8.24372 0.298616C8.60897 -0.0633426 9.18052 -0.0962481 9.58328 0.1999L9.69867 0.298616C10.0639 0.660574 10.0971 1.22698 9.79828 1.62611L9.69867 1.74046L5.72748 5.70138C5.36223 6.06334 4.79067 6.09625 4.38791 5.8001L4.27252 5.70138L0.30133 1.74046C-0.100443 1.34231 -0.100443 0.69677 0.30133 0.298616Z"></path>
+                                </svg>
+                              </div>
+                            </div>
+                            <div className="shareMid-0-2-156">
+                              <input
+                                className="input-0-2-157"
+                                value={window.location.href}
+                              />
+                              <button
+                                className="root-0-2-46 copyButton-0-2-158 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+                                onClick={() => {
+                                  navigator.clipboard.writeText(
+                                    window.location.href
+                                  );
+                                  setCopied(true);
+                                }}
+                              >
+                                <svg
+                                  className="stroke-0-2-35 copyIcon-0-2-159"
+                                  width="24"
+                                  height="24"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                    d="M14.736 2.76172H8.084C6.025 2.76172 4.25 4.43072 4.25 6.49072V17.2277C4.25 19.4037 5.908 21.1147 8.084 21.1147H16.072C18.132 21.1147 19.802 19.2877 19.802 17.2277V8.03772L14.736 2.76172Z"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  ></path>
+                                  <path
+                                    d="M14.4727 2.75V5.659C14.4727 7.079 15.6217 8.231 17.0417 8.234C18.3577 8.237 19.7047 8.238 19.7957 8.232"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  ></path>
+                                </svg>
+                              </button>
+                            </div>
+                            <div
+                              className={`shareBot-0-2-160 shareBotHidden-0-2-161 ${
+                                copied && "svivmqmvkqelwqmel"
+                              }`}
                             >
-                              <path d="M9.69867 9.70138C9.33342 10.0633 8.76187 10.0962 8.35911 9.8001L8.24372 9.70138L5 6.46105L1.75628 9.70138C1.39103 10.0633 0.819478 10.0962 0.416718 9.8001L0.301331 9.70138C-0.0639191 9.33943 -0.0971222 8.77302 0.201717 8.37389L0.301331 8.25954L4.27252 4.29862C4.63777 3.93666 5.20933 3.90375 5.61209 4.1999L5.72748 4.29862L9.69867 8.25954C10.1004 8.65769 10.1004 9.30323 9.69867 9.70138Z"></path>
-                              <path d="M0.30133 0.298616C0.66658 -0.0633426 1.23813 -0.0962481 1.64089 0.1999L1.75628 0.298616L5 3.53895L8.24372 0.298616C8.60897 -0.0633426 9.18052 -0.0962481 9.58328 0.1999L9.69867 0.298616C10.0639 0.660574 10.0971 1.22698 9.79828 1.62611L9.69867 1.74046L5.72748 5.70138C5.36223 6.06334 4.79067 6.09625 4.38791 5.8001L4.27252 5.70138L0.30133 1.74046C-0.100443 1.34231 -0.100443 0.69677 0.30133 0.298616Z"></path>
-                            </svg>
+                              <p>Link has been copied</p>
+                            </div>
                           </div>
-                        </div>
-                        <div className="shareMid-0-2-267">
-                          <input
-                            className="input-0-2-268"
-                            value="https://tt.ge/p/im2gE"
-                          />
-                          <button className="root-0-2-46 copyButton-0-2-269 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59">
-                            <svg
-                              className="stroke-0-2-35 copyIcon-0-2-270"
-                              width="24"
-                              height="24"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M14.736 2.76172H8.084C6.025 2.76172 4.25 4.43072 4.25 6.49072V17.2277C4.25 19.4037 5.908 21.1147 8.084 21.1147H16.072C18.132 21.1147 19.802 19.2877 19.802 17.2277V8.03772L14.736 2.76172Z"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              ></path>
-                              <path
-                                d="M14.4727 2.75V5.659C14.4727 7.079 15.6217 8.231 17.0417 8.234C18.3577 8.237 19.7047 8.238 19.7957 8.232"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              ></path>
-                            </svg>
-                          </button>
-                        </div>
-                        <div className="shareBot-0-2-271 shareBotHidden-0-2-272">
-                          <p>Link has been copied</p>
-                        </div>
-                      </div>
+                        </>
+                      )}
                       <button className="root-0-2-46 apply-0-2-253 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54">
                         Learn More
                       </button>
