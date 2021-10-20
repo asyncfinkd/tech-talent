@@ -547,7 +547,7 @@ const EduFeed: React.FC = () => {
           <Footer wantSponsors={true} />
         </>
       ) : (
-        <p>Please wait...</p>
+        <p style={{ marginLeft: "15px" }}>Please wait...</p>
       )}
     </>
   );
