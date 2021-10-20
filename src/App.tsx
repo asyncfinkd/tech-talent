@@ -31,7 +31,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { QueryClientProvider, QueryClient } from "react-query";
 import ProfileJobsForMePages from "pages/profile/ProfileJobsForMePages";
 import ProfileResumePages from "pages/profile/ProfileResumePages";
-import EduFeed from "pages/edu/EduFeed";
+import EduFeed from "pages/edu/EduFeedPages";
 
 const client = new QueryClient();
 

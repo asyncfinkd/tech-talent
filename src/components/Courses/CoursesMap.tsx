@@ -19,13 +19,13 @@ const CoursesMap: React.FC<any> = ({ item, env }: any) => {
       <div className="root-0-2-156 rootSlice-0-2-157 root-0-2-266">
         <div className="header-0-2-158">
           <div className="image-0-2-159 imageSlice-0-2-160">
-            <a href="/e/commschool/im2gE-introduction-to-front-end-development">
+            <Link to={`/e/${item.academy.slug}/${item.slug}/${item.slugName}`}>
               <img
                 className="academyLogo-0-2-267"
                 src={`${env.server}${item.academy.logoUrl}`}
                 alt={item.academy.name}
               />
-            </a>
+            </Link>
           </div>
           <div className="primaryColumn-0-2-171">
             <div className="primaryColumnTop-0-2-172">
