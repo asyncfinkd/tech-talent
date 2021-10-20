@@ -43,7 +43,9 @@ const EduMap: React.FC<any> = ({ item, env }: any) => {
             <div className="secondaryText-0-2-241">{item.secondaryText}</div>
             <div className="stats-0-2-242">
               <div className="stat-0-2-243">
-                <div className="count-0-2-244">{item.coursesId.length}</div>
+                <div className="count-0-2-244">
+                  {item.coursesId.length ?? 0}
+                </div>
                 <div className="label-0-2-245">Courses</div>
               </div>
               <div className="stat-0-2-243">
