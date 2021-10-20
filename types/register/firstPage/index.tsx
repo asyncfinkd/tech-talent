@@ -4,4 +4,6 @@ export interface ItemProps {
   backgroundColor: string;
   slug: string;
   fill: string;
+  localSlug?: boolean;
+  localSlugName?: string;
 }
