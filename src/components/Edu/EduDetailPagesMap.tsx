@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 
 const EduDetailPagesMap: React.FC<any> = ({ item }: any) => {
   const [date, setDate] = useState<number | string>("");
@@ -20,7 +21,7 @@ const EduDetailPagesMap: React.FC<any> = ({ item }: any) => {
       >
         <div className="header-0-2-158">
           <div className="image-0-2-152 image-0-2-147 qmleqle2mMIMI">
-            <a href="/c/iigXZ/Iprwc-it">
+            <Link to={`/e/${item.academy.slug}/${item.slug}/${item.slugName}`}>
               <div className="image-0-2-147">
                 <svg
                   className="root-0-2-173"
@@ -33,16 +34,16 @@ const EduDetailPagesMap: React.FC<any> = ({ item }: any) => {
                   <path d="M9.4 16.6L4.8 12L9.4 7.4L8 6L2 12L8 18L9.4 16.6ZM14.6 16.6L19.2 12L14.6 7.4L16 6L22 12L16 18L14.6 16.6V16.6Z"></path>
                 </svg>
               </div>
-            </a>
+            </Link>
           </div>
           <div className="primaryColumn-0-2-171">
             <div className="primaryColumnTop-0-2-172">
-              <a
+              <Link
                 className="courseName-0-2-268"
-                href="/e/commschool/im2gE-introduction-to-front-end-development"
+                to={`/e/${item.academy.slug}/${item.slug}/${item.slugName}`}
               >
                 {item.name}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -148,12 +149,12 @@ const EduDetailPagesMap: React.FC<any> = ({ item }: any) => {
             </div>
           </div>
           <div className="primaryButton-0-2-179">
-            <a
+            <Link
               className="root-0-2-46 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-              href="/e/commschool/im2gE-introduction-to-front-end-development"
+              to={`/e/${item.academy.slug}/${item.slug}/${item.slugName}`}
             >
               Details
-            </a>
+            </Link>
           </div>
         </div>
       </div>

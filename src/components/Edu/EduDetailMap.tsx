@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const EduDetailMap: React.FC<any> = ({ item }: any) => {
   const [date, setDate] = useState<any>("");
@@ -51,18 +51,18 @@ const EduDetailMap: React.FC<any> = ({ item }: any) => {
       <div className="root-0-2-145 root-0-2-286">
         <div className="header-0-2-147">
           <div className="image-0-2-148 image-0-2-287">
-            <a href="/e/commschool/im2gE-introduction-to-front-end-development">
+            <Link to={`/e/${item.academy.slug}/${item.slug}/${item.slugName}`}>
               <div className="image-0-2-287">{renderSVGs()}</div>
-            </a>
+            </Link>
           </div>
           <div className="primaryColumn-0-2-160">
             <div className="primaryColumnTop-0-2-161">
-              <a
+              <Link
                 className="courseName-0-2-288"
-                href="/e/commschool/im2gE-introduction-to-front-end-development"
+                to={`/e/${item.academy.slug}/${item.slug}/${item.slugName}`}
               >
                 {item.name}
-              </a>
+              </Link>
             </div>
             <div className="primaryColumnBottom-0-2-162">
               <div className="root-0-2-174">
@@ -163,13 +163,13 @@ const EduDetailMap: React.FC<any> = ({ item }: any) => {
             )}
           </div>
           <div className="primaryButton-0-2-168">
-            <a
+            <Link
               className="root-0-2-46 animation-0-2-47 weightMedium-0-2-61 variantPrimary-0-2-54"
               style={{ borderRadius: "10px" }}
-              href="/e/commschool/im2gE-introduction-to-front-end-development"
+              to={`/e/${item.academy.slug}/${item.slug}/${item.slugName}`}
             >
               Details
-            </a>
+            </Link>
           </div>
         </div>
       </div>
