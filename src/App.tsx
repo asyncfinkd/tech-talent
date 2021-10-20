@@ -31,6 +31,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { QueryClientProvider, QueryClient } from "react-query";
 import ProfileJobsForMePages from "pages/profile/ProfileJobsForMePages";
 import ProfileResumePages from "pages/profile/ProfileResumePages";
+import EduFeed from "pages/edu/EduFeed";
 
 const client = new QueryClient();
 
@@ -129,6 +130,7 @@ const App: React.FC = () => {
                     exact
                     component={CoursesSearchDetailPages}
                   />
+                  <Route path="/e/:id/:slug" exact component={EduFeed} />
                   <Route exact component={ErrorPages} />
                 </Switch>
               </BrowserRouter>
