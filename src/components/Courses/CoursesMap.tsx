@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const CoursesMap: React.FC<any> = ({ item, env }: any) => {
   const [date, setDate] = useState<any>("");
@@ -37,9 +37,12 @@ const CoursesMap: React.FC<any> = ({ item, env }: any) => {
               </a>
             </div>
             <div className="primaryColumnBottom-0-2-173">
-              <a className="academyName-0-2-269" href="/e/commschool">
+              <Link
+                className="academyName-0-2-269"
+                to={`/e/${item.academy.slug}`}
+              >
                 {item.academy.name}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
