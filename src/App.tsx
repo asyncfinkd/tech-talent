@@ -130,7 +130,11 @@ const App: React.FC = () => {
                     exact
                     component={CoursesSearchDetailPages}
                   />
-                  <Route path="/e/:id/:slug" exact component={EduFeed} />
+                  <Route
+                    path="/e/:id/:slug/:slugName"
+                    exact
+                    component={EduFeed}
+                  />
                   <Route exact component={ErrorPages} />
                 </Switch>
               </BrowserRouter>

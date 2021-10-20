@@ -8,7 +8,6 @@ import { ApplicationContext } from "context/Application/ApplicationContext";
 import env from "application/environment/env.json";
 import { Helmet } from "react-helmet";
 import ProfileCompaniesMap from "components/Profile/ProfileCompaniesMap";
-import { useQuery } from "react-query";
 import { useTranslation } from "react-i18next";
 
 const ProfileCompaniesPages: React.FC = () => {

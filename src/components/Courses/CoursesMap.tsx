@@ -29,12 +29,12 @@ const CoursesMap: React.FC<any> = ({ item, env }: any) => {
           </div>
           <div className="primaryColumn-0-2-171">
             <div className="primaryColumnTop-0-2-172">
-              <a
+              <Link
                 className="courseName-0-2-268"
-                href="/e/commschool/im2gE-introduction-to-front-end-development"
+                to={`/e/${item.academy.slug}/${item.slug}/${item.slugName}`}
               >
                 {item.name}
-              </a>
+              </Link>
             </div>
             <div className="primaryColumnBottom-0-2-173">
               <Link

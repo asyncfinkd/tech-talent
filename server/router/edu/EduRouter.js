@@ -86,4 +86,10 @@ router.route("/get/edu/posts").post(async (req, res) => {
   });
 });
 
+router.route("/get/edu/feed").post(async (req, res) => {
+  CoursesSchema.findOne({ slugName: req.body.slugName }).then((result) => {
+    res.status(200).json(result);
+  });
+});
+
 module.exports = router;
