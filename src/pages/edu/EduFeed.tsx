@@ -114,7 +114,9 @@ const EduFeed: React.FC = () => {
                           </div>
                           <div className="pair-0-2-247">
                             <div className="label-0-2-249">Field</div>
-                            <div className="value-0-2-250">Development</div>
+                            <div className="value-0-2-250">
+                              {data.field.name}
+                            </div>
                           </div>
                         </div>
                         <div className="entry-0-2-244">
@@ -133,7 +135,9 @@ const EduFeed: React.FC = () => {
                           </div>
                           <div className="pair-0-2-247">
                             <div className="label-0-2-249">Category</div>
-                            <div className="value-0-2-250">Frontend</div>
+                            <div className="value-0-2-250">
+                              {data.category.name}
+                            </div>
                           </div>
                         </div>
                         <div className="entry-0-2-244">
@@ -155,7 +159,9 @@ const EduFeed: React.FC = () => {
                           </div>
                           <div className="pair-0-2-247">
                             <div className="label-0-2-249">Sessions</div>
-                            <div className="value-0-2-250">24</div>
+                            <div className="value-0-2-250">
+                              {data.sessionCount}
+                            </div>
                           </div>
                         </div>
                         <div className="entry-0-2-244">
@@ -177,7 +183,9 @@ const EduFeed: React.FC = () => {
                           </div>
                           <div className="pair-0-2-247">
                             <div className="label-0-2-249">Duration</div>
-                            <div className="value-0-2-250">72 Hours</div>
+                            <div className="value-0-2-250">
+                              {data.sessionDurationInHours}
+                            </div>
                           </div>
                         </div>
                         <div className="entry-0-2-244">
@@ -199,7 +207,9 @@ const EduFeed: React.FC = () => {
                           </div>
                           <div className="pair-0-2-247">
                             <div className="label-0-2-249">Weeks</div>
-                            <div className="value-0-2-250">12</div>
+                            <div className="value-0-2-250">
+                              {data.durationInWeeks}
+                            </div>
                           </div>
                         </div>
                         <div className="entry-0-2-244">
@@ -217,7 +227,7 @@ const EduFeed: React.FC = () => {
                           </div>
                           <div className="pair-0-2-247">
                             <div className="label-0-2-249">Price</div>
-                            <div className="value-0-2-250">1400</div>
+                            <div className="value-0-2-250">{data.price}</div>
                           </div>
                         </div>
                       </div>
@@ -341,7 +351,7 @@ const EduFeed: React.FC = () => {
                         </div>
                         <div className="pair-0-2-247">
                           <div className="label-0-2-249">Field</div>
-                          <div className="value-0-2-250">Development</div>
+                          <div className="value-0-2-250">{data.field.name}</div>
                         </div>
                       </div>
                       <div className="entry-0-2-244">
@@ -360,7 +370,9 @@ const EduFeed: React.FC = () => {
                         </div>
                         <div className="pair-0-2-247">
                           <div className="label-0-2-249">Category</div>
-                          <div className="value-0-2-250">Frontend</div>
+                          <div className="value-0-2-250">
+                            {data.category.name}
+                          </div>
                         </div>
                       </div>
                       <div className="entry-0-2-244">
@@ -382,7 +394,9 @@ const EduFeed: React.FC = () => {
                         </div>
                         <div className="pair-0-2-247">
                           <div className="label-0-2-249">Sessions</div>
-                          <div className="value-0-2-250">24</div>
+                          <div className="value-0-2-250">
+                            {data.sessionCount}
+                          </div>
                         </div>
                       </div>
                       <div className="entry-0-2-244">
@@ -404,7 +418,9 @@ const EduFeed: React.FC = () => {
                         </div>
                         <div className="pair-0-2-247">
                           <div className="label-0-2-249">Duration</div>
-                          <div className="value-0-2-250">72 Hours</div>
+                          <div className="value-0-2-250">
+                            {data.sessionDurationInHours}
+                          </div>
                         </div>
                       </div>
                       <div className="entry-0-2-244">
@@ -426,7 +442,9 @@ const EduFeed: React.FC = () => {
                         </div>
                         <div className="pair-0-2-247">
                           <div className="label-0-2-249">Weeks</div>
-                          <div className="value-0-2-250">12</div>
+                          <div className="value-0-2-250">
+                            {data.durationInWeeks}
+                          </div>
                         </div>
                       </div>
                       <div className="entry-0-2-244">
@@ -444,7 +462,7 @@ const EduFeed: React.FC = () => {
                         </div>
                         <div className="pair-0-2-247">
                           <div className="label-0-2-249">Price</div>
-                          <div className="value-0-2-250">1400</div>
+                          <div className="value-0-2-250">{data.price}</div>
                         </div>
                       </div>
                     </div>
