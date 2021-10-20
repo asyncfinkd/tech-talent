@@ -1,16 +1,18 @@
 import axios from "axios";
 import Footer from "components/Footer/Footer";
 import Header from "components/Header/Header";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useQuery } from "react-query";
 import env from "application/environment/env.json";
 import DOMPurify from "dompurify";
+import { ApplicationContext } from "context/Application/ApplicationContext";
 
 const EduFeed: React.FC = () => {
   const sanitizer = DOMPurify.sanitize;
   const [data, setData] = useState<any>({});
   const [page, setPage] = useState<boolean>(false);
   const [share, setShare] = useState<boolean>(false);
+  const { jwtDecode, setJwtDecode } = useContext(ApplicationContext);
   const [copied, setCopied] = useState<boolean>(false);
   const fetchEduFeed = () => {
     const splitURL = window.location.pathname.split("/");
@@ -406,8 +408,29 @@ const EduFeed: React.FC = () => {
                           </svg>
                         </div>
                         <div className="pair-0-2-247">
-                          <div className="label-0-2-249">Price</div>
-                          <div className="value-0-2-250">{data.price}</div>
+                          {jwtDecode && localStorage.getItem("local") ? (
+                            <>
+                              {data.price != null ? (
+                                <>
+                                  <div className="label-0-2-249">Price</div>
+                                  <div className="value-0-2-250">
+                                    {data.price}
+                                  </div>
+                                </>
+                              ) : (
+                                <div className="label-0-2-249">Price</div>
+                              )}
+                            </>
+                          ) : (
+                            <>
+                              <a
+                                className="root-0-2-46 xs-0-2-272 salaryButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantSecondary-0-2-55"
+                                href="/register?cb=%2Fe%2Fcommschool%2Fim2gE-introduction-to-front-end-development"
+                              >
+                                Show
+                              </a>
+                            </>
+                          )}
                         </div>
                       </div>
                     </div>
