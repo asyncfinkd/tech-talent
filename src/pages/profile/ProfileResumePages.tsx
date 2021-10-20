@@ -295,7 +295,13 @@ const ProfileResumePages: React.FC = () => {
                         <button
                           className="root-0-2-46 deleteResumeButton-0-2-266 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                           onClick={() => {
-                            deleteMutation.mutate();
+                            if (fileName.length == 0 || jwtDecode.cv) {
+                              deleteMutation.mutate();
+                            } else {
+                              setDeletePage(false);
+                              setFileName("");
+                              setNewImage("");
+                            }
                           }}
                         >
                           I want to delete my resume
