@@ -1,10 +1,10 @@
-import Header from "modules/header";
+import Header from "ui/header";
 import { NextPage } from "next";
 import { interest } from "fixtures/register";
 import Link from "next/link";
 import { ItemProps } from "types/register/firstPage";
 import Head from "next/head";
-import RegisterFooter from "modules/footer/register";
+import RegisterFooter from "ui/footer/register";
 
 const Register: NextPage = () => {
   const renderLinks = (type: string) => {
