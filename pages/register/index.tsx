@@ -85,7 +85,7 @@ const Register: NextPage = () => {
               </div>
             </div>
           </div>
-          <RegisterFooter />
+          <RegisterFooter index={true} />
         </div>
       </main>
     </>
