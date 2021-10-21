@@ -1,3 +1,4 @@
+import { Button } from "components/button";
 import React from "react";
 
 interface FooterProps {
@@ -20,12 +21,12 @@ const RegisterFooter: React.FC<FooterProps> = ({ candidate, index }) => {
                 <div className="h1-0-2-108">Create Your Account</div>
                 <div className="caption-0-2-109">Enter Your Credentials</div>
               </div>
-              <button
+              <Button
                 className="root-0-2-46 nextButton-0-2-110 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                 type="submit"
               >
                 Next
-              </button>
+              </Button>
             </div>
           </div>
         </div>
