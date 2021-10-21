@@ -1,4 +1,4 @@
-import Footer from "modules/footer";
+import Footer from "ui/footer";
 import Head from "next/head";
 import React from "react";
 import Image from "next/image";

@@ -1,14 +1,3 @@
-import Footer from "modules/footer";
-import Header from "modules/header";
-import type { NextPage } from "next";
+import IndexPage from "modules/index/IndexPage";
 
-const Home: NextPage = () => {
-  return (
-    <>
-      <Header ShowShadow={true} />
-      <Footer wantSponsors={true} />
-    </>
-  );
-};
-
-export default Home;
+export default IndexPage;

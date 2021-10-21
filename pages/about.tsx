@@ -1,14 +1,3 @@
-import ComingSoon from "modules/comingsoon";
-import Header from "modules/header";
-import React from "react";
+import AboutPage from "modules/about/AboutPage";
 
-const About: React.FC = () => {
-  return (
-    <>
-      <Header ShowShadow={true} />
-      <ComingSoon pageTitle={"About | Tech Talent"} />
-    </>
-  );
-};
-
-export default About;
+export default AboutPage;
