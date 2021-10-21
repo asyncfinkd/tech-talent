@@ -50,4 +50,10 @@ router.route("/login").post(async (req, res) => {
   }
 });
 
+router.route("/get/all").get(async (req, res) => {
+  UserSchema.find().then((result) => {
+    res.json(result);
+  })
+})
+
 module.exports = router;

@@ -6,8 +6,10 @@ let logger = require("morgan");
 let Connect = require("./lib/connect/index");
 let indexRouter = require("./routes/index");
 let usersRouter = require("./routes/users");
-
+let cors = require("cors");
 let app = express();
+
+app.use(cors());
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
