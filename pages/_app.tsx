@@ -32,7 +32,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <title>Tech Talent</title>
       </Head>
-      <Component {...pageProps} />
+      <div className="root-0-2-1">
+        <Component {...pageProps} />
+      </div>
     </>
   );
 }
