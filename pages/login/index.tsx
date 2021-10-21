@@ -2,16 +2,26 @@ import React from "react";
 import { NextPage } from "next";
 import Header from "modules/header";
 import Footer from "modules/footer";
+import TextContainer from "components/text-container";
+import { Button } from "components/button";
+import Head from "next/head";
 
 const Login: NextPage = () => {
   return (
     <>
+      <Head>
+        <title>Welcome | Tech Talent</title>
+      </Head>
       <Header ShowShadow={true} />
       <main className="main-0-2-2">
         <div className="marginOnMobile-0-2-134">
           <div className="form-0-2-234">
-            <h1 className="h1-0-2-235">Login</h1>
-            <h2 className="h2-0-2-236">Welcome Back</h2>
+            <TextContainer element="h1" className="h1-0-2-235">
+              Login
+            </TextContainer>
+            <TextContainer element="h2" className="h2-0-2-236">
+              Welcome Back
+            </TextContainer>
             <div className="socialButtonGroup-0-2-241">
               <div className="root-0-2-30 sizeLg-0-2-32 socialButton-0-2-242">
                 <div className="rectangle-0-2-33">
@@ -125,12 +135,12 @@ const Login: NextPage = () => {
                 <a className="forgotPassword-0-2-243" href="/forgot">
                   Forgot Password?
                 </a>
-                <button
-                  className="root-0-2-46 button-0-2-238 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                <Button
                   type="submit"
+                  className="root-0-2-46 button-0-2-238 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                 >
                   Login
-                </button>
+                </Button>
               </div>
             </form>
           </div>
