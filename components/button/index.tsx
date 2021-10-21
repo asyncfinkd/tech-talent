@@ -1,19 +1,18 @@
 import React from "react";
+import { ButtonProps } from "types/components/button";
+import { Children } from "types/global";
 
-interface ButtonProps {
-  children?: React.ReactNode;
-  className?: string;
-  type?: any;
-}
+type Props = ButtonProps & Children;
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button: React.FC<Props> = ({
   children,
-  className,
   type,
+  style,
+  className,
 }) => {
   return (
     <>
-      <button className={className} type={type}>
+      <button className={className} type={type} style={style}>
         {children}
       </button>
     </>

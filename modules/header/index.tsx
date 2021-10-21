@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useToggle } from "lib/use-toggle";
 import Link from "next/link";
+import { Button } from "components/button";
 
 interface Props {
   ShowLine?: boolean;
@@ -321,7 +322,7 @@ const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
                     role="option"
                     aria-selected="false"
                   >
-                    <button
+                    <Button
                       className="root-0-2-46 option-0-2-67 weightLight-0-2-60 sizeZero-0-2-48 variantBlank-0-2-59"
                       style={{ marginRight: "0.75rem" }}
                     >
@@ -340,7 +341,7 @@ const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
                         ></path>
                       </svg>
                       English
-                    </button>
+                    </Button>
                   </li>
                   <li
                     className={`li-0-2-72`}
@@ -354,7 +355,7 @@ const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
                     role="option"
                     aria-selected="false"
                   >
-                    <button
+                    <Button
                       className="root-0-2-46 option-0-2-67 weightLight-0-2-60 sizeZero-0-2-48 variantBlank-0-2-59"
                       style={{ marginRight: "0.75rem" }}
                     >
@@ -373,7 +374,7 @@ const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
                         ></path>
                       </svg>
                       ქართული
-                    </button>
+                    </Button>
                   </li>
                 </ul>
               </div>

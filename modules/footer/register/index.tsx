@@ -1,10 +1,7 @@
 import { Button } from "components/button";
+import TextContainer from "components/text-container";
 import React from "react";
-
-interface FooterProps {
-  readonly candidate?: boolean;
-  readonly index?: boolean;
-}
+import { FooterProps } from "types/modules/footer";
 
 const RegisterFooter: React.FC<FooterProps> = ({ candidate, index }) => {
   const Candidate = () => {
@@ -18,8 +15,12 @@ const RegisterFooter: React.FC<FooterProps> = ({ candidate, index }) => {
           <div className="marginOnMobile-0-2-111">
             <div className="left-0-2-106">
               <div className="textGroup-0-2-107">
-                <div className="h1-0-2-108">Create Your Account</div>
-                <div className="caption-0-2-109">Enter Your Credentials</div>
+                <TextContainer className="h1-0-2-108" element="div">
+                  Create Your Account
+                </TextContainer>
+                <TextContainer className="caption-0-2-109" element="div">
+                  Enter Your Credentials
+                </TextContainer>
               </div>
               <Button
                 className="root-0-2-46 nextButton-0-2-110 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
@@ -44,8 +45,12 @@ const RegisterFooter: React.FC<FooterProps> = ({ candidate, index }) => {
           <div className="marginOnMobile-0-2-134">
             <div className="left-0-2-239">
               <div className="textGroup-0-2-240">
-                <div className="h1-0-2-241">Tell us who you are</div>
-                <div className="caption-0-2-242">Select profession</div>
+                <TextContainer className="h1-0-2-241" element="div">
+                  Tell us who you are
+                </TextContainer>
+                <TextContainer className="caption-0-2-242" element="div">
+                  Select profession
+                </TextContainer>
               </div>
             </div>
           </div>
