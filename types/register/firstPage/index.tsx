@@ -6,4 +6,5 @@ export interface ItemProps {
   fill: string;
   localSlug?: boolean;
   localSlugName?: string;
+  ownSVG?: string;
 }
