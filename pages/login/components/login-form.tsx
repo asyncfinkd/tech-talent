@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Props } from "types/login";
 import { schema } from "schema/login";
+import ErrorMessage from "components/error-message";
 
 const LoginForm: React.FC = () => {
   const {
@@ -30,11 +31,18 @@ const LoginForm: React.FC = () => {
                 *
               </span>
             </label>
-            <Input
+            <input
               type="text"
               className="input-0-2-251 undefined"
               {...register("email")}
             />
+            <ErrorMessage
+              element="div"
+              condition={errors.email}
+              className="invalidMessage-0-2-253"
+            >
+              Valid email is required
+            </ErrorMessage>
           </div>
           <div className="root-0-2-247">
             <label className="label-0-2-248">
@@ -46,11 +54,18 @@ const LoginForm: React.FC = () => {
                 *
               </span>
             </label>
-            <Input
+            <input
               type="password"
               className="input-0-2-251 undefined"
               {...register("password")}
             />
+            <ErrorMessage
+              element="div"
+              className="invalidMessage-0-2-253"
+              condition={errors.password}
+            >
+              Password is required
+            </ErrorMessage>
           </div>
         </div>
         <div className="buttonField-0-2-237">

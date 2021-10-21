@@ -1,5 +1,6 @@
 import React from "react";
 import { InputProps } from "types/components/input";
+import { useForm } from "react-hook-form";
 
 const Input: React.FC<InputProps> = ({
   type,
@@ -7,6 +8,7 @@ const Input: React.FC<InputProps> = ({
   className,
   ...props
 }) => {
+  const { register } = useForm();
   return (
     <>
       <input
