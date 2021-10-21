@@ -1,11 +1,24 @@
 import { Button } from "components/button";
 import Input from "components/input";
 import React from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Props } from "types/login";
+import { schema } from "schema/login";
 
 const LoginForm: React.FC = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Props>({ resolver: yupResolver(schema) });
   return (
     <>
-      <form>
+      <form
+        onSubmit={handleSubmit((data: Props) => {
+          console.log(data);
+        })}
+      >
         <div>
           <div className="root-0-2-247">
             <label className="label-0-2-248">
@@ -17,7 +30,11 @@ const LoginForm: React.FC = () => {
                 *
               </span>
             </label>
-            <Input type="text" className="input-0-2-251 undefined" />
+            <Input
+              type="text"
+              className="input-0-2-251 undefined"
+              {...register("email")}
+            />
           </div>
           <div className="root-0-2-247">
             <label className="label-0-2-248">
@@ -29,7 +46,11 @@ const LoginForm: React.FC = () => {
                 *
               </span>
             </label>
-            <Input type="password" className="input-0-2-251 undefined" />
+            <Input
+              type="password"
+              className="input-0-2-251 undefined"
+              {...register("password")}
+            />
           </div>
         </div>
         <div className="buttonField-0-2-237">

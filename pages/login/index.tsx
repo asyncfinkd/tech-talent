@@ -2,7 +2,6 @@ import React from "react";
 import { NextPage } from "next";
 import Header from "modules/header";
 import Footer from "modules/footer";
-import TextContainer from "components/text-container";
 import Head from "next/head";
 import LoginForm from "./components/login-form";
 import LoginHeader from "./components/login-header";
