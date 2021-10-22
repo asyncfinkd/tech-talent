@@ -3,8 +3,8 @@ import * as yup from "yup";
 export const RegisterCandidateInfoSchema = yup
   .object()
   .shape({
-    fullName: yup.string().trim().required("Typeof"),
-    phone: yup.string().trim().required("Typeof"),
-    socialNetwork: yup.string().required("Typeof"),
+    fullName: yup.string().trim(),
+    phone: yup.string().trim(),
+    socialNetwork: yup.string().trim(),
   })
   .required();
