@@ -59,7 +59,7 @@ const CandidatePage: NextPage = () => {
       </main>
       <RegisterFooter
         candidate={true}
-        onClick={handleSubmit((data: Input) => {
+        candidateOnClick={handleSubmit((data: Input) => {
           $register.mutate(
             { loginData: data, interest },
             {

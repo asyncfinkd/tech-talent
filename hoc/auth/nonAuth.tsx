@@ -7,8 +7,7 @@ const nonAuth = (WrappedComponent: any) => {
     if (typeof window !== "undefined") {
       const Router = useRouter();
       const accessToken = readCookie("cookie");
-
-      if (accessToken) {
+      if (accessToken != null) {
         Router.replace("/");
         return null;
       }
