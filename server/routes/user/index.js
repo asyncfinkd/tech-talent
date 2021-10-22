@@ -69,20 +69,25 @@ router.route("/register").post(async (req, res) => {
         .json({ message: "Email is already registered", success: false });
     }
 
-    const { email, interest, role } = req.body;
-    const access_token = jwt.sign({ email, interest, role }, env.ACCESS_TOKEN, {
-      expiresIn: "12h",
-    });
     const User = new UserSchema({
       email: req.body.email,
       password: hashedPassword,
       interest: req.body.interest,
       role: req.body.role,
-    }).save();
-    res.status(200).json({
-      message: "Successfuly",
-      success: true,
-      access_token: access_token,
+    }).save(function (err, user) {
+      const { email, interest, role, _id } = user;
+      const access_token = jwt.sign(
+        { email, interest, role, _id },
+        env.ACCESS_TOKEN,
+        {
+          expiresIn: "12h",
+        }
+      );
+      res.status(200).json({
+        message: "Successfuly",
+        success: true,
+        access_token: access_token,
+      });
     });
   } catch (err) {
     res.status(502).json(err);
