@@ -5,7 +5,7 @@ import React, { useContext } from "react";
 import Head from "next/head";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { RegisterSchema } from "schema/register";
+import { RegisterSchema } from "schema/register/candidate";
 import { Input } from "types/register/candidate";
 import RegisterForm from "./components/register-form";
 import RegisterHeader from "./components/register-header";
