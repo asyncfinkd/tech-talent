@@ -1,11 +1,22 @@
 import RegisterFooter from "ui/footer/register";
 import Header from "ui/header";
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import React from "react";
 import Head from "next/head";
 import TextContainer from "components/text-container";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { RegisterSchema } from "schema/register";
+import { Input } from "types/register/candidate";
+import { ErrorMessage } from "components/error-message";
 
 const CandidatePage: NextPage = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Input>({ resolver: yupResolver(RegisterSchema) });
   return (
     <>
       <Head>
@@ -34,7 +45,20 @@ const CandidatePage: NextPage = () => {
                         *
                       </span>
                     </label>
-                    <input type="text" className="input-0-2-251" name="email" />
+                    <input
+                      type="text"
+                      className={`input-0-2-251 ${
+                        errors.email && "invalid-0-2-252"
+                      }`}
+                      {...register("email")}
+                    />
+                    <ErrorMessage
+                      element="div"
+                      className="invalidMessage-0-2-132"
+                      condition={errors.email}
+                    >
+                      {errors?.email?.message}
+                    </ErrorMessage>
                   </div>
                   <div className="root-0-2-126 input-0-2-117">
                     <label className="label-0-2-127">
@@ -48,9 +72,19 @@ const CandidatePage: NextPage = () => {
                     </label>
                     <input
                       type="password"
+                      {...register("password")}
                       name="password"
-                      className="input-0-2-251 undefined"
+                      className={`input-0-2-251 ${
+                        errors.password && "invalid-0-2-252"
+                      }`}
                     />
+                    <ErrorMessage
+                      element="div"
+                      className="invalidMessage-0-2-132"
+                      condition={errors.password}
+                    >
+                      {errors?.password?.message}
+                    </ErrorMessage>
                   </div>
                   <div className="root-0-2-126 input-0-2-117">
                     <label className="label-0-2-127">
@@ -64,9 +98,19 @@ const CandidatePage: NextPage = () => {
                     </label>
                     <input
                       type="password"
+                      {...register("repeatPassword")}
                       name="repeatPassword"
-                      className="input-0-2-251 undefined"
+                      className={`input-0-2-251 ${
+                        errors.repeatPassword && "invalid-0-2-252"
+                      }`}
                     />
+                    <ErrorMessage
+                      element="div"
+                      className="invalidMessage-0-2-132"
+                      condition={errors.repeatPassword}
+                    >
+                      {errors?.repeatPassword?.message}
+                    </ErrorMessage>
                   </div>
                   <div className="line-0-2-122">
                     <div className="continue-0-2-123">or continue with</div>
@@ -168,7 +212,12 @@ const CandidatePage: NextPage = () => {
           </div>
         </div>
       </main>
-      <RegisterFooter candidate={true} />
+      <RegisterFooter
+        candidate={true}
+        onClick={handleSubmit((data: Input) => {
+          console.log(data);
+        })}
+      />
     </>
   );
 };

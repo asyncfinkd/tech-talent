@@ -4,7 +4,7 @@ import { MessageProps } from "types/components/error-message";
 
 type Props = Children & MessageProps;
 
-const ErrorMessage: React.FC<Props> = ({
+export const ErrorMessage: React.FC<Props> = ({
   children,
   className,
   element,
@@ -18,5 +18,3 @@ const ErrorMessage: React.FC<Props> = ({
     </>
   );
 };
-
-export default ErrorMessage;
