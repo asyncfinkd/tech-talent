@@ -9,15 +9,16 @@ import { LoginRequest } from "features/login/login.api";
 import { useMutation } from "react-query";
 import { Result } from "types/features/login";
 import { ApplicationContext } from "context/application/ApplicationContext";
+import { useRouter } from "next/router";
 
 const LoginForm: React.FC = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Props>({ resolver: yupResolver(schema) });
-  const { access_token, setAccess_Token, setLogged } =
-    useContext(ApplicationContext);
+  const { setAccess_Token, setLogged } = useContext(ApplicationContext);
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
 
   const $login = useMutation(({ loginData }: { loginData: Props }) =>
@@ -35,6 +36,7 @@ const LoginForm: React.FC = () => {
                 document.cookie = `cookie=${data.access_token}`;
                 setAccess_Token({ access_token: data.access_token });
                 setLogged(true);
+                router.push("/");
               },
             }
           );
