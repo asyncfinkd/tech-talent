@@ -3,7 +3,7 @@ import Header from "ui/header";
 import { NextPage } from "next";
 import React from "react";
 import Head from "next/head";
-import { Button } from "components/button";
+import TextContainer from "components/text-container";
 
 const CandidatePage: NextPage = () => {
   return (
@@ -17,8 +17,12 @@ const CandidatePage: NextPage = () => {
           <div className="content-0-2-101">
             <div className="marginOnMobile-0-2-111">
               <div className="root-0-2-113">
-                <h1 className="h1-0-2-114">Register</h1>
-                <div className="caption-0-2-115">Enter Your Credentials</div>
+                <TextContainer element="h1" className="h1-0-2-114">
+                  Register
+                </TextContainer>
+                <TextContainer element="div" className="caption-0-2-115">
+                  Enter Your Credentials
+                </TextContainer>
                 <div className="inputGroup-0-2-116">
                   <div className="root-0-2-126 input-0-2-117">
                     <label className="label-0-2-127">
