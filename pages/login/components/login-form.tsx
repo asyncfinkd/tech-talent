@@ -9,22 +9,24 @@ import { LoginRequest } from "features/login/login.api";
 import { useMutation } from "react-query";
 import { Result } from "types/features/login";
 import { ApplicationContext } from "context/application/ApplicationContext";
+import { useRouter } from "next/router";
 
 const LoginForm: React.FC = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Props>({ resolver: yupResolver(schema) });
-  const { jwt, setJwt } = useContext(ApplicationContext);
+  const { setAccess_Token, setLogged } = useContext(ApplicationContext);
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
 
   const $login = useMutation(({ loginData }: { loginData: Props }) =>
     LoginRequest(loginData, setErrorMessage)
   );
+
   return (
     <>
-      {console.log(jwt)}
       <form
         onSubmit={handleSubmit((data: Props) => {
           $login.mutate(
@@ -32,7 +34,9 @@ const LoginForm: React.FC = () => {
             {
               onSuccess: (data: Result) => {
                 document.cookie = `cookie=${data.access_token}`;
-                setJwt(data.access_token);
+                setAccess_Token({ access_token: data.access_token });
+                setLogged(true);
+                router.push("/");
               },
             }
           );
