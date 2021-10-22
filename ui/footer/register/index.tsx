@@ -6,8 +6,38 @@ import { FooterProps } from "types/modules/footer";
 const RegisterFooter: React.FC<FooterProps> = ({
   candidate,
   index,
-  onClick,
+  candidateOnClick,
+  candidateinfo,
+  candidateInfoOnClick,
 }) => {
+  const CandidateInfo = () => {
+    return (
+      <>
+        <div className="placeholder-0-2-278"></div>
+        <div className="footer-0-2-279">
+          <div className="line-0-2-280">
+            <div className="progress-0-2-281" style={{ width: "60%" }}></div>
+          </div>
+          <div className="marginOnMobile-0-2-134">
+            <div className="left-0-2-282">
+              <div className="textGroup-0-2-283">
+                <div className="h1-0-2-284">Tell us who you are</div>
+                <div className="caption-0-2-285">Contact Information</div>
+              </div>
+              <button
+                className="root-0-2-46 nextButton-0-2-286 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                type="submit"
+                onClick={candidateInfoOnClick}
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  };
+
   const Candidate = () => {
     return (
       <>
@@ -29,7 +59,7 @@ const RegisterFooter: React.FC<FooterProps> = ({
               <Button
                 className="root-0-2-46 nextButton-0-2-110 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                 type="submit"
-                onClick={onClick}
+                onClick={candidateOnClick}
               >
                 Next
               </Button>
@@ -67,6 +97,7 @@ const RegisterFooter: React.FC<FooterProps> = ({
     <>
       {candidate && <Candidate />}
       {index && <Index />}
+      {candidateinfo && <CandidateInfo />}
     </>
   );
 };
