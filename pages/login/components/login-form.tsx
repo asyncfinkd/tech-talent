@@ -1,10 +1,14 @@
 import { Button } from "components/button";
-import React from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Props } from "types/login";
 import { schema } from "schema/login";
 import ErrorMessage from "components/error-message";
+import { LoginRequest } from "features/login/login.api";
+import { useMutation } from "react-query";
+import { Result } from "types/features/login";
+import { ApplicationContext } from "context/application/ApplicationContext";
 
 const LoginForm: React.FC = () => {
   const {
@@ -12,11 +16,26 @@ const LoginForm: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<Props>({ resolver: yupResolver(schema) });
+  const { jwt, setJwt } = useContext(ApplicationContext);
+  const [errorMessage, setErrorMessage] = useState<boolean>(false);
+
+  const $login = useMutation(({ loginData }: { loginData: Props }) =>
+    LoginRequest(loginData, setErrorMessage)
+  );
   return (
     <>
+      {console.log(jwt)}
       <form
         onSubmit={handleSubmit((data: Props) => {
-          console.log(data);
+          $login.mutate(
+            { loginData: data },
+            {
+              onSuccess: (data: Result) => {
+                document.cookie = `cookie=${data.access_token}`;
+                setJwt(data.access_token);
+              },
+            }
+          );
         })}
       >
         <div>
@@ -32,9 +51,7 @@ const LoginForm: React.FC = () => {
             </label>
             <input
               type="text"
-              className={`input-0-2-251 ${
-                errors.email && "invalid-0-2-252"
-              }`}
+              className={`input-0-2-251 ${errors.email && "invalid-0-2-252"}`}
               {...register("email")}
             />
             <ErrorMessage
@@ -71,6 +88,13 @@ const LoginForm: React.FC = () => {
             </ErrorMessage>
           </div>
         </div>
+        <ErrorMessage
+          element="div"
+          className="errorMessage-0-2-111"
+          condition={errorMessage}
+        >
+          Incorrect email or password
+        </ErrorMessage>
         <div className="buttonField-0-2-237">
           <a className="forgotPassword-0-2-243" href="/forgot">
             Forgot Password?
@@ -86,6 +110,5 @@ const LoginForm: React.FC = () => {
     </>
   );
 };
-
 
 export default LoginForm;

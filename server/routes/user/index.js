@@ -8,9 +8,9 @@ router.route("/login").post(async (req, res) => {
   let getUser = await UserSchema.findOne({ email: req.body.email });
 
   if (getUser == null) {
-    res.status(401).json({ message: "User doesn't  exist", success: false });
+    res.status(502).json({ message: "User doesn't  exist", success: false });
   } else if (getUser.password.length > 0) {
-    bcrypt.compare(req.body.password, result.password, (err, verified) => {
+    bcrypt.compare(req.body.password, getUser.password, (err, verified) => {
       if (verified) {
         const {
           email,
@@ -23,7 +23,7 @@ router.route("/login").post(async (req, res) => {
           socialNetwork,
           _id,
           cv,
-        } = result;
+        } = getUser;
         const access_token = jwt.sign(
           {
             email,
@@ -44,7 +44,7 @@ router.route("/login").post(async (req, res) => {
         );
         res.status(200).json({ success: true, access_token: access_token });
       } else {
-        res.status(401).json({ message: "Password is wrong", success: false });
+        res.status(502).json({ message: "Password is wrong", success: false });
       }
     });
   }
@@ -53,7 +53,7 @@ router.route("/login").post(async (req, res) => {
 router.route("/get/all").get(async (req, res) => {
   UserSchema.find().then((result) => {
     res.json(result);
-  })
-})
+  });
+});
 
 module.exports = router;

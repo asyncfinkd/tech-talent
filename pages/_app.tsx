@@ -2,8 +2,18 @@ import "styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import "styles/index.css";
+import { QueryClientProvider, QueryClient } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+import { ApplicationContext } from "context/application/ApplicationContext";
+import React, { useEffect, useState } from "react";
+
+const client = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [jwt, setJwt] = useState({});
+  // useEffect(() => {
+
+  // })
   return (
     <>
       <Head>
@@ -32,9 +42,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <title>Tech Talent</title>
       </Head>
-      <div className="root-0-2-1">
-        <Component {...pageProps} />
-      </div>
+      <QueryClientProvider client={client}>
+        <ApplicationContext.Provider value={{ jwt, setJwt }}>
+          <div className="root-0-2-1">
+            <Component {...pageProps} />
+          </div>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </ApplicationContext.Provider>
+      </QueryClientProvider>
     </>
   );
 }
