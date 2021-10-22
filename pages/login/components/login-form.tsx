@@ -16,7 +16,8 @@ const LoginForm: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<Props>({ resolver: yupResolver(schema) });
-  const { jwt, setJwt } = useContext(ApplicationContext);
+  const { access_token, setAccess_Token, setLogged } =
+    useContext(ApplicationContext);
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
 
   const $login = useMutation(({ loginData }: { loginData: Props }) =>
@@ -32,7 +33,8 @@ const LoginForm: React.FC = () => {
             {
               onSuccess: (data: Result) => {
                 document.cookie = `cookie=${data.access_token}`;
-                setJwt(data.access_token);
+                setAccess_Token({ access_token: data.access_token });
+                setLogged(true);
               },
             }
           );

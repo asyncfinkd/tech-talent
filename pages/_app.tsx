@@ -4,16 +4,25 @@ import Head from "next/head";
 import "styles/index.css";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { ApplicationContext } from "context/application/ApplicationContext";
 import React, { useEffect, useState } from "react";
+import { ApplicationContext } from "context/application/ApplicationContext";
+import { readCookie } from "lib/readContext";
+import jwt_decode from "jwt-decode";
 
 const client = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [jwt, setJwt] = useState({});
-  // useEffect(() => {
+  const [access_token, setAccess_Token] = useState<string>("");
+  const [logged, setLogged] = useState<boolean>(false);
+  const cookie: string | null | undefined = readCookie("cookie");
 
-  // })
+  useEffect(() => {
+    if (cookie) {
+      let decoded: string = jwt_decode(cookie);
+      setAccess_Token(decoded);
+      console.log(decoded);
+    }
+  }, [cookie]);
   return (
     <>
       <Head>
@@ -43,7 +52,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Tech Talent</title>
       </Head>
       <QueryClientProvider client={client}>
-        <ApplicationContext.Provider value={{ jwt, setJwt }}>
+        <ApplicationContext.Provider
+          value={{ access_token, logged, setAccess_Token, setLogged }}
+        >
           <div className="root-0-2-1">
             <Component {...pageProps} />
           </div>
