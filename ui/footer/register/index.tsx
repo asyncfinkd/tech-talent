@@ -3,7 +3,11 @@ import TextContainer from "components/text-container";
 import React from "react";
 import { FooterProps } from "types/modules/footer";
 
-const RegisterFooter: React.FC<FooterProps> = ({ candidate, index }) => {
+const RegisterFooter: React.FC<FooterProps> = ({
+  candidate,
+  index,
+  onClick,
+}) => {
   const Candidate = () => {
     return (
       <>
@@ -25,6 +29,7 @@ const RegisterFooter: React.FC<FooterProps> = ({ candidate, index }) => {
               <Button
                 className="root-0-2-46 nextButton-0-2-110 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                 type="submit"
+                onClick={onClick}
               >
                 Next
               </Button>

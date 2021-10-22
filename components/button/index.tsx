@@ -8,11 +8,12 @@ export const Button: React.FC<Props> = ({
   children,
   type,
   style,
+  onClick,
   className,
 }) => {
   return (
     <>
-      <button className={className} type={type} style={style}>
+      <button className={className} type={type} style={style} onClick={onClick}>
         {children}
       </button>
     </>
