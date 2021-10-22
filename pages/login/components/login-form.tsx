@@ -22,9 +22,9 @@ const LoginForm: React.FC = () => {
   const $login = useMutation(({ loginData }: { loginData: Props }) =>
     LoginRequest(loginData, setErrorMessage)
   );
+
   return (
     <>
-      {console.log(jwt)}
       <form
         onSubmit={handleSubmit((data: Props) => {
           $login.mutate(

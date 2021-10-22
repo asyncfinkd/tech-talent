@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
+import { ApplicationContext } from "context/application/ApplicationContext";
+import { readCookie } from "lib/readContext";
 
 interface Props {
   wantSponsors?: boolean;
 }
 
 const Footer: React.FC<Props> = ({ wantSponsors }) => {
+  const { jwt } = useContext(ApplicationContext);
+
   return (
     <>
       <footer className="root-0-2-201">
@@ -89,12 +93,11 @@ const Footer: React.FC<Props> = ({ wantSponsors }) => {
                       Profile
                     </a>
                   ) : ( */}
-                  <a
-                    className="root-0-2-46 register-0-2-214 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-                    href="/register"
-                  >
-                    Register
-                  </a>
+                  <Link href="/register">
+                    <a className="root-0-2-46 register-0-2-214 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54">
+                      {jwt && readCookie("cookie") ? "Profile" : "Register"}
+                    </a>
+                  </Link>
                   {/* )} */}
                 </div>
                 <div className="right-0-2-215">
