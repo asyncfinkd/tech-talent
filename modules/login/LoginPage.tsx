@@ -3,8 +3,8 @@ import { NextPage } from "next";
 import Header from "ui/header";
 import Footer from "ui/footer";
 import Head from "next/head";
-import LoginForm from "pages/login/components/login-form";
-import LoginHeader from "pages/login/components/login-header";
+import LoginForm from "modules/login/components/login-form";
+import LoginHeader from "modules/login/components/login-header";
 
 const Login: NextPage = () => {
   return (
