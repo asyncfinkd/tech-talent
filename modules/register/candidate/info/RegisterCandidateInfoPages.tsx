@@ -11,11 +11,9 @@ import RegisterCandidateInfoForm from "./components/register-candidate-info-form
 import RegisterCandidateInfoHeader from "./components/register-candidate-info-header";
 
 const RegisterCandidateInfoPages: NextPage = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Input>({ resolver: yupResolver(RegisterCandidateInfoSchema) });
+  const { register, handleSubmit } = useForm<Input>({
+    resolver: yupResolver(RegisterCandidateInfoSchema),
+  });
   return (
     <>
       <Head>
@@ -30,7 +28,6 @@ const RegisterCandidateInfoPages: NextPage = () => {
                 <RegisterCandidateInfoHeader />
                 <RegisterCandidateInfoForm
                   register={register}
-                  errors={errors}
                 />
               </div>
             </div>

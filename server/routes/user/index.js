@@ -3,6 +3,7 @@ const UserSchema = require("../../schema/user/index");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const env = require("../../environment/app/env.json");
+// const loginMiddleware = require("../../middlewares/loginMiddleware");
 
 router.route("/login").post(async (req, res) => {
   let getUser = await UserSchema.findOne({ email: req.body.email });
@@ -92,6 +93,12 @@ router.route("/register").post(async (req, res) => {
   } catch (err) {
     res.status(502).json(err);
   }
+});
+
+router.route("/register/second/step").post(async (req, res) => {
+  let getUser = UseSchema.findOne({ email: req.email });
+
+  console.log(getUser);
 });
 
 module.exports = router;
