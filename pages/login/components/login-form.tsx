@@ -1,5 +1,4 @@
 import { Button } from "components/button";
-import Input from "components/input";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -33,7 +32,9 @@ const LoginForm: React.FC = () => {
             </label>
             <input
               type="text"
-              className="input-0-2-251 undefined"
+              className={`input-0-2-251 ${
+                errors.email && "invalid-0-2-252"
+              }`}
               {...register("email")}
             />
             <ErrorMessage
@@ -56,7 +57,9 @@ const LoginForm: React.FC = () => {
             </label>
             <input
               type="password"
-              className="input-0-2-251 undefined"
+              className={`input-0-2-251 ${
+                errors.password && "invalid-0-2-252"
+              }`}
               {...register("password")}
             />
             <ErrorMessage
@@ -83,5 +86,6 @@ const LoginForm: React.FC = () => {
     </>
   );
 };
+
 
 export default LoginForm;
