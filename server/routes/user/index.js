@@ -4,32 +4,20 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const env = require("../../environment/app/env.json");
 const loginMiddleware = require("../../middlewares/loginMiddleware");
+const AdminSchema = require("../../schema/admin/index");
 
 router.route("/login").post(async (req, res) => {
-  let getUser = await UserSchema.findOne({ email: req.body.email });
+  if (req.body.forUser) {
+    let getUser = await UserSchema.findOne({ email: req.body.email });
 
-  if (getUser == null) {
-    res.status(502).json({ message: "User doesn't exist", success: false });
-  }
+    if (getUser == null) {
+      res.status(502).json({ message: "User doesn't exist", success: false });
+    }
 
-  if (getUser.password.length > 0) {
-    bcrypt.compare(req.body.password, getUser.password, (err, verified) => {
-      if (verified) {
-        const {
-          email,
-          firstName,
-          lastName,
-          fullName,
-          interest,
-          role,
-          phone,
-          socialNetwork,
-          _id,
-          cv,
-        } = getUser;
-        const logged = true;
-        const access_token = jwt.sign(
-          {
+    if (getUser.password.length > 0) {
+      bcrypt.compare(req.body.password, getUser.password, (err, verified) => {
+        if (verified) {
+          const {
             email,
             firstName,
             lastName,
@@ -40,18 +28,67 @@ router.route("/login").post(async (req, res) => {
             socialNetwork,
             _id,
             cv,
-            logged,
-          },
-          env.ACCESS_TOKEN,
-          {
-            expiresIn: "12h",
-          }
-        );
-        res.status(200).json({ success: true, access_token: access_token });
-      } else {
-        res.status(502).json({ message: "Password is wrong", success: false });
-      }
-    });
+          } = getUser;
+          const logged = true;
+          const access_token = jwt.sign(
+            {
+              email,
+              firstName,
+              lastName,
+              fullName,
+              interest,
+              role,
+              phone,
+              socialNetwork,
+              _id,
+              cv,
+              logged,
+            },
+            env.ACCESS_TOKEN,
+            {
+              expiresIn: "12h",
+            }
+          );
+          res.status(200).json({ success: true, access_token: access_token });
+        } else {
+          res
+            .status(502)
+            .json({ message: "Password is wrong", success: false });
+        }
+      });
+    }
+  } else {
+    let getUser = await AdminSchema.findOne({ email: req.body.email });
+
+    if (getUser == null) {
+      res.status(502).json({ message: "User doesn't exist", success: false });
+    }
+
+    if (getUser.password.length > 0) {
+      bcrypt.compare(req.body.password, getUser.password, (err, verified) => {
+        if (verified) {
+          const { email, fullName, role } = getUser;
+          const logged = true;
+          const access_token = jwt.sign(
+            {
+              email,
+              fullName,
+              role,
+              logged,
+            },
+            env.ACCESS_TOKEN,
+            {
+              expiresIn: "12h",
+            }
+          );
+          res.status(200).json({ success: true, access_token: access_token });
+        } else {
+          res
+            .status(502)
+            .json({ message: "Password is wrong", success: false });
+        }
+      });
+    }
   }
 });
 
@@ -142,7 +179,9 @@ router
   .route("/check/logged")
   .all(loginMiddleware)
   .post(async (req, res) => {
-    res.status(200).json({ message: "Member is logged", success: true });
+    res
+      .status(200)
+      .json({ message: "Member is logged", success: true, role: req.role });
   });
 
 router
@@ -151,37 +190,6 @@ router
   .post(async (req, res) => {
     UserSchema.findOne({ emai: req.email }).then((result) => {
       try {
-        // const { fullName, phone, socialNetwork } = req.body;
-        // const { email, interest, _id, role } = req;
-        // const logged = true;
-        // const access_token = jwt.sign(
-        //   {
-        //     fullName,
-        //     phone,
-        //     socialNetwork,
-        //     firstName,
-        //     lastName,
-        //     email,
-        //     interest,
-        //     role,
-        //     _id,
-        //     logged,
-        //   },
-        //   env.ACCESS_TOKEN,
-        //   {
-        //     expiresIn: "12h",
-        //   }
-        // );
-        // result.fullName = fullName;
-        // result.phone = phone;
-        // result.socialNetwork = socialNetwork;
-        // result.save();
-
-        // res.status(200).json({
-        //   message: "Successfuly",
-        //   success: true,
-        //   access_token: access_token,
-        // });
         const { fullName, phone, socialNetwork } = req.body;
         const { email, interest, _id, role } = req;
         const logged = true;
@@ -205,13 +213,11 @@ router
         result.socialNetwork = socialNetwork;
         result.save();
 
-        res
-          .status(200)
-          .json({
-            message: "Successfuly",
-            success: true,
-            access_token: access_token,
-          });
+        res.status(200).json({
+          message: "Successfuly",
+          success: true,
+          access_token: access_token,
+        });
       } catch (err) {
         res.status(502).json(err);
       }

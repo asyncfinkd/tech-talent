@@ -19,15 +19,14 @@ module.exports = async function (req, res, next) {
       req.phone = decodedData.phone;
       req.socialNetwork = decodedData.socialNetwork;
       req._id = decodedData._id;
+      req.role = decodedData.role;
       next();
     }
   } catch (err) {
-    res
-      .status(502)
-      .json({
-        message: "თქვენი სესია ამოიწურა",
-        expired: true,
-        success: false,
-      });
+    res.status(502).json({
+      message: "თქვენი სესია ამოიწურა",
+      expired: true,
+      success: false,
+    });
   }
 };

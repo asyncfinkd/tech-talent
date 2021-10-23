@@ -20,9 +20,10 @@ const LoginForm: React.FC = () => {
   } = useForm<Props>({ resolver: yupResolver(schema) });
   const { setAccess_Token } = useContext(ApplicationContext);
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
+  const [forUser, setForUser] = useState<any>(true);
 
   const $login = useMutation(({ loginData }: { loginData: Props }) =>
-    LoginRequest(loginData, setErrorMessage)
+    LoginRequest(loginData, setErrorMessage, forUser)
   );
 
   return (
@@ -33,7 +34,7 @@ const LoginForm: React.FC = () => {
             { loginData: data },
             {
               onSuccess: (data: Result) => {
-                document.cookie = `cookie=${data.access_token}`;
+                document.cookie = `cookie=${data.access_token};path=/`;
                 setAccess_Token({ access_token: data.access_token });
                 router.push("/");
               },
