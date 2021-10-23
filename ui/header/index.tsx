@@ -8,7 +8,6 @@ interface Props {
   ShowLine?: boolean;
   ShowShadow?: boolean;
 }
-
 const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
   const [showProfile, setShowProfile] = useToggle();
   const [showHeader, setShowHeader] = useToggle();
@@ -16,6 +15,7 @@ const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
   const [showClose, setShowClose] = useToggle();
   const [companies, setCompanies] = useState<Boolean>(false);
   const { access_token, logged } = useContext(ApplicationContext);
+  const token: any = access_token;
   // const renderLocal = () => {
   //   if (!localStorage.getItem("tt-lang")) {
   //     return "EN";
@@ -241,11 +241,7 @@ const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
                           </svg>
                         </div>
                       </div>
-                      <div>
-                        {!access_token?.fullName
-                          ? access_token?.email
-                          : access_token?.fullName}
-                      </div>
+                      <div>{access_token?.fullName ?? access_token?.email}</div>
                     </a>
                   </Link>
                 </div>
@@ -874,26 +870,25 @@ const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
             </section>
             <div className="sectionLine-0-2-86"></div>
             <section className="section-0-2-85">
-              <a
-                className="root-0-2-46 option-0-2-87 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
-                href="/about"
-              >
-                <svg
-                  className="fill-0-2-36 optionIcon-0-2-89"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M16.3346 2.00018H7.66561C4.26804 2.00018 2.00061 4.43278 2.00061 7.91618V16.0842C2.00061 19.5709 4.26198 22.0002 7.66561 22.0002H16.3336C19.7382 22.0002 22.0006 19.5709 22.0006 16.0842V7.91618C22.0006 4.42969 19.7384 2.00018 16.3346 2.00018ZM7.66561 3.50018H16.3346C18.8851 3.50018 20.5006 5.23515 20.5006 7.91618V16.0842C20.5006 18.7653 18.885 20.5002 16.3336 20.5002H7.66561C5.11537 20.5002 3.50061 18.7655 3.50061 16.0842V7.91618C3.50061 5.23856 5.12095 3.50018 7.66561 3.50018ZM11.9999 7.45428C12.4141 7.45428 12.7499 7.79007 12.7499 8.20428C12.7499 8.58398 12.4678 8.89777 12.1017 8.94744L11.9899 8.95428C11.5757 8.95428 11.2399 8.6185 11.2399 8.20428C11.2399 7.82459 11.5221 7.51079 11.8881 7.46113L11.9999 7.45428ZM11.9899 10.6271C12.3696 10.6271 12.6834 10.9092 12.7331 11.2753L12.7399 11.3771V15.7961C12.7399 16.2103 12.4041 16.5461 11.9899 16.5461C11.6102 16.5461 11.2964 16.2639 11.2468 15.8979L11.2399 15.7961V11.3771C11.2399 10.9629 11.5757 10.6271 11.9899 10.6271Z"
-                  ></path>
-                </svg>
-                About
-              </a>
+              <Link href="/about">
+                <a className="root-0-2-46 option-0-2-87 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59">
+                  <svg
+                    className="fill-0-2-36 optionIcon-0-2-89"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M16.3346 2.00018H7.66561C4.26804 2.00018 2.00061 4.43278 2.00061 7.91618V16.0842C2.00061 19.5709 4.26198 22.0002 7.66561 22.0002H16.3336C19.7382 22.0002 22.0006 19.5709 22.0006 16.0842V7.91618C22.0006 4.42969 19.7384 2.00018 16.3346 2.00018ZM7.66561 3.50018H16.3346C18.8851 3.50018 20.5006 5.23515 20.5006 7.91618V16.0842C20.5006 18.7653 18.885 20.5002 16.3336 20.5002H7.66561C5.11537 20.5002 3.50061 18.7655 3.50061 16.0842V7.91618C3.50061 5.23856 5.12095 3.50018 7.66561 3.50018ZM11.9999 7.45428C12.4141 7.45428 12.7499 7.79007 12.7499 8.20428C12.7499 8.58398 12.4678 8.89777 12.1017 8.94744L11.9899 8.95428C11.5757 8.95428 11.2399 8.6185 11.2399 8.20428C11.2399 7.82459 11.5221 7.51079 11.8881 7.46113L11.9999 7.45428ZM11.9899 10.6271C12.3696 10.6271 12.6834 10.9092 12.7331 11.2753L12.7399 11.3771V15.7961C12.7399 16.2103 12.4041 16.5461 11.9899 16.5461C11.6102 16.5461 11.2964 16.2639 11.2468 15.8979L11.2399 15.7961V11.3771C11.2399 10.9629 11.5757 10.6271 11.9899 10.6271Z"
+                    ></path>
+                  </svg>
+                  About
+                </a>
+              </Link>
             </section>
             <div className="sectionLine-0-2-86"></div>
             <div className="root-0-2-95">
