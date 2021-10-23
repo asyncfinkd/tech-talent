@@ -205,13 +205,11 @@ router
         result.socialNetwork = socialNetwork;
         result.save();
 
-        res
-          .status(200)
-          .json({
-            message: "Successfuly",
-            success: true,
-            access_token: access_token,
-          });
+        res.status(200).json({
+          message: "Successfuly",
+          success: true,
+          access_token: access_token,
+        });
       } catch (err) {
         res.status(502).json(err);
       }

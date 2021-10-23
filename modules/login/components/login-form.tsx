@@ -33,7 +33,7 @@ const LoginForm: React.FC = () => {
             { loginData: data },
             {
               onSuccess: (data: Result) => {
-                document.cookie = `cookie=${data.access_token}`;
+                document.cookie = `cookie=${data.access_token};path=/`;
                 setAccess_Token({ access_token: data.access_token });
                 router.push("/");
               },
