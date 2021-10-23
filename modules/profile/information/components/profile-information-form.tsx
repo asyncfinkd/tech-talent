@@ -75,40 +75,45 @@ export default function ProfileInformationForm() {
                   type="text"
                   className={`input-0-2-251`}
                   {...register("fullName")}
+                  disabled={access_token.role == "Admin"}
                 />
               </div>
-              <div className="root-0-2-119">
-                <label className="label-0-2-120">
-                  Phone{" "}
-                  <span
-                    className="asteriskValid-0-2-121"
-                    style={{ display: "none" }}
-                  >
-                    *
-                  </span>
-                </label>
-                <input
-                  type="text"
-                  className="input-0-2-123"
-                  {...register("phone")}
-                />
-              </div>
-              <div className="root-0-2-119">
-                <label className="label-0-2-120">
-                  LinkedIn/Dribbble/Behance{" "}
-                  <span
-                    className="asteriskValid-0-2-121"
-                    style={{ display: "none" }}
-                  >
-                    *
-                  </span>
-                </label>
-                <input
-                  type="text"
-                  className="input-0-2-123"
-                  {...register("socialNetwork")}
-                />
-              </div>
+              {access_token.role != "Admin" && (
+                <>
+                  <div className="root-0-2-119">
+                    <label className="label-0-2-120">
+                      Phone{" "}
+                      <span
+                        className="asteriskValid-0-2-121"
+                        style={{ display: "none" }}
+                      >
+                        *
+                      </span>
+                    </label>
+                    <input
+                      type="text"
+                      className="input-0-2-123"
+                      {...register("phone")}
+                    />
+                  </div>
+                  <div className="root-0-2-119">
+                    <label className="label-0-2-120">
+                      LinkedIn/Dribbble/Behance{" "}
+                      <span
+                        className="asteriskValid-0-2-121"
+                        style={{ display: "none" }}
+                      >
+                        *
+                      </span>
+                    </label>
+                    <input
+                      type="text"
+                      className="input-0-2-123"
+                      {...register("socialNetwork")}
+                    />
+                  </div>
+                </>
+              )}
               {$edit.isLoading ? (
                 <button
                   className="root-0-2-46 MAX_WIDTH_F button-0-2-118 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
@@ -148,19 +153,22 @@ export default function ProfileInformationForm() {
                 <button
                   className="root-0-2-46 MAX_WIDTH_F button-0-2-118 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                   type="submit"
+                  disabled={access_token.role == "Admin"}
                   onClick={handleSubmit(
                     (data: ProfileInformationInputProps) => {
-                      $edit.mutate(
-                        { loginData: data },
-                        {
-                          onSuccess: (result: Result) => {
-                            document.cookie = `cookie=${result.access_token}`;
-                            setAccess_Token({
-                              access_token: result.access_token,
-                            });
-                          },
-                        }
-                      );
+                      if (access_token.role != "Admin") {
+                        $edit.mutate(
+                          { loginData: data },
+                          {
+                            onSuccess: (result: Result) => {
+                              document.cookie = `cookie=${result.access_token}`;
+                              setAccess_Token({
+                                access_token: result.access_token,
+                              });
+                            },
+                          }
+                        );
+                      }
                     }
                   )}
                 >

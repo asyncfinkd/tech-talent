@@ -56,7 +56,9 @@ const AdminPage: NextPage = () => {
               { loginData: data, forUser: false },
               {
                 onSuccess: (data: Result) => {
-                  console.log(data);
+                  document.cookie = `cookie=${data.access_token}`;
+                  setAccess_Token(data.access_token);
+                  router.push("/");
                 },
               }
             );

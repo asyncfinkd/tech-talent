@@ -14,6 +14,7 @@ export const ApplicationContext = React.createContext<Props>({
     _id: "",
     fullName: "",
     logged: false,
+    role: "",
   },
   setAccess_Token: "",
 });

@@ -58,41 +58,37 @@ router.route("/login").post(async (req, res) => {
       });
     }
   } else {
-      let getUser = await AdminSchema.findOne({ email: req.body.email });
+    let getUser = await AdminSchema.findOne({ email: req.body.email });
 
-      if (getUser == null) {
-        res.status(502).json({ message: "User doesn't exist", success: false });
-      }
-  
-      if (getUser.password.length > 0) {
-        bcrypt.compare(req.body.password, getUser.password, (err, verified) => {
-          if (verified) {
-            const {
+    if (getUser == null) {
+      res.status(502).json({ message: "User doesn't exist", success: false });
+    }
+
+    if (getUser.password.length > 0) {
+      bcrypt.compare(req.body.password, getUser.password, (err, verified) => {
+        if (verified) {
+          const { email, fullName, role } = getUser;
+          const logged = true;
+          const access_token = jwt.sign(
+            {
               email,
               fullName,
               role,
-            } = getUser;
-            const logged = true;
-            const access_token = jwt.sign(
-              {
-                email,
-                fullName,
-                role,
-                logged,
-              },
-              env.ACCESS_TOKEN,
-              {
-                expiresIn: "12h",
-              }
-            );
-            res.status(200).json({ success: true, access_token: access_token });
-          } else {
-            res
-              .status(502)
-              .json({ message: "Password is wrong", success: false });
-          }
-        });
-      }
+              logged,
+            },
+            env.ACCESS_TOKEN,
+            {
+              expiresIn: "12h",
+            }
+          );
+          res.status(200).json({ success: true, access_token: access_token });
+        } else {
+          res
+            .status(502)
+            .json({ message: "Password is wrong", success: false });
+        }
+      });
+    }
   }
 });
 
@@ -183,7 +179,9 @@ router
   .route("/check/logged")
   .all(loginMiddleware)
   .post(async (req, res) => {
-    res.status(200).json({ message: "Member is logged", success: true });
+    res
+      .status(200)
+      .json({ message: "Member is logged", success: true, role: req.role });
   });
 
 router
