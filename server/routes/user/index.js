@@ -27,6 +27,7 @@ router.route("/login").post(async (req, res) => {
           _id,
           cv,
         } = getUser;
+        const logged = true;
         const access_token = jwt.sign(
           {
             email,
@@ -39,6 +40,7 @@ router.route("/login").post(async (req, res) => {
             socialNetwork,
             _id,
             cv,
+            logged,
           },
           env.ACCESS_TOKEN,
           {
@@ -75,8 +77,9 @@ router.route("/register").post(async (req, res) => {
           role: req.body.role,
         }).save(function (err, user) {
           const { email, interest, role, _id } = user;
+          const logged = true;
           const access_token = jwt.sign(
-            { email, interest, role, _id },
+            { email, interest, role, _id, logged },
             env.ACCESS_TOKEN,
             {
               expiresIn: "12h",

@@ -22,7 +22,7 @@ const CandidatePage: NextPage = () => {
 
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
 
-  const { setAccess_Token, setLogged } = useContext(ApplicationContext);
+  const { setAccess_Token } = useContext(ApplicationContext);
 
   const {
     register,
@@ -74,7 +74,6 @@ const CandidatePage: NextPage = () => {
               onSuccess: (data: Result) => {
                 document.cookie = `cookie=${data.access_token}`;
                 setAccess_Token({ access_token: data.access_token });
-                setLogged(true);
                 router.push(`/register/candidate/info?fieldType=${interest}`);
               },
             }
