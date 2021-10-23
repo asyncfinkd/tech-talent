@@ -20,9 +20,10 @@ const LoginForm: React.FC = () => {
   } = useForm<Props>({ resolver: yupResolver(schema) });
   const { setAccess_Token } = useContext(ApplicationContext);
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
+  const [forUser, setForUser] = useState<any>(true);
 
   const $login = useMutation(({ loginData }: { loginData: Props }) =>
-    LoginRequest(loginData, setErrorMessage)
+    LoginRequest(loginData, setErrorMessage, forUser)
   );
 
   return (

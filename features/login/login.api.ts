@@ -6,13 +6,14 @@ export const LoginRequest = async (
     email: string;
     password: string;
   },
-  setErrorMessage: React.Dispatch<React.SetStateAction<boolean>>
+  setErrorMessage: React.Dispatch<React.SetStateAction<boolean>>,
+  forUser: boolean
 ): Promise<Result> => {
   const { email, password } = loginData;
   const response = await fetch(`${env.host}/api/login`, {
     method: "POST",
     headers: { "Content-type": "application/json" },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ email, password, forUser }),
   });
   if (response.ok) setErrorMessage(false);
 
