@@ -6,7 +6,8 @@ export const RegisterRequest = async (
     email: string;
     password: string;
   },
-  interest: string | string[] | undefined
+  interest: string | string[] | undefined,
+  setErrorMessage: React.Dispatch<React.SetStateAction<boolean>>
 ): Promise<Result> => {
   const { email, password } = loginData;
   const response = await fetch(`${env.host}/api/register`, {
@@ -14,13 +15,14 @@ export const RegisterRequest = async (
     headers: { "Content-type": "application/json" },
     body: JSON.stringify({ email, password, role: "member", interest }),
   });
+  if (response.ok) setErrorMessage(false);
 
   if (response.ok) {
     return response.json();
   } else {
     const error = await response.json();
     if (error) {
-      alert(1);
+      setErrorMessage(true);
     }
 
     return Promise.reject({

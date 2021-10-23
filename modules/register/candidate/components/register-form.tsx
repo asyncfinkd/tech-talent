@@ -1,7 +1,16 @@
 import React from "react";
 import { ErrorMessage } from "components/error-message";
 
-const RegisterForm: React.FC<any> = ({ register, errors }: any) => {
+const RegisterForm: React.FC<any> = ({
+  register,
+  errors,
+  errorMessage,
+}: any) => {
+  const renderEmailClassName = () => {
+    if (errors.email || errorMessage) {
+      return "invalid-0-2-252";
+    }
+  };
   return (
     <>
       <div className="inputGroup-0-2-116">
@@ -17,9 +26,16 @@ const RegisterForm: React.FC<any> = ({ register, errors }: any) => {
           </label>
           <input
             type="text"
-            className={`input-0-2-251 ${errors.email && "invalid-0-2-252"}`}
+            className={`input-0-2-251 ${renderEmailClassName()}`}
             {...register("email")}
           />
+          <ErrorMessage
+            condition={errorMessage}
+            element="div"
+            className="invalidMessage-0-2-132"
+          >
+            User with this email is already registered
+          </ErrorMessage>
           <ErrorMessage
             element="div"
             className="invalidMessage-0-2-132"
