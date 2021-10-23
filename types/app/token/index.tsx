@@ -10,4 +10,5 @@ export interface TokenProps {
   _id?: string;
   fullName?: string;
   role?: string;
+  logged: boolean;
 }

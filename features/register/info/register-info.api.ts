@@ -1,4 +1,5 @@
 import env from "application/environment/env.json";
+import { readCookie } from "lib/readContext";
 import { Result } from "types/features/register";
 
 export const RegisterInfoRequest = async (loginData: {
@@ -9,7 +10,10 @@ export const RegisterInfoRequest = async (loginData: {
   const { fullName, phone, socialNetwork } = loginData;
   const response = await fetch(`${env.host}/api/register/second/step`, {
     method: "POST",
-    headers: { "Content-type": "application/json" },
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${readCookie("cookie")}`,
+    },
     body: JSON.stringify({ fullName, phone, socialNetwork }),
   });
 
@@ -18,7 +22,7 @@ export const RegisterInfoRequest = async (loginData: {
   } else {
     const error = await response.json();
     if (error) {
-      alert(1);
+      alert("SYS ERROR");
     }
 
     return Promise.reject({

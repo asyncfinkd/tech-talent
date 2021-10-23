@@ -14,7 +14,8 @@ const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
   const [showLanguage, setShowLanguage] = useToggle();
   const [showClose, setShowClose] = useToggle();
   const [companies, setCompanies] = useState<Boolean>(false);
-  const { access_token, logged } = useContext(ApplicationContext);
+  const { access_token } = useContext(ApplicationContext);
+  const logged: boolean | undefined = access_token?.logged;
   // const renderLocal = () => {
   //   if (!localStorage.getItem("tt-lang")) {
   //     return "EN";
@@ -240,7 +241,11 @@ const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
                           </svg>
                         </div>
                       </div>
-                      <div>{access_token?.fullName ?? access_token?.email}</div>
+                      <div>
+                        {!access_token?.fullName
+                          ? access_token?.email
+                          : access_token?.fullName}
+                      </div>
                     </a>
                   </Link>
                 </div>

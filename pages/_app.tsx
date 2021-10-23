@@ -9,28 +9,37 @@ import { ApplicationContext } from "context/application/ApplicationContext";
 import { readCookie } from "lib/readContext";
 import jwt_decode from "jwt-decode";
 import { TokenProps } from "types/app/token";
+import { useRouter } from "next/router";
+import { LoggedAPI } from "api";
 
 const client = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
   const [access_token, setAccess_Token] = useState<TokenProps>({
     email: "",
     exp: 0,
     iat: 0,
     _id: "",
     role: "",
+    logged: false,
   });
-  const [logged, setLogged] = useState<boolean>(false);
   const cookie: string | null | undefined = readCookie("cookie");
 
   useEffect(() => {
     if (cookie) {
       let decoded: TokenProps = jwt_decode(cookie);
       setAccess_Token(decoded);
-      setLogged(true);
       console.log(decoded);
     }
   }, [cookie]);
+
+  useEffect(() => {
+    if (cookie) {
+      LoggedAPI(setAccess_Token, router);
+    }
+  }, [cookie, router.pathname]);
   return (
     <>
       <Head>
@@ -60,9 +69,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Tech Talent</title>
       </Head>
       <QueryClientProvider client={client}>
-        <ApplicationContext.Provider
-          value={{ access_token, logged, setAccess_Token, setLogged }}
-        >
+        <ApplicationContext.Provider value={{ access_token, setAccess_Token }}>
           <div className="root-0-2-1">
             <Component {...pageProps} />
           </div>
