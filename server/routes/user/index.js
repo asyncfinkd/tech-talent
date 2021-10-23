@@ -62,33 +62,33 @@ router.route("/register").post(async (req, res) => {
   }
 
   try {
-    let getUser = await UserSchema.findOne({ email: req.body.email });
-
-    if (getUser) {
-      res
-        .status(502)
-        .json({ message: "Email is already registered", success: false });
-    }
-
-    const User = new UserSchema({
-      email: req.body.email,
-      password: hashedPassword,
-      interest: req.body.interest,
-      role: req.body.role,
-    }).save(function (err, user) {
-      const { email, interest, role, _id } = user;
-      const access_token = jwt.sign(
-        { email, interest, role, _id },
-        env.ACCESS_TOKEN,
-        {
-          expiresIn: "12h",
-        }
-      );
-      res.status(200).json({
-        message: "Successfuly",
-        success: true,
-        access_token: access_token,
-      });
+    UserSchema.findOne({ email: req.body.email }).then((result) => {
+      if (result) {
+        res
+          .status(502)
+          .json({ message: "Email is already registered", success: false });
+      } else {
+        const User = new UserSchema({
+          email: req.body.email,
+          password: hashedPassword,
+          interest: req.body.interest,
+          role: req.body.role,
+        }).save(function (err, user) {
+          const { email, interest, role, _id } = user;
+          const access_token = jwt.sign(
+            { email, interest, role, _id },
+            env.ACCESS_TOKEN,
+            {
+              expiresIn: "12h",
+            }
+          );
+          res.status(200).json({
+            message: "Successfuly",
+            success: true,
+            access_token: access_token,
+          });
+        });
+      }
     });
   } catch (err) {
     res.status(502).json(err);
