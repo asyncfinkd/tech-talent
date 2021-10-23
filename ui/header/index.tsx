@@ -15,7 +15,6 @@ const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
   const [showClose, setShowClose] = useToggle();
   const [companies, setCompanies] = useState<Boolean>(false);
   const { access_token, logged } = useContext(ApplicationContext);
-  const token: any = access_token;
   // const renderLocal = () => {
   //   if (!localStorage.getItem("tt-lang")) {
   //     return "EN";

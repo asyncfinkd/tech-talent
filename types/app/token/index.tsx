@@ -9,4 +9,5 @@ export interface TokenProps {
   iat?: number;
   _id?: string;
   fullName?: string;
+  role?: string;
 }

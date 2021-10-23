@@ -18,6 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     exp: 0,
     iat: 0,
     _id: "",
+    role: "",
   });
   const [logged, setLogged] = useState<boolean>(false);
   const cookie: string | null | undefined = readCookie("cookie");
@@ -26,6 +27,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     if (cookie) {
       let decoded: TokenProps = jwt_decode(cookie);
       setAccess_Token(decoded);
+      setLogged(true);
       console.log(decoded);
     }
   }, [cookie]);
