@@ -14,6 +14,7 @@ import { Result } from "types/features/login";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
+import { ErrorMessage } from "components/error-message";
 
 const useStyles = makeStyles({
   root: {},
@@ -78,9 +79,16 @@ const AdminPage: NextPage = () => {
             </label>
             <input
               type="text"
-              className={`input-0-2-251`}
+              className={`input-0-2-251 ${errors.email && "invalid-0-2-252"}`}
               {...register("email")}
             />
+            <ErrorMessage
+              element="div"
+              className="invalidMessage-0-2-253"
+              condition={errors.email}
+            >
+              {errors?.email?.message}
+            </ErrorMessage>
           </div>
           <div className="root-0-2-247">
             <label className="label-0-2-248">
@@ -94,10 +102,24 @@ const AdminPage: NextPage = () => {
             </label>
             <input
               type="password"
-              className={`input-0-2-251`}
+              className={`input-0-2-251 ${errors.password && "invalid-0-2-252"}`}
               {...register("password")}
             />
+            <ErrorMessage
+              element="div"
+              className="invalidMessage-0-2-253"
+              condition={errors.password}
+            >
+              {errors?.password?.message}
+            </ErrorMessage>
           </div>
+          <ErrorMessage
+            element="div"
+            className="errorMessage-0-2-111"
+            condition={errorMessage}
+          >
+            Incorrect email or password
+          </ErrorMessage>
           <div className="buttonField-0-2-237">
             <Link href="/">
               <a className="forgotPassword-0-2-243">Back on Home Page</a>
