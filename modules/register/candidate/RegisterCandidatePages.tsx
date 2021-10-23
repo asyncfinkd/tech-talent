@@ -1,11 +1,11 @@
 import RegisterFooter from "ui/footer/register";
 import Header from "ui/header";
 import type { NextPage } from "next";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Head from "next/head";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { RegisterSchema } from "schema/register";
+import { RegisterSchema } from "schema/register/candidate";
 import { Input } from "types/register/candidate";
 import RegisterForm from "./components/register-form";
 import RegisterHeader from "./components/register-header";
@@ -20,6 +20,8 @@ const CandidatePage: NextPage = () => {
   const router = useRouter();
   const interest = router.query.fieldType;
 
+  const [errorMessage, setErrorMessage] = useState<boolean>(false);
+
   const { setAccess_Token, setLogged } = useContext(ApplicationContext);
 
   const {
@@ -32,10 +34,12 @@ const CandidatePage: NextPage = () => {
     ({
       loginData,
       interest,
+      setErrorMessage,
     }: {
       loginData: Input;
       interest: string | string[] | undefined;
-    }) => RegisterRequest(loginData, interest)
+      setErrorMessage: React.Dispatch<React.SetStateAction<boolean>>;
+    }) => RegisterRequest(loginData, interest, setErrorMessage)
   );
 
   return (
@@ -50,7 +54,11 @@ const CandidatePage: NextPage = () => {
             <div className="marginOnMobile-0-2-111">
               <div className="root-0-2-113">
                 <RegisterHeader />
-                <RegisterForm register={register} errors={errors} />
+                <RegisterForm
+                  register={register}
+                  errors={errors}
+                  errorMessage={errorMessage}
+                />
                 <RegisterCandidatePagesFooter />
               </div>
             </div>
@@ -61,7 +69,7 @@ const CandidatePage: NextPage = () => {
         candidate={true}
         candidateOnClick={handleSubmit((data: Input) => {
           $register.mutate(
-            { loginData: data, interest },
+            { loginData: data, interest, setErrorMessage },
             {
               onSuccess: (data: Result) => {
                 document.cookie = `cookie=${data.access_token}`;

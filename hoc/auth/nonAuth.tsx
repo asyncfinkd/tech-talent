@@ -10,9 +10,9 @@ const nonAuth = (WrappedComponent: any) => {
       if (accessToken != null) {
         Router.replace("/");
         return null;
+      } else {
+        return <WrappedComponent {...props} />;
       }
-
-      return <WrappedComponent {...props} />;
     }
     return null;
   };

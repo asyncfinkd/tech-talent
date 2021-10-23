@@ -1,9 +1,19 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useForm } from "react-hook-form";
+import { RegisterCandidateInfoSchema } from "schema/register/candidate/info";
+import { Result } from "types/features/register";
+import { Input } from "types/register/candidate/info";
 import RegisterFooter from "ui/footer/register";
 import Header from "ui/header";
+import RegisterCandidateInfoForm from "./components/register-candidate-info-form";
+import RegisterCandidateInfoHeader from "./components/register-candidate-info-header";
 
 const RegisterCandidateInfoPages: NextPage = () => {
+  const { register, handleSubmit } = useForm<Input>({
+    resolver: yupResolver(RegisterCandidateInfoSchema),
+  });
   return (
     <>
       <Head>
@@ -15,52 +25,19 @@ const RegisterCandidateInfoPages: NextPage = () => {
           <div className="content-0-2-277">
             <div className="marginOnMobile-0-2-134">
               <div className="root-0-2-312">
-                <h1 className="h1-0-2-313">Contact Information</h1>
-                <div className="caption-0-2-314">
-                  You can use this data when you apply for a job
-                </div>
-                <div className="inputGroup-0-2-317">
-                  <div className="root-0-2-250 input-0-2-318">
-                    <label className="label-0-2-251">
-                      First Name & Last Name{" "}
-                      <span
-                        className="asteriskValid-0-2-252"
-                        style={{ display: "none" }}
-                      >
-                        *
-                      </span>
-                    </label>
-                    <input type="text" className="input-0-2-254" />
-                  </div>
-                  <div className="root-0-2-250 input-0-2-318">
-                    <label className="label-0-2-251">
-                      Phone{" "}
-                      <span
-                        className="asteriskValid-0-2-252"
-                        style={{ display: "none" }}
-                      >
-                        *
-                      </span>
-                    </label>
-                    <input type="text" className="input-0-2-254" />
-                  </div>
-                  <div className="root-0-2-250 input-0-2-318">
-                    <label className="label-0-2-251">
-                      LinkedIn/Dribbble/Behance{" "}
-                      <span
-                        className="asteriskValid-0-2-252"
-                        style={{ display: "none" }}
-                      >
-                        *
-                      </span>
-                    </label>
-                    <input type="text" className="input-0-2-254" />
-                  </div>
-                </div>
+                <RegisterCandidateInfoHeader />
+                <RegisterCandidateInfoForm
+                  register={register}
+                />
               </div>
             </div>
           </div>
-          <RegisterFooter candidateinfo={true} />
+          <RegisterFooter
+            candidateinfo={true}
+            candidateInfoOnClick={handleSubmit((data: Result) => {
+              console.log(data);
+            })}
+          />
         </div>
       </main>
     </>

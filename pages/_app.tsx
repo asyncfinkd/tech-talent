@@ -8,18 +8,26 @@ import React, { useEffect, useState } from "react";
 import { ApplicationContext } from "context/application/ApplicationContext";
 import { readCookie } from "lib/readContext";
 import jwt_decode from "jwt-decode";
+import { TokenProps } from "types/app/token";
 
 const client = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [access_token, setAccess_Token] = useState<string>("");
+  const [access_token, setAccess_Token] = useState<TokenProps>({
+    email: "",
+    exp: 0,
+    iat: 0,
+    _id: "",
+    role: "",
+  });
   const [logged, setLogged] = useState<boolean>(false);
   const cookie: string | null | undefined = readCookie("cookie");
 
   useEffect(() => {
     if (cookie) {
-      let decoded: string = jwt_decode(cookie);
+      let decoded: TokenProps = jwt_decode(cookie);
       setAccess_Token(decoded);
+      setLogged(true);
       console.log(decoded);
     }
   }, [cookie]);
