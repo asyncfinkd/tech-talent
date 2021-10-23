@@ -24,6 +24,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     _id: "",
     role: "",
     logged: false,
+    phone: "",
+    socialNetwork: "",
   });
   const cookie: string | null | undefined = readCookie("cookie");
 

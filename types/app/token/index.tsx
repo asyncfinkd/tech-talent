@@ -8,7 +8,9 @@ export interface TokenProps {
   exp?: number;
   iat?: number;
   _id?: string;
-  fullName?: string;
+  fullName?: any;
   role?: string;
   logged: boolean;
+  phone?: any;
+  socialNetwork?: any;
 }
