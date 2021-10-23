@@ -9,10 +9,16 @@ import { ApplicationContext } from "context/application/ApplicationContext";
 import { readCookie } from "lib/readContext";
 import jwt_decode from "jwt-decode";
 import { TokenProps } from "types/app/token";
+import { useRouter } from "next/router";
+import axios from "axios";
+import env from "application/environment/env.json";
+import { LoggedAPI } from "api";
 
 const client = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
   const [access_token, setAccess_Token] = useState<TokenProps>({
     email: "",
     exp: 0,
@@ -30,6 +36,12 @@ function MyApp({ Component, pageProps }: AppProps) {
       console.log(decoded);
     }
   }, [cookie]);
+
+  useEffect(() => {
+    if (cookie) {
+      LoggedAPI(setAccess_Token, router);
+    }
+  }, [cookie, router.pathname]);
   return (
     <>
       <Head>

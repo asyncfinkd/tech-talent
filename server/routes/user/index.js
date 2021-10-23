@@ -138,4 +138,11 @@ router
     });
   });
 
+router
+  .route("/check/logged")
+  .all(loginMiddleware)
+  .post(async (req, res) => {
+    res.status(200).json({ message: "Member is logged", success: true });
+  });
+
 module.exports = router;

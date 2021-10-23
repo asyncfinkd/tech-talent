@@ -7,7 +7,7 @@ module.exports = async function (req, res, next) {
   );
   try {
     if (!token) {
-      res.json({ msg: "ტოკენი არ არსებობს" });
+      res.status(502).json({ message: "ტოკენი არ არსებობს", success: false });
       next();
     } else {
       const decodedData = jwt.verify(token, env.ACCESS_TOKEN);
@@ -22,6 +22,12 @@ module.exports = async function (req, res, next) {
       next();
     }
   } catch (err) {
-    res.json({ msg: "თქვენი სესია ამოიწურა", expired: true });
+    res
+      .status(502)
+      .json({
+        message: "თქვენი სესია ამოიწურა",
+        expired: true,
+        success: false,
+      });
   }
 };
