@@ -7,11 +7,11 @@ interface Props {
 }
 
 const Footer: React.FC<Props> = ({ wantSponsors }) => {
-  const { logged } = useContext(ApplicationContext);
+  const { access_token } = useContext(ApplicationContext);
 
+  const logged: boolean | undefined = access_token?.logged;
   return (
     <>
-      {console.log(logged)}
       <footer className="root-0-2-201">
         {wantSponsors && (
           <>
