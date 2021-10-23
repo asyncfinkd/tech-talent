@@ -10,8 +10,6 @@ import { readCookie } from "lib/readContext";
 import jwt_decode from "jwt-decode";
 import { TokenProps } from "types/app/token";
 import { useRouter } from "next/router";
-import axios from "axios";
-import env from "application/environment/env.json";
 import { LoggedAPI } from "api";
 
 const client = new QueryClient();
