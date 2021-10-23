@@ -241,7 +241,11 @@ const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
                           </svg>
                         </div>
                       </div>
-                      <div>{access_token?.fullName ?? access_token?.email}</div>
+                      <div>
+                        {!access_token?.fullName
+                          ? access_token?.email
+                          : access_token?.fullName}
+                      </div>
                     </a>
                   </Link>
                 </div>
