@@ -33,8 +33,8 @@ export default function ProfileSecuritySidebar() {
             </div>
           </div>
           <div className="profilePair-0-2-112">
-            <div className="profileName-0-2-113">{access_token.fullName}</div>
-            <div className="profileCaption-0-2-114">{access_token.email}</div>
+            <div className="profileName-0-2-113">{access_token?.fullName}</div>
+            <div className="profileCaption-0-2-114">{access_token?.email}</div>
           </div>
         </div>
         <div className="horizontalLine-0-2-109"></div>
