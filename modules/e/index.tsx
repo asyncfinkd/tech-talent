@@ -11,6 +11,7 @@ function Epage({ fullData }: any) {
   const { id } = router.query;
 
   const [data, setData] = useState<any>(fullData[0]);
+  const [collapse, setCollapse] = useState<boolean>(true);
   return (
     <>
       <Head>
@@ -20,10 +21,18 @@ function Epage({ fullData }: any) {
       <main className="main-0-2-2">
         <div className="root-0-2-442">
           <div className="root-0-2-444">
-            <EHeader data={data} />
+            <EHeader
+              data={data}
+              setCollapse={setCollapse}
+              collapse={collapse}
+            />
             <div className="alwaysNoMargin-0-2-135">
               <div className="content-0-2-459">
-                <div className={`expandedContent-0-2-465`}>
+                <div
+                  className={`expandedContent-0-2-465 ${
+                    !collapse && "hiddenOnDesktop-0-2-121"
+                  }`}
+                >
                   <div className="mobileInfo-0-2-452">
                     <div className="name-0-2-453">{data.name}</div>
                     <div

@@ -1,7 +1,7 @@
 import React from "react";
 import env from "application/environment/env.json";
 
-export default function EHeader({ data }: any) {
+export default function EHeader({ data, setCollapse, collapse }: any) {
   return (
     <>
       <div
@@ -74,12 +74,22 @@ export default function EHeader({ data }: any) {
                   Website
                 </button>
               </div>
-              <button className="root-0-2-46 expandButton-0-2-462 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59">
-                <span>Expand</span>
+              <button
+                className="root-0-2-46 expandButton-0-2-462 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+                onClick={() => {
+                  setCollapse(!collapse);
+                }}
+              >
+                <span>{collapse ? "Collapse" : "Expand"}</span>
                 <div className="caret-0-2-464">
                   <svg
                     className="fill-0-2-36"
                     width="10"
+                    style={{
+                      transform: `${
+                        collapse ? "rotate(180deg)" : "rotate(0deg)"
+                      }`,
+                    }}
                     height="6"
                     viewBox="0 0 10 6"
                     fill="none"
