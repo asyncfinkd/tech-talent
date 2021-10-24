@@ -9,10 +9,13 @@ export default function EduMap({ item }: any) {
         <div className="root-0-2-237">
           <div className="container-0-2-238">
             <Link href={`/e/${item.slug}`}>
-              <img
-                className="logo-0-2-239"
-                src={`${env.server}${item.logoUrl}`}
-              />
+              <a>
+                <img
+                  className="logo-0-2-239"
+                  src={`${env.server}${item.logoUrl}`}
+                  style={{ cursor: "pointer" }}
+                />
+              </a>
             </Link>
             <div className="name-0-2-240">{item.name}</div>
             <div className="secondaryText-0-2-241">{item.secondaryText}</div>
