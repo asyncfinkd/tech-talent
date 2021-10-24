@@ -5,6 +5,7 @@ import Header from "ui/header";
 import Footer from "ui/footer";
 import EHeader from "./components/e-header";
 import EDetailMap from "./components/e-detail-map";
+import EDetailAllMap from "./components/e-detail-all-map";
 
 function Epage({ fullData, collapse, setCollapse, courses }: any) {
   const router = useRouter();
@@ -211,8 +212,7 @@ function Epage({ fullData, collapse, setCollapse, courses }: any) {
                       {courses.map((item: any) => {
                         return (
                           <>
-                            {/* <EduDetailPagesMap item={item} /> */}
-                            <p>qwe</p>
+                            <EDetailAllMap item={item} />
                           </>
                         );
                       })}
