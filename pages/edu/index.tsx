@@ -4,7 +4,7 @@ import env from "application/environment/env.json";
 function EduPage({ data }: any) {
   return (
     <>
-      <Edu data={data} />
+      <Edu fullData={data} />
     </>
   );
 }
@@ -12,7 +12,6 @@ function EduPage({ data }: any) {
 export default EduPage;
 
 export async function getServerSideProps() {
-  //   const req = await fetch("https://jsonplaceholder.typicode.com/albums");
   const req = await fetch(`${env.host}/api/get/edu`, {
     method: "GET",
     headers: { "Content-type": "application/json" },
