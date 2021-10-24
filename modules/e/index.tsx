@@ -6,12 +6,11 @@ import Header from "ui/header";
 import Footer from "ui/footer";
 import EHeader from "./components/e-header";
 
-function Epage({ fullData }: any) {
+function Epage({ fullData, collapse, setCollapse }: any) {
   const router = useRouter();
   const { id } = router.query;
 
   const [data, setData] = useState<any>(fullData[0]);
-  const [collapse, setCollapse] = useState<boolean>(true);
   return (
     <>
       <Head>
