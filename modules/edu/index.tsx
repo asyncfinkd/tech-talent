@@ -35,7 +35,6 @@ export default function Edu({ fullData }: any) {
       <Head>
         <title>Education | Tech Talent</title>
       </Head>
-      {console.log(data)}
       <Header ShowShadow={true} />
       <main className="main-0-2-2">
         <div className="root-0-2-233">

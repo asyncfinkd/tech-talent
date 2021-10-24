@@ -7,4 +7,16 @@ router.route("/get/edu").get(async (req, res) => {
   });
 });
 
+router.route("/get/edu/:id").get(async (req, res) => {
+  EduSchema.find().then((result) => {
+    let data = [];
+    result.map((item) => {
+      if (item.slug.toString() == req.params.id.toString()) {
+        data.push(item);
+      }
+    });
+    res.status(200).json(data);
+  });
+});
+
 module.exports = router;
