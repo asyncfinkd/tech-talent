@@ -83,41 +83,6 @@ export default function EduHeader({ data, search, setSearch }: any) {
                   onChange={(e: any) => setSearch(e.target.value)}
                 />
               </div>
-              {/* {spinner ? (
-                    <button
-                      className="root-0-2-46 button-0-2-116 buttonLoading-0-2-117 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-                      type="submit"
-                    >
-                      <div className="loading-0-2-131">
-                        <svg
-                          className="stroke-0-2-35 spinner-0-2-133"
-                          width="100"
-                          height="100"
-                          viewBox="0 0 100 100"
-                          preserveAspectRatio="xMidYMid"
-                        >
-                          <circle
-                            cx="50"
-                            cy="50"
-                            fill="none"
-                            strokeWidth="10"
-                            r="35"
-                            strokeDasharray="164.93361431346415 56.97787143782138"
-                          >
-                            <animateTransform
-                              attributeName="transform"
-                              type="rotate"
-                              repeatCount="indefinite"
-                              dur="1s"
-                              values="0 50 50;360 50 50"
-                              keyTimes="0;1"
-                            ></animateTransform>
-                          </circle>
-                        </svg>
-                        <span className="loadingLabel-0-2-132">Loading</span>
-                      </div>
-                    </button>
-                  ) : ( */}
               <button
                 className="root-0-2-46 button-0-2-116 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                 type="submit"
@@ -127,7 +92,6 @@ export default function EduHeader({ data, search, setSearch }: any) {
                   <div className="countLabel-0-2-130">Results</div>
                 </div>
               </button>
-              {/* )} */}
             </div>
           </form>
         </div>
