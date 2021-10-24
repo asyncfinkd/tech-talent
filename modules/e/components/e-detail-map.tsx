@@ -1,3 +1,4 @@
+import { readCookie } from "lib/readCookie";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -100,7 +101,7 @@ export default function EDetailMap({ item }: any) {
         <div className="lineSecond-0-2-158"></div>
         <div className="tertiaryColumn-0-2-166">
           <div className="secondaryButton-0-2-167">
-            {localStorage.getItem("local") ? (
+            {readCookie("cookie") ? (
               <>
                 {item.price != null ? (
                   <>
