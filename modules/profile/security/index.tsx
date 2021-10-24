@@ -1,18 +1,16 @@
-import { ApplicationContext } from "context/application/ApplicationContext";
 import Head from "next/head";
 import React, { useContext } from "react";
 import Footer from "ui/footer";
 import Header from "ui/header";
 import ProfileSecuritySidebar from "./components/profile-security-sidebar";
 
-export default function SecurityPages() {
-  const { access_token } = useContext(ApplicationContext);
+export default function SecurityPages({ access_token, logged }: any) {
   return (
     <>
       <Head>
         <title>Security | User | Tech Talent</title>
       </Head>
-      <Header ShowShadow={true} />
+      <Header access_token={access_token} logged={logged} ShowShadow={true} />
       <main className="main-0-2-2">
         <div className="marginOnMobile-0-2-102 root-0-2-100">
           <ProfileSecuritySidebar />
@@ -123,7 +121,7 @@ export default function SecurityPages() {
           </div>
         </div>
       </main>
-      <Footer wantSponsors={true} />
+      <Footer access_token={access_token} wantSponsors={true} />
     </>
   );
 }
