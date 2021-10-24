@@ -164,10 +164,10 @@ export default function ProfileInformationForm({
                           { loginData: data },
                           {
                             onSuccess: (result: Result) => {
-                              document.cookie = `cookie=${result.access_token};path=/`;
-                              const tokenDecode: any = jwt_decode(
-                                result.access_token
-                              );
+                              let token: string | undefined | any =
+                                result.access_token;
+                              document.cookie = `cookie=${token};path=/`;
+                              const tokenDecode: any = jwt_decode(token);
                               setAccess_Token(tokenDecode);
                             },
                           }
