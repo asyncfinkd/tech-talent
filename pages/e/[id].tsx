@@ -6,12 +6,11 @@ function EPage({ fullData, resCoursesJSON, collapse }: any) {
   const [dataCollapse, setDataCollapse] = useState<boolean>(collapse);
   return (
     <>
-      {console.log(resCoursesJSON)}
-      {console.log(collapse)}
       <Epage
         fullData={fullData}
         collapse={dataCollapse}
         setCollapse={setDataCollapse}
+        courses={resCoursesJSON}
       />
     </>
   );

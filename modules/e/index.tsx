@@ -1,14 +1,13 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import env from "application/environment/env.json";
 import Head from "next/head";
 import Header from "ui/header";
 import Footer from "ui/footer";
 import EHeader from "./components/e-header";
+import EDetailMap from "./components/e-detail-map";
 
-function Epage({ fullData, collapse, setCollapse }: any) {
+function Epage({ fullData, collapse, setCollapse, courses }: any) {
   const router = useRouter();
-  const { id } = router.query;
 
   const [data, setData] = useState<any>(fullData[0]);
   return (
@@ -187,7 +186,7 @@ function Epage({ fullData, collapse, setCollapse }: any) {
                 </div>
               </div>
             </div>
-            {/* {courses.length != 0 ? (
+            {courses.length != 0 ? (
               <>
                 <div className="marginOnMobile-0-2-134">
                   <div className="body-0-2-275">
@@ -197,7 +196,7 @@ function Epage({ fullData, collapse, setCollapse }: any) {
                         {courses.slice(0, 4).map((item: any) => {
                           return (
                             <>
-                              <EduDetailMap item={item} />
+                              <EDetailMap item={item} />
                             </>
                           );
                         })}
@@ -212,7 +211,8 @@ function Epage({ fullData, collapse, setCollapse }: any) {
                       {courses.map((item: any) => {
                         return (
                           <>
-                            <EduDetailPagesMap item={item} />
+                            {/* <EduDetailPagesMap item={item} /> */}
+                            <p>qwe</p>
                           </>
                         );
                       })}
@@ -247,7 +247,7 @@ function Epage({ fullData, collapse, setCollapse }: any) {
                   </div>
                 </div>
               </>
-            )} */}
+            )}
           </div>
         </div>
       </main>
