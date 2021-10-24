@@ -7,15 +7,20 @@ import { ApplicationContext } from "context/application/ApplicationContext";
 interface Props {
   ShowLine?: boolean;
   ShowShadow?: boolean;
+  logged: any;
+  access_token: any;
 }
-const Header: React.FC<Props> = ({ ShowLine, ShowShadow }) => {
+const Header: React.FC<Props> = ({
+  ShowLine,
+  ShowShadow,
+  logged,
+  access_token,
+}) => {
   const [showProfile, setShowProfile] = useToggle();
   const [showHeader, setShowHeader] = useToggle();
   const [showLanguage, setShowLanguage] = useToggle();
   const [showClose, setShowClose] = useToggle();
   const [companies, setCompanies] = useState<Boolean>(false);
-  const { access_token } = useContext(ApplicationContext);
-  const logged: boolean | undefined = access_token?.logged;
   // const renderLocal = () => {
   //   if (!localStorage.getItem("tt-lang")) {
   //     return "EN";
