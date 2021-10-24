@@ -5,18 +5,19 @@ import Footer from "ui/footer";
 import EduMap from "./components/edu-map";
 import EduHeader from "./components/edu-header";
 import Head from "next/head";
+import { EduResultProps } from "types/edu";
 
-export default function Edu({ fullData }: any) {
+const Edu: React.FC<any> = ({ fullData }) => {
   const [search, setSearch] = useState<string>("");
-  const [data, setData] = useState<any>(fullData);
-  const [result, setResult] = useState<any>(fullData);
+  const [data, setData] = useState<EduResultProps[]>(fullData);
+  const [result, setResult] = useState<EduResultProps[]>(fullData);
 
   const identificationSearch = () => {
     if (search.length == 0) {
       setData(result);
     } else {
       setData(
-        result.filter((val: any) => {
+        result?.filter((val: any) => {
           if (search == "") {
             return val;
           } else if (val.name.toLowerCase().includes(search.toLowerCase())) {
@@ -41,7 +42,7 @@ export default function Edu({ fullData }: any) {
           <EduHeader data={data} search={search} setSearch={setSearch} />
           <div className="marginOnMobile-0-2-134">
             <div className="grid-0-2-234">
-              {data.map((item: any) => {
+              {data?.map((item: any) => {
                 return (
                   <>
                     <EduMap item={item} />
@@ -55,4 +56,6 @@ export default function Edu({ fullData }: any) {
       <Footer wantSponsors={true} />
     </>
   );
-}
+};
+
+export default Edu;

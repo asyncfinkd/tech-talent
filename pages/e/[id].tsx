@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import Epage from "modules/e";
 import env from "application/environment/env.json";
+import { EduResultProps } from "types/edu";
+import { CoursesResultProps } from "types/e";
+import { InferGetServerSidePropsType } from "next";
 
-function EPage({ fullData, resCoursesJSON, collapse }: any) {
+function EPage({
+  fullData,
+  resCoursesJSON,
+  collapse,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [dataCollapse, setDataCollapse] = useState<boolean>(collapse);
   return (
     <>
@@ -21,7 +28,7 @@ export async function getServerSideProps(context: any) {
     method: "GET",
     headers: { "Content-type": "application/json" },
   });
-  const fullData = await res.json();
+  const fullData: EduResultProps[] = await res.json();
 
   const resCourses = await fetch(`${env.host}/api/get/edu/posts`, {
     method: "POST",
@@ -29,9 +36,9 @@ export async function getServerSideProps(context: any) {
     body: JSON.stringify({ id: fullData[0]._id }),
   });
 
-  const resCoursesJSON = await resCourses.json();
+  const resCoursesJSON: CoursesResultProps[] = await resCourses.json();
 
-  let collapse = false;
+  let collapse: boolean = false;
 
   if (resCoursesJSON.length != 0) {
     collapse = false;
