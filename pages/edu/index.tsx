@@ -1,7 +1,11 @@
 import Edu from "modules/edu";
 import env from "application/environment/env.json";
+import { EduResultProps } from "types/edu";
+import { InferGetServerSidePropsType } from "next";
 
-function EduPage({ data }: any) {
+function EduPage({
+  data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <>
       <Edu fullData={data} />
@@ -16,7 +20,7 @@ export async function getServerSideProps() {
     method: "GET",
     headers: { "Content-type": "application/json" },
   });
-  const data = await req.json();
+  const data: EduResultProps = await req.json();
 
   return { props: { data } };
 }
