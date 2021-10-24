@@ -3,7 +3,7 @@ import React from "react";
 import Header from "ui/header";
 import ProfileJobsSidebar from "./components/profile-jobs-sidebar";
 
-export default function ProfileJobs({ access_token, logged }) {
+export default function ProfileJobs({ access_token, logged }: any) {
   return (
     <>
       <Head>

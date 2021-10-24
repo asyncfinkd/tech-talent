@@ -7,7 +7,7 @@ import EduHeader from "./components/edu-header";
 import Head from "next/head";
 import { EduResultProps } from "types/edu";
 
-const Edu: React.FC<any> = ({ fullData }) => {
+const Edu: React.FC<any> = ({ fullData, access_token, logged }) => {
   const [search, setSearch] = useState<string>("");
   const [data, setData] = useState<EduResultProps[]>(fullData);
   const [result, setResult] = useState<EduResultProps[]>(fullData);
@@ -36,7 +36,7 @@ const Edu: React.FC<any> = ({ fullData }) => {
       <Head>
         <title>Education | Tech Talent</title>
       </Head>
-      <Header ShowShadow={true} />
+      <Header access_token={access_token} logged={logged} ShowShadow={true} />
       <main className="main-0-2-2">
         <div className="root-0-2-233">
           <EduHeader data={data} search={search} setSearch={setSearch} />
@@ -53,7 +53,7 @@ const Edu: React.FC<any> = ({ fullData }) => {
           </div>
         </div>
       </main>
-      <Footer wantSponsors={true} />
+      <Footer access_token={access_token} wantSponsors={true} />
     </>
   );
 };
