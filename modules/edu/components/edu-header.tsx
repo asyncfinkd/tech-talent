@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function EduHeader({ data }: any) {
+export default function EduHeader({ data, search, setSearch }: any) {
   return (
     <>
       <div className="root-0-2-102">
@@ -79,8 +79,8 @@ export default function EduHeader({ data }: any) {
                   className="input-0-2-111"
                   type="text"
                   placeholder="Find an educational facility tailored for you"
-                  //   value={search}
-                  //   onChange={(e: any) => setSearch(e.target.value)}
+                  value={search}
+                  onChange={(e: any) => setSearch(e.target.value)}
                 />
               </div>
               {/* {spinner ? (

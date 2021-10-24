@@ -4,7 +4,7 @@ import env from "application/environment/env.json";
 function EduPage({ data }: any) {
   return (
     <>
-      <Edu data={data} />
+      <Edu fullData={data} />
     </>
   );
 }
