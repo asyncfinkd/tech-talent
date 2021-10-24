@@ -27,6 +27,9 @@ app.use("/users", usersRouter);
 const User = require("./routes/user/index");
 app.use("/api", User);
 
+const Edu = require("./routes/edu/index");
+app.use("/api", Edu);
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
