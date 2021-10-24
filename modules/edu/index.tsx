@@ -4,10 +4,14 @@ import Header from "ui/header";
 import Footer from "ui/footer";
 import EduMap from "./components/edu-map";
 import EduHeader from "./components/edu-header";
+import Head from "next/head";
 
 export default function Edu({ data }: any) {
   return (
     <>
+      <Head>
+        <title>Education | Tech Talent</title>
+      </Head>
       {console.log(data)}
       <Header ShowShadow={true} />
       <main className="main-0-2-2">
