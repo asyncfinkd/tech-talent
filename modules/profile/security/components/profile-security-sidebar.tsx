@@ -33,8 +33,8 @@ export default function ProfileSecuritySidebar() {
             </div>
           </div>
           <div className="profilePair-0-2-112">
-            <div className="profileName-0-2-113">{access_token.fullName}</div>
-            <div className="profileCaption-0-2-114">{access_token.email}</div>
+            <div className="profileName-0-2-113">{access_token?.fullName}</div>
+            <div className="profileCaption-0-2-114">{access_token?.email}</div>
           </div>
         </div>
         <div className="horizontalLine-0-2-109"></div>
@@ -77,7 +77,7 @@ export default function ProfileSecuritySidebar() {
           </a>
         </Link>
         <Link href="/profile/security">
-          <a className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed">
+          <a className="root-0-2-46 button-0-2-105__profile buttonActive-0-2-106 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed">
             <svg
               className="fill-0-2-36 icon-0-2-107"
               width="24"
@@ -93,6 +93,7 @@ export default function ProfileSecuritySidebar() {
               ></path>
             </svg>
             Security
+            <div className="verticalLine-0-2-108"></div>
           </a>
         </Link>
         <div className="horizontalLine-0-2-109"></div>
@@ -135,7 +136,7 @@ export default function ProfileSecuritySidebar() {
           </a>
         </Link>
         <Link href="/profile/jobs">
-          <a className="root-0-2-46 button-0-2-105__profile buttonActive-0-2-106 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed">
+          <a className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed">
             <svg
               className="fill-0-2-36 icon-0-2-107"
               width="24"
@@ -151,7 +152,6 @@ export default function ProfileSecuritySidebar() {
               ></path>
             </svg>
             Jobs For Me
-            <div className="verticalLine-0-2-108"></div>
           </a>
         </Link>
         <div className="horizontalLine-0-2-109"></div>

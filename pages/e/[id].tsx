@@ -4,13 +4,18 @@ import env from "application/environment/env.json";
 import { EduResultProps } from "types/edu";
 import { CoursesResultProps } from "types/e";
 import { InferGetServerSidePropsType } from "next";
+import jwt_decode from "jwt-decode";
 
 function EPage({
   fullData,
   resCoursesJSON,
   collapse,
+  logged,
+  token,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [dataCollapse, setDataCollapse] = useState<boolean>(collapse);
+  const [userLogged, setUserLogged] = useState<boolean>(logged);
+  const [access_token, setAccess_Token] = useState<any>(token);
   return (
     <>
       <Epage
@@ -18,17 +23,19 @@ function EPage({
         collapse={dataCollapse}
         setCollapse={setDataCollapse}
         courses={resCoursesJSON}
+        access_token={access_token}
+        logged={userLogged}
       />
     </>
   );
 }
 
 export async function getServerSideProps(context: any) {
-  const res = await fetch(`${env.host}/api/get/edu/${context.query.id}`, {
+  const result = await fetch(`${env.host}/api/get/edu/${context.query.id}`, {
     method: "GET",
     headers: { "Content-type": "application/json" },
   });
-  const fullData: EduResultProps[] = await res.json();
+  const fullData: EduResultProps[] = await result.json();
 
   const resCourses = await fetch(`${env.host}/api/get/edu/posts`, {
     method: "POST",
@@ -46,7 +53,27 @@ export async function getServerSideProps(context: any) {
     collapse = true;
   }
 
-  return { props: { fullData, resCoursesJSON, collapse } };
+  const { req, res } = context;
+  const { cookies } = req;
+  let logged: boolean = false;
+  let token: any = {};
+  if (cookies.cookie) {
+    const request = await fetch(`${env.host}/api/check/logged`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${cookies.cookie}`,
+      },
+      body: JSON.stringify({}),
+    });
+
+    token = jwt_decode(cookies.cookie);
+
+    const response = await request.json();
+    logged = response.success;
+  }
+
+  return { props: { fullData, resCoursesJSON, collapse, logged, token } };
 }
 
 export default EPage;

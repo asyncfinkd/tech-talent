@@ -3,13 +3,13 @@ import React from "react";
 import Header from "ui/header";
 import ProfileJobsSidebar from "./components/profile-jobs-sidebar";
 
-export default function ProfileJobs() {
+export default function ProfileJobs({ access_token, logged }: any) {
   return (
     <>
       <Head>
         <title>Jobs | User | Tech Talent</title>
       </Head>
-      <Header ShowShadow={true} />
+      <Header access_token={access_token} logged={logged} ShowShadow={true} />
       <main className="main-0-2-2">
         <div className="marginOnMobile-0-2-102 root-0-2-100">
           <ProfileJobsSidebar />

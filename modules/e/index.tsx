@@ -7,7 +7,14 @@ import EHeader from "./components/e-header";
 import EDetailMap from "./components/e-detail-map";
 import EDetailAllMap from "./components/e-detail-all-map";
 
-function Epage({ fullData, collapse, setCollapse, courses }: any) {
+function Epage({
+  fullData,
+  collapse,
+  setCollapse,
+  courses,
+  access_token,
+  logged,
+}: any) {
   const router = useRouter();
 
   const [data, setData] = useState<any>(fullData[0]);
@@ -16,7 +23,7 @@ function Epage({ fullData, collapse, setCollapse, courses }: any) {
       <Head>
         <title>{data.name && `${data.name} | Tech Talent`}</title>
       </Head>
-      <Header ShowLine={true} />
+      <Header access_token={access_token} logged={logged} ShowLine={true} />
       <main className="main-0-2-2">
         <div className="root-0-2-442">
           <div className="root-0-2-444">
@@ -251,7 +258,7 @@ function Epage({ fullData, collapse, setCollapse, courses }: any) {
           </div>
         </div>
       </main>
-      <Footer wantSponsors={true} />
+      <Footer access_token={access_token} wantSponsors={true} />
     </>
   );
 }

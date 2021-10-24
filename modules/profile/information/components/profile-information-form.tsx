@@ -7,8 +7,12 @@ import { ProfileInformationInputProps } from "types/profile/information";
 import { useMutation } from "react-query";
 import { ProfileInformationRequest } from "features/profile/information/profile-information.api";
 import { Result } from "types/features/login";
+import jwt_decode from "jwt-decode";
 
-export default function ProfileInformationForm() {
+export default function ProfileInformationForm({
+  access_token,
+  setAccess_Token,
+}: any) {
   const {
     register,
     handleSubmit,
@@ -18,7 +22,6 @@ export default function ProfileInformationForm() {
   } = useForm<ProfileInformationInputProps>({
     resolver: yupResolver(ProfileInformationFormSchema),
   });
-  const { access_token, setAccess_Token } = useContext(ApplicationContext);
   const { fullName, phone, socialNetwork } = watch();
   const [fullNameError, setFullNameError] = useState<boolean>(false);
 
@@ -161,10 +164,11 @@ export default function ProfileInformationForm() {
                           { loginData: data },
                           {
                             onSuccess: (result: Result) => {
-                              document.cookie = `cookie=${result.access_token}`;
-                              setAccess_Token({
-                                access_token: result.access_token,
-                              });
+                              let token: string | undefined | any =
+                                result.access_token;
+                              document.cookie = `cookie=${token};path=/`;
+                              const tokenDecode: any = jwt_decode(token);
+                              setAccess_Token(tokenDecode);
                             },
                           }
                         );

@@ -4,12 +4,10 @@ import { ApplicationContext } from "context/application/ApplicationContext";
 
 interface Props {
   wantSponsors?: boolean;
+  access_token: any;
 }
 
-const Footer: React.FC<Props> = ({ wantSponsors }) => {
-  const { access_token } = useContext(ApplicationContext);
-
-  const logged: boolean | undefined = access_token?.logged;
+const Footer: React.FC<Props> = ({ wantSponsors, access_token }) => {
   return (
     <>
       <footer className="root-0-2-201">
@@ -95,7 +93,7 @@ const Footer: React.FC<Props> = ({ wantSponsors }) => {
                   ) : ( */}
                   <Link href="/register">
                     <a className="root-0-2-46 register-0-2-214 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54">
-                      {logged ? "Profile" : "Register"}
+                      {access_token.logged ? "Profile" : "Register"}
                     </a>
                   </Link>
                   {/* )} */}
