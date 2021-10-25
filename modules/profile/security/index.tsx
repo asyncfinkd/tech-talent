@@ -21,7 +21,7 @@ export default function SecurityPages({ access_token, logged }: any) {
       <Header access_token={access_token} logged={logged} ShowShadow={true} />
       <main className="main-0-2-2">
         <div className="marginOnMobile-0-2-102 root-0-2-100">
-          <ProfileSecuritySidebar />
+          <ProfileSecuritySidebar access_token={access_token} logged={logged} />
           <ProfileSecurityForm
             access_token={access_token}
             setSuccessMessage={setSuccessMessage}

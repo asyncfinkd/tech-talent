@@ -3,7 +3,11 @@ import React from "react";
 import Header from "ui/header";
 import ProfileJobsSidebar from "./components/profile-jobs-sidebar";
 
-export default function ProfileJobs({ access_token, logged }: any) {
+export default function ProfileJobs({
+  access_token,
+  setAccess_Token,
+  logged,
+}: any) {
   return (
     <>
       <Head>
@@ -12,7 +16,10 @@ export default function ProfileJobs({ access_token, logged }: any) {
       <Header access_token={access_token} logged={logged} ShowShadow={true} />
       <main className="main-0-2-2">
         <div className="marginOnMobile-0-2-102 root-0-2-100">
-          <ProfileJobsSidebar />
+          <ProfileJobsSidebar
+            access_token={access_token}
+            setAccess_Token={setAccess_Token}
+          />
           <div className="body-0-2-101">
             <div className="root__12312i3oi123o">
               <img

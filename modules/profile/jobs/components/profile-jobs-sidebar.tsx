@@ -4,9 +4,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
 
-export default function ProfileJobsSidebar() {
+export default function ProfileJobsSidebar({
+  access_token,
+  setAccess_Token,
+}: any) {
   const router = useRouter();
-  const { access_token, setAccess_Token } = useContext(ApplicationContext);
   return (
     <>
       <div className="root-0-2-104">
@@ -33,8 +35,8 @@ export default function ProfileJobsSidebar() {
             </div>
           </div>
           <div className="profilePair-0-2-112">
-            <div className="profileName-0-2-113">{access_token.fullName}</div>
-            <div className="profileCaption-0-2-114">{access_token.email}</div>
+            <div className="profileName-0-2-113">{access_token?.fullName}</div>
+            <div className="profileCaption-0-2-114">{access_token?.email}</div>
           </div>
         </div>
         <div className="horizontalLine-0-2-109"></div>
