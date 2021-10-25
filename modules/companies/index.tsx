@@ -1,10 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "ui/footer";
 import Header from "ui/header";
 import Head from "next/head";
 import CompaniesMap from "./components/companies-map";
 
-export default function CompaniesPage({ access_token, logged, data }: any) {
+export default function CompaniesPage({
+  access_token,
+  logged,
+  data,
+  setData,
+}: any) {
+  const [search, setSearch] = useState<string>("");
+  const [result, setResult] = useState<any>(data);
+
+  const identificationSearch = () => {
+    if (search.length == 0) {
+      setData(result);
+    } else {
+      setData(
+        result.filter((val: any) => {
+          if (search == "") {
+            return val;
+          } else if (val.name.toLowerCase().includes(search.toLowerCase())) {
+            return val;
+          }
+        })
+      );
+    }
+  };
+
+  useEffect(() => {
+    identificationSearch();
+  }, [search]);
   return (
     <>
       <Head>
@@ -92,49 +119,10 @@ export default function CompaniesPage({ access_token, logged, data }: any) {
                       type="text"
                       className="input-0-2-112"
                       placeholder="Find your future employer"
-                      // value={search}
-                      // onChange={(e: any) => setSearch(e.target.value)}
+                      value={search}
+                      onChange={(e: any) => setSearch(e.target.value)}
                     />
                   </div>
-                  {/* {spinner ? (
-                    <>
-                      <button
-                        className="root-0-2-46 button-0-2-116 buttonLoading-0-2-117 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-                        type="submit"
-                      >
-                        <div className="loading-0-2-131">
-                          <svg
-                            className="stroke-0-2-35 spinner-0-2-133"
-                            width="100"
-                            height="100"
-                            viewBox="0 0 100 100"
-                            preserveAspectRatio="xMidYMid"
-                          >
-                            <circle
-                              cx="50"
-                              cy="50"
-                              fill="none"
-                              stroke-width="10"
-                              r="35"
-                              stroke-dasharray="164.93361431346415 56.97787143782138"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                type="rotate"
-                                repeatCount="indefinite"
-                                dur="1s"
-                                values="0 50 50;360 50 50"
-                                keyTimes="0;1"
-                              ></animateTransform>
-                            </circle>
-                          </svg>
-                          <span className="loadingLabel-0-2-132">
-                            {t("LOADING")}
-                          </span>
-                        </div>
-                      </button>
-                    </>
-                  ) : ( */}
                   <button
                     className="root-0-2-46 button-0-2-117 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                     type="submit"
@@ -144,7 +132,6 @@ export default function CompaniesPage({ access_token, logged, data }: any) {
                       <div className="countLabel-0-2-131">Companies</div>
                     </div>
                   </button>
-                  {/* )} */}
                 </div>
               </form>
             </div>

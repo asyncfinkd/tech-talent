@@ -10,7 +10,12 @@ function Companies({ token, log, baseData }: any) {
 
   return (
     <>
-      <CompaniesPage access_token={access_token} logged={logged} data={data} />
+      <CompaniesPage
+        access_token={access_token}
+        logged={logged}
+        data={data}
+        setData={setData}
+      />
     </>
   );
 }
