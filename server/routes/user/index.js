@@ -224,4 +224,28 @@ router
     });
   });
 
+router
+  .route("/update/profile/security")
+  .all(loginMiddleware)
+  .post(async (req, res) => {
+    try {
+      var salt = await bcrypt.genSalt();
+      var hashedPassword = await bcrypt.hash(req.body.newPassword, salt);
+    } catch (err) {
+      res.status(502).json(err);
+    }
+
+    UserSchema.findOne({ email: req.email }).then((result) => {
+      bcrypt.compare(req.body.password, result.password, (err, verified) => {
+        if (verified) {
+          result.password = hashedPassword;
+          result.save();
+          res.json({ message: "Successfuly", success: true });
+        } else {
+          res.json({ message: "Incorrect current password", success: false });
+        }
+      });
+    });
+  });
+
 module.exports = router;

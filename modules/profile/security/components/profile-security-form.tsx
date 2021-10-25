@@ -1,8 +1,11 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ErrorMessage } from "components/error-message";
+import { ProfileSecurityRequest } from "features/profile/security/profile-security.api";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useMutation } from "react-query";
 import { ProfileSecuritySchema } from "schema/profile/security";
+import { Result } from "types/features/profile/security";
 import { SecurityInputProps } from "types/profile/security";
 
 export default function ProfileSecurityForm({ access_token }: any) {
@@ -10,10 +13,14 @@ export default function ProfileSecurityForm({ access_token }: any) {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
   } = useForm<SecurityInputProps>({
     resolver: yupResolver(ProfileSecuritySchema),
   });
+
+  const $edit = useMutation(
+    ({ loginData }: { loginData: SecurityInputProps }) =>
+      ProfileSecurityRequest(loginData)
+  );
 
   return (
     <>
@@ -22,7 +29,14 @@ export default function ProfileSecurityForm({ access_token }: any) {
           <h2 className="h2-0-2-184">Security</h2>
           <form
             onSubmit={handleSubmit((data: SecurityInputProps) => {
-              console.log(data);
+              $edit.mutate(
+                { loginData: data },
+                {
+                  onSuccess: (result: Result) => {
+                    console.log(result);
+                  },
+                }
+              );
             })}
           >
             <div className="inputGroup-0-2-185">
