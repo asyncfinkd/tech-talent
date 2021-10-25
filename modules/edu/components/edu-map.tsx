@@ -1,8 +1,11 @@
 import Link from "next/link";
 import React from "react";
 import env from "application/environment/env.json";
+import { readCookie } from "lib/readCookie";
+import { useRouter } from "next/router";
 
-export default function EduMap({ item }: any) {
+export default function EduMap({ item, access_token, logged }: any) {
+  const router = useRouter();
   return (
     <>
       <div className="superRoot-0-2-236">
@@ -37,13 +40,25 @@ export default function EduMap({ item }: any) {
                   Courses
                 </a>
               </Link>
-              <button
-                className={
-                  "root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54"
-                }
-              >
-                Follow
-              </button>
+              {logged ? (
+                <button
+                  className={
+                    "root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54"
+                  }
+                >
+                  Follow
+                </button>
+              ) : (
+                <Link href="/register">
+                  <a
+                    className={
+                      "root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54"
+                    }
+                  >
+                    Follow
+                  </a>
+                </Link>
+              )}
             </div>
           </div>
         </div>

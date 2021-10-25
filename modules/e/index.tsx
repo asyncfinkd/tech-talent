@@ -15,8 +15,6 @@ function Epage({
   access_token,
   logged,
 }: any) {
-  const router = useRouter();
-
   const [data, setData] = useState<any>(fullData[0]);
   return (
     <>
@@ -219,7 +217,7 @@ function Epage({
                       {courses.map((item: any) => {
                         return (
                           <>
-                            <EDetailAllMap item={item} />
+                            <EDetailAllMap item={item} logged={logged} />
                           </>
                         );
                       })}
