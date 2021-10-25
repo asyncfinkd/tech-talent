@@ -8,9 +8,11 @@ type Props = {
 export const SuccessMessage: React.FC<Props> = ({ variable, setVariable }) => {
   useEffect(() => {
     if (variable) {
-      setVariable(!variable);
+      setTimeout(() => {
+        setVariable(!variable);
+      }, 7000);
     }
-  }, 7000);
+  }, [variable]);
   return (
     <>
       {variable && (
