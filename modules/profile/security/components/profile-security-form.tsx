@@ -51,7 +51,7 @@ export default function ProfileSecurityForm({
                   setCurrentPasswordError,
                 },
                 {
-                  onSuccess: (result: Result) => {
+                  onSuccess: () => {
                     setSuccessMessage(true);
                   },
                 }
