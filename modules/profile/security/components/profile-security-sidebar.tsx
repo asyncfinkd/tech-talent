@@ -4,9 +4,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
 
-export default function ProfileSecuritySidebar() {
+export default function ProfileSecuritySidebar({
+  access_token,
+  setAccess_Token,
+}: any) {
   const router = useRouter();
-  const { access_token, setAccess_Token } = useContext(ApplicationContext);
   return (
     <>
       <div className="root-0-2-104">

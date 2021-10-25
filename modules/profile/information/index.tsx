@@ -22,13 +22,17 @@ function ProfileInformation({ access_token, logged, setAccess_Token }: any) {
         variable={successMessage}
         setVariable={setSuccessMessage}
       />
+      {console.log(access_token)}
       <Head>
         <title>Information | User | Tech Talent</title>
       </Head>
       <Header logged={logged} access_token={access_token} ShowShadow={true} />
       <main className="main-0-2-2">
         <div className="marginOnMobile-0-2-102 root-0-2-100">
-          <ProfileInformationSidebar access_token={access_token} />
+          <ProfileInformationSidebar
+            access_token={access_token}
+            setAccess_Token={setAccess_Token}
+          />
           <ProfileInformationForm
             access_token={access_token}
             setAccess_Token={setAccess_Token}

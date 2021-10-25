@@ -9,7 +9,11 @@ function ProfileJobsPages({ data, token }: any) {
 
   return (
     <>
-      <ProfileJobs access_token={access_token} logged={logged} />
+      <ProfileJobs
+        setAccess_Token={setAccess_Token}
+        access_token={access_token}
+        logged={logged}
+      />
     </>
   );
 }
