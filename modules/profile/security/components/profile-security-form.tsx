@@ -5,7 +5,6 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { ProfileSecuritySchema } from "schema/profile/security";
-import { Result } from "types/features/profile/security";
 import { SecurityInputProps } from "types/profile/security";
 
 export default function ProfileSecurityForm({
@@ -17,6 +16,7 @@ export default function ProfileSecurityForm({
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<SecurityInputProps>({
     resolver: yupResolver(ProfileSecuritySchema),
   });
@@ -53,6 +53,9 @@ export default function ProfileSecurityForm({
                 {
                   onSuccess: () => {
                     setSuccessMessage(true);
+                    setValue("currentPassword", "");
+                    setValue("newPassword", "");
+                    setValue("repeatPassword", "");
                   },
                 }
               );
