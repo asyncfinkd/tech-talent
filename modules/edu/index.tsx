@@ -53,7 +53,7 @@ const Edu: React.FC<any> = ({ fullData, access_token, logged }) => {
           </div>
         </div>
       </main>
-      <Footer access_token={access_token} wantSponsors={true} />
+      <Footer logged={logged} access_token={access_token} wantSponsors={true} />
     </>
   );
 };

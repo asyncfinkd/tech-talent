@@ -21,7 +21,7 @@ function ProfileInformation({ access_token, logged, setAccess_Token }: any) {
           />
         </div>
       </main>
-      <Footer wantSponsors={true} access_token={access_token} />
+      <Footer wantSponsors={true} logged={logged} access_token={access_token} />
     </>
   );
 }

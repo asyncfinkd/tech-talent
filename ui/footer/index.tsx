@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import Link from "next/link";
-import { ApplicationContext } from "context/application/ApplicationContext";
 
 interface Props {
   wantSponsors?: boolean;
-  access_token: any;
+  access_token?: any;
+  logged?: any;
 }
 
-const Footer: React.FC<Props> = ({ wantSponsors, access_token }) => {
+const Footer: React.FC<Props> = ({ wantSponsors, access_token, logged }) => {
   return (
     <>
       <footer className="root-0-2-201">
@@ -83,20 +83,11 @@ const Footer: React.FC<Props> = ({ wantSponsors, access_token }) => {
                     Tech companies use our platform <br /> to find people that
                     fit their culture.
                   </div>
-                  {/* {localStorage.getItem("local") ? (
-                    <a
-                      className="root-0-2-46 register-0-2-214 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-                      href="/profile/information"
-                    >
-                      Profile
-                    </a>
-                  ) : ( */}
                   <Link href="/register">
                     <a className="root-0-2-46 register-0-2-214 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54">
-                      {access_token.logged ? "Profile" : "Register"}
+                      {logged ? "Profile" : "Register"}
                     </a>
                   </Link>
-                  {/* )} */}
                 </div>
                 <div className="right-0-2-215">
                   <div className="colContainer-0-2-219">

@@ -7,8 +7,8 @@ import { ApplicationContext } from "context/application/ApplicationContext";
 interface Props {
   ShowLine?: boolean;
   ShowShadow?: boolean;
-  logged: any;
-  access_token: any;
+  logged?: any;
+  access_token?: any;
 }
 const Header: React.FC<Props> = ({
   ShowLine,

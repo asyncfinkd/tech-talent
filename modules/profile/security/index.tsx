@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useContext } from "react";
+import React from "react";
 import Footer from "ui/footer";
 import Header from "ui/header";
 import ProfileSecuritySidebar from "./components/profile-security-sidebar";
@@ -121,7 +121,7 @@ export default function SecurityPages({ access_token, logged }: any) {
           </div>
         </div>
       </main>
-      <Footer access_token={access_token} wantSponsors={true} />
+      <Footer logged={logged} access_token={access_token} wantSponsors={true} />
     </>
   );
 }
