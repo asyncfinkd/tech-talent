@@ -1,22 +1,16 @@
 import React, { useState } from "react";
-import Header from "ui/header";
 import env from "application/environment/env.json";
 import jwt_decode from "jwt-decode";
-import Head from "next/head";
-import Footer from "ui/footer";
+import CompaniesPage from "modules/companies";
 
-function Companies({ token, log }: any) {
+function Companies({ token, log, baseData }: any) {
   const [access_token, setAccess_Token] = useState<any>(token);
   const [logged, setLogged] = useState<boolean>(log);
+  const [data, setData] = useState<any>(baseData);
 
   return (
     <>
-      <Head>
-        <title>Companies | Tech Talent</title>
-      </Head>
-      <Header access_token={access_token} logged={logged} ShowShadow={true} />
-
-      <Footer wantSponsors={true} access_token={access_token} logged={logged} />
+      <CompaniesPage access_token={access_token} logged={logged} data={data} />
     </>
   );
 }
@@ -42,7 +36,16 @@ export async function getServerSideProps(ctx: any) {
     logged = response.success;
   }
 
-  return { props: { log: logged, token } };
+  const requestToData = await fetch(`${env.host}/api/get/companies`, {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+    },
+  });
+
+  const responseData = await requestToData.json();
+
+  return { props: { log: logged, token, baseData: responseData } };
 }
 
 export default Companies;
