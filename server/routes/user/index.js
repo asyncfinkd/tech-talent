@@ -236,15 +236,19 @@ router
     }
 
     UserSchema.findOne({ email: req.email }).then((result) => {
-      bcrypt.compare(req.body.password, result.password, (err, verified) => {
-        if (verified) {
-          result.password = hashedPassword;
-          result.save();
-          res.json({ message: "Successfuly", success: true });
-        } else {
-          res.json({ message: "Incorrect current password", success: false });
+      bcrypt.compare(
+        req.body.currentPassword,
+        result.password,
+        (err, verified) => {
+          if (verified) {
+            result.password = hashedPassword;
+            result.save();
+            res.json({ message: "Successfuly", success: true });
+          } else {
+            res.json({ message: "Incorrect current password", success: false });
+          }
         }
-      });
+      );
     });
   });
 
