@@ -45,7 +45,7 @@ const Edu: React.FC<any> = ({ fullData, access_token, logged }) => {
               {data?.map((item: any) => {
                 return (
                   <>
-                    <EduMap item={item} />
+                    <EduMap logged={logged} item={item} />
                   </>
                 );
               })}

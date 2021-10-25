@@ -8299,7 +8299,7 @@
   z-index: 999;
 }
 
-.root-0-2-141 {
+.root__01101mo {
   width: 620px;
   border: 0;
   height: 64px;
@@ -8354,7 +8354,7 @@
   margin-right: 26px;
 }
 
-.root-0-2-141 {
+.root__01101mo {
   right: 24px;
   width: 620px;
   border: 0;
@@ -8371,18 +8371,18 @@
   justify-content: space-between;
 }
 @media (min-width: 960px) {
-  .root-0-2-141 {
+  .root__01101mo {
     right: 48px;
     bottom: 48px;
   }
 }
 @media (min-width: 1280px) {
-  .root-0-2-141 {
+  .root__01101mo {
     right: 60px;
     bottom: 60px;
   }
 }
-.root-0-2-141:active {
+.root__01101mo:active {
   opacity: 1;
 }
 .lightTheme-0-2-142 {

@@ -16,7 +16,7 @@ export const SuccessMessage: React.FC<Props> = ({ variable, setVariable }) => {
   return (
     <>
       {variable && (
-        <div className="root-0-2-141 darkTheme-0-2-143">
+        <div className="root__01101mo darkTheme-0-2-143">
           <div className="textArea-0-2-149">
             <div className="checkButton-0-2-147">
               <svg

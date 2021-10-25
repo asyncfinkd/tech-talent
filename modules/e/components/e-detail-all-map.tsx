@@ -2,7 +2,7 @@ import { readCookie } from "lib/readCookie";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-function EDetailAllMap({ item }: any) {
+function EDetailAllMap({ item, logged }: any) {
   const [date, setDate] = useState<any>("");
 
   useEffect(() => {
@@ -72,7 +72,7 @@ function EDetailAllMap({ item }: any) {
         <div className="tertiaryColumn-0-2-177">
           <div className="secondaryButton-0-2-178">
             <div className="show-0-2-176">
-              {readCookie("cookie") ? (
+              {logged ? (
                 <>
                   {item.price != null ? (
                     <>

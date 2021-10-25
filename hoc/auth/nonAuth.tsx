@@ -1,4 +1,4 @@
-import { readCookie } from "lib/readContext";
+import { readCookie } from "lib/readCookie";
 import { useRouter } from "next/router";
 
 // @ts-ignore
