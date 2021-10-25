@@ -8,6 +8,7 @@ import Footer from "ui/footer";
 function Companies({ token, log }: any) {
   const [access_token, setAccess_Token] = useState<any>(token);
   const [logged, setLogged] = useState<boolean>(log);
+
   return (
     <>
       <Head>

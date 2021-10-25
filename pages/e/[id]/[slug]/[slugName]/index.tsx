@@ -11,9 +11,6 @@ function EduFeed({ responseData, log, token }: any) {
 
   return (
     <>
-      {console.log(logged)}
-      {console.log(access_token)}
-      {console.log(data)}
       <EduFeedModule access_token={access_token} logged={logged} data={data} />
     </>
   );

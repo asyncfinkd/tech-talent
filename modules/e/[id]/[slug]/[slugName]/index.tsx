@@ -3,10 +3,11 @@ import Header from "ui/header";
 import env from "application/environment/env.json";
 import { Link } from "@mui/material";
 import Footer from "ui/footer";
+import useBoolean from "lib/use-boolean";
 
 export default function EduFeedModule({ access_token, logged, data }: any) {
-  const [share, setShare] = useState<boolean>(false);
-  const [copied, setCopied] = useState<boolean>(false);
+  const share = useBoolean(false);
+  const copied = useBoolean(false);
 
   return (
     <>
@@ -417,7 +418,7 @@ export default function EduFeedModule({ access_token, logged, data }: any) {
                   <button
                     className="root-0-2-46 share-0-2-252 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantSecondary-0-2-55"
                     onClick={() => {
-                      setShare(!share);
+                      share.toggle();
                     }}
                   >
                     <svg
@@ -440,12 +441,12 @@ export default function EduFeedModule({ access_token, logged, data }: any) {
                     </svg>
                     Share
                   </button>
-                  {share && (
+                  {share.value && (
                     <>
                       <div
                         className="clickaway-0-2-261"
                         onClick={() => {
-                          setShare(!share);
+                          share.toggle();
                         }}
                       ></div>
                       <div
@@ -463,7 +464,7 @@ export default function EduFeedModule({ access_token, logged, data }: any) {
                           <span>Share Course</span>
                           <div
                             onClick={() => {
-                              setShare(!share);
+                              share.toggle();
                             }}
                           >
                             <svg
@@ -490,7 +491,7 @@ export default function EduFeedModule({ access_token, logged, data }: any) {
                               navigator.clipboard.writeText(
                                 window.location.href
                               );
-                              setCopied(true);
+                              copied.setTrue();
                             }}
                           >
                             <svg
@@ -520,7 +521,7 @@ export default function EduFeedModule({ access_token, logged, data }: any) {
                         </div>
                         <div
                           className={`shareBot-0-2-160 shareBotHidden-0-2-161 ${
-                            copied && "svivmqmvkqelwqmel"
+                            copied.value && "svivmqmvkqelwqmel"
                           }`}
                         >
                           <p>Link has been copied</p>
