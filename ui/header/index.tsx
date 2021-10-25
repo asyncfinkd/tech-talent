@@ -108,7 +108,12 @@ const Header: React.FC<Props> = ({
                 <div className="fieldName-0-2-25">Jobs</div>
               </a>
               <Link href="/companies">
-                <a className="field-0-2-23">
+                <a
+                  className={`field-0-2-23 ${
+                    window.location.pathname === "/companies" &&
+                    "active__NAVLINK__HEADER"
+                  }`}
+                >
                   <div
                     className="root-0-2-30 sizeMd-0-2-31 capsule-0-2-26"
                     style={{ backgroundColor: "rgb(213, 247, 255)" }}
@@ -144,7 +149,12 @@ const Header: React.FC<Props> = ({
                 </a>
               </Link>
               <Link href="/courses">
-                <a className="field-0-2-23">
+                <a
+                  className={`field-0-2-23 ${
+                    window.location.pathname === "/courses" &&
+                    "COURSES__CLASSNAME__ACTIVE"
+                  }`}
+                >
                   <div
                     className="root-0-2-30 sizeMd-0-2-31 capsule-0-2-26"
                     style={{ backgroundColor: "rgb(255, 213, 201)" }}
@@ -180,7 +190,12 @@ const Header: React.FC<Props> = ({
                 </a>
               </Link>
               <Link href="/edu">
-                <a className="field-0-2-23">
+                <a
+                  className={`field-0-2-23 ${
+                    window.location.pathname === "/edu" &&
+                    "active__NAVLINK__HEADER__EDUCATION"
+                  }`}
+                >
                   <div
                     className="root-0-2-30 sizeMd-0-2-31 capsule-0-2-26"
                     style={{ backgroundColor: "rgb(204, 224, 255)" }}
