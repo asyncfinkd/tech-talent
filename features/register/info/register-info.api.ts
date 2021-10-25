@@ -1,5 +1,5 @@
 import env from "application/environment/env.json";
-import { readCookie } from "lib/readContext";
+import { readCookie } from "lib/readCookie";
 import { Result } from "types/features/register";
 
 export const RegisterInfoRequest = async (loginData: {
@@ -29,8 +29,4 @@ export const RegisterInfoRequest = async (loginData: {
       ...error,
     });
   }
-
-  // return Promise.reject({
-  //     ...error
-  // })
 };
