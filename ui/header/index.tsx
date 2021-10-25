@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useToggle } from "lib/use-toggle";
 import Link from "next/link";
 import { Button } from "components/button";
-import { ApplicationContext } from "context/application/ApplicationContext";
+import { useRouter } from "next/router";
 
 interface Props {
   ShowLine?: boolean;
@@ -21,14 +21,8 @@ const Header: React.FC<Props> = ({
   const [showLanguage, setShowLanguage] = useToggle();
   const [showClose, setShowClose] = useToggle();
   const [companies, setCompanies] = useState<Boolean>(false);
+  const router = useRouter();
 
-  const renderActiveClassName = (condition: string, className: string) => {
-    if (typeof window !== "undefined") {
-      if (window.location.pathname === condition) {
-        return className;
-      }
-    }
-  };
   // const renderLocal = () => {
   //   if (!localStorage.getItem("tt-lang")) {
   //     return "EN";
@@ -117,10 +111,10 @@ const Header: React.FC<Props> = ({
               </a>
               <Link href="/companies">
                 <a
-                  className={`field-0-2-23 ${renderActiveClassName(
-                    "/companies",
+                  className={`field-0-2-23 ${
+                    router.pathname === "/companies" &&
                     "active__NAVLINK__HEADER"
-                  )}`}
+                  }`}
                 >
                   <div
                     className="root-0-2-30 sizeMd-0-2-31 capsule-0-2-26"
@@ -158,10 +152,10 @@ const Header: React.FC<Props> = ({
               </Link>
               <Link href="/courses">
                 <a
-                  className={`field-0-2-23 ${renderActiveClassName(
-                    "/courses",
+                  className={`field-0-2-23 ${
+                    router.pathname === "/courses" &&
                     "COURSES__CLASSNAME__ACTIVE"
-                  )}`}
+                  }`}
                 >
                   <div
                     className="root-0-2-30 sizeMd-0-2-31 capsule-0-2-26"
@@ -199,10 +193,10 @@ const Header: React.FC<Props> = ({
               </Link>
               <Link href="/edu">
                 <a
-                  className={`field-0-2-23 ${renderActiveClassName(
-                    "/edu",
+                  className={`field-0-2-23 ${
+                    router.pathname === "/edu" &&
                     "active__NAVLINK__HEADER__EDUCATION"
-                  )}`}
+                  }`}
                 >
                   <div
                     className="root-0-2-30 sizeMd-0-2-31 capsule-0-2-26"
