@@ -12,6 +12,7 @@ import jwt_decode from "jwt-decode";
 export default function ProfileInformationForm({
   access_token,
   setAccess_Token,
+  setSuccessMessage,
 }: any) {
   const {
     register,
@@ -169,6 +170,7 @@ export default function ProfileInformationForm({
                               document.cookie = `cookie=${token};path=/`;
                               const tokenDecode: any = jwt_decode(token);
                               setAccess_Token(tokenDecode);
+                              setSuccessMessage(true);
                             },
                           }
                         );

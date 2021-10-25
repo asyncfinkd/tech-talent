@@ -6,7 +6,7 @@ import ProfileSecurityForm from "./components/profile-security-form";
 import ProfileSecuritySidebar from "./components/profile-security-sidebar";
 
 export default function SecurityPages({ access_token, logged }: any) {
-  const [successMessage, setSuccessMessage] = useState<any>(false);
+  const [successMessage, setSuccessMessage] = useState<boolean>(false);
 
   useEffect(() => {
     if (successMessage) {
