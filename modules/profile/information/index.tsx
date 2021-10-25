@@ -1,13 +1,27 @@
+import { SuccessMessage } from "components/success-message";
 import Head from "next/head";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Footer from "ui/footer";
 import Header from "ui/header";
 import ProfileInformationForm from "./components/profile-information-form";
 import ProfileInformationSidebar from "./components/profile-information-sidebar";
 
 function ProfileInformation({ access_token, logged, setAccess_Token }: any) {
+  const [successMessage, setSuccessMessage] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (successMessage) {
+      setTimeout(() => {
+        setSuccessMessage(false);
+      }, 7000);
+    }
+  }, [successMessage]);
   return (
     <>
+      <SuccessMessage
+        variable={successMessage}
+        setVariable={setSuccessMessage}
+      />
       <Head>
         <title>Information | User | Tech Talent</title>
       </Head>
@@ -18,6 +32,7 @@ function ProfileInformation({ access_token, logged, setAccess_Token }: any) {
           <ProfileInformationForm
             access_token={access_token}
             setAccess_Token={setAccess_Token}
+            setSuccessMessage={setSuccessMessage}
           />
         </div>
       </main>

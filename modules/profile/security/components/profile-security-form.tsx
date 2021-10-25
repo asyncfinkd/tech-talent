@@ -1,26 +1,42 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ErrorMessage } from "components/error-message";
 import { ProfileSecurityRequest } from "features/profile/security/profile-security.api";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { ProfileSecuritySchema } from "schema/profile/security";
-import { Result } from "types/features/profile/security";
 import { SecurityInputProps } from "types/profile/security";
 
-export default function ProfileSecurityForm({ access_token }: any) {
+export default function ProfileSecurityForm({
+  access_token,
+  setSuccessMessage,
+}: any) {
+  const [currentPasswordError, setCurrentPasswordError] = useState<any>(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<SecurityInputProps>({
     resolver: yupResolver(ProfileSecuritySchema),
   });
 
   const $edit = useMutation(
-    ({ loginData }: { loginData: SecurityInputProps }) =>
-      ProfileSecurityRequest(loginData)
+    ({
+      loginData,
+    }: {
+      loginData: SecurityInputProps;
+      setCurrentPasswordError: any;
+    }) => ProfileSecurityRequest(loginData, setCurrentPasswordError)
   );
+
+  const renderCurrentPasswordInputClassName = () => {
+    if (errors.currentPassword || currentPasswordError) {
+      return `input-0-2-251 invalid-0-2-252`;
+    } else {
+      return `input-0-2-251`;
+    }
+  };
 
   return (
     <>
@@ -30,10 +46,16 @@ export default function ProfileSecurityForm({ access_token }: any) {
           <form
             onSubmit={handleSubmit((data: SecurityInputProps) => {
               $edit.mutate(
-                { loginData: data },
                 {
-                  onSuccess: (result: Result) => {
-                    console.log(result);
+                  loginData: data,
+                  setCurrentPasswordError,
+                },
+                {
+                  onSuccess: () => {
+                    setSuccessMessage(true);
+                    setValue("currentPassword", "");
+                    setValue("newPassword", "");
+                    setValue("repeatPassword", "");
                   },
                 }
               );
@@ -70,9 +92,7 @@ export default function ProfileSecurityForm({ access_token }: any) {
                 </label>
                 <input
                   type="password"
-                  className={`input-0-2-251 ${
-                    errors.currentPassword && "invalid-0-2-252"
-                  }`}
+                  className={renderCurrentPasswordInputClassName()}
                   {...register("currentPassword")}
                 />
                 <ErrorMessage
@@ -81,6 +101,13 @@ export default function ProfileSecurityForm({ access_token }: any) {
                   condition={errors.currentPassword}
                 >
                   {errors?.currentPassword?.message}
+                </ErrorMessage>
+                <ErrorMessage
+                  element="div"
+                  className="invalidMessage-0-2-132"
+                  condition={currentPasswordError}
+                >
+                  Incorrect current password
                 </ErrorMessage>
               </div>
               <div className="root-0-2-119">

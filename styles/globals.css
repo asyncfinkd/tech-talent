@@ -8281,3 +8281,147 @@
   position: fixed;
   background: #171725;
 }
+
+.container-0-2-1 {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 100;
+  position: fixed;
+  pointer-events: none;
+}
+.innerContainer-0-2-2 {
+  right: 24px;
+  bottom: 24px;
+  position: absolute;
+  z-index: 999;
+}
+
+.root-0-2-141 {
+  width: 620px;
+  border: 0;
+  height: 64px;
+  margin: 16px 0;
+  display: flex;
+  z-index: 11;
+  font-size: 16px;
+  transition: all 0.3s ease 0s;
+  align-items: center;
+  font-weight: 400;
+  border-radius: 12px;
+  pointer-events: auto;
+  justify-content: space-between;
+}
+.lightTheme-0-2-142 {
+  color: #000000;
+  background-color: rgb(214, 230, 255);
+}
+.darkTheme-0-2-143 {
+  color: #ffffff;
+  background-color: #24242d;
+}
+.errorMessage-0-2-144 {
+  color: #ffffff;
+  background-color: red;
+}
+.closeButton-0-2-145 {
+  cursor: pointer;
+  margin-right: 26px;
+}
+.closeIcon-0-2-146 {
+  cursor: pointer;
+}
+.checkButton-0-2-147 {
+  cursor: pointer;
+}
+.errorIcon-0-2-148 {
+  stroke: #000000;
+}
+.textArea-0-2-149 {
+  display: flex;
+  align-items: center;
+  margin-left: 26px;
+}
+.info-0-2-150 {
+  margin-left: 10px;
+}
+.okayButton-0-2-151 {
+  width: 63px;
+  cursor: pointer;
+  height: 48px;
+  margin-right: 26px;
+}
+
+.root-0-2-141 {
+  right: 24px;
+  width: 620px;
+  border: 0;
+  bottom: 24px;
+  height: 64px;
+  display: flex;
+  z-index: 11;
+  position: fixed;
+  font-size: 16px;
+  transition: all 0.3s ease 0s;
+  align-items: center;
+  font-weight: 400;
+  border-radius: 12px;
+  justify-content: space-between;
+}
+@media (min-width: 960px) {
+  .root-0-2-141 {
+    right: 48px;
+    bottom: 48px;
+  }
+}
+@media (min-width: 1280px) {
+  .root-0-2-141 {
+    right: 60px;
+    bottom: 60px;
+  }
+}
+.root-0-2-141:active {
+  opacity: 1;
+}
+.lightTheme-0-2-142 {
+  color: #7b7ce6;
+  background-color: rgb(214, 230, 255);
+}
+.darkTheme-0-2-143 {
+  color: #ffffff;
+  background-color: #24242d;
+}
+.errorMessage-0-2-144 {
+  color: #ffffff;
+  background-color: #e44e4e;
+}
+.closeButton-0-2-145 {
+  cursor: pointer;
+  margin-right: 26px;
+}
+.closeIcon-0-2-146 {
+  cursor: pointer;
+}
+.checkButton-0-2-147 {
+  cursor: pointer;
+}
+.checkIcon-0-2-148 {
+  cursor: pointer;
+}
+.textArea-0-2-149 {
+  display: flex;
+  align-items: center;
+  margin-left: 26px;
+}
+.info-0-2-150 {
+  margin-left: 10px;
+}
+.okayButton-0-2-151 {
+  width: 63px;
+  cursor: pointer;
+  height: 48px;
+  margin-right: 26px;
+  background-color: #5051de;
+}

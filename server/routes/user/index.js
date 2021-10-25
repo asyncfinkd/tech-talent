@@ -243,9 +243,11 @@ router
           if (verified) {
             result.password = hashedPassword;
             result.save();
-            res.json({ message: "Successfuly", success: true });
+            res.status(200).json({ message: "Successfuly", success: true });
           } else {
-            res.json({ message: "Incorrect current password", success: false });
+            res
+              .status(502)
+              .json({ message: "Incorrect current password", success: false });
           }
         }
       );
