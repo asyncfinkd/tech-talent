@@ -8,7 +8,7 @@ const Home: NextPage<any> = ({ logged, access_token }: any) => {
     <>
       <Header access_token={access_token} logged={logged} ShowShadow={true} />
       <Notification />
-      <Footer access_token={access_token} wantSponsors={true} />
+      <Footer logged={logged} access_token={access_token} wantSponsors={true} />
     </>
   );
 };

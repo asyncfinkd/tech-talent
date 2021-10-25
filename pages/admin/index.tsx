@@ -1,3 +1,3 @@
-import AdminPage from "modules/admin";
+// import AdminPage from "modules/admin";
 
-export default AdminPage;
+// export default AdminPage;

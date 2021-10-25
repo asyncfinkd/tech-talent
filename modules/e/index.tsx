@@ -258,7 +258,7 @@ function Epage({
           </div>
         </div>
       </main>
-      <Footer access_token={access_token} wantSponsors={true} />
+      <Footer access_token={access_token} logged={logged} wantSponsors={true} />
     </>
   );
 }
