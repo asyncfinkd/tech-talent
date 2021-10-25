@@ -4,13 +4,14 @@ import Head from "next/head";
 import "styles/index.css";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { ApplicationContext } from "context/application/ApplicationContext";
 import { readCookie } from "lib/readCookie";
 import jwt_decode from "jwt-decode";
 import { TokenProps } from "types/app/token";
 import { useRouter } from "next/router";
 import { LoggedAPI } from "api";
+import "../i18n";
 
 const client = new QueryClient();
 

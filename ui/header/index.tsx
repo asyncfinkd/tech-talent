@@ -3,6 +3,7 @@ import { useToggle } from "lib/use-toggle";
 import Link from "next/link";
 import { Button } from "components/button";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   ShowLine?: boolean;
@@ -22,6 +23,10 @@ const Header: React.FC<Props> = ({
   const [showClose, setShowClose] = useToggle();
   const [companies, setCompanies] = useState<Boolean>(false);
   const router = useRouter();
+  const { t, i18n } = useTranslation();
+  const changeLanguage = (language: any) => {
+    i18n.changeLanguage(language);
+  };
 
   // const renderLocal = () => {
   //   if (!localStorage.getItem("tt-lang")) {
@@ -107,7 +112,7 @@ const Header: React.FC<Props> = ({
                     </div>
                   </div>
                 </div>
-                <div className="fieldName-0-2-25">Jobs</div>
+                <div className="fieldName-0-2-25">{t("JOBS")}</div>
               </a>
               <Link href="/companies">
                 <a
