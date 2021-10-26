@@ -339,23 +339,21 @@ const Header: React.FC<Props> = ({
                   id="downshift-0-menu"
                 >
                   <li
-                    className={`li-0-2-72`}
+                    className={`li-0-2-72 ${
+                      localStorage.getItem("i18nextLng") == "en" &&
+                      "liActive-0-2-73"
+                    }`}
                     id="downshift-0-item-0"
-                    // onClick={() => {
-                    // changeLanguage("en");
-                    // setShowLanguage();
-                    // setLanguage("EN");
-                    // localStorage.setItem("tt-lang", "en");
-                    // }}
                     role="option"
                     aria-selected="false"
+                    onClick={() => {
+                      changeLanguage("en");
+                      setShowLanguage();
+                    }}
                   >
                     <Button
                       className="root-0-2-46 option-0-2-67 weightLight-0-2-60 sizeZero-0-2-48 variantBlank-0-2-59"
                       style={{ marginRight: "0.75rem" }}
-                      onClick={() => {
-                        changeLanguage("en");
-                      }}
                     >
                       <svg
                         className="fill-0-2-36"
@@ -375,23 +373,21 @@ const Header: React.FC<Props> = ({
                     </Button>
                   </li>
                   <li
-                    className={`li-0-2-72`}
+                    className={`li-0-2-72 ${
+                      localStorage.getItem("i18nextLng") == "ka" &&
+                      "liActive-0-2-73"
+                    }`}
                     id="downshift-0-item-1"
-                    // onClick={() => {
-                    // changeLanguage("ka");
-                    // setShowLanguage();
-                    // setLanguage("KA");
-                    // localStorage.setItem("tt-lang", "ka");
-                    // }}
                     role="option"
                     aria-selected="false"
+                    onClick={() => {
+                      changeLanguage("ka");
+                      setShowLanguage();
+                    }}
                   >
                     <Button
                       className="root-0-2-46 option-0-2-67 weightLight-0-2-60 sizeZero-0-2-48 variantBlank-0-2-59"
                       style={{ marginRight: "0.75rem" }}
-                      onClick={() => {
-                        changeLanguage("ka");
-                      }}
                     >
                       <svg
                         className="fill-0-2-36"
