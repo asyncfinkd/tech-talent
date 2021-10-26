@@ -11,9 +11,21 @@ import jwt_decode from "jwt-decode";
 import { TokenProps } from "types/app/token";
 import { useRouter } from "next/router";
 import { LoggedAPI } from "api";
-import "../i18n";
+// import "../i18n";
+import { isServer } from "lib/isServer";
+import { init_i18n } from "../i18n";
+import { PageComponent } from "types/app/page";
+// import dynamic from "next/dynamic";
+
+if (!isServer) {
+  init_i18n();
+}
 
 const client = new QueryClient();
+
+// const DynamicLazyComponent = dynamic(() => import("pages/index"), {
+//   suspense: true,
+// });
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -38,11 +50,19 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, [cookie]);
 
-  useEffect(() => {
-    if (cookie) {
-      LoggedAPI(setAccess_Token, router);
-    }
-  }, [cookie, router.pathname]);
+  // useEffect(() => {
+  //   if (cookie) {
+  //     LoggedAPI(setAccess_Token, router);
+  //   }
+  // }, [cookie, router.pathname]);
+
+  if (
+    isServer &&
+    !Component.getInitialProps &&
+    (Component as PageComponent<unknown>).ws
+  ) {
+    return null;
+  }
   return (
     <>
       <Head>
