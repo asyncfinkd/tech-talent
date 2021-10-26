@@ -311,7 +311,9 @@ const Header: React.FC<Props> = ({
                 type="button"
                 onClick={setShowLanguage}
               >
-                <span className="name-0-2-69">EN</span>
+                <span className="name-0-2-69">
+                  {focusedTranslate == "en" ? "EN" : "KA"}
+                </span>
                 <svg
                   className="fill-0-2-36 caret-0-2-68"
                   width="10"
@@ -354,6 +356,7 @@ const Header: React.FC<Props> = ({
                     aria-selected="false"
                     onClick={() => {
                       changeLanguage("en");
+                      setFocusedTranslate("en");
                       setShowLanguage();
                     }}
                   >
@@ -387,6 +390,7 @@ const Header: React.FC<Props> = ({
                     aria-selected="false"
                     onClick={() => {
                       changeLanguage("ka");
+                      setFocusedTranslate("ka");
                       setShowLanguage();
                     }}
                   >
