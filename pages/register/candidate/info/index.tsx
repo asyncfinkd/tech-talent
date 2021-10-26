@@ -1,6 +1,6 @@
 import { useAuthDetector } from "lib/useAuthDetector";
 import RegisterCandidateInfoPages from "modules/register/candidate/info/RegisterCandidateInfoPages";
-import { GetServerSidePropsContext } from "next";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
 
 function RegisterCandidateInfo() {
   return (
@@ -10,8 +10,10 @@ function RegisterCandidateInfo() {
   );
 }
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
+export const getServerSideProps: GetServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
   return useAuthDetector(context);
-}
+};
 
 export default RegisterCandidateInfo;

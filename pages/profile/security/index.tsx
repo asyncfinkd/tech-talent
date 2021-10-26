@@ -2,8 +2,16 @@ import SecurityPages from "../../../modules/profile/security";
 import env from "application/environment/env.json";
 import jwt_decode from "jwt-decode";
 import { useState } from "react";
+import {
+  GetServerSideProps,
+  GetServerSidePropsContext,
+  InferGetServerSidePropsType,
+} from "next";
 
-function SecurityPage({ data, token }: any) {
+function SecurityPage({
+  data,
+  token,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [logged, setLogged] = useState<any>(data);
   const [access_token, setAccess_Token] = useState<any>(token);
 
@@ -14,7 +22,9 @@ function SecurityPage({ data, token }: any) {
   );
 }
 
-export async function getServerSideProps(ctx: any) {
+export const getServerSideProps: GetServerSideProps = async (
+  ctx: GetServerSidePropsContext
+) => {
   const { req, res } = ctx;
   const { cookies } = req;
   let logged: boolean = false;
@@ -36,6 +46,6 @@ export async function getServerSideProps(ctx: any) {
   }
 
   return { props: { data: logged, token } };
-}
+};
 
 export default SecurityPage;

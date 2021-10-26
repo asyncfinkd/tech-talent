@@ -2,8 +2,17 @@ import ModuleCompanyDetailPage from "modules/c/[id]";
 import React, { useState } from "react";
 import jwt_decode from "jwt-decode";
 import env from "application/environment/env.json";
+import {
+  GetServerSideProps,
+  GetServerSidePropsContext,
+  InferGetServerSidePropsType,
+} from "next";
 
-function CompanyDetailPage({ data, token, log }: any) {
+function CompanyDetailPage({
+  data,
+  token,
+  log,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [logged, setLogged] = useState<any>(log);
   const [access_token, setAccess_Token] = useState<any>(token);
   const [companiesData, setCompaniesData] = useState<any>(data[0]);
@@ -19,7 +28,9 @@ function CompanyDetailPage({ data, token, log }: any) {
   );
 }
 
-export async function getServerSideProps(ctx: any) {
+export const getServerSideProps: GetServerSideProps = async (
+  ctx: GetServerSidePropsContext
+) => {
   const getCompaniesWithId = await fetch(
     `${env.host}/api/get/companies/${ctx.query.id}`,
     {
@@ -55,6 +66,6 @@ export async function getServerSideProps(ctx: any) {
   return {
     props: { data: catchCompaniesWithId, token, log: logged },
   };
-}
+};
 
 export default CompanyDetailPage;

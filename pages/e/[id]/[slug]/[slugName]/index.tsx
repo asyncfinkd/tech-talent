@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import env from "application/environment/env.json";
-import { GetServerSideProps } from "next";
+import {
+  GetServerSideProps,
+  GetServerSidePropsContext,
+  InferGetServerSidePropsType,
+} from "next";
 import jwt_decode from "jwt-decode";
 import EduFeedModule from "modules/e/[id]/[slug]/[slugName]";
 
-function EduFeed({ responseData, log, token }: any) {
+function EduFeed({
+  responseData,
+  log,
+  token,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [data, setData] = useState<any>(responseData);
   const [logged, setLogged] = useState<boolean>(log);
   const [access_token, setAccess_Token] = useState<any>(token);
@@ -16,7 +24,9 @@ function EduFeed({ responseData, log, token }: any) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
   let { slugName } = context.query;
   const requestData = await fetch(`${env.host}/api/get/edu/feed`, {
     method: "POST",
