@@ -2,27 +2,26 @@ import i18n from "i18next";
 import Backend from "i18next-http-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
+import { __prod__ } from "constants/app";
 
-if (typeof window !== "undefined") {
+export const init_i18n = () => {
   i18n
     .use(Backend)
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
-      fallbackLng: window.localStorage.getItem("i18nextLng") || "en",
-      debug: true,
+      fallbackLng: "en",
+      debug: !__prod__,
       detection: {
-        order: ["queryString", "cookie"],
-        cache: ["cookie"],
+        order: ["localStorage", "navigator"],
       },
       interpolation: {
         escapeValue: false,
       },
       react: {
         useSuspense: false,
-        wait: true,
       },
     });
-}
+};
 
 export default i18n;

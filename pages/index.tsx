@@ -1,5 +1,5 @@
 import IndexPage from "modules/index/IndexPage";
-import { useState } from "react";
+import { Suspense, useState, lazy } from "react";
 import env from "application/environment/env.json";
 import jwt_decode from "jwt-decode";
 
