@@ -23,11 +23,17 @@ const Header: React.FC<Props> = ({
   const [showLanguage, setShowLanguage] = useToggle();
   const [showClose, setShowClose] = useToggle();
   const [companies, setCompanies] = useState<Boolean>(false);
+  const [focusedTranslate, setFocusedTranslate] = useState<any>("");
   const router = useRouter();
   const { t, i18n } = useTranslation();
   const changeLanguage = (language: any) => {
     i18n.changeLanguage(language);
   };
+  useEffect(() => {
+    if (!isServer) {
+      setFocusedTranslate(localStorage.getItem("i18nextLng") ?? "en");
+    }
+  }, [router.pathname]);
 
   // const renderLocal = () => {
   //   if (!localStorage.getItem("tt-lang")) {
@@ -341,9 +347,7 @@ const Header: React.FC<Props> = ({
                 >
                   <li
                     className={`li-0-2-72 ${
-                      !isServer &&
-                      localStorage.getItem("i18nextLng") == "en" &&
-                      "liActive-0-2-73"
+                      focusedTranslate == "en" && "liActive-0-2-73"
                     }`}
                     id="downshift-0-item-0"
                     role="option"
@@ -376,9 +380,7 @@ const Header: React.FC<Props> = ({
                   </li>
                   <li
                     className={`li-0-2-72 ${
-                      !isServer &&
-                      localStorage.getItem("i18nextLng") == "ka" &&
-                      "liActive-0-2-73"
+                      focusedTranslate == "ka" && "liActive-0-2-73"
                     }`}
                     id="downshift-0-item-1"
                     role="option"
