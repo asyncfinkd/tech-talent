@@ -353,6 +353,9 @@ const Header: React.FC<Props> = ({
                     <Button
                       className="root-0-2-46 option-0-2-67 weightLight-0-2-60 sizeZero-0-2-48 variantBlank-0-2-59"
                       style={{ marginRight: "0.75rem" }}
+                      onClick={() => {
+                        changeLanguage("en");
+                      }}
                     >
                       <svg
                         className="fill-0-2-36"
@@ -386,6 +389,9 @@ const Header: React.FC<Props> = ({
                     <Button
                       className="root-0-2-46 option-0-2-67 weightLight-0-2-60 sizeZero-0-2-48 variantBlank-0-2-59"
                       style={{ marginRight: "0.75rem" }}
+                      onClick={() => {
+                        changeLanguage("ka");
+                      }}
                     >
                       <svg
                         className="fill-0-2-36"
@@ -912,22 +918,18 @@ const Header: React.FC<Props> = ({
               <div className="title-0-2-96">Language</div>
               <div className="buttonGroup-0-2-97">
                 <button
-                // className={renderLanguageClassName()}
-                // onClick={() => {
-                // changeLanguage("en");
-                // setLanguage("en");
-                // localStorage.setItem("tt-lang", "en");
-                // }}
+                  // className={renderLanguageClassName()}
+                  onClick={() => {
+                    changeLanguage("en");
+                  }}
                 >
                   English
                 </button>
                 <button
                   className={`root-0-2-46 button-0-2-98 weightLight-0-2-60 sizeZero-0-2-48 variantBlank-0-2-59`}
-                  // onClick={() => {
-                  //   changeLanguage("ka");
-                  //   setLanguage("KA");
-                  //   localStorage.setItem("tt-lang", "ka");
-                  // }}
+                  onClick={() => {
+                    changeLanguage("ka");
+                  }}
                 >
                   ქართული
                 </button>
