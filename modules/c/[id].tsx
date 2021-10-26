@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "ui/header";
 import env from "application/environment/env.json";
+import Footer from "ui/footer";
 
 export default function ModuleCompanyDetailPage({
   logged,
@@ -394,6 +395,7 @@ export default function ModuleCompanyDetailPage({
           </div>
         </div>
       </main>
+      <Footer wantSponsors={true} access_token={access_token} logged={logged} />
     </>
   );
 }
