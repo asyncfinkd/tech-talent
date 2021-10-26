@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "components/button";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
+import { isServer } from "lib/isServer";
 
 interface Props {
   ShowLine?: boolean;
@@ -340,6 +341,7 @@ const Header: React.FC<Props> = ({
                 >
                   <li
                     className={`li-0-2-72 ${
+                      !isServer &&
                       localStorage.getItem("i18nextLng") == "en" &&
                       "liActive-0-2-73"
                     }`}
@@ -374,6 +376,7 @@ const Header: React.FC<Props> = ({
                   </li>
                   <li
                     className={`li-0-2-72 ${
+                      !isServer &&
                       localStorage.getItem("i18nextLng") == "ka" &&
                       "liActive-0-2-73"
                     }`}
