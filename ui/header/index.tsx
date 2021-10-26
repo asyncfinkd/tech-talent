@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useToggle } from "lib/use-toggle";
+import { useToggle } from "shared-hooks/use-toggle";
 import Link from "next/link";
 import { Button } from "components/button";
 import { useRouter } from "next/router";
