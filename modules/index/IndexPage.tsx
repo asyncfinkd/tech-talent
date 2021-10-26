@@ -2,6 +2,7 @@ import Footer from "ui/footer";
 import Header from "ui/header";
 import type { NextPage } from "next";
 import Notification from "ui/notification";
+import React from "react";
 
 const Home: NextPage<any> = ({ logged, access_token }: any) => {
   return (

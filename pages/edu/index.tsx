@@ -1,7 +1,11 @@
 import Edu from "modules/edu";
 import env from "application/environment/env.json";
 import { EduResultProps } from "types/edu";
-import { InferGetServerSidePropsType } from "next";
+import {
+  GetServerSideProps,
+  GetServerSidePropsContext,
+  InferGetServerSidePropsType,
+} from "next";
 import jwt_decode from "jwt-decode";
 import { useState } from "react";
 
@@ -22,7 +26,9 @@ function EduPage({
 
 export default EduPage;
 
-export async function getServerSideProps(ctx: any) {
+export const getServerSideProps: GetServerSideProps = async (
+  ctx: GetServerSidePropsContext
+) => {
   const request = await fetch(`${env.host}/api/get/edu`, {
     method: "GET",
     headers: { "Content-type": "application/json" },
@@ -50,4 +56,4 @@ export async function getServerSideProps(ctx: any) {
   }
 
   return { props: { data, logged, token } };
-}
+};

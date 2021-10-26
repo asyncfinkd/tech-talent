@@ -3,7 +3,11 @@ import Epage from "modules/e";
 import env from "application/environment/env.json";
 import { EduResultProps } from "types/edu";
 import { CoursesResultProps } from "types/e";
-import { InferGetServerSidePropsType } from "next";
+import {
+  GetServerSideProps,
+  GetServerSidePropsContext,
+  InferGetServerSidePropsType,
+} from "next";
 import jwt_decode from "jwt-decode";
 
 function EPage({
@@ -30,7 +34,9 @@ function EPage({
   );
 }
 
-export async function getServerSideProps(context: any) {
+export const getServerSideProps: GetServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
   const result = await fetch(`${env.host}/api/get/edu/${context.query.id}`, {
     method: "GET",
     headers: { "Content-type": "application/json" },
@@ -74,6 +80,6 @@ export async function getServerSideProps(context: any) {
   }
 
   return { props: { fullData, resCoursesJSON, collapse, logged, token } };
-}
+};
 
 export default EPage;

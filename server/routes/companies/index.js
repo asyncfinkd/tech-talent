@@ -7,4 +7,16 @@ router.route("/get/companies").get(async (req, res) => {
   });
 });
 
+router.route("/get/companies/:id").get(async (req, res) => {
+  CompaniesSchema.find().then((result) => {
+    let data = [];
+    result.map((item) => {
+      if (item.slug.toString() == req.params.id.toString()) {
+        data.push(item);
+      }
+    });
+    res.json(data);
+  });
+});
+
 module.exports = router;

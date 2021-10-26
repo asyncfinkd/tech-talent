@@ -1,9 +1,17 @@
 import IndexPage from "modules/index/IndexPage";
-import { useState } from "react";
+import { Suspense, useState, lazy } from "react";
 import env from "application/environment/env.json";
 import jwt_decode from "jwt-decode";
+import {
+  GetServerSideProps,
+  GetServerSidePropsContext,
+  InferGetServerSidePropsType,
+} from "next";
 
-function Index({ data, token }: any) {
+function Index({
+  data,
+  token,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [logged, setLogged] = useState<any>(data);
   const [access_token, setAccess_Token] = useState<any>(token);
 
@@ -14,7 +22,9 @@ function Index({ data, token }: any) {
   );
 }
 
-export async function getServerSideProps(ctx: any) {
+export const getServerSideProps: GetServerSideProps = async (
+  ctx: GetServerSidePropsContext
+) => {
   const { req, res } = ctx;
   const { cookies } = req;
   let logged: boolean = false;
@@ -36,6 +46,6 @@ export async function getServerSideProps(ctx: any) {
   }
 
   return { props: { data: logged, token } };
-}
+};
 
 export default Index;

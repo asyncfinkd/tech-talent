@@ -1,5 +1,7 @@
+import { isServer } from "lib/isServer";
+
 export function readCookie(name: string | null) {
-  if (typeof window !== "undefined") {
+  if (!isServer) {
     let nameEQ = name + "=";
     let ca = document.cookie.split(";");
     for (let i = 0; i < ca.length; i++) {
