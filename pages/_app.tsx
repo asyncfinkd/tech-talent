@@ -9,7 +9,6 @@ import { ApplicationContext } from "context/application/ApplicationContext";
 import { readCookie } from "lib/readCookie";
 import jwt_decode from "jwt-decode";
 import { TokenProps } from "types/app/token";
-// import "../i18n";
 import { isServer } from "lib/isServer";
 import { init_i18n } from "../i18n";
 import { PageComponent } from "types/app/page";
@@ -25,10 +24,6 @@ if (!isServer) {
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
-
-// const DynamicLazyComponent = dynamic(() => import("pages/index"), {
-//   suspense: true,
-// });
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [access_token, setAccess_Token] = useState<TokenProps>({
@@ -50,12 +45,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       console.log(decoded);
     }
   }, [cookie]);
-
-  // useEffect(() => {
-  //   if (cookie) {
-  //     LoggedAPI(setAccess_Token, router);
-  //   }
-  // }, [cookie, router.pathname]);
 
   if (
     isServer &&
