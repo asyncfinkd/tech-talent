@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 function EDetailAllMap({ item, logged }: any) {
-  const [date, setDate] = useState<any>("");
+  const [date, setDate] = useState<string>("");
 
   useEffect(() => {
     filterDate({ setDate, item });
