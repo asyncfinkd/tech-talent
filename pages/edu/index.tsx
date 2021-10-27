@@ -1,5 +1,4 @@
 import Edu from "modules/edu";
-import env from "application/environment/env.json";
 import { EduResultProps } from "types/edu";
 import {
   GetServerSideProps,
@@ -31,7 +30,7 @@ export default EduPage;
 export const getServerSideProps: GetServerSideProps = async (
   ctx: GetServerSidePropsContext
 ) => {
-  const request = await fetch(`${env.host}/api/get/edu`, {
+  const request = await fetch(`${process.env.REACT_APP_API_URL}/api/get/edu`, {
     method: "GET",
     headers: { "Content-type": "application/json" },
   });
@@ -42,14 +41,17 @@ export const getServerSideProps: GetServerSideProps = async (
   let logged: boolean = false;
   let token: DecodedAccess_Token = DecodedAccess_Token__MOCKS__();
   if (cookies.cookie) {
-    const requestToCatchUser = await fetch(`${env.host}/api/check/logged`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${cookies.cookie}`,
-      },
-      body: JSON.stringify({}),
-    });
+    const requestToCatchUser = await fetch(
+      `${process.env.REACT_APP_API_URL}/api/check/logged`,
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${cookies.cookie}`,
+        },
+        body: JSON.stringify({}),
+      }
+    );
 
     token = jwt_decode(cookies.cookie);
 

@@ -1,4 +1,3 @@
-import env from "application/environment/env.json";
 import { Result } from "types/features/register";
 
 export const RegisterRequest = async (
@@ -10,11 +9,14 @@ export const RegisterRequest = async (
   setErrorMessage: React.Dispatch<React.SetStateAction<boolean>>
 ): Promise<Result> => {
   const { email, password } = loginData;
-  const response = await fetch(`${env.host}/api/register`, {
-    method: "POST",
-    headers: { "Content-type": "application/json" },
-    body: JSON.stringify({ email, password, role: "member", interest }),
-  });
+  const response = await fetch(
+    `${process.env.REACT_APP_API_URL}/api/register`,
+    {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({ email, password, role: "member", interest }),
+    }
+  );
   if (response.ok) setErrorMessage(false);
 
   if (response.ok) {

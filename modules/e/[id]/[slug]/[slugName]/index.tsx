@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Header from "ui/header";
-import env from "application/environment/env.json";
 import { Link } from "@mui/material";
 import Footer from "ui/footer";
 import useBoolean from "shared-hooks/use-boolean";
@@ -34,7 +33,7 @@ export default function EduFeedModule({ access_token, logged, data }: any) {
               <div className="leftHeader-0-2-229">
                 <img
                   className="logo-0-2-231"
-                  src={`${env.server}${data.academy.logoUrl}`}
+                  src={`${process.env.SERVER_APP_API_URL}${data.academy.logoUrl}`}
                 />
                 <div className="desktopInfo-0-2-232">
                   <div

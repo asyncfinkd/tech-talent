@@ -1,5 +1,4 @@
 import SecurityPages from "../../../modules/profile/security";
-import env from "application/environment/env.json";
 import jwt_decode from "jwt-decode";
 import { useState } from "react";
 import {
@@ -32,14 +31,17 @@ export const getServerSideProps: GetServerSideProps = async (
   let logged: boolean = false;
   let token: DecodedAccess_Token = DecodedAccess_Token__MOCKS__();
   if (cookies.cookie) {
-    const request = await fetch(`${env.host}/api/check/logged`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${cookies.cookie}`,
-      },
-      body: JSON.stringify({}),
-    });
+    const request = await fetch(
+      `${process.env.REACT_APP_API_URL}/api/check/logged`,
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${cookies.cookie}`,
+        },
+        body: JSON.stringify({}),
+      }
+    );
 
     token = jwt_decode(cookies.cookie);
 

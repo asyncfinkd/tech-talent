@@ -1,11 +1,10 @@
 import axios from "axios";
-import env from "application/environment/env.json";
 import { readCookie } from "lib/readCookie";
 
 export const LoggedAPI = (setAccess_Token: any, router: any) => {
   axios
     .post(
-      `${env.host}/api/check/logged`,
+      `${process.env.REACT_APP_API_URL}/api/check/logged`,
       {},
       {
         headers: {

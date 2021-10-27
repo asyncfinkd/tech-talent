@@ -1,5 +1,4 @@
 import { Result } from "types/features/forgot";
-import env from "application/environment/env.json";
 
 export const ForgotRequest = async (
   loginData: {
@@ -8,7 +7,7 @@ export const ForgotRequest = async (
   setShowErrorMessage: React.Dispatch<React.SetStateAction<boolean>>
 ): Promise<Result> => {
   const { email } = loginData;
-  const response = await fetch(`${env.host}/api/forgot`, {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/api/forgot`, {
     method: "POST",
     headers: { "Content-type": "application/json" },
     body: JSON.stringify({ email }),

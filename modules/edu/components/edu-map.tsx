@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import env from "application/environment/env.json";
 import { useRouter } from "next/router";
 
 export default function EduMap({ item, access_token, logged }: any) {
@@ -13,7 +12,7 @@ export default function EduMap({ item, access_token, logged }: any) {
               <a>
                 <img
                   className="logo-0-2-239"
-                  src={`${env.server}${item.logoUrl}`}
+                  src={`${process.env.SERVER_APP_API_URL}${item.logoUrl}`}
                   style={{ cursor: "pointer" }}
                 />
               </a>

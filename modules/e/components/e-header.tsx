@@ -1,5 +1,4 @@
 import React from "react";
-import env from "application/environment/env.json";
 
 export default function EHeader({ data, setCollapse, collapse }: any) {
   return (
@@ -26,7 +25,7 @@ export default function EHeader({ data, setCollapse, collapse }: any) {
           <div className="headerContent-0-2-448">
             <img
               className="logo-0-2-450"
-              src={`${env.server}${data.logoUrl}`}
+              src={`${process.env.SERVER_APP_API_URL}${data.logoUrl}`}
             />
             <div className="desktopInfo-0-2-451">
               <div className="name-0-2-453">{data.name}</div>

@@ -1,5 +1,4 @@
 import React from "react";
-import env from "application/environment/env.json";
 import Link from "next/link";
 
 export default function CompaniesMap({ item }: any) {
@@ -11,7 +10,7 @@ export default function CompaniesMap({ item }: any) {
             <Link href={`/c/${item.slug}`}>
               <img
                 className="logo-0-2-140"
-                src={`${env.server}${item.logoUrl}`}
+                src={`${process.env.SERVER_APP_API_URL}${item.logoUrl}`}
               />
             </Link>
             <div className="name-0-2-141">{item.name}</div>

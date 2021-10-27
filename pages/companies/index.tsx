@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import env from "application/environment/env.json";
 import jwt_decode from "jwt-decode";
 import CompaniesPage from "modules/companies";
 import {
@@ -37,14 +36,17 @@ export const getServerSideProps: GetServerSideProps = async (
   let logged: boolean = false;
   let token: any = {};
   if (cookies.cookie) {
-    const requestToCatchUser = await fetch(`${env.host}/api/check/logged`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${cookies.cookie}`,
-      },
-      body: JSON.stringify({}),
-    });
+    const requestToCatchUser = await fetch(
+      `${process.env.REACT_APP_API_URL}/api/check/logged`,
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${cookies.cookie}`,
+        },
+        body: JSON.stringify({}),
+      }
+    );
 
     token = jwt_decode(cookies.cookie);
 
@@ -52,12 +54,15 @@ export const getServerSideProps: GetServerSideProps = async (
     logged = response.success;
   }
 
-  const requestToData = await fetch(`${env.host}/api/get/companies`, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json",
-    },
-  });
+  const requestToData = await fetch(
+    `${process.env.REACT_APP_API_URL}/api/get/companies`,
+    {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+    }
+  );
 
   const responseData = await requestToData.json();
 

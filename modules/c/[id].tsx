@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Header from "ui/header";
-import env from "application/environment/env.json";
 import Footer from "ui/footer";
 import DOMPurify from "isomorphic-dompurify";
 import { isServer } from "lib/isServer";
@@ -54,7 +53,7 @@ export default function ModuleCompanyDetailPage({
                 >
                   <img
                     className="logo-0-2-108"
-                    src={`${env.server}${data.logoUrl}`}
+                    src={`${process.env.SERVER_APP_API_URL}${data.logoUrl}`}
                   />
                   <div className="desktopInfo-0-2-109">
                     <div className="name-0-2-111">{data.name}</div>

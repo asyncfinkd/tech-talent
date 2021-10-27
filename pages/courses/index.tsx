@@ -6,7 +6,6 @@ import {
 } from "next";
 import React, { useState } from "react";
 import Header from "ui/header";
-import env from "application/environment/env.json";
 import jwt_decode from "jwt-decode";
 import { DecodedAccess_Token } from "types/global";
 import Footer from "ui/footer";
@@ -35,14 +34,17 @@ export const getServerSideProps: GetServerSideProps = async (
   let logged: boolean = false;
   let token: any = {};
   if (cookies.cookie) {
-    const request = await fetch(`${env.host}/api/check/logged`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${cookies.cookie}`,
-      },
-      body: JSON.stringify({}),
-    });
+    const request = await fetch(
+      `${process.env.REACT_APP_API_URL}/api/check/logged`,
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${cookies.cookie}`,
+        },
+        body: JSON.stringify({}),
+      }
+    );
 
     token = jwt_decode(cookies.cookie);
 

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import env from "application/environment/env.json";
 import {
   GetServerSideProps,
   GetServerSidePropsContext,
@@ -28,13 +27,16 @@ export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   let { slugName } = context.query;
-  const requestData = await fetch(`${env.host}/api/get/edu/feed`, {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify({ slugName: slugName }),
-  });
+  const requestData = await fetch(
+    `${process.env.REACT_APP_API_URL}/api/get/edu/feed`,
+    {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ slugName: slugName }),
+    }
+  );
   const responseData = await requestData.json();
 
   const { req, res } = context;
@@ -42,14 +44,17 @@ export const getServerSideProps: GetServerSideProps = async (
   let logged: boolean = false;
   let token: any = {};
   if (cookies.cookie) {
-    const request = await fetch(`${env.host}/api/check/logged`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${cookies.cookie}`,
-      },
-      body: JSON.stringify({}),
-    });
+    const request = await fetch(
+      `${process.env.REACT_APP_API_URL}/api/check/logged`,
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${cookies.cookie}`,
+        },
+        body: JSON.stringify({}),
+      }
+    );
 
     token = jwt_decode(cookies.cookie);
 
