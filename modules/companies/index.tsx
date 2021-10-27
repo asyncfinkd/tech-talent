@@ -13,7 +13,7 @@ export default function CompaniesPage({
   const [search, setSearch] = useState<string>("");
   const [result, setResult] = useState<any>(data);
 
-  const identificationSearch = () => {
+  function identificationSearch(): void {
     if (search.length == 0) {
       setData(result);
     } else {
@@ -27,7 +27,7 @@ export default function CompaniesPage({
         })
       );
     }
-  };
+  }
 
   useEffect(() => {
     identificationSearch();
