@@ -16,6 +16,7 @@ import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import Router from "next/router";
 import { client } from "lib/queryClient";
+import { APP__TOKEN__MOCKS__ } from "mocks/_app";
 
 if (!isServer) {
   init_i18n();
@@ -26,16 +27,9 @@ Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [access_token, setAccess_Token] = useState<TokenProps>({
-    email: "",
-    exp: 0,
-    iat: 0,
-    _id: "",
-    role: "",
-    logged: false,
-    phone: "",
-    socialNetwork: "",
-  });
+  const [access_token, setAccess_Token] = useState<TokenProps>(
+    APP__TOKEN__MOCKS__()
+  );
   const cookie: string | null | undefined = readCookie("cookie");
 
   useEffect(() => {
