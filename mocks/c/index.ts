@@ -1,5 +1,3 @@
-import { DecodedAccess_Token } from "types/global";
-
 export const DecodedAccess_Token__MOCKS__ = () => {
   return {
     email: "",

@@ -9,6 +9,7 @@ import {
 } from "next";
 import { DecodedAccess_Token } from "types/global";
 import { DecodedAccess_Token__MOCKS__ } from "mocks/c";
+import { GetCompaniesWithIDProps } from "types/c";
 
 function CompanyDetailPage({
   data,
@@ -17,7 +18,9 @@ function CompanyDetailPage({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [logged, setLogged] = useState<any>(log);
   const [access_token, setAccess_Token] = useState<DecodedAccess_Token>(token);
-  const [companiesData, setCompaniesData] = useState<any>(data[0]);
+  const [companiesData, setCompaniesData] = useState<GetCompaniesWithIDProps>(
+    data[0]
+  );
 
   return (
     <>
@@ -43,9 +46,10 @@ export const getServerSideProps: GetServerSideProps = async (
     }
   );
 
-  const catchCompaniesWithId: any = await getCompaniesWithId.json();
+  const catchCompaniesWithId: GetCompaniesWithIDProps =
+    await getCompaniesWithId.json();
 
-  const { req, res } = ctx;
+  const { req } = ctx;
   const { cookies } = req;
   let logged: boolean = false;
   let token: DecodedAccess_Token = DecodedAccess_Token__MOCKS__();
