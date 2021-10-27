@@ -43,6 +43,13 @@ export const getServerSideProps: GetServerSideProps = async (
 
     const response = await request.json();
     logged = response.success;
+  } else {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+    };
   }
 
   return { props: { data: logged, token } };

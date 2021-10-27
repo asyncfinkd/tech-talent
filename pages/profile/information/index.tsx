@@ -33,7 +33,14 @@ export const getServerSideProps: GetServerSideProps = async (
   const { cookies } = req;
   let logged: boolean = false;
   let token: any = {};
-  if (cookies.cookie) {
+  if (!cookies.cookie) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+    };
+  } else {
     const request = await fetch(`${env.host}/api/check/logged`, {
       method: "POST",
       headers: {
