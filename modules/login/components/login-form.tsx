@@ -1,5 +1,5 @@
 import { Button } from "components/button";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginInputsResult, Props } from "types/login";
@@ -11,8 +11,12 @@ import { Result } from "types/features/login";
 import { ApplicationContext } from "context/application/ApplicationContext";
 import { useRouter } from "next/router";
 import { LoginInputs } from "fixtures/login";
+import SVG from "react-inlinesvg";
+import { loading } from "constants/app/strings";
 
 const LoginForm: React.FC = () => {
+  const ref = React.useRef<SVGElement>(null);
+
   const router = useRouter();
   const {
     register,
@@ -96,31 +100,7 @@ const LoginForm: React.FC = () => {
               className="root-0-2-46 button-0-2-105 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
             >
               <div className="loading-0-2-112">
-                <svg
-                  className="stroke-0-2-35 spinner-0-2-113"
-                  width="100"
-                  height="100"
-                  viewBox="0 0 100 100"
-                  preserveAspectRatio="xMidYMid"
-                >
-                  <circle
-                    cx="50"
-                    cy="50"
-                    fill="none"
-                    strokeWidth="10"
-                    r="35"
-                    strokeDasharray="164.93361431346415 56.97787143782138"
-                  >
-                    <animateTransform
-                      attributeName="transform"
-                      type="rotate"
-                      repeatCount="indefinite"
-                      dur="1s"
-                      values="0 50 50;360 50 50"
-                      keyTimes="0;1"
-                    ></animateTransform>
-                  </circle>
-                </svg>
+                <SVG src={loading} />
                 <span>Loading</span>
               </div>
             </Button>
