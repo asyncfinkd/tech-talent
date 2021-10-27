@@ -266,7 +266,7 @@ router.route("/forgot").post(async (req, res) => {
 
   UserSchema.findOne({ email: req.body.email }).then((result) => {
     if (result == null) {
-      res.json("Email does not exist");
+      res.status(502).json({ success: false });
     } else {
       result.password = hashedPassword;
       result.save();
@@ -298,7 +298,7 @@ router.route("/forgot").post(async (req, res) => {
           console.log("email sent");
         }
       });
-      res.json({ success: true });
+      res.status(200).json({ success: true });
     }
   });
 });
