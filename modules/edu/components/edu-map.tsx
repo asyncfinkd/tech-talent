@@ -1,11 +1,9 @@
 import Link from "next/link";
 import React from "react";
 import env from "application/environment/env.json";
-import { readCookie } from "lib/readCookie";
 import { useRouter } from "next/router";
 
 export default function EduMap({ item, access_token, logged }: any) {
-  const router = useRouter();
   return (
     <>
       <div className="superRoot-0-2-236">
