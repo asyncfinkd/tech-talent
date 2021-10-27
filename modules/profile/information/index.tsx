@@ -9,13 +9,6 @@ import ProfileInformationSidebar from "./components/profile-information-sidebar"
 function ProfileInformation({ access_token, logged, setAccess_Token }: any) {
   const [successMessage, setSuccessMessage] = useState<boolean>(false);
 
-  useEffect(() => {
-    if (successMessage) {
-      setTimeout(() => {
-        setSuccessMessage(false);
-      }, 7000);
-    }
-  }, [successMessage]);
   return (
     <>
       <SuccessMessage

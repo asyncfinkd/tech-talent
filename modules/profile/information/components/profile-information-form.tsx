@@ -77,10 +77,15 @@ export default function ProfileInformationForm({
                 </label>
                 <input
                   type="text"
-                  className={`input-0-2-251`}
+                  className={`input-0-2-251 ${
+                    fullNameError && "invalid-0-2-252"
+                  }`}
                   {...register("fullName")}
                   disabled={access_token.role == "Admin"}
                 />
+                {fullNameError && (
+                  <div className="invalidMessage-0-2-132">Name is required</div>
+                )}
               </div>
               {access_token.role != "Admin" && (
                 <>
@@ -157,7 +162,7 @@ export default function ProfileInformationForm({
                 <button
                   className="root-0-2-46 MAX_WIDTH_F button-0-2-118 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                   type="submit"
-                  disabled={access_token.role == "Admin"}
+                  disabled={access_token.role == "Admin" || fullNameError}
                   onClick={handleSubmit(
                     (data: ProfileInformationInputProps) => {
                       if (access_token.role != "Admin") {
