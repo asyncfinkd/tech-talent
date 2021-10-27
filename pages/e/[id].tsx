@@ -9,6 +9,8 @@ import {
   InferGetServerSidePropsType,
 } from "next";
 import jwt_decode from "jwt-decode";
+import { DecodedAccess_Token } from "types/global";
+import { DecodedAccess_Token__MOCKS__ } from "mocks/c";
 
 function EPage({
   fullData,
@@ -19,7 +21,7 @@ function EPage({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [dataCollapse, setDataCollapse] = useState<boolean>(collapse);
   const [userLogged, setUserLogged] = useState<boolean>(logged);
-  const [access_token, setAccess_Token] = useState<any>(token);
+  const [access_token, setAccess_Token] = useState<DecodedAccess_Token>(token);
   return (
     <>
       <Epage
@@ -62,7 +64,7 @@ export const getServerSideProps: GetServerSideProps = async (
   const { req, res } = context;
   const { cookies } = req;
   let logged: boolean = false;
-  let token: any = {};
+  let token: DecodedAccess_Token = DecodedAccess_Token__MOCKS__();
   if (cookies.cookie) {
     const request = await fetch(`${env.host}/api/check/logged`, {
       method: "POST",

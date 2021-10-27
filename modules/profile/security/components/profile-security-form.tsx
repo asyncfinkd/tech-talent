@@ -164,7 +164,7 @@ export default function ProfileSecurityForm({
                   </div>
                 </>
               )}
-              {/* {mutation.isLoading ? (
+              {$edit.isLoading ? (
                 <button
                   className="root-0-2-46 button-0-2-186 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                   type="submit"
@@ -195,18 +195,18 @@ export default function ProfileSecurityForm({
                         ></animateTransform>
                       </circle>
                     </svg>
-                    <span>{t("LOADING")}</span>
+                    <span>Loading</span>
                   </div>
                 </button>
-              ) : ( */}
-              <button
-                className="root-0-2-46 button-0-2-186 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-                type="submit"
-                disabled={access_token.role === "Admin"}
-              >
-                Save
-              </button>
-              {/* )} */}
+              ) : (
+                <button
+                  className="root-0-2-46 button-0-2-186 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                  type="submit"
+                  disabled={access_token.role === "Admin"}
+                >
+                  Save
+                </button>
+              )}
             </div>
           </form>
         </section>
