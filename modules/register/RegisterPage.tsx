@@ -54,18 +54,6 @@ const Register: NextPage = () => {
                                   style={{ width: "36px", height: "36px" }}
                                 >
                                   {item.ownSVG ? (
-                                    // <svg
-                                    //   className="fill-0-2-36"
-                                    //   width="24"
-                                    //   height="24"
-                                    //   viewBox="0 0 24 24"
-                                    //   fill="none"
-                                    //   xmlns="http://www.w3.org/2000/svg"
-                                    //   style={{ fill: `${item.fill}` }}
-                                    //   dangerouslySetInnerHTML={{
-                                    //     __html: item.ownSVG,
-                                    //   }}
-                                    // ></svg>
                                     <SVG
                                       src={registerOwnSVG}
                                       style={{ fill: `${item.fill}` }}
