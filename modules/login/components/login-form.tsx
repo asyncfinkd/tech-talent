@@ -1,8 +1,8 @@
 import { Button } from "components/button";
 import React, { useContext, useState } from "react";
-import { FieldError, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Props } from "types/login";
+import { LoginInputsResult, Props } from "types/login";
 import { schema } from "schema/login";
 import { ErrorMessage } from "components/error-message";
 import { LoginRequest } from "features/login/login.api";
@@ -44,7 +44,7 @@ const LoginForm: React.FC = () => {
         })}
       >
         <div>
-          {LoginInputs.Fields.map((item: any) => {
+          {LoginInputs.Fields.map((item: LoginInputsResult) => {
             return (
               <>
                 <div className="root-0-2-247">
@@ -60,12 +60,15 @@ const LoginForm: React.FC = () => {
                   <input
                     type={item.type}
                     className={`input-0-2-251 ${
+                      // @ts-ignore
                       errors[item.name] && "invalid-0-2-252"
                     }`}
+                    // @ts-ignore
                     {...register(item.name)}
                   />
                   <ErrorMessage
                     element="div"
+                    // @ts-ignore
                     condition={errors[item.name]}
                     className="invalidMessage-0-2-253"
                   >
