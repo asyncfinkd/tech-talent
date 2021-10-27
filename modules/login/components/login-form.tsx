@@ -1,5 +1,5 @@
 import { Button } from "components/button";
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginInputsResult, Props } from "types/login";
@@ -11,12 +11,11 @@ import { Result } from "types/features/login";
 import { ApplicationContext } from "context/application/ApplicationContext";
 import { useRouter } from "next/router";
 import { LoginInputs } from "fixtures/login";
-import SVG from "react-inlinesvg";
 import { loading } from "constants/app/strings";
+import SVG from "react-inlinesvg";
+import Link from "next/link";
 
 const LoginForm: React.FC = () => {
-  const ref = React.useRef<SVGElement>(null);
-
   const router = useRouter();
   const {
     register,
@@ -91,9 +90,9 @@ const LoginForm: React.FC = () => {
           Incorrect email or password
         </ErrorMessage>
         <div className="buttonField-0-2-237">
-          <a className="forgotPassword-0-2-243" href="/forgot">
-            Forgot Password?
-          </a>
+          <Link href="/forgot">
+            <a className="forgotPassword-0-2-243">Forgot Password?</a>
+          </Link>
           {$login.isLoading ? (
             <Button
               type="submit"
