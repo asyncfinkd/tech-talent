@@ -1,6 +1,6 @@
 import { Button } from "components/button";
 import React, { useContext, useState } from "react";
-import { useForm } from "react-hook-form";
+import { FieldError, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Props } from "types/login";
 import { schema } from "schema/login";
@@ -10,6 +10,7 @@ import { useMutation } from "react-query";
 import { Result } from "types/features/login";
 import { ApplicationContext } from "context/application/ApplicationContext";
 import { useRouter } from "next/router";
+import { LoginInputs } from "fixtures/login";
 
 const LoginForm: React.FC = () => {
   const router = useRouter();
@@ -43,30 +44,39 @@ const LoginForm: React.FC = () => {
         })}
       >
         <div>
-          <div className="root-0-2-247">
-            <label className="label-0-2-248">
-              Email{" "}
-              <span
-                className="asteriskValid-0-2-249"
-                style={{ display: "inline" }}
-              >
-                *
-              </span>
-            </label>
-            <input
-              type="text"
-              className={`input-0-2-251 ${errors.email && "invalid-0-2-252"}`}
-              {...register("email")}
-            />
-            <ErrorMessage
-              element="div"
-              condition={errors.email}
-              className="invalidMessage-0-2-253"
-            >
-              Valid email is required
-            </ErrorMessage>
-          </div>
-          <div className="root-0-2-247">
+          {LoginInputs.Fields.map((item: any) => {
+            return (
+              <>
+                <div className="root-0-2-247">
+                  <label className="label-0-2-248">
+                    {item.title}{" "}
+                    <span
+                      className="asteriskValid-0-2-249"
+                      style={{ display: "inline" }}
+                    >
+                      *
+                    </span>
+                  </label>
+                  <input
+                    type={item.type}
+                    className={`input-0-2-251 ${
+                      errors[item.name] && "invalid-0-2-252"
+                    }`}
+                    {...register(item.name)}
+                  />
+                  <ErrorMessage
+                    element="div"
+                    condition={errors[item.name]}
+                    className="invalidMessage-0-2-253"
+                  >
+                    {item.required.message}
+                  </ErrorMessage>
+                </div>
+              </>
+            );
+          })}
+
+          {/* <div className="root-0-2-247">
             <label className="label-0-2-248">
               Password{" "}
               <span
@@ -90,7 +100,7 @@ const LoginForm: React.FC = () => {
             >
               Password is required
             </ErrorMessage>
-          </div>
+          </div> */}
         </div>
         <ErrorMessage
           element="div"
