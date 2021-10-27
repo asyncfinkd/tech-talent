@@ -75,32 +75,6 @@ const LoginForm: React.FC = () => {
               </>
             );
           })}
-
-          {/* <div className="root-0-2-247">
-            <label className="label-0-2-248">
-              Password{" "}
-              <span
-                className="asteriskValid-0-2-249"
-                style={{ display: "inline" }}
-              >
-                *
-              </span>
-            </label>
-            <input
-              type="password"
-              className={`input-0-2-251 ${
-                errors.password && "invalid-0-2-252"
-              }`}
-              {...register("password")}
-            />
-            <ErrorMessage
-              element="div"
-              className="invalidMessage-0-2-253"
-              condition={errors.password}
-            >
-              Password is required
-            </ErrorMessage>
-          </div> */}
         </div>
         <ErrorMessage
           element="div"
