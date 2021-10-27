@@ -165,21 +165,19 @@ export default function ProfileInformationForm({
                   disabled={access_token.role == "Admin" || fullNameError}
                   onClick={handleSubmit(
                     (data: ProfileInformationInputProps) => {
-                      if (access_token.role != "Admin") {
-                        $edit.mutate(
-                          { loginData: data },
-                          {
-                            onSuccess: (result: Result) => {
-                              let token: string | undefined | any =
-                                result.access_token;
-                              document.cookie = `cookie=${token};path=/`;
-                              const tokenDecode: any = jwt_decode(token);
-                              setAccess_Token(tokenDecode);
-                              setSuccessMessage(true);
-                            },
-                          }
-                        );
-                      }
+                      $edit.mutate(
+                        { loginData: data },
+                        {
+                          onSuccess: (result: Result) => {
+                            let token: string | undefined | any =
+                              result.access_token;
+                            document.cookie = `cookie=${token};path=/`;
+                            const tokenDecode: any = jwt_decode(token);
+                            setAccess_Token(tokenDecode);
+                            setSuccessMessage(true);
+                          },
+                        }
+                      );
                     }
                   )}
                 >
