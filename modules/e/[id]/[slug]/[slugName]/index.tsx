@@ -3,7 +3,7 @@ import Header from "ui/header";
 import env from "application/environment/env.json";
 import { Link } from "@mui/material";
 import Footer from "ui/footer";
-import useBoolean from "lib/use-boolean";
+import useBoolean from "shared-hooks/use-boolean";
 
 export default function EduFeedModule({ access_token, logged, data }: any) {
   const share = useBoolean(false);

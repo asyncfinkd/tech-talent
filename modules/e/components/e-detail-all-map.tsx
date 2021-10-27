@@ -1,17 +1,12 @@
-import { readCookie } from "lib/readCookie";
+import { filterDate } from "lib/filterDate";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 function EDetailAllMap({ item, logged }: any) {
-  const [date, setDate] = useState<any>("");
+  const [date, setDate] = useState<string>("");
 
   useEffect(() => {
-    const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-    let splitDay = item.createdAt.split("-");
-    const firstDate: any = new Date(splitDay[0], splitDay[1] - 1, splitDay[2]);
-    const secondDate: any = new Date();
-    const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
-    setDate(diffDays - 1);
+    filterDate({ setDate, item });
   });
   return (
     <>
