@@ -7,13 +7,15 @@ import {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
 } from "next";
+import { DecodedAccess_Token } from "types/global";
+import { DecodedAccess_Token__MOCKS__ } from "mocks/c";
 
 function SecurityPage({
   data,
   token,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const [logged, setLogged] = useState<any>(data);
-  const [access_token, setAccess_Token] = useState<any>(token);
+  const [logged, setLogged] = useState<boolean>(data);
+  const [access_token, setAccess_Token] = useState<DecodedAccess_Token>(token);
 
   return (
     <>
@@ -28,7 +30,7 @@ export const getServerSideProps: GetServerSideProps = async (
   const { req, res } = ctx;
   const { cookies } = req;
   let logged: boolean = false;
-  let token: any = {};
+  let token: DecodedAccess_Token = DecodedAccess_Token__MOCKS__();
   if (cookies.cookie) {
     const request = await fetch(`${env.host}/api/check/logged`, {
       method: "POST",
