@@ -7,13 +7,14 @@ import {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
 } from "next";
+import { DecodedAccess_Token } from "types/global";
 
 function Index({
   data,
   token,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const [logged, setLogged] = useState<any>(data);
-  const [access_token, setAccess_Token] = useState<any>(token);
+  const [logged, setLogged] = useState<boolean>(data);
+  const [access_token, setAccess_Token] = useState<DecodedAccess_Token>(token);
 
   return (
     <>
