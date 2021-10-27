@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const env = require("../../environment/app/env.json");
 const loginMiddleware = require("../../middlewares/loginMiddleware");
 const AdminSchema = require("../../schema/admin/index");
+const nodemailer = require("nodemailer");
 
 router.route("/login").post(async (req, res) => {
   if (req.body.forUser) {
