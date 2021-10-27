@@ -142,8 +142,13 @@ export default function ModuleCompanyDetailPage({
                         Follow
                       </button>
                     </div>
-                    <button className="root-0-2-46 expandButton-0-2-120 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59">
-                      <span>Expand</span>
+                    <button
+                      className="root-0-2-46 expandButton-0-2-120 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59"
+                      onClick={() => {
+                        setCollapse(!collapse);
+                      }}
+                    >
+                      <span>{collapse ? "Collapse" : "Expand"}</span>
                       <div className="caret-0-2-122">
                         <svg
                           className="fill-0-2-36"
@@ -152,6 +157,11 @@ export default function ModuleCompanyDetailPage({
                           viewBox="0 0 10 6"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
+                          style={{
+                            transform: `${
+                              collapse ? "rotate(180deg)" : "rotate(0deg)"
+                            }`,
+                          }}
                         >
                           <path d="M0.30133 0.298616C0.66658 -0.0633426 1.23813 -0.096248 1.64089 0.1999L1.75628 0.298616L5 3.53895L8.24372 0.298617C8.60897 -0.0633419 9.18052 -0.0962473 9.58328 0.199901L9.69867 0.298617C10.0639 0.660575 10.0971 1.22698 9.79828 1.62611L9.69867 1.74046L5.72748 5.70138C5.36223 6.06334 4.79067 6.09625 4.38791 5.8001L4.27252 5.70138L0.30133 1.74046C-0.100444 1.34231 -0.100444 0.69677 0.30133 0.298616Z"></path>
                         </svg>
@@ -161,7 +171,9 @@ export default function ModuleCompanyDetailPage({
                 </div>
               </div>
             </div>
-            <div className={`alwaysNoMargin-0-2-138`}>
+            <div className={`alwaysNoMargin-0-2-138 ${
+                !collapse && "hiddenOnDesktop-0-2-121"
+              }`}>
               <div className="content-0-2-117">
                 <div className="expandedContent-0-2-123">
                   <div className="mobileInfo-0-2-110">
