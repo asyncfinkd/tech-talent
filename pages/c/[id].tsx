@@ -16,7 +16,7 @@ function CompanyDetailPage({
   token,
   log,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const [logged, setLogged] = useState<any>(log);
+  const [logged, setLogged] = useState<boolean>(log);
   const [access_token, setAccess_Token] = useState<DecodedAccess_Token>(token);
   const [companiesData, setCompaniesData] = useState<GetCompaniesWithIDProps>(
     data[0]
