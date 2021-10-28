@@ -8,6 +8,7 @@ import jwt_decode from "jwt-decode";
 import ForgotModules from "modules/forgot";
 import { DecodedAccess_Token } from "types/global";
 import { DecodedAccess_Token__MOCKS__ } from "mocks/c";
+import { useAuth } from "lib/useAuth";
 
 function ForgotPages({
   data,
@@ -26,30 +27,7 @@ function ForgotPages({
 export const getServerSideProps: GetServerSideProps = async (
   ctx: GetServerSidePropsContext
 ) => {
-  const { req, res } = ctx;
-  const { cookies } = req;
-  let logged: boolean = false;
-  let token: DecodedAccess_Token = DecodedAccess_Token__MOCKS__();
-  if (cookies.cookie) {
-    const request = await fetch(
-      `${process.env.REACT_APP_API_URL}/api/check/logged`,
-      {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${cookies.cookie}`,
-        },
-        body: JSON.stringify({}),
-      }
-    );
-
-    token = jwt_decode(cookies.cookie);
-
-    const response = await request.json();
-    logged = response.success;
-  }
-
-  return { props: { data: logged, token } };
+  return useAuth({ ctx });
 };
 
 export default ForgotPages;
