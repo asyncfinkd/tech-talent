@@ -1,12 +1,13 @@
 import jwt_decode from "jwt-decode";
 import { DecodedAccess_Token__MOCKS__ } from "mocks/c";
+import { GetServerSidePropsContext } from "next";
 import { DecodedAccess_Token } from "types/global";
 
 export const useAuth = async ({
   ctx,
   wantAuthentication,
 }: {
-  ctx: any;
+  ctx: GetServerSidePropsContext;
   wantAuthentication?: boolean;
 }) => {
   const { req, res } = ctx;
