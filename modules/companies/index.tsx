@@ -3,6 +3,7 @@ import Footer from "ui/footer";
 import Header from "ui/header";
 import Head from "next/head";
 import CompaniesMap from "./components/companies-map";
+import DOMPurify from "isomorphic-dompurify";
 
 export default function CompaniesPage({
   access_token,
@@ -10,6 +11,7 @@ export default function CompaniesPage({
   data,
   setData,
 }: any) {
+  const sanitizer = DOMPurify.sanitize;
   const [search, setSearch] = useState<string>("");
   const [result, setResult] = useState<any>(data);
 
@@ -47,7 +49,9 @@ export default function CompaniesPage({
                   <h1
                     className="h1-0-2-105"
                     dangerouslySetInnerHTML={{
-                      __html: "Find a <span>company </span>that you trust",
+                      __html: sanitizer(
+                        "Find a <span>company </span>that you trust"
+                      ),
                     }}
                   ></h1>
                   <div className="buttonGroup-0-2-116"></div>

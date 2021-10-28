@@ -1,6 +1,8 @@
 import React from "react";
+import DOMPurify from "isomorphic-dompurify";
 
 export default function EHeader({ data, setCollapse, collapse }: any) {
+  const sanitizer = DOMPurify.sanitize;
   return (
     <>
       <div
@@ -19,7 +21,9 @@ export default function EHeader({ data, setCollapse, collapse }: any) {
               }`,
             }}
             dangerouslySetInnerHTML={{
-              __html: data.primaryText != null ? data.primaryText : "&nbsp;",
+              __html: sanitizer(
+                data.primaryText != null ? data.primaryText : "&nbsp;"
+              ),
             }}
           ></div>
           <div className="headerContent-0-2-448">

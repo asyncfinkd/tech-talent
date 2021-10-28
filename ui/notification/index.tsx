@@ -1,21 +1,25 @@
 import React from "react";
+import DOMPurify from "isomorphic-dompurify";
 
 const Notification: React.FC = () => {
+  const sanitizer = DOMPurify.sanitize;
   return (
     <>
       <div className="root-0-2-196">
         <h1
           className="h1-0-2-197"
           dangerouslySetInnerHTML={{
-            __html:
-              "Do you want to join <br /> the <span>Tech Talent</span> platform?",
+            __html: sanitizer(
+              "Do you want to join <br /> the <span>Tech Talent</span> platform?"
+            ),
           }}
         ></h1>
         <div
           className="caption-0-2-198"
           dangerouslySetInnerHTML={{
-            __html:
-              "Submit your contact information <br /> and we will contact you shortly",
+            __html: sanitizer(
+              "Submit your contact information <br /> and we will contact you shortly"
+            ),
           }}
         ></div>
         <a

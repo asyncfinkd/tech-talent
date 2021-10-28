@@ -3,8 +3,10 @@ import Header from "ui/header";
 import { Link } from "@mui/material";
 import Footer from "ui/footer";
 import useBoolean from "shared-hooks/use-boolean";
+import DOMPurify from "isomorphic-dompurify";
 
 export default function EduFeedModule({ access_token, logged, data }: any) {
+  const sanitizer = DOMPurify.sanitize;
   const share = useBoolean(false);
   const copied = useBoolean(false);
 
@@ -258,7 +260,7 @@ export default function EduFeedModule({ access_token, logged, data }: any) {
                 <div
                   className="content-0-2-219"
                   dangerouslySetInnerHTML={{
-                    __html: data.description,
+                    __html: sanitizer(data.description),
                   }}
                 ></div>
               </div>

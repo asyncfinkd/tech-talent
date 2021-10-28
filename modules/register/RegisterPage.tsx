@@ -7,8 +7,10 @@ import Head from "next/head";
 import RegisterFooter from "ui/footer/register";
 import SVG from "react-inlinesvg";
 import { registerOwnSVG, registerSVG } from "constants/app/strings";
+import DOMPurify from "isomorphic-dompurify";
 
 const Register: NextPage = () => {
+  const sanitizer = DOMPurify.sanitize;
   const renderLinks = (type: string) => {
     return `/register/candidate?fieldType=${type}`;
   };
@@ -58,7 +60,7 @@ const Register: NextPage = () => {
                                       src={registerOwnSVG}
                                       style={{ fill: `${item.fill}` }}
                                       dangerouslySetInnerHTML={{
-                                        __html: item.ownSVG,
+                                        __html: sanitizer(item.ownSVG),
                                       }}
                                     />
                                   ) : (
