@@ -1,11 +1,15 @@
 import React from "react";
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView, ScrollView } from "react-native";
 import Header from "./ui/header";
+import { StatusBar } from "expo-status-bar";
 
 export default function App() {
   return (
     <SafeAreaView>
-      <Header />
+      <ScrollView>
+        <Header />
+        <StatusBar style="auto" />
+      </ScrollView>
     </SafeAreaView>
   );
 }

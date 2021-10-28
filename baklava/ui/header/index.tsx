@@ -1,23 +1,49 @@
+import { Logo } from "../../assets/svg/Logo";
 import React from "react";
 import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
-import Svg, { Path } from "react-native-svg";
+import { BurgerMenu } from "../../assets/svg/BurgerMenu";
 
 export default function Header() {
   return (
     <>
       <View style={styles.container}>
-        <TouchableHighlight onPress={() => console.group(1)}>
-          <Svg
-            // className="fill-0-2-36 menuIcon-0-2-82"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <Path d="M21 8H3C2.44772 8 2 8.44772 2 9C2 9.55228 2.44772 10 3 10H21C21.5523 10 22 9.55228 22 9C22 8.44772 21.5523 8 21 8Z"></Path>
-            <Path d="M21 14H3C2.44772 14 2 14.4477 2 15C2 15.5523 2.44772 16 3 16H21C21.5523 16 22 15.5523 22 15C22 14.4477 21.5523 14 21 14Z"></Path>
-          </Svg>
+        <TouchableHighlight
+          onPress={() => console.group(1)}
+          style={styles.BurgerMenuButton}
+        >
+          <BurgerMenu />
         </TouchableHighlight>
+        <View style={styles.HeaderHero}>
+          <View style={styles.HeaderHeroContainer}>
+            <Logo />
+            <View
+              style={{
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "row",
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: "700",
+                  marginLeft: 6,
+                  marginRight: 6,
+                }}
+              >
+                Tech
+              </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  fontWeight: "300",
+                }}
+              >
+                Talent
+              </Text>
+            </View>
+          </View>
+        </View>
       </View>
     </>
   );
@@ -28,7 +54,21 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
+    flexDirection: "row",
     borderBottomWidth: 1,
     borderBottomColor: "#e6e6e6",
+  },
+  BurgerMenuButton: {
+    margin: 8,
+    fontWeight: "400",
+    padding: 8,
+  },
+  HeaderHero: {
+    marginLeft: 10,
+  },
+  HeaderHeroContainer: {
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "row",
   },
 });
