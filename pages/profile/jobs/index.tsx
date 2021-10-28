@@ -6,6 +6,7 @@ import {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
 } from "next";
+import { useAuth } from "lib/useAuth";
 
 function ProfileJobsPages({
   data,
@@ -28,37 +29,7 @@ function ProfileJobsPages({
 export const getServerSideProps: GetServerSideProps = async (
   ctx: GetServerSidePropsContext
 ) => {
-  const { req, res } = ctx;
-  const { cookies } = req;
-  let logged: boolean = false;
-  let token: any = {};
-  if (cookies.cookie) {
-    const request = await fetch(
-      `${process.env.REACT_APP_API_URL}/api/check/logged`,
-      {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${cookies.cookie}`,
-        },
-        body: JSON.stringify({}),
-      }
-    );
-
-    token = jwt_decode(cookies.cookie);
-
-    const response = await request.json();
-    logged = response.success;
-  } else {
-    return {
-      redirect: {
-        permanent: false,
-        destination: "/",
-      },
-    };
-  }
-
-  return { props: { data: logged, token } };
+  return useAuth({ ctx, wantAuthentication: true });
 };
 
 export default ProfileJobsPages;
