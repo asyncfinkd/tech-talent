@@ -8,7 +8,11 @@ import AppLoading from "expo-app-loading";
 
 const getFonts = () =>
   Font.loadAsync({
-    "markpro-bold": require("./assets/fonts/MarkPro-Bold.woff2"),
+    "markpro-bold": require("./assets/fonts/markpro-bold-webfont.ttf"),
+    // helvetica: require("./assets/fonts/Helvetica.woff2"),
+    "markpro-light": require("./assets/fonts/MarkPro-Light.ttf"),
+    // markpro: require("./assets/fonts/MarkPro.woff2"),
+    // "markpro-medium": require("./assets/fonts/MarkPro-Medium.woff2"),
   });
 
 export default function App() {

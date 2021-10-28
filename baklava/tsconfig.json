@@ -13,7 +13,5 @@
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "baseUrl": ".",
-  
-  }
+  },
 }

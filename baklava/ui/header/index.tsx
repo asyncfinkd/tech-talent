@@ -2,6 +2,7 @@ import { Logo } from "../../assets/svg/Logo";
 import React from "react";
 import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
 import { BurgerMenu } from "../../assets/svg/BurgerMenu";
+import { UserIcon } from "../../assets/svg/UserIcon";
 
 export default function Header() {
   return (
@@ -13,7 +14,7 @@ export default function Header() {
         >
           <BurgerMenu />
         </TouchableHighlight>
-        <View style={styles.HeaderHero}>
+        <View>
           <View style={styles.HeaderHeroContainer}>
             <Logo />
             <View
@@ -29,6 +30,7 @@ export default function Header() {
                   fontWeight: "700",
                   marginLeft: 6,
                   marginRight: 6,
+                  fontFamily: "markpro-bold",
                 }}
               >
                 Tech
@@ -37,6 +39,8 @@ export default function Header() {
                 style={{
                   fontSize: 14,
                   fontWeight: "300",
+                  fontFamily: "markpro-light",
+                  marginTop: 1.5,
                 }}
               >
                 Talent
@@ -44,6 +48,12 @@ export default function Header() {
             </View>
           </View>
         </View>
+        <TouchableHighlight
+          onPress={() => console.group(1)}
+          style={styles.BurgerMenuButton}
+        >
+          <UserIcon />
+        </TouchableHighlight>
       </View>
     </>
   );
@@ -62,9 +72,6 @@ const styles = StyleSheet.create({
     margin: 8,
     fontWeight: "400",
     padding: 8,
-  },
-  HeaderHero: {
-    marginLeft: 10,
   },
   HeaderHeroContainer: {
     display: "flex",
