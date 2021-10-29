@@ -22,10 +22,6 @@ export default function IndexScreen({ navigation }: any) {
   const MenuX = useRef(new Animated.Value(-10000000)).current;
   const Menu = useBoolean();
 
-  const pressHandler = () => {
-    navigation.navigate("education");
-  };
-
   const MenuData = [
     {
       title: "Jobs",
@@ -99,7 +95,6 @@ export default function IndexScreen({ navigation }: any) {
                       {item.svg()}
                       <Text
                         style={{ marginLeft: 10, fontFamily: "markpro-bold" }}
-                        onPress={() => navigation.navigate(item.title)}
                       >
                         {item.title}
                       </Text>
@@ -215,7 +210,7 @@ export default function IndexScreen({ navigation }: any) {
           <Footer />
           <StatusBar style="auto" />
         </ScrollView>
-      </SafeAreaView>{" "}
+      </SafeAreaView>
     </>
   );
 }
