@@ -18,9 +18,13 @@ import CarouselPartners from "../../ui/carousel/partners";
 import Footer from "../../ui/footer";
 import { StatusBar } from "expo-status-bar";
 
-export default function IndexScreen() {
+export default function IndexScreen({ navigation }: any) {
   const MenuX = useRef(new Animated.Value(-10000000)).current;
   const Menu = useBoolean();
+
+  const pressHandler = () => {
+    navigation.navigate("education");
+  };
 
   const MenuData = [
     {
@@ -38,6 +42,7 @@ export default function IndexScreen() {
     {
       title: "Education",
       svg: EducationSVG,
+      route: "education",
     },
   ];
 
@@ -94,6 +99,7 @@ export default function IndexScreen() {
                       {item.svg()}
                       <Text
                         style={{ marginLeft: 10, fontFamily: "markpro-bold" }}
+                        onPress={() => navigation.navigate(item.title)}
                       >
                         {item.title}
                       </Text>
