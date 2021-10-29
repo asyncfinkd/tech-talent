@@ -11,7 +11,6 @@ import Footer from "./ui/footer";
 import useBoolean from "./shared-hooks/use-boolean";
 import { JobsSVG } from "./assets/svg/jobs";
 import { CompaniesSVG } from "./assets/svg/companies";
-import { CoursesSVG } from "./assets/svg/courses";
 import { EducationSVG } from "./assets/svg/education";
 import { AboutSVG } from "./assets/svg/about";
 
