@@ -9,7 +9,7 @@ export default function Footer() {
     <>
       <View style={styles.container}>
         <View style={styles.content}>
-          <View style={styles.leftContainer}>
+          <View>
             <Text
               style={{
                 fontSize: 40,
@@ -176,9 +176,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     marginBottom: 48,
   },
-  leftContainer: {
-    marginBottom: 64,
-  },
   registerButton: {
     paddingTop: 25,
     paddingBottom: 25,
@@ -191,7 +188,6 @@ const styles = StyleSheet.create({
   footerContainer: {
     marginLeft: 15,
     marginRight: 15,
-    marginBottom: 25,
   },
   footerContent: {
     display: "flex",
