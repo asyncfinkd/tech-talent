@@ -8,15 +8,17 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@types/react-native-snap-carousel": "^3.8.5",
     "expo": "~43.0.0",
+    "expo-app-loading": "~1.2.1",
     "expo-font": "^10.0.3",
     "expo-status-bar": "~1.1.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.2",
+    "react-native-snap-carousel": "^3.9.1",
     "react-native-svg": "^12.1.1",
-    "react-native-web": "0.17.1",
-    "expo-app-loading": "~1.2.1"
+    "react-native-web": "0.17.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

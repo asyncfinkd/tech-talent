@@ -6,6 +6,7 @@ import * as Font from "expo-font";
 import { useState } from "react";
 import AppLoading from "expo-app-loading";
 import RegisterCompanyNotification from "./ui/notification/registerCompany";
+import CarouselPartners from "./ui/carousel/partners";
 
 const getFonts = () =>
   Font.loadAsync({
@@ -25,6 +26,7 @@ export default function App() {
         <ScrollView>
           <Header />
           <RegisterCompanyNotification />
+          <CarouselPartners />
           <StatusBar style="auto" />
         </ScrollView>
       </SafeAreaView>
