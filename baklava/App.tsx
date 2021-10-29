@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, SafeAreaView, ScrollView } from "react-native";
+import { Text, View, SafeAreaView, ScrollView } from "react-native";
 import Header from "./ui/header";
 import { StatusBar } from "expo-status-bar";
 import * as Font from "expo-font";
@@ -8,6 +8,10 @@ import AppLoading from "expo-app-loading";
 import RegisterCompanyNotification from "./ui/notification/registerCompany";
 import CarouselPartners from "./ui/carousel/partners";
 import Footer from "./ui/footer";
+import useBoolean from "./shared-hooks/use-boolean";
+import { JobsSVG } from "./assets/svg/jobs";
+import { CompaniesSVG } from "./assets/svg/companies";
+import { CoursesSVG } from "./assets/svg/courses";
 
 const getFonts = () =>
   Font.loadAsync({
@@ -20,12 +24,82 @@ const getFonts = () =>
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState<boolean>(false);
+  const Menu = useBoolean(false);
+
+  const MenuData = [
+    {
+      title: "Jobs",
+      svg: JobsSVG,
+    },
+    {
+      title: "Companies",
+      svg: CompaniesSVG,
+    },
+    {
+      title: "Courses",
+      svg: CoursesSVG,
+    },
+    {
+      title: "Education",
+      svg: CoursesSVG,
+    },
+  ];
 
   if (fontsLoaded) {
     return (
       <SafeAreaView>
         <ScrollView>
-          <Header />
+          <View
+            // @ts-ignore
+            style={{
+              position: "absolute",
+              // overflow: "scroll",
+              backgroundColor: "white",
+              top: 57,
+              paddingTop: 12,
+              paddingBottom: 12,
+              paddingLeft: 16,
+              paddingRight: 16,
+              width: "100%",
+              height: "100%",
+              zIndex: 9,
+              transform: [
+                {
+                  translateX: `${Menu.value ? "0vw" : "-1000vw"}`,
+                },
+              ],
+            }}
+          >
+            <View>
+              {MenuData.map((item: any) => {
+                return (
+                  <>
+                    <View
+                      style={{
+                        width: "100%",
+                        paddingTop: 12,
+                        paddingBottom: 12,
+                        paddingLeft: 0,
+                        paddingRight: 0,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "flex-start",
+                        flexDirection: "row",
+                      }}
+                    >
+                      {item.svg()}
+                      <Text
+                        style={{ marginLeft: 10, fontFamily: "markpro-bold" }}
+                      >
+                        {item.title}
+                      </Text>
+                    </View>
+                  </>
+                );
+              })}
+            </View>
+          </View>
+          <Header Menu={Menu} />
           <RegisterCompanyNotification />
           <CarouselPartners />
           <Footer />
