@@ -52,6 +52,7 @@ export default function App() {
     Animated.timing(MenuX, {
       toValue: value,
       duration: 500,
+      useNativeDriver: true,
     }).start();
   };
 
