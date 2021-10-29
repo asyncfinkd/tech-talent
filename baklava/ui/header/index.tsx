@@ -3,13 +3,16 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
 import { BurgerMenu } from "../../assets/svg/BurgerMenu";
 import { UserIcon } from "../../assets/svg/UserIcon";
+import useBoolean from "../../shared-hooks/use-boolean";
 
 export default function Header() {
+  const Menu = useBoolean(false);
+
   return (
     <>
       <View style={styles.container}>
         <TouchableHighlight
-          onPress={() => console.group(1)}
+          onPress={() => Menu.toggle()}
           style={styles.BurgerMenuButton}
         >
           <BurgerMenu />
@@ -54,6 +57,25 @@ export default function Header() {
         >
           <UserIcon />
         </TouchableHighlight>
+      </View>
+      <View
+        // @ts-ignore
+        style={{
+          position: "absolute",
+          // overflow: "scroll",
+          backgroundColor: "white",
+          paddingTop: 12,
+          paddingBottom: 12,
+          paddingLeft: 16,
+          paddingRight: 16,
+          transform: [
+            {
+              translateX: `${Menu.value ? "0vw" : "-100vw"}`,
+            },
+          ],
+        }}
+      >
+        <Text>123</Text>
       </View>
     </>
   );
