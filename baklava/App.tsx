@@ -12,6 +12,7 @@ import useBoolean from "./shared-hooks/use-boolean";
 import { JobsSVG } from "./assets/svg/jobs";
 import { CompaniesSVG } from "./assets/svg/companies";
 import { CoursesSVG } from "./assets/svg/courses";
+import { EducationSVG } from "./assets/svg/education";
 
 const getFonts = () =>
   Font.loadAsync({
@@ -37,11 +38,11 @@ export default function App() {
     },
     {
       title: "Courses",
-      svg: CoursesSVG,
+      svg: EducationSVG,
     },
     {
       title: "Education",
-      svg: CoursesSVG,
+      svg: EducationSVG,
     },
   ];
 
