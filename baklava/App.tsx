@@ -189,7 +189,6 @@ export default function App() {
                       English
                     </Text>
                   </TouchableHighlight>
-
                   <TouchableHighlight style={{ marginRight: 16 }}>
                     <Text
                       style={{
