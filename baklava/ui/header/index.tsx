@@ -12,6 +12,7 @@ export default function Header({ MenuFunction, Menu }: any) {
         <TouchableHighlight
           onPress={MenuFunction}
           style={styles.BurgerMenuButton}
+          underlayColor="none"
         >
           <BurgerMenu />
         </TouchableHighlight>
@@ -52,6 +53,7 @@ export default function Header({ MenuFunction, Menu }: any) {
         <TouchableHighlight
           onPress={() => console.group(1)}
           style={styles.BurgerMenuButton}
+          underlayColor="none"
         >
           {Menu.value ? <CloseIconSVG /> : <UserIcon />}
         </TouchableHighlight>

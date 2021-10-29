@@ -32,7 +32,7 @@ const getFonts = () =>
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState<boolean>(false);
-  const MenuX = useRef(new Animated.Value(-500)).current;
+  const MenuX = useRef(new Animated.Value(-10000000)).current;
   const Menu = useBoolean();
 
   const MenuData = [
