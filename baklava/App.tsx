@@ -19,7 +19,7 @@ const getFonts = () =>
   });
 
 export default function App() {
-  const [fontsLoaded, setFontsLoaded] = useState(false);
+  const [fontsLoaded, setFontsLoaded] = useState<boolean>(false);
 
   if (fontsLoaded) {
     return (
