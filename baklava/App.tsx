@@ -1,5 +1,5 @@
-import React from "react";
-import { Text, View, SafeAreaView, ScrollView } from "react-native";
+import React, { useRef } from "react";
+import { Text, View, SafeAreaView, ScrollView, Animated } from "react-native";
 import Header from "./ui/header";
 import { StatusBar } from "expo-status-bar";
 import * as Font from "expo-font";
@@ -26,7 +26,8 @@ const getFonts = () =>
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState<boolean>(false);
-  const Menu = useBoolean(false);
+  const MenuX = useRef(new Animated.Value(-500)).current;
+  const Menu = useBoolean();
 
   const MenuData = [
     {
@@ -47,11 +48,19 @@ export default function App() {
     },
   ];
 
+  const Animation = (value: number) => {
+    // @ts-ignore
+    Animated.timing(MenuX, {
+      toValue: value,
+      duration: 500,
+    }).start();
+  };
+
   if (fontsLoaded) {
     return (
       <SafeAreaView>
         <ScrollView>
-          <View
+          <Animated.View
             // @ts-ignore
             style={{
               position: "absolute",
@@ -67,7 +76,7 @@ export default function App() {
               zIndex: 9,
               transform: [
                 {
-                  translateX: `${Menu.value ? "0vw" : "-1000vw"}`,
+                  translateX: MenuX,
                 },
               ],
             }}
@@ -142,8 +151,18 @@ export default function App() {
                 />
               </View>
             </View>
-          </View>
-          <Header Menu={Menu} />
+          </Animated.View>
+          <Header
+            MenuFunction={() => {
+              if (Menu.value) {
+                Animation(-500);
+                Menu.toggle();
+              } else {
+                Animation(0);
+                Menu.toggle();
+              }
+            }}
+          />
           <RegisterCompanyNotification />
           <CarouselPartners />
           <Footer />

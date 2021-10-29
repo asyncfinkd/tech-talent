@@ -4,12 +4,12 @@ import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
 import { BurgerMenu } from "../../assets/svg/BurgerMenu";
 import { UserIcon } from "../../assets/svg/UserIcon";
 
-export default function Header({ Menu }: any) {
+export default function Header({ MenuFunction }: any) {
   return (
     <>
       <View style={styles.container}>
         <TouchableHighlight
-          onPress={() => Menu.toggle()}
+          onPress={MenuFunction}
           style={styles.BurgerMenuButton}
         >
           <BurgerMenu />
