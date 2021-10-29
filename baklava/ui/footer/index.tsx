@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, TouchableHighlight } from "react-native";
 
 export default function Footer() {
   return (
@@ -25,9 +25,17 @@ export default function Footer() {
                 fontSize: 20,
               }}
             >
-              Tech companies use our platform {"\n"} to find people that fit
+              Tech companies use our platform {"\n"}to find people that fit
               their culture.
             </Text>
+            <TouchableHighlight
+              onPress={() => console.group(1)}
+              style={styles.registerButton}
+            >
+              <Text style={{ color: "white", fontFamily: "markpro-bold" }}>
+                Register
+              </Text>
+            </TouchableHighlight>
           </View>
         </View>
       </View>
@@ -48,5 +56,14 @@ const styles = StyleSheet.create({
   },
   leftContainer: {
     marginBottom: 64,
+  },
+  registerButton: {
+    paddingTop: 25,
+    paddingBottom: 25,
+    paddingLeft: 44,
+    paddingRight: 44,
+    borderRadius: 10,
+    backgroundColor: "#7b7ce6",
+    width: 150,
   },
 });
