@@ -10,6 +10,24 @@ export default function CarouselPartners() {
     {
       image: "https://tt.ge/logos/phubber.png",
     },
+    {
+      image: "https://tt.ge/logos/lavapi.png",
+    },
+    {
+      image: "https://tt.ge/logos/redberry.png",
+    },
+    {
+      image: "https://tt.ge/logos/singular.png",
+    },
+    {
+      image: "https://tt.ge/logos/echolize.png",
+    },
+    {
+      image: "https://tt.ge/logos/meama.png",
+    },
+    {
+      image: "https://tt.ge/logos/europebet.png",
+    },
   ];
 
   const renderItem = ({ item }: any) => {
@@ -24,7 +42,17 @@ export default function CarouselPartners() {
   };
   return (
     <>
-      <View style={{ display: "flex", alignItems: "center" }}>
+      <View
+        style={{
+          display: "flex",
+          alignItems: "center",
+          backgroundColor: "#f6f8fb",
+          paddingTop: 30,
+          paddingBottom: 30,
+          paddingLeft: 0,
+          paddingRight: 0,
+        }}
+      >
         <Carousel
           data={carouselItems}
           sliderWidth={300}
@@ -38,8 +66,6 @@ export default function CarouselPartners() {
 
 const styles = StyleSheet.create({
   carouselItemContainer: {
-    borderColor: "red",
-    borderWidth: 1,
     padding: 20,
     display: "flex",
     alignItems: "center",
