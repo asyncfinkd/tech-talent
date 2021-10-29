@@ -1,5 +1,8 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableHighlight } from "react-native";
+import { CloudSVG } from "../../assets/svg/cloud";
+import { FacebookSVG } from "../../assets/svg/facebook";
+import { LinkedinSVG } from "../../assets/svg/linkedin";
 
 export default function Footer() {
   return (
@@ -42,7 +45,85 @@ export default function Footer() {
       <View style={{ width: "100%", height: 1, backgroundColor: "#f1f1f5" }} />
       <View style={styles.footerContainer}>
         <View style={styles.footerContent}>
-          <View style={styles.socialButtonGroup}></View>
+          <View style={styles.socialButtonGroup}>
+            <View
+              style={{
+                width: 48,
+                height: 48,
+                display: "flex",
+                alignItems: "center",
+                borderRadius: 18,
+                justifyContent: "center",
+                backgroundColor: "#f2f2fc",
+              }}
+            >
+              <View
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#fff",
+                  width: 36,
+                  height: 36,
+                  borderRadius: 12,
+                }}
+              >
+                <FacebookSVG />
+              </View>
+            </View>
+            <View style={{ width: 8 }} />
+            <View
+              style={{
+                width: 48,
+                height: 48,
+                display: "flex",
+                alignItems: "center",
+                borderRadius: 18,
+                justifyContent: "center",
+                backgroundColor: "#f2f2fc",
+              }}
+            >
+              <View
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#fff",
+                  width: 36,
+                  height: 36,
+                  borderRadius: 12,
+                }}
+              >
+                <LinkedinSVG />
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={{
+            marginTop: 12,
+            marginLeft: 0,
+            marginBottom: 8,
+            marginRight: 0,
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "row",
+          }}
+        >
+          <CloudSVG />
+          <View>
+            <Text
+              style={{
+                fontSize: 16,
+                fontFamily: "markpro-bold",
+                fontWeight: "500",
+                marginLeft: 0,
+                marginRight: 4,
+              }}
+            >
+              Talent
+            </Text>
+          </View>
         </View>
       </View>
     </>
@@ -75,6 +156,7 @@ const styles = StyleSheet.create({
   footerContainer: {
     marginLeft: 15,
     marginRight: 15,
+    marginBottom: 25,
   },
   footerContent: {
     display: "flex",
@@ -85,6 +167,7 @@ const styles = StyleSheet.create({
   },
   socialButtonGroup: {
     marginTop: 20,
+    flexDirection: "row",
     display: "flex",
   },
 });
