@@ -108,10 +108,17 @@ export default function Footer() {
             display: "flex",
             alignItems: "center",
             flexDirection: "row",
+            justifyContent: "center",
           }}
         >
           <CloudSVG />
-          <View>
+          <View
+            style={{
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "row",
+            }}
+          >
             <Text
               style={{
                 fontSize: 16,
@@ -122,6 +129,17 @@ export default function Footer() {
               }}
             >
               Talent
+            </Text>
+            <Text
+              style={{
+                fontSize: 16,
+                fontFamily: "markpro-light",
+                fontWeight: "300",
+                marginLeft: 0,
+                marginRight: 4,
+              }}
+            >
+              Cloud
             </Text>
           </View>
         </View>
