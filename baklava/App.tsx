@@ -5,6 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import * as Font from "expo-font";
 import { useState } from "react";
 import AppLoading from "expo-app-loading";
+import RegisterCompanyNotification from "./ui/notification/registerCompany";
 
 const getFonts = () =>
   Font.loadAsync({
@@ -23,6 +24,7 @@ export default function App() {
       <SafeAreaView>
         <ScrollView>
           <Header />
+          <RegisterCompanyNotification />
           <StatusBar style="auto" />
         </ScrollView>
       </SafeAreaView>
