@@ -13,6 +13,7 @@ import { JobsSVG } from "./assets/svg/jobs";
 import { CompaniesSVG } from "./assets/svg/companies";
 import { CoursesSVG } from "./assets/svg/courses";
 import { EducationSVG } from "./assets/svg/education";
+import { AboutSVG } from "./assets/svg/about";
 
 const getFonts = () =>
   Font.loadAsync({
@@ -98,6 +99,48 @@ export default function App() {
                   </>
                 );
               })}
+              <View
+                style={{
+                  display: "flex",
+                  height: 1,
+                  marginTop: 12,
+                  marginBottom: 12,
+                  marginLeft: 0,
+                  marginRight: 0,
+                  backgroundColor: "#e6e6e6",
+                }}
+              />
+              <View>
+                <View
+                  style={{
+                    width: "100%",
+                    paddingTop: 12,
+                    paddingBottom: 12,
+                    paddingLeft: 0,
+                    paddingRight: 0,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    flexDirection: "row",
+                  }}
+                >
+                  <AboutSVG />
+                  <Text style={{ marginLeft: 10, fontFamily: "markpro-bold" }}>
+                    About
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    display: "flex",
+                    height: 1,
+                    marginTop: 12,
+                    marginBottom: 12,
+                    marginLeft: 0,
+                    marginRight: 0,
+                    backgroundColor: "#e6e6e6",
+                  }}
+                />
+              </View>
             </View>
           </View>
           <Header Menu={Menu} />
