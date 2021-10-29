@@ -3,8 +3,9 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
 import { BurgerMenu } from "../../assets/svg/BurgerMenu";
 import { UserIcon } from "../../assets/svg/UserIcon";
+import { CloseIconSVG } from "../../assets/svg/closeIcon";
 
-export default function Header({ MenuFunction }: any) {
+export default function Header({ MenuFunction, Menu }: any) {
   return (
     <>
       <View style={styles.container}>
@@ -52,7 +53,7 @@ export default function Header({ MenuFunction }: any) {
           onPress={() => console.group(1)}
           style={styles.BurgerMenuButton}
         >
-          <UserIcon />
+          {Menu.value ? <CloseIconSVG /> : <UserIcon />}
         </TouchableHighlight>
       </View>
     </>

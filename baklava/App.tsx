@@ -216,6 +216,7 @@ export default function App() {
                 Menu.toggle();
               }
             }}
+            Menu={Menu}
           />
           <RegisterCompanyNotification />
           <CarouselPartners />
