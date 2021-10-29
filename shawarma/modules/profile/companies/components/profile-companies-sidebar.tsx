@@ -1,14 +1,7 @@
-import { ApplicationContext } from "context/application/ApplicationContext";
-import { deleteCookie } from "lib/deleteCookie";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import LogoutPage from "pages/logout";
-import React, { useContext } from "react";
+import React from "react";
 
-export default function ProfileInformationSidebar({
-  access_token,
-  setAccess_Token,
-}: any) {
+export default function ProfileCompaniesSidebar({ access_token }: any) {
   return (
     <>
       <div className="root-0-2-104">

@@ -14,10 +14,15 @@ function ProfileCompaniesPage({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [logged, setLogged] = useState<boolean>(data);
   const [access_token, setAccess_Token] = useState<DecodedAccess_Token>(token);
+  const [profileData, setProfileData] = useState<any>([]);
 
   return (
     <>
-      <ProfileCompaniesModule access_token={access_token} logged={logged} />
+      <ProfileCompaniesModule
+        access_token={access_token}
+        logged={logged}
+        data={profileData}
+      />
     </>
   );
 }
