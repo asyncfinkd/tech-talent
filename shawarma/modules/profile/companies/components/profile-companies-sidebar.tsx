@@ -34,7 +34,7 @@ export default function ProfileCompaniesSidebar({ access_token }: any) {
         </div>
         <div className="horizontalLine-0-2-109"></div>
         <Link href="/profile/information">
-          <a className="root-0-2-46 button-0-2-105__profile buttonActive-0-2-106 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed">
+          <a className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed">
             <svg
               className="fill-0-2-36 icon-0-2-107"
               width="24"
@@ -50,7 +50,6 @@ export default function ProfileCompaniesSidebar({ access_token }: any) {
               ></path>
             </svg>
             Information
-            <div className="verticalLine-0-2-108"></div>
           </a>
         </Link>
         <Link href="/profile/resume">
@@ -112,7 +111,7 @@ export default function ProfileCompaniesSidebar({ access_token }: any) {
           </a>
         </Link>
         <Link href="/profile/companies">
-          <a className="root-0-2-46 button-0-2-105__profile weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed">
+          <a className="root-0-2-46 button-0-2-105__profile buttonActive-0-2-106 weightMedium-0-2-61 sizeMd-0-2-51 variantBlank-0-2-59 qmqmlqwmel1m23mkmklwmed">
             <svg
               className="fill-0-2-36 icon-0-2-107"
               width="24"
@@ -128,6 +127,7 @@ export default function ProfileCompaniesSidebar({ access_token }: any) {
               ></path>
             </svg>
             Companies I Follow
+            <div className="verticalLine-0-2-108"></div>
           </a>
         </Link>
         <Link href="/profile/jobs">
