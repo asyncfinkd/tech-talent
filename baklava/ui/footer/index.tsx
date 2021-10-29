@@ -143,6 +143,23 @@ export default function Footer() {
             </Text>
           </View>
         </View>
+        <View
+          style={{
+            opacity: 0.5,
+            marginBottom: 20,
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 12,
+              textAlign: "center",
+              fontFamily: "markpro-light",
+              lineHeight: 16,
+            }}
+          >
+            Copyright © 2021 Tech Talent. {"\n"} All rights reserved.
+          </Text>
+        </View>
       </View>
     </>
   );
