@@ -183,7 +183,7 @@ export default function App() {
                         fontWeight: "500",
                         fontFamily: "markpro-bold",
                         lineHeight: 20,
-                        fontSize: 14,
+                        fontSize: 16,
                       }}
                     >
                       English
