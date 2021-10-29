@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, Image, StyleSheet } from "react-native";
+import { Text, View, Image, StyleSheet, ViewPropTypes } from "react-native";
 import Carousel from "react-native-snap-carousel";
 
 export default function CarouselPartners() {
