@@ -548,7 +548,7 @@ const Header: React.FC<Props> = ({
               <div className="title-0-2-96">Language</div>
               <div className="buttonGroup-0-2-97">
                 <button
-                  // className={renderLanguageClassName()}
+                  className="root-0-2-46 button-0-2-98 weightLight-0-2-60 sizeZero-0-2-48 variantBlank-0-2-59"
                   onClick={() => {
                     changeLanguage("en");
                   }}
