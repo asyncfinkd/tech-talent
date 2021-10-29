@@ -40,6 +40,11 @@ export default function Footer() {
         </View>
       </View>
       <View style={{ width: "100%", height: 1, backgroundColor: "#f1f1f5" }} />
+      <View style={styles.footerContainer}>
+        <View style={styles.footerContent}>
+          <View style={styles.socialButtonGroup}></View>
+        </View>
+      </View>
     </>
   );
 }
@@ -66,5 +71,20 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: "#7b7ce6",
     width: 150,
+  },
+  footerContainer: {
+    marginLeft: 15,
+    marginRight: 15,
+  },
+  footerContent: {
+    display: "flex",
+    padding: 0,
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexDirection: "column",
+  },
+  socialButtonGroup: {
+    marginTop: 20,
+    display: "flex",
   },
 });
