@@ -1,5 +1,12 @@
 import React, { useRef } from "react";
-import { Text, View, SafeAreaView, ScrollView, Animated } from "react-native";
+import {
+  Text,
+  View,
+  SafeAreaView,
+  ScrollView,
+  Animated,
+  TouchableHighlight,
+} from "react-native";
 import Header from "./ui/header";
 import { StatusBar } from "expo-status-bar";
 import * as Font from "expo-font";
@@ -149,6 +156,54 @@ export default function App() {
                     backgroundColor: "#e6e6e6",
                   }}
                 />
+              </View>
+              <View>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    fontFamily: "markpro-bold",
+                    fontWeight: "500",
+                    lineHeight: 20,
+                    marginBottom: 12,
+                  }}
+                >
+                  Language
+                </Text>
+                <View
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    flexDirection: "row",
+                  }}
+                >
+                  <TouchableHighlight style={{ marginRight: 16 }}>
+                    <Text
+                      style={{
+                        opacity: 0.5,
+                        fontWeight: "500",
+                        fontFamily: "markpro-bold",
+                        lineHeight: 20,
+                        fontSize: 14,
+                      }}
+                    >
+                      English
+                    </Text>
+                  </TouchableHighlight>
+
+                  <TouchableHighlight style={{ marginRight: 16 }}>
+                    <Text
+                      style={{
+                        opacity: 0.5,
+                        fontWeight: "500",
+                        fontFamily: "markpro-bold",
+                        lineHeight: 20,
+                        fontSize: 14,
+                      }}
+                    >
+                      ქართული
+                    </Text>
+                  </TouchableHighlight>
+                </View>
               </View>
             </View>
           </Animated.View>
