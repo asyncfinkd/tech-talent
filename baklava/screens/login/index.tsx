@@ -23,7 +23,7 @@ import jwt_decode from "jwt-decode";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ApplicationContext } from "../../context/application";
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }: any) {
   const MenuX = useRef(new Animated.Value(-10000000)).current;
   const [isEmailFocused, setIsEmailFocused] = useState<boolean>(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState<boolean>(false);
@@ -74,7 +74,7 @@ export default function LoginScreen() {
 
   return (
     <>
-      <SafeAreaView>
+      <SafeAreaView style={{ backgroundColor: "white" }}>
         <ScrollView>
           <Animated.View
             // @ts-ignore
@@ -225,6 +225,7 @@ export default function LoginScreen() {
                 Menu.toggle();
               }
             }}
+            navigation={navigation}
             Menu={Menu}
           />
           <View style={{ marginLeft: 15, marginRight: 15 }}>

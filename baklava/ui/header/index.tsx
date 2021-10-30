@@ -5,7 +5,7 @@ import { BurgerMenu } from "../../assets/svg/BurgerMenu";
 import { UserIcon } from "../../assets/svg/UserIcon";
 import { CloseIconSVG } from "../../assets/svg/closeIcon";
 
-export default function Header({ MenuFunction, Menu }: any) {
+export default function Header({ MenuFunction, Menu, navigation }: any) {
   return (
     <>
       <View style={styles.container}>
@@ -17,38 +17,40 @@ export default function Header({ MenuFunction, Menu }: any) {
           <BurgerMenu />
         </TouchableHighlight>
         <View>
-          <View style={styles.HeaderHeroContainer}>
-            <Logo />
-            <View
-              style={{
-                display: "flex",
-                alignItems: "center",
-                flexDirection: "row",
-              }}
-            >
-              <Text
+          <TouchableHighlight onPress={() => navigation.navigate("Home")}>
+            <View style={styles.HeaderHeroContainer}>
+              <Logo />
+              <View
                 style={{
-                  fontSize: 16,
-                  fontWeight: "700",
-                  marginLeft: 6,
-                  marginRight: 6,
-                  fontFamily: "markpro-bold",
+                  display: "flex",
+                  alignItems: "center",
+                  flexDirection: "row",
                 }}
               >
-                Tech
-              </Text>
-              <Text
-                style={{
-                  fontSize: 14,
-                  fontWeight: "300",
-                  fontFamily: "markpro-light",
-                  marginTop: 1.5,
-                }}
-              >
-                Talent
-              </Text>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    fontWeight: "700",
+                    marginLeft: 6,
+                    marginRight: 6,
+                    fontFamily: "markpro-bold",
+                  }}
+                >
+                  Tech
+                </Text>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    fontWeight: "300",
+                    fontFamily: "markpro-light",
+                    marginTop: 1.5,
+                  }}
+                >
+                  Talent
+                </Text>
+              </View>
             </View>
-          </View>
+          </TouchableHighlight>
         </View>
         <TouchableHighlight
           onPress={() => console.group(1)}

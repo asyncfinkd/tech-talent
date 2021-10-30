@@ -18,7 +18,7 @@ import RegisterCompanyNotification from "../../ui/notification/registerCompany";
 import CarouselPartners from "../../ui/carousel/partners";
 import Footer from "../../ui/footer";
 
-export default function IndexScreen() {
+export default function IndexScreen({ navigation }: any) {
   const MenuX = useRef(new Animated.Value(-10000000)).current;
   const Menu = useBoolean();
 
@@ -177,7 +177,10 @@ export default function IndexScreen() {
                       English
                     </Text>
                   </TouchableHighlight>
-                  <TouchableHighlight style={{ marginRight: 16 }}>
+                  <TouchableHighlight
+                    onPress={() => navigation.push("Login")}
+                    style={{ marginRight: 16 }}
+                  >
                     <Text
                       style={{
                         opacity: 0.5,
@@ -204,6 +207,7 @@ export default function IndexScreen() {
                 Menu.toggle();
               }
             }}
+            navigation={navigation}
             Menu={Menu}
           />
           <RegisterCompanyNotification />

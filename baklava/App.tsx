@@ -65,7 +65,13 @@ export default function App() {
                   headerShown: false,
                 }}
               />
-              <Stack.Screen name="Login" component={LoginScreen} />
+              <Stack.Screen
+                options={{
+                  headerShown: false,
+                }}
+                name="Login"
+                component={LoginScreen}
+              />
             </Stack.Navigator>
             {/* <IndexScreen /> */}
             {/* <LoginScreen /> */}
