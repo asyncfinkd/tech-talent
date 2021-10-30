@@ -19,7 +19,7 @@ import CarouselPartners from "../../ui/carousel/partners";
 import Footer from "../../ui/footer";
 
 export default function IndexScreen({ navigation }: any) {
-  const MenuX = useRef(new Animated.Value(-10000000)).current;
+  const MenuX = useRef(new Animated.Value(-500)).current;
   const Menu = useBoolean();
 
   const MenuData = [

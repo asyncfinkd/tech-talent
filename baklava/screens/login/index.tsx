@@ -24,7 +24,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ApplicationContext } from "../../context/application";
 
 export default function LoginScreen({ navigation }: any) {
-  const MenuX = useRef(new Animated.Value(-10000000)).current;
+  const MenuX = useRef(new Animated.Value(-500)).current;
   const [isEmailFocused, setIsEmailFocused] = useState<boolean>(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState<boolean>(false);
   const [invalidUser, setInvalidUser] = useState<boolean>(false);
