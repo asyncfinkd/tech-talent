@@ -18,6 +18,7 @@ import { AboutSVG } from "../../assets/svg/about";
 import Footer from "../../ui/footer";
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
+import axios, { AxiosResponse } from "axios";
 
 export default function LoginScreen() {
   const MenuX = useRef(new Animated.Value(-10000000)).current;
@@ -358,6 +359,7 @@ export default function LoginScreen() {
                           onBlur={() => setIsPasswordFocused(false)}
                           onFocus={() => setIsPasswordFocused(true)}
                           value={value}
+                          secureTextEntry={true}
                           onChangeText={onChange}
                         />
                       )}
@@ -400,7 +402,21 @@ export default function LoginScreen() {
                     Forgot Password?
                   </Text>
                   <TouchableHighlight
-                    onPress={handleSubmit(onSubmit)}
+                    onPress={handleSubmit((data: any) => {
+                      return axios
+                        .post(`http://192.168.100.7:3002/api/login`, {
+                          email: data.email,
+                          password: data.password,
+                          forUser: true,
+                        })
+                        .then((result: AxiosResponse) => {
+                          if (result.status === 200) {
+                            console.log(result);
+                          } else {
+                            console.log("1");
+                          }
+                        });
+                    })}
                     style={{
                       backgroundColor: "#7b7ce6",
                       width: 120,
