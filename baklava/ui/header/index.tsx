@@ -10,6 +10,7 @@ export default function Header({
   Menu,
   navigation,
   ProfileFunction,
+  Profile,
 }: any) {
   return (
     <>
@@ -57,13 +58,27 @@ export default function Header({
             </View>
           </TouchableHighlight>
         </View>
-        <TouchableHighlight
-          onPress={ProfileFunction}
-          style={styles.BurgerMenuButton}
-          underlayColor="none"
-        >
-          {Menu.value ? <CloseIconSVG /> : <UserIcon />}
-        </TouchableHighlight>
+        {Menu.value || Profile.value ? (
+          <>
+            <TouchableHighlight
+              onPress={ProfileFunction}
+              style={styles.BurgerMenuButton}
+              underlayColor="none"
+            >
+              <CloseIconSVG />
+            </TouchableHighlight>
+          </>
+        ) : (
+          <>
+            <TouchableHighlight
+              onPress={ProfileFunction}
+              style={styles.BurgerMenuButton}
+              underlayColor="none"
+            >
+              <UserIcon />
+            </TouchableHighlight>
+          </>
+        )}
       </View>
     </>
   );
