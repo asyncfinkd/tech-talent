@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import {
   View,
   Text,
@@ -21,6 +21,7 @@ import { useForm, Controller } from "react-hook-form";
 import axios, { AxiosResponse } from "axios";
 import jwt_decode from "jwt-decode";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ApplicationContext } from "../../context/application";
 
 export default function LoginScreen() {
   const MenuX = useRef(new Animated.Value(-10000000)).current;
@@ -28,15 +29,16 @@ export default function LoginScreen() {
   const [isPasswordFocused, setIsPasswordFocused] = useState<boolean>(false);
   const [invalidUser, setInvalidUser] = useState<boolean>(false);
   const Menu = useBoolean();
+  const { access_token, setAccess_Token } = useContext(ApplicationContext);
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data: any) => console.log(data);
-  const _storeData = async () => {
+  const _storeData = async (value: any) => {
     try {
-      await AsyncStorage.setItem("TASKS", "I like to save it.");
+      await AsyncStorage.setItem("token", value);
     } catch (error) {
       // Error saving data
     }
@@ -435,12 +437,9 @@ export default function LoginScreen() {
                           if (result.data.success != true) {
                             setInvalidUser(true);
                           } else {
-                            let token: any = jwt_decode(
-                              result.data.access_token
-                            );
-                            _storeData();
+                            _storeData(result.data.access_token);
+                            setAccess_Token(result.data.access_token);
                             setInvalidUser(false);
-                            console.log(result.data);
                           }
                         });
                     })}
