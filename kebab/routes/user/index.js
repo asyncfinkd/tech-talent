@@ -12,7 +12,7 @@ router.route("/login").post(async (req, res) => {
     let getUser = await UserSchema.findOne({ email: req.body.email });
 
     if (getUser == null) {
-      res.json({ message: "User doesn't exist", success: false });
+      res.status(502).json({ message: "User doesn't exist", success: false });
     }
 
     if (getUser.password.length > 0) {
@@ -52,7 +52,9 @@ router.route("/login").post(async (req, res) => {
           );
           res.status(200).json({ success: true, access_token: access_token });
         } else {
-          res.json({ message: "Password is wrong", success: false });
+          res
+            .status(502)
+            .json({ message: "Password is wrong", success: false });
         }
       });
     }
@@ -82,7 +84,9 @@ router.route("/login").post(async (req, res) => {
           );
           res.status(200).json({ success: true, access_token: access_token });
         } else {
-          res.json({ message: "Password is wrong", success: false });
+          res
+            .status(502)
+            .json({ message: "Password is wrong", success: false });
         }
       });
     }
