@@ -2,7 +2,8 @@ import React from "react";
 import * as Font from "expo-font";
 import { useState } from "react";
 import AppLoading from "expo-app-loading";
-import IndexScreen from "./screens/index/IndexScreen";
+import IndexScreen from "./screens/index";
+import LoginScreen from "./screens/login";
 
 const getFonts = () =>
   Font.loadAsync({
@@ -19,7 +20,8 @@ export default function App() {
   if (fontsLoaded) {
     return (
       <>
-        <IndexScreen />
+        {/* <IndexScreen /> */}
+        <LoginScreen />
       </>
     );
   } else {

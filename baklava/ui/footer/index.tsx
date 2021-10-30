@@ -4,44 +4,48 @@ import { CloudSVG } from "../../assets/svg/cloud";
 import { FacebookSVG } from "../../assets/svg/facebook";
 import { LinkedinSVG } from "../../assets/svg/linkedin";
 
-export default function Footer() {
+export default function Footer({ showFullFooter }: any) {
   return (
     <>
-      <View style={styles.container}>
-        <View style={styles.content}>
-          <View>
-            <Text
-              style={{
-                fontSize: 40,
-                fontFamily: "markpro-bold",
-                fontWeight: "700",
-              }}
-            >
-              Welcome to {"\n"}Tech Talent
-            </Text>
-            <Text
-              style={{
-                opacity: 0.5,
-                fontFamily: "markpro-light",
-                marginBottom: 32,
-                marginTop: 16,
-                fontSize: 20,
-              }}
-            >
-              Tech companies use our platform {"\n"}to find people that fit
-              their culture.
-            </Text>
-            <TouchableHighlight
-              onPress={() => console.group(1)}
-              style={styles.registerButton}
-            >
-              <Text style={{ color: "white", fontFamily: "markpro-bold" }}>
-                Register
-              </Text>
-            </TouchableHighlight>
+      {showFullFooter == true && (
+        <>
+          <View style={styles.container}>
+            <View style={styles.content}>
+              <View>
+                <Text
+                  style={{
+                    fontSize: 40,
+                    fontFamily: "markpro-bold",
+                    fontWeight: "700",
+                  }}
+                >
+                  Welcome to {"\n"}Tech Talent
+                </Text>
+                <Text
+                  style={{
+                    opacity: 0.5,
+                    fontFamily: "markpro-light",
+                    marginBottom: 32,
+                    marginTop: 16,
+                    fontSize: 20,
+                  }}
+                >
+                  Tech companies use our platform {"\n"}to find people that fit
+                  their culture.
+                </Text>
+                <TouchableHighlight
+                  onPress={() => console.group(1)}
+                  style={styles.registerButton}
+                >
+                  <Text style={{ color: "white", fontFamily: "markpro-bold" }}>
+                    Register
+                  </Text>
+                </TouchableHighlight>
+              </View>
+            </View>
           </View>
-        </View>
-      </View>
+        </>
+      )}
       <View style={{ width: "100%", height: 1, backgroundColor: "#f1f1f5" }} />
       <View style={styles.footerContainer}>
         <View style={styles.footerContent}>

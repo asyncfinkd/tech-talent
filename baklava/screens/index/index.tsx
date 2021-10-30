@@ -18,7 +18,7 @@ import CarouselPartners from "../../ui/carousel/partners";
 import Footer from "../../ui/footer";
 import { StatusBar } from "expo-status-bar";
 
-export default function IndexScreen({ navigation }: any) {
+export default function IndexScreen() {
   const MenuX = useRef(new Animated.Value(-10000000)).current;
   const Menu = useBoolean();
 
@@ -207,7 +207,7 @@ export default function IndexScreen({ navigation }: any) {
           />
           <RegisterCompanyNotification />
           <CarouselPartners />
-          <Footer />
+          <Footer showFullFooter={true} />
           <StatusBar style="auto" />
         </ScrollView>
       </SafeAreaView>
