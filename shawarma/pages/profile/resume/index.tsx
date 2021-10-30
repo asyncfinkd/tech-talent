@@ -6,6 +6,8 @@ import {
 } from "next";
 import React, { useState } from "react";
 import { DecodedAccess_Token } from "types/global";
+import Footer from "ui/footer";
+import Header from "ui/header";
 
 function ProfileResumePage({
   data,
@@ -16,7 +18,9 @@ function ProfileResumePage({
 
   return (
     <>
-      <p>Hello</p>
+      <Header ShowShadow={true} access_token={access_token} logged={logged} />
+
+      <Footer wantSponsors={true} access_token={access_token} logged={logged} />
     </>
   );
 }
