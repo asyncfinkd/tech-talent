@@ -4,12 +4,16 @@ import {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
 } from "next";
-import React from "react";
+import React, { useState } from "react";
+import { DecodedAccess_Token } from "types/global";
 
 function ProfileResumePage({
   data,
   token,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const [logged, setLogged] = useState<boolean>(data);
+  const [access_token, setAccess_Token] = useState<DecodedAccess_Token>(token);
+
   return (
     <>
       <p>Hello</p>
