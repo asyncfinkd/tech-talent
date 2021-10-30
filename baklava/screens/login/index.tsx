@@ -410,11 +410,7 @@ export default function LoginScreen() {
                           forUser: true,
                         })
                         .then((result: AxiosResponse) => {
-                          if (result.status === 200) {
-                            console.log(result);
-                          } else {
-                            console.log("1");
-                          }
+                          console.log(result.data);
                         });
                     })}
                     style={{
