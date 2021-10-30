@@ -330,26 +330,53 @@ export default function LoginScreen() {
                     >
                       Password <Text style={{ opacity: 0.2 }}>*</Text>
                     </Text>
-                    <TextInput
-                      style={{
-                        width: "100%",
-                        borderWidth: 2,
-                        borderColor: `${
-                          isPasswordFocused ? "#7b7ce6" : "transparent"
-                        }`,
-                        paddingTop: 22,
-                        paddingLeft: 24,
-                        paddingBottom: 22,
-                        paddingRight: 24,
-                        fontSize: 16,
-                        fontFamily: "markpro-light",
-                        lineHeight: 20,
-                        borderRadius: 15,
-                        backgroundColor: "#eff3ff",
-                      }}
-                      onBlur={() => setIsPasswordFocused(false)}
-                      onFocus={() => setIsPasswordFocused(true)}
+                    <Controller
+                      control={control}
+                      rules={{ required: true }}
+                      render={({ field: { onChange, value, onBlur } }) => (
+                        <TextInput
+                          style={{
+                            width: "100%",
+                            borderWidth: 2,
+                            borderColor: `${
+                              errors.password
+                                ? "#d22"
+                                : isPasswordFocused
+                                ? "#7b7ce6"
+                                : "transparent"
+                            }`,
+                            paddingTop: 22,
+                            paddingLeft: 24,
+                            paddingBottom: 22,
+                            paddingRight: 24,
+                            fontSize: 16,
+                            fontFamily: "markpro-light",
+                            lineHeight: 20,
+                            borderRadius: 15,
+                            backgroundColor: "#eff3ff",
+                          }}
+                          onBlur={() => setIsPasswordFocused(false)}
+                          onFocus={() => setIsPasswordFocused(true)}
+                          value={value}
+                          onChangeText={onChange}
+                        />
+                      )}
+                      name="password"
+                      defaultValue=""
                     />
+                    {errors.password && (
+                      <Text
+                        style={{
+                          color: "#d22",
+                          fontSize: 14,
+                          fontFamily: "markpro-light",
+                          lineHeight: 16,
+                          paddingTop: 8,
+                        }}
+                      >
+                        Password is required
+                      </Text>
+                    )}
                   </View>
                 </View>
                 <View
