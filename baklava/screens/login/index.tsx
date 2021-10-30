@@ -6,6 +6,7 @@ import {
   ScrollView,
   Animated,
   TouchableHighlight,
+  TextInput,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import Header from "../../ui/header";
@@ -15,9 +16,11 @@ import { CompaniesSVG } from "../../assets/svg/companies";
 import { EducationSVG } from "../../assets/svg/education";
 import { AboutSVG } from "../../assets/svg/about";
 import Footer from "../../ui/footer";
+import { useState } from "react";
 
 export default function LoginScreen() {
   const MenuX = useRef(new Animated.Value(-10000000)).current;
+  const [isEmailFocused, setIsEmailFocused] = useState<boolean>(false);
   const Menu = useBoolean();
 
   const MenuData = [
@@ -48,6 +51,7 @@ export default function LoginScreen() {
       useNativeDriver: true,
     }).start();
   };
+
   return (
     <>
       <SafeAreaView>
@@ -203,6 +207,79 @@ export default function LoginScreen() {
             }}
             Menu={Menu}
           />
+          <View style={{ marginLeft: 15, marginRight: 15 }}>
+            <View style={{ marginBottom: 20 }}>
+              <Text
+                style={{
+                  marginTop: 16,
+                  marginLeft: 0,
+                  marginBottom: 8,
+                  marginRight: 0,
+                  textAlign: "center",
+                  fontFamily: "markpro-bold",
+                  fontSize: 24,
+                  fontWeight: "700",
+                  lineHeight: 28,
+                }}
+              >
+                Login
+              </Text>
+              <Text
+                style={{
+                  marginTop: 0,
+                  marginLeft: 0,
+                  marginBottom: 16,
+                  marginRight: 0,
+                  opacity: 0.5,
+                  fontSize: 16,
+                  fontFamily: "markpro-light",
+                  textAlign: "center",
+                  fontWeight: "400",
+                  lineHeight: 20,
+                }}
+              >
+                Welcome Back
+              </Text>
+              <View>
+                <View>
+                  <View style={{ width: "100%", marginBottom: 20 }}>
+                    <Text
+                      style={{
+                        fontSize: 16,
+                        fontFamily: "markpro-bold",
+                        fontWeight: "700",
+                        lineHeight: 20,
+                        marginBottom: 20,
+                      }}
+                    >
+                      Email <Text style={{ opacity: 0.2 }}>*</Text>
+                    </Text>
+                    <TextInput
+                      style={{
+                        width: "100%",
+                        borderWidth: 2,
+                        borderColor: `${
+                          isEmailFocused ? "#7b7ce6" : "transparent"
+                        }`,
+                        paddingTop: 22,
+                        paddingLeft: 24,
+                        paddingBottom: 22,
+                        paddingRight: 24,
+                        fontSize: 16,
+                        fontFamily: "markpro-light",
+                        lineHeight: 20,
+                        borderRadius: 15,
+                        backgroundColor: "#eff3ff",
+                      }}
+                      onBlur={() => setIsEmailFocused(false)}
+                      onFocus={() => setIsEmailFocused(true)}
+                    />
+                  </View>
+                </View>
+                <View></View>
+              </View>
+            </View>
+          </View>
           <Footer showFullFooter={false} />
           <StatusBar style="auto" />
         </ScrollView>
