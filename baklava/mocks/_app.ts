@@ -8,5 +8,6 @@ export const APP__TOKEN__MOCKS__ = () => {
     logged: false,
     phone: "",
     socialNetwork: "",
+    fullName: "",
   };
 };

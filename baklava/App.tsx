@@ -21,24 +21,24 @@ const getFonts = () =>
   });
 
 export default function App() {
-  const _retrieveData = async () => {
-    try {
-      const value = await AsyncStorage.getItem("TASKS");
-      if (value !== null) {
-        // We have data!!
-        console.log(value);
-      }
-    } catch (error) {
-      // Error retrieving data
-    }
-  };
+  // const _retrieveData = async () => {
+  //   try {
+  //     const value = await AsyncStorage.getItem("token");
+  //     if (access_token.fullName == "") {
+  //       if (value !== null) {
+  //         // We have data!!
+  //         let decoded: any = jwt_decode(value);
+  //         setAccess_Token(decoded);
+  //       }
+  //     }
+  //   } catch (error) {
+  //     // Error retrieving data
+  //   }
+  // };
   const [fontsLoaded, setFontsLoaded] = useState<boolean>(false);
   const [access_token, setAccess_Token] = useState<TokenProps>(
     APP__TOKEN__MOCKS__()
   );
-  useEffect(() => {
-    _retrieveData();
-  });
   if (fontsLoaded) {
     return (
       <>

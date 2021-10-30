@@ -437,9 +437,13 @@ export default function LoginScreen() {
                           if (result.data.success != true) {
                             setInvalidUser(true);
                           } else {
-                            _storeData(result.data.access_token);
-                            setAccess_Token(result.data.access_token);
+                            let decoded: any = jwt_decode(
+                              result.data.access_token
+                            );
+                            _storeData(JSON.stringify(decoded));
+                            setAccess_Token(JSON.stringify(decoded));
                             setInvalidUser(false);
+                            alert(decoded.fullName);
                           }
                         });
                     })}
