@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     borderBottomWidth: 1,
     borderBottomColor: "#e6e6e6",
+    backgroundColor: "white",
   },
   BurgerMenuButton: {
     margin: 8,

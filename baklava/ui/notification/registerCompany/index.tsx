@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  Button,
-  TouchableHighlight,
-} from "react-native";
+import { Text, View, StyleSheet, TouchableHighlight } from "react-native";
 
 export default function RegisterCompanyNotification() {
   return (
@@ -31,13 +25,14 @@ export default function RegisterCompanyNotification() {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 40,
-    marginBottom: 40,
+    paddingTop: 40,
+    paddingBottom: 40,
     marginLeft: 0,
     marginRight: 0,
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
+    backgroundColor: "white",
   },
   containerText: {
     margin: 0,

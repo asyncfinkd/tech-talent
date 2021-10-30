@@ -174,9 +174,10 @@ export default function Footer({ showFullFooter }: any) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 44,
-    marginLeft: 15,
-    marginRight: 15,
+    paddingTop: 44,
+    paddingLeft: 15,
+    paddingRight: 15,
+    backgroundColor: "white",
   },
   content: {
     display: "flex",
@@ -193,8 +194,9 @@ const styles = StyleSheet.create({
     width: 150,
   },
   footerContainer: {
-    marginLeft: 15,
-    marginRight: 15,
+    paddingLeft: 15,
+    paddingRight: 15,
+    backgroundColor: "white",
   },
   footerContent: {
     display: "flex",

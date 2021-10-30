@@ -10,13 +10,13 @@ import {
   ScrollView,
   Animated,
   TouchableHighlight,
+  StatusBar,
 } from "react-native";
 import { AboutSVG } from "../../assets/svg/about";
 import Header from "../../ui/header";
 import RegisterCompanyNotification from "../../ui/notification/registerCompany";
 import CarouselPartners from "../../ui/carousel/partners";
 import Footer from "../../ui/footer";
-import { StatusBar } from "expo-status-bar";
 
 export default function IndexScreen() {
   const MenuX = useRef(new Animated.Value(-10000000)).current;
@@ -52,8 +52,9 @@ export default function IndexScreen() {
   };
   return (
     <>
-      <SafeAreaView>
+      <SafeAreaView style={{ backgroundColor: "white" }}>
         <ScrollView>
+          <StatusBar backgroundColor="white" />
           <Animated.View
             // @ts-ignore
             style={{
@@ -208,7 +209,6 @@ export default function IndexScreen() {
           <RegisterCompanyNotification />
           <CarouselPartners />
           <Footer showFullFooter={true} />
-          <StatusBar style="auto" />
         </ScrollView>
       </SafeAreaView>
     </>

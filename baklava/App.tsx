@@ -11,6 +11,7 @@ import { TokenProps } from "./types/app/token";
 import { APP__TOKEN__MOCKS__ } from "./mocks/_app";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import IndexScreen from "./screens/index";
 
 const getFonts = () =>
   Font.loadAsync({
@@ -49,7 +50,23 @@ export default function App() {
       <>
         <ApplicationContext.Provider value={{ access_token, setAccess_Token }}>
           <NavigationContainer>
-            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Navigator
+              initialRouteName="Home"
+              screenOptions={{
+                headerMode: "screen",
+                headerTintColor: "white",
+                headerStyle: { backgroundColor: "white" },
+              }}
+            >
+              <Stack.Screen
+                name="Home"
+                component={IndexScreen}
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen name="Login" component={LoginScreen} />
+            </Stack.Navigator>
             {/* <IndexScreen /> */}
             {/* <LoginScreen /> */}
           </NavigationContainer>
