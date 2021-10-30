@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Text, View, StyleSheet, TouchableHighlight } from "react-native";
 import { CloudSVG } from "../../assets/svg/cloud";
 import { FacebookSVG } from "../../assets/svg/facebook";
 import { LinkedinSVG } from "../../assets/svg/linkedin";
+import { ApplicationContext } from "../../context/application";
 
 export default function Footer({ showFullFooter }: any) {
+  const { access_token, setAccess_Token } = useContext(ApplicationContext);
+
   return (
     <>
+      {console.log(access_token)}
       {showFullFooter == true && (
         <>
           <View style={styles.container}>
@@ -38,7 +42,7 @@ export default function Footer({ showFullFooter }: any) {
                   style={styles.registerButton}
                 >
                   <Text style={{ color: "white", fontFamily: "markpro-bold" }}>
-                    Register
+                    {access_token?.logged ? "Profile" : "Register"}
                   </Text>
                 </TouchableHighlight>
               </View>

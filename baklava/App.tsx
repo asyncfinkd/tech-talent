@@ -21,30 +21,32 @@ const getFonts = () =>
   });
 
 export default function App() {
-  // const _retrieveData = async () => {
-  //   try {
-  //     const value = await AsyncStorage.getItem("token");
-  //     if (access_token.fullName == "") {
-  //       if (value !== null) {
-  //         // We have data!!
-  //         let decoded: any = jwt_decode(value);
-  //         setAccess_Token(decoded);
-  //       }
-  //     }
-  //   } catch (error) {
-  //     // Error retrieving data
-  //   }
-  // };
+  const _retrieveData = async () => {
+    try {
+      const value: any = await AsyncStorage.getItem("token");
+      if (access_token.fullName == "") {
+        if (value !== null) {
+          // We have data!!
+          setAccess_Token(JSON.parse(value));
+        }
+      }
+    } catch (error) {
+      // Error retrieving data
+    }
+  };
   const [fontsLoaded, setFontsLoaded] = useState<boolean>(false);
   const [access_token, setAccess_Token] = useState<TokenProps>(
     APP__TOKEN__MOCKS__()
   );
+  useEffect(() => {
+    _retrieveData();
+  });
   if (fontsLoaded) {
     return (
       <>
         <ApplicationContext.Provider value={{ access_token, setAccess_Token }}>
-          {/* <IndexScreen /> */}
-          <LoginScreen />
+          <IndexScreen />
+          {/* <LoginScreen /> */}
         </ApplicationContext.Provider>
       </>
     );
