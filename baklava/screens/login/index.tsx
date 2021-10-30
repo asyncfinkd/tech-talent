@@ -7,6 +7,7 @@ import {
   Animated,
   TouchableHighlight,
   TextInput,
+  AsyncStorage,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import Header from "../../ui/header";
