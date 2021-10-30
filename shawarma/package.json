@@ -39,6 +39,7 @@
     "react-query": "^3.27.0",
     "react-select": "^5.1.0",
     "react-toastify": "^8.0.3",
+    "react-window": "^1.8.6",
     "yup": "^0.32.11"
   },
   "devDependencies": {
