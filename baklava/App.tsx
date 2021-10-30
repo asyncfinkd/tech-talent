@@ -4,6 +4,9 @@ import { useState } from "react";
 import AppLoading from "expo-app-loading";
 import IndexScreen from "./screens/index";
 import LoginScreen from "./screens/login";
+import { useEffect } from "react";
+import jwt_decode from "jwt-decode";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const getFonts = () =>
   Font.loadAsync({
@@ -15,8 +18,21 @@ const getFonts = () =>
   });
 
 export default function App() {
+  const _retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem("TASKS");
+      if (value !== null) {
+        // We have data!!
+        console.log(value);
+      }
+    } catch (error) {
+      // Error retrieving data
+    }
+  };
   const [fontsLoaded, setFontsLoaded] = useState<boolean>(false);
-
+  useEffect(() => {
+    _retrieveData();
+  });
   if (fontsLoaded) {
     return (
       <>

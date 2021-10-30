@@ -7,7 +7,6 @@ import {
   Animated,
   TouchableHighlight,
   TextInput,
-  AsyncStorage,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import Header from "../../ui/header";
@@ -20,6 +19,8 @@ import Footer from "../../ui/footer";
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import axios, { AxiosResponse } from "axios";
+import jwt_decode from "jwt-decode";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function LoginScreen() {
   const MenuX = useRef(new Animated.Value(-10000000)).current;
@@ -33,7 +34,13 @@ export default function LoginScreen() {
     formState: { errors },
   } = useForm();
   const onSubmit = (data: any) => console.log(data);
-
+  const _storeData = async () => {
+    try {
+      await AsyncStorage.setItem("TASKS", "I like to save it.");
+    } catch (error) {
+      // Error saving data
+    }
+  };
   const MenuData = [
     {
       title: "Jobs",
@@ -428,6 +435,10 @@ export default function LoginScreen() {
                           if (result.data.success != true) {
                             setInvalidUser(true);
                           } else {
+                            let token: any = jwt_decode(
+                              result.data.access_token
+                            );
+                            _storeData();
                             setInvalidUser(false);
                             console.log(result.data);
                           }
