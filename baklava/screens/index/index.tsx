@@ -17,6 +17,7 @@ import Header from "../../ui/header";
 import RegisterCompanyNotification from "../../ui/notification/registerCompany";
 import CarouselPartners from "../../ui/carousel/partners";
 import Footer from "../../ui/footer";
+import { UserProfile } from "../../assets/svg/UserProfile";
 
 export default function IndexScreen({ navigation }: any) {
   const MenuX = useRef(new Animated.Value(-500)).current;
@@ -229,7 +230,40 @@ export default function IndexScreen({ navigation }: any) {
               ],
             }}
           >
-            <Text>123</Text>
+            <View
+              style={{
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "row",
+              }}
+            >
+              <View
+                style={{
+                  marginRight: 12,
+                  width: 48,
+                  height: 48,
+                  display: "flex",
+                  alignItems: "center",
+                  borderRadius: 18,
+                  justifyContent: "center",
+                  backgroundColor: "#f2f2fc",
+                }}
+              >
+                <View
+                  style={{
+                    width: 36,
+                    height: 36,
+                    borderRadius: 15,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backgroundColor: "#fff",
+                  }}
+                >
+                  <UserProfile />
+                </View>
+              </View>
+            </View>
           </Animated.View>
           <Header
             MenuFunction={() => {
