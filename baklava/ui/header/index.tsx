@@ -5,7 +5,12 @@ import { BurgerMenu } from "../../assets/svg/BurgerMenu";
 import { UserIcon } from "../../assets/svg/UserIcon";
 import { CloseIconSVG } from "../../assets/svg/closeIcon";
 
-export default function Header({ MenuFunction, Menu, navigation }: any) {
+export default function Header({
+  MenuFunction,
+  Menu,
+  navigation,
+  ProfileFunction,
+}: any) {
   return (
     <>
       <View style={styles.container}>
@@ -53,7 +58,7 @@ export default function Header({ MenuFunction, Menu, navigation }: any) {
           </TouchableHighlight>
         </View>
         <TouchableHighlight
-          onPress={() => console.group(1)}
+          onPress={ProfileFunction}
           style={styles.BurgerMenuButton}
           underlayColor="none"
         >

@@ -20,7 +20,10 @@ import Footer from "../../ui/footer";
 
 export default function IndexScreen({ navigation }: any) {
   const MenuX = useRef(new Animated.Value(-500)).current;
+  const ProfileX = useRef(new Animated.Value(500)).current;
+
   const Menu = useBoolean();
+  const Profile = useBoolean();
 
   const MenuData = [
     {
@@ -45,6 +48,15 @@ export default function IndexScreen({ navigation }: any) {
   const Animation = (value: number) => {
     // @ts-ignore
     Animated.timing(MenuX, {
+      toValue: value,
+      duration: 500,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const ProfileAnimation = (value: number) => {
+    // @ts-ignore
+    Animated.timing(ProfileX, {
       toValue: value,
       duration: 500,
       useNativeDriver: true,
@@ -197,6 +209,28 @@ export default function IndexScreen({ navigation }: any) {
               </View>
             </View>
           </Animated.View>
+          <Animated.View
+            style={{
+              position: "absolute",
+              // overflow: "scroll",
+              backgroundColor: "white",
+              top: 57,
+              paddingTop: 12,
+              paddingBottom: 12,
+              paddingLeft: 16,
+              paddingRight: 16,
+              width: "100%",
+              height: "100%",
+              zIndex: 9,
+              transform: [
+                {
+                  translateX: ProfileX,
+                },
+              ],
+            }}
+          >
+            <Text>123</Text>
+          </Animated.View>
           <Header
             MenuFunction={() => {
               if (Menu.value) {
@@ -205,6 +239,15 @@ export default function IndexScreen({ navigation }: any) {
               } else {
                 Animation(0);
                 Menu.toggle();
+              }
+            }}
+            ProfileFunction={() => {
+              if (Profile.value) {
+                ProfileAnimation(500);
+                Profile.toggle();
+              } else {
+                ProfileAnimation(0);
+                Profile.toggle();
               }
             }}
             navigation={navigation}
