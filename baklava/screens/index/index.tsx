@@ -193,10 +193,7 @@ export default function IndexScreen({ navigation }: any) {
                       English
                     </Text>
                   </TouchableHighlight>
-                  <TouchableHighlight
-                    onPress={() => navigation.push("Login")}
-                    style={{ marginRight: 16 }}
-                  >
+                  <TouchableHighlight style={{ marginRight: 16 }}>
                     <Text
                       style={{
                         opacity: 0.5,
@@ -324,31 +321,36 @@ export default function IndexScreen({ navigation }: any) {
                   Register
                 </Text>
               </View>
-              <View
-                style={{
-                  width: "100%",
-                  paddingTop: 12,
-                  paddingBottom: 12,
-                  paddingLeft: 0,
-                  paddingRight: 0,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "flex-start",
-                  flexDirection: "row",
-                }}
+              <TouchableHighlight
+                underlayColor="none"
+                onPress={() => navigation.push("Login")}
               >
-                <LoginSVG />
-                <Text
+                <View
                   style={{
-                    marginLeft: 10,
-                    fontFamily: "markpro-bold",
-                    fontSize: 16,
-                    paddingTop: -3,
+                    width: "100%",
+                    paddingTop: 12,
+                    paddingBottom: 12,
+                    paddingLeft: 0,
+                    paddingRight: 0,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    flexDirection: "row",
                   }}
                 >
-                  Login
-                </Text>
-              </View>
+                  <LoginSVG />
+                  <Text
+                    style={{
+                      marginLeft: 10,
+                      fontFamily: "markpro-bold",
+                      fontSize: 16,
+                      paddingTop: -3,
+                    }}
+                  >
+                    Login
+                  </Text>
+                </View>
+              </TouchableHighlight>
             </View>
           </Animated.View>
           <Header

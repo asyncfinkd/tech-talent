@@ -23,7 +23,10 @@ export default function Header({
           <BurgerMenu />
         </TouchableHighlight>
         <View>
-          <TouchableHighlight onPress={() => navigation.navigate("Home")}>
+          <TouchableHighlight
+            underlayColor="none"
+            onPress={() => navigation.navigate("Home")}
+          >
             <View style={styles.HeaderHeroContainer}>
               <Logo />
               <View
