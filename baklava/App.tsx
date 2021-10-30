@@ -7,6 +7,9 @@ import LoginScreen from "./screens/login";
 import { useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ApplicationContext } from "./context/application";
+import { TokenProps } from "./types/app/token";
+import { APP__TOKEN__MOCKS__ } from "./mocks/_app";
 
 const getFonts = () =>
   Font.loadAsync({
@@ -30,14 +33,19 @@ export default function App() {
     }
   };
   const [fontsLoaded, setFontsLoaded] = useState<boolean>(false);
+  const [access_token, setAccess_Token] = useState<TokenProps>(
+    APP__TOKEN__MOCKS__()
+  );
   useEffect(() => {
     _retrieveData();
   });
   if (fontsLoaded) {
     return (
       <>
-        {/* <IndexScreen /> */}
-        <LoginScreen />
+        <ApplicationContext.Provider value={{ access_token, setAccess_Token }}>
+          {/* <IndexScreen /> */}
+          <LoginScreen />
+        </ApplicationContext.Provider>
       </>
     );
   } else {
