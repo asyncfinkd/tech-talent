@@ -24,6 +24,7 @@ export default function LoginScreen() {
   const MenuX = useRef(new Animated.Value(-10000000)).current;
   const [isEmailFocused, setIsEmailFocused] = useState<boolean>(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState<boolean>(false);
+  const [invalidUser, setInvalidUser] = useState<boolean>(false);
   const Menu = useBoolean();
   const {
     control,
@@ -381,6 +382,19 @@ export default function LoginScreen() {
                     )}
                   </View>
                 </View>
+                {invalidUser && (
+                  <Text
+                    style={{
+                      color: "#d22",
+                      fontSize: 14,
+                      fontFamily: "markpro-light",
+                      lineHeight: 16,
+                      paddingBottom: 8,
+                    }}
+                  >
+                    Incorrect email or password
+                  </Text>
+                )}
                 <View
                   style={{
                     display: "flex",
@@ -410,7 +424,12 @@ export default function LoginScreen() {
                           forUser: true,
                         })
                         .then((result: AxiosResponse) => {
-                          console.log(result.data);
+                          if (result.data.success != true) {
+                            setInvalidUser(true);
+                          } else {
+                            setInvalidUser(false);
+                            console.log(result.data);
+                          }
                         });
                     })}
                     style={{
