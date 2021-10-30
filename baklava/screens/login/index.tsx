@@ -17,12 +17,19 @@ import { EducationSVG } from "../../assets/svg/education";
 import { AboutSVG } from "../../assets/svg/about";
 import Footer from "../../ui/footer";
 import { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
 
 export default function LoginScreen() {
   const MenuX = useRef(new Animated.Value(-10000000)).current;
   const [isEmailFocused, setIsEmailFocused] = useState<boolean>(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState<boolean>(false);
   const Menu = useBoolean();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data: any) => console.log(data);
 
   const MenuData = [
     {
@@ -255,26 +262,54 @@ export default function LoginScreen() {
                     >
                       Email <Text style={{ opacity: 0.2 }}>*</Text>
                     </Text>
-                    <TextInput
-                      style={{
-                        width: "100%",
-                        borderWidth: 2,
-                        borderColor: `${
-                          isEmailFocused ? "#7b7ce6" : "transparent"
-                        }`,
-                        paddingTop: 22,
-                        paddingLeft: 24,
-                        paddingBottom: 22,
-                        paddingRight: 24,
-                        fontSize: 16,
-                        fontFamily: "markpro-light",
-                        lineHeight: 20,
-                        borderRadius: 15,
-                        backgroundColor: "#eff3ff",
-                      }}
-                      onBlur={() => setIsEmailFocused(false)}
-                      onFocus={() => setIsEmailFocused(true)}
+                    <Controller
+                      // @ts-ignore
+                      control={control}
+                      rules={{ required: true }}
+                      render={({ field: { onChange, onBlur, value } }) => (
+                        <TextInput
+                          style={{
+                            width: "100%",
+                            borderWidth: 2,
+                            borderColor: `${
+                              errors.email
+                                ? "#d22"
+                                : isEmailFocused
+                                ? "#7b7ce6"
+                                : "transparent"
+                            }`,
+                            paddingTop: 22,
+                            paddingLeft: 24,
+                            paddingBottom: 22,
+                            paddingRight: 24,
+                            fontSize: 16,
+                            fontFamily: "markpro-light",
+                            lineHeight: 20,
+                            borderRadius: 15,
+                            backgroundColor: "#eff3ff",
+                          }}
+                          onBlur={() => setIsEmailFocused(false)}
+                          onFocus={() => setIsEmailFocused(true)}
+                          value={value}
+                          onChangeText={onChange}
+                        />
+                      )}
+                      name="email"
+                      defaultValue=""
                     />
+                    {errors.email && (
+                      <Text
+                        style={{
+                          color: "#d22",
+                          fontSize: 14,
+                          fontFamily: "markpro-light",
+                          lineHeight: 16,
+                          paddingTop: 8,
+                        }}
+                      >
+                        Valid email is required
+                      </Text>
+                    )}
                   </View>
                   <View style={{ width: "100%", marginBottom: 20 }}>
                     <Text
@@ -331,6 +366,7 @@ export default function LoginScreen() {
                     Forgot Password?
                   </Text>
                   <TouchableHighlight
+                    onPress={handleSubmit(onSubmit)}
                     style={{
                       backgroundColor: "#7b7ce6",
                       width: 120,
