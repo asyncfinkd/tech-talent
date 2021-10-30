@@ -1,3 +1,4 @@
+import "react-native-gesture-handler";
 import React from "react";
 import * as Font from "expo-font";
 import { useState } from "react";
@@ -8,6 +9,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ApplicationContext } from "./context/application";
 import { TokenProps } from "./types/app/token";
 import { APP__TOKEN__MOCKS__ } from "./mocks/_app";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
 const getFonts = () =>
   Font.loadAsync({
@@ -17,6 +20,8 @@ const getFonts = () =>
     // markpro: require("./assets/fonts/MarkPro.woff2"),
     // "markpro-medium": require("./assets/fonts/MarkPro-Medium.woff2"),
   });
+
+const Stack = createStackNavigator();
 
 export default function App() {
   const _retrieveData = async () => {
@@ -43,8 +48,11 @@ export default function App() {
     return (
       <>
         <ApplicationContext.Provider value={{ access_token, setAccess_Token }}>
-          {/* <IndexScreen /> */}
-          <LoginScreen />
+          <NavigationContainer>
+            <Stack.Screen name="Login" component={LoginScreen} />
+            {/* <IndexScreen /> */}
+            {/* <LoginScreen /> */}
+          </NavigationContainer>
         </ApplicationContext.Provider>
       </>
     );
