@@ -61,7 +61,7 @@ export default function Header({
             </View>
           </TouchableHighlight>
         </View>
-        {Menu.value || Profile.value ? (
+        {Menu?.value || Profile?.value ? (
           <>
             <TouchableHighlight
               onPress={ProfileFunction}
