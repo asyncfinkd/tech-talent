@@ -10,7 +10,6 @@ export default function Footer({ showFullFooter }: any) {
 
   return (
     <>
-      {console.log(access_token)}
       {showFullFooter == true && (
         <>
           <View style={styles.container}>

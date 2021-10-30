@@ -443,7 +443,6 @@ export default function LoginScreen() {
                             _storeData(JSON.stringify(decoded));
                             setAccess_Token(JSON.stringify(decoded));
                             setInvalidUser(false);
-                            alert(decoded.fullName);
                           }
                         });
                     })}

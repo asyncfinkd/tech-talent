@@ -45,8 +45,8 @@ export default function App() {
     return (
       <>
         <ApplicationContext.Provider value={{ access_token, setAccess_Token }}>
-          <IndexScreen />
-          {/* <LoginScreen /> */}
+          {/* <IndexScreen /> */}
+          <LoginScreen />
         </ApplicationContext.Provider>
       </>
     );
