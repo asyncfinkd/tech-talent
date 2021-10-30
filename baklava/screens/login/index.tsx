@@ -21,6 +21,7 @@ import { useState } from "react";
 export default function LoginScreen() {
   const MenuX = useRef(new Animated.Value(-10000000)).current;
   const [isEmailFocused, setIsEmailFocused] = useState<boolean>(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState<boolean>(false);
   const Menu = useBoolean();
 
   const MenuData = [
@@ -275,8 +276,83 @@ export default function LoginScreen() {
                       onFocus={() => setIsEmailFocused(true)}
                     />
                   </View>
+                  <View style={{ width: "100%", marginBottom: 20 }}>
+                    <Text
+                      style={{
+                        fontSize: 16,
+                        fontFamily: "markpro-bold",
+                        fontWeight: "700",
+                        lineHeight: 20,
+                        marginBottom: 20,
+                      }}
+                    >
+                      Password <Text style={{ opacity: 0.2 }}>*</Text>
+                    </Text>
+                    <TextInput
+                      style={{
+                        width: "100%",
+                        borderWidth: 2,
+                        borderColor: `${
+                          isPasswordFocused ? "#7b7ce6" : "transparent"
+                        }`,
+                        paddingTop: 22,
+                        paddingLeft: 24,
+                        paddingBottom: 22,
+                        paddingRight: 24,
+                        fontSize: 16,
+                        fontFamily: "markpro-light",
+                        lineHeight: 20,
+                        borderRadius: 15,
+                        backgroundColor: "#eff3ff",
+                      }}
+                      onBlur={() => setIsPasswordFocused(false)}
+                      onFocus={() => setIsPasswordFocused(true)}
+                    />
+                  </View>
                 </View>
-                <View></View>
+                <View
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    flexDirection: "row",
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: "#696974",
+                      opacity: 0.8,
+                      fontSize: 14,
+                      marginTop: 8,
+                      lineHeight: 16,
+                      fontFamily: "markpro-light",
+                    }}
+                  >
+                    Forgot Password?
+                  </Text>
+                  <TouchableHighlight
+                    style={{
+                      backgroundColor: "#7b7ce6",
+                      width: 120,
+                      paddingTop: 14,
+                      paddingLeft: 28,
+                      paddingRight: 28,
+                      paddingBottom: 14,
+                      borderRadius: 10,
+                    }}
+                  >
+                    <Text
+                      style={{
+                        textAlign: "center",
+                        fontFamily: "markpro-bold",
+                        color: "white",
+                        fontWeight: "500",
+                      }}
+                    >
+                      Login
+                    </Text>
+                  </TouchableHighlight>
+                </View>
               </View>
             </View>
           </View>
