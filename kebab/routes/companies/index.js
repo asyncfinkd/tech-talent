@@ -26,7 +26,6 @@ router
   .all(loginMiddleware)
   .post(async (req, res) => {
     CompaniesSchema.findOne({ _id: req.body.id }).then((result) => {
-      console.log(result);
       let newFollower = result.followedUsersId || [];
       newFollower.push({ id: req._id });
       result.followedUsersId = newFollower;
