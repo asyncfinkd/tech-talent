@@ -7,6 +7,7 @@ import CarouselPartners from "../../ui/carousel/partners";
 import Footer from "../../ui/footer";
 import LeftSidebar from "../../ui/sidebar/left";
 import RightSidebar from "../../ui/sidebar/right";
+import IndexPageHero from "./components/index-hero";
 
 export default function IndexPageModule({ navigation }: any) {
   const MenuX = useRef(new Animated.Value(-500)).current;
@@ -39,32 +40,13 @@ export default function IndexPageModule({ navigation }: any) {
           <StatusBar backgroundColor="white" />
           <LeftSidebar MenuX={MenuX} />
           <RightSidebar ProfileX={ProfileX} navigation={navigation} />
-          <Header
-            MenuFunction={() => {
-              if (Menu.value) {
-                Animation(-500);
-                Menu.toggle();
-              } else {
-                Animation(0);
-                Menu.toggle();
-              }
-            }}
-            ProfileFunction={() => {
-              if (Profile.value) {
-                ProfileAnimation(500);
-                Profile.toggle();
-              } else {
-                ProfileAnimation(0);
-                Profile.toggle();
-              }
-            }}
-            navigation={navigation}
+          <IndexPageHero
             Menu={Menu}
+            Animation={Animation}
+            ProfileAnimation={ProfileAnimation}
             Profile={Profile}
+            navigation={navigation}
           />
-          <RegisterCompanyNotification />
-          <CarouselPartners />
-          <Footer showFullFooter={true} />
         </ScrollView>
       </SafeAreaView>
     </>
