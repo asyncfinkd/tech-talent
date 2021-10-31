@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useMutation } from "react-query";
 import { FollowRequest } from "features/follow/follow.api";
 import { Result } from "types/features/follow";
+import { UnFollowRequest } from "features/unfollow/unfollow.api";
 
 interface Props {
   id: string;
@@ -35,6 +36,10 @@ export default function CompaniesMap({ item, _id, logged }: any) {
 
   const $follow = useMutation(({ loginData }: { loginData: Props }) =>
     FollowRequest(loginData)
+  );
+
+  const $unfollow = useMutation(({ loginData }: { loginData: Props }) =>
+    UnFollowRequest(loginData)
   );
   return (
     <>
@@ -76,7 +81,16 @@ export default function CompaniesMap({ item, _id, logged }: any) {
                     alert("not logged");
                   } else {
                     if (followed) {
-                      // code is here to unfollow.
+                      $unfollow.mutate(
+                        { loginData: { id: item._id } },
+                        {
+                          onSuccess: () => {
+                            setUnFollow(true);
+                            setFollowed(false);
+                            setFollowers(followers - 1);
+                          },
+                        }
+                      );
                     } else {
                       $follow.mutate(
                         { loginData: { id: item._id } },

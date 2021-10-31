@@ -1,12 +1,12 @@
 import { readCookie } from "lib/readCookie";
 import { Result } from "types/features/follow";
 
-export const FollowRequest = async (loginData: {
+export const UnFollowRequest = async (loginData: {
   id: string;
 }): Promise<Result> => {
   const { id } = loginData;
   const response = await fetch(
-    `${process.env.REACT_APP_API_URL}/api/follow/companies`,
+    `${process.env.REACT_APP_API_URL}/api/unfollow/companies`,
     {
       method: "POST",
       headers: {
