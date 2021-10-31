@@ -56,10 +56,12 @@ export default function CompaniesMap({ item, _id }: any) {
               </Link>
               <button
                 className={
-                  "root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54"
+                  followed
+                    ? "root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
+                    : "root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54"
                 }
               >
-                Follow
+                {followed ? "Unfollow" : "Follow"}
               </button>
             </div>
           </div>

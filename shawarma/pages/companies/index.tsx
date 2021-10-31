@@ -18,7 +18,6 @@ function Companies({
 
   return (
     <>
-      {console.log(access_token)}
       <CompaniesPage
         access_token={access_token}
         logged={logged}
