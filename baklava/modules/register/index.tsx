@@ -31,7 +31,7 @@ export default function RegisterPageModules({ navigation }: any) {
   };
   return (
     <>
-      <SafeAreaView>
+      <SafeAreaView style={{ backgroundColor: "white" }}>
         <ScrollView>
           <StatusBar backgroundColor="white" />
           <LeftSidebar MenuX={MenuX} />

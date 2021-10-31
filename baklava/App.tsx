@@ -52,7 +52,7 @@ export default function App() {
         <ApplicationContext.Provider value={{ access_token, setAccess_Token }}>
           <NavigationContainer>
             <Stack.Navigator
-              initialRouteName="Home"
+              initialRouteName="Register"
               screenOptions={{
                 headerMode: "screen",
                 headerTintColor: "white",

@@ -1,6 +1,6 @@
 import React from "react";
-import Footer from "../../../ui/footer";
 import Header from "../../../ui/header";
+import RegisterForm from "./register-form";
 
 export default function RegisterHero({
   Menu,
@@ -34,7 +34,7 @@ export default function RegisterHero({
         Menu={Menu}
         Profile={Profile}
       />
-      <Footer />
+      <RegisterForm />
     </>
   );
 }
