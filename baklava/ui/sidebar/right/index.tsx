@@ -93,6 +93,10 @@ export default function RightSidebar({ ProfileX, navigation }: any) {
           }}
         />
         <View>
+        <TouchableHighlight
+            underlayColor="none"
+            onPress={() => navigation.push("Register")}
+          >
           <View
             style={{
               width: "100%",
@@ -118,6 +122,7 @@ export default function RightSidebar({ ProfileX, navigation }: any) {
               Register
             </Text>
           </View>
+          </TouchableHighlight>
           <TouchableHighlight
             underlayColor="none"
             onPress={() => navigation.push("Login")}
