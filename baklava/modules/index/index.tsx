@@ -1,10 +1,6 @@
 import React, { useRef } from "react";
 import useBoolean from "../../shared-hooks/use-boolean";
 import { SafeAreaView, ScrollView, Animated, StatusBar } from "react-native";
-import Header from "../../ui/header";
-import RegisterCompanyNotification from "../../ui/notification/registerCompany";
-import CarouselPartners from "../../ui/carousel/partners";
-import Footer from "../../ui/footer";
 import LeftSidebar from "../../ui/sidebar/left";
 import RightSidebar from "../../ui/sidebar/right";
 import IndexPageHero from "./components/index-hero";
