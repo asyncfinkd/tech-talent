@@ -78,7 +78,6 @@ export default function CompaniesMap({ item, _id, logged }: any) {
                     if (followed) {
                       // code is here to unfollow.
                     } else {
-                      // code is here to follow.
                       $follow.mutate(
                         { loginData: { id: item._id } },
                         {
