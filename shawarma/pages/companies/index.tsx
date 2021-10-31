@@ -23,6 +23,7 @@ function Companies({
         logged={logged}
         data={data}
         setData={setData}
+        _id={access_token._id}
       />
     </>
   );

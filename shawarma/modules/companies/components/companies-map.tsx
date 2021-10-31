@@ -1,7 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useMutation } from "react-query";
+import { FollowRequest } from "features/follow/follow.api";
+import { UnFollowRequest } from "features/unfollow/unfollow.api";
 
-export default function CompaniesMap({ item }: any) {
+interface Props {
+  id: string;
+}
+
+export default function CompaniesMap({ item, _id, logged }: any) {
+  const [followed, setFollowed] = useState<boolean>(false);
+  const [unFollow, setUnFollow] = useState<boolean>(false);
+  const [changed, setChanged] = useState<boolean>(false);
+  const [followers, setFollowers] = useState<string | any>(
+    item.followedUsersId.length
+  );
+
+  useEffect(() => {
+    if (!changed) {
+      setFollowers(item.followedUsersId.length);
+    }
+    if (!unFollow) {
+      if (item.followedUsersId.length != 0) {
+        item.followedUsersId.map((item: any) => {
+          if (item.id == _id) {
+            setFollowed(true);
+          }
+        });
+      }
+    } else {
+      setFollowed(false);
+    }
+  });
+
+  const $follow = useMutation(({ loginData }: { loginData: Props }) =>
+    FollowRequest(loginData)
+  );
+
+  const $unfollow = useMutation(({ loginData }: { loginData: Props }) =>
+    UnFollowRequest(loginData)
+  );
   return (
     <>
       <div className="superRoot-0-2-137">
@@ -21,7 +59,7 @@ export default function CompaniesMap({ item }: any) {
                 <div className="label-0-2-146">Active Jobs</div>
               </div>
               <div className="stat-0-2-144">
-                <div className="count-0-2-145">1</div>
+                <div className="count-0-2-145">{followers}</div>
                 <div className="label-0-2-146">Followers</div>
               </div>
             </div>
@@ -33,10 +71,42 @@ export default function CompaniesMap({ item }: any) {
               </Link>
               <button
                 className={
-                  "root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54"
+                  followed
+                    ? "root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
+                    : "root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54"
                 }
+                onClick={() => {
+                  if (!logged) {
+                    alert("not logged");
+                  } else {
+                    setChanged(true);
+                    if (followed) {
+                      $unfollow.mutate(
+                        { loginData: { id: item._id } },
+                        {
+                          onSuccess: () => {
+                            setFollowers(followers - 1);
+                            setUnFollow(true);
+                            setFollowed(false);
+                          },
+                        }
+                      );
+                    } else {
+                      $follow.mutate(
+                        { loginData: { id: item._id } },
+                        {
+                          onSuccess: () => {
+                            setFollowers(followers + 1);
+                            setUnFollow(false);
+                            setFollowed(true);
+                          },
+                        }
+                      );
+                    }
+                  }
+                }}
               >
-                Follow
+                {followed ? "Unfollow" : "Follow"}
               </button>
             </div>
           </div>

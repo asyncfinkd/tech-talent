@@ -14,7 +14,6 @@ export const LoginRequest = async (
     headers: { "Content-type": "application/json" },
     body: JSON.stringify({ email, password, forUser }),
   });
-  console.log(response);
   if (response.ok) setErrorMessage(false);
 
   if (response.ok) {
