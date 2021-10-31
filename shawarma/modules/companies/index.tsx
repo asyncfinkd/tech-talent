@@ -147,7 +147,7 @@ export default function CompaniesPage({
               {data.map((item: any) => {
                 return (
                   <>
-                    <CompaniesMap item={item} _id={_id} />
+                    <CompaniesMap item={item} _id={_id} logged={logged} />
                   </>
                 );
               })}
