@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useMutation } from "react-query";
 import { FollowRequest } from "features/follow/follow.api";
-import { Result } from "types/features/follow";
 import { UnFollowRequest } from "features/unfollow/unfollow.api";
 
 interface Props {
@@ -80,6 +79,7 @@ export default function CompaniesMap({ item, _id, logged }: any) {
                   if (!logged) {
                     alert("not logged");
                   } else {
+                    setChanged(true);
                     if (followed) {
                       $unfollow.mutate(
                         { loginData: { id: item._id } },
