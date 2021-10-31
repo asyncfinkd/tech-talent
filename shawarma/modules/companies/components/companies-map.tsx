@@ -64,7 +64,11 @@ export default function CompaniesMap({ item, _id, logged }: any) {
                   if (!logged) {
                     alert("not logged");
                   } else {
-                    // code.
+                    if (followed) {
+                      // code is here to unfollow.
+                    } else {
+                      // code is here to follow.
+                    }
                   }
                 }}
               >
