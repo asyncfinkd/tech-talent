@@ -38,7 +38,7 @@ router
         result.save();
       });
     });
-    res.json("success");
+    res.json({ success: true });
   });
 
 module.exports = router;
