@@ -12,6 +12,7 @@ import { APP__TOKEN__MOCKS__ } from "./mocks/_app";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import IndexScreen from "./screens/index";
+import RegisterScreen from "./screens/register";
 
 const getFonts = () =>
   Font.loadAsync({
@@ -35,7 +36,7 @@ export default function App() {
         }
       }
     } catch (error) {
-      // Error retrieving data
+      console.log(error);
     }
   };
   const [fontsLoaded, setFontsLoaded] = useState<boolean>(false);
@@ -72,9 +73,14 @@ export default function App() {
                 name="Login"
                 component={LoginScreen}
               />
+              <Stack.Screen
+                options={{
+                  headerShown: false,
+                }}
+                name="Register"
+                component={RegisterScreen}
+              />
             </Stack.Navigator>
-            {/* <IndexScreen /> */}
-            {/* <LoginScreen /> */}
           </NavigationContainer>
         </ApplicationContext.Provider>
       </>
