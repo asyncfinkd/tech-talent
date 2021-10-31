@@ -31,7 +31,7 @@ export default function App() {
       if (access_token.fullName == "") {
         if (value !== null) {
           // We have data!!
-          setAccess_Token(JSON.parse(value));
+          setAccess_Token(value);
         }
       }
     } catch (error) {

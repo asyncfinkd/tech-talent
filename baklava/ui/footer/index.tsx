@@ -4,9 +4,13 @@ import { CloudSVG } from "../../assets/svg/cloud";
 import { FacebookSVG } from "../../assets/svg/facebook";
 import { LinkedinSVG } from "../../assets/svg/linkedin";
 import { ApplicationContext } from "../../context/application";
+import { TokenProps } from "../../types/app/token";
 
 export default function Footer({ showFullFooter }: any) {
   const { access_token, setAccess_Token } = useContext(ApplicationContext);
+  const [tokenData, setTokenData] = useState<any>(
+    access_token.fullName != "" && JSON.parse(access_token)
+  );
 
   return (
     <>
@@ -41,7 +45,7 @@ export default function Footer({ showFullFooter }: any) {
                   style={styles.registerButton}
                 >
                   <Text style={{ color: "white", fontFamily: "markpro-bold" }}>
-                    {access_token?.logged ? "Profile" : "Register"}
+                    {tokenData?.logged ? "Profile" : "Register"}
                   </Text>
                 </TouchableHighlight>
               </View>

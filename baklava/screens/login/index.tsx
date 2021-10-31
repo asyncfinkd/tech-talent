@@ -428,23 +428,52 @@ export default function LoginScreen({ navigation }: any) {
                   </Text>
                   <TouchableHighlight
                     onPress={handleSubmit((data: any) => {
-                      return axios
-                        .post(`http://192.168.100.7:3002/api/login`, {
-                          email: data.email,
-                          password: data.password,
-                          forUser: true,
-                        })
-                        .then((result: AxiosResponse) => {
-                          if (result.data.success != true) {
+                      // return axios
+                      //   .post(`http://192.168.100.7:3002/api/login`, {
+                      //     email: data.email,
+                      //     password: data.password,
+                      //     forUser: true,
+                      //   })
+                      //   .then((result: AxiosResponse) => {
+                      // if (result.data.success != true) {
+                      //   setInvalidUser(true);
+                      // } else {
+                      //   let decoded: any = jwt_decode(
+                      //     result.data.access_token
+                      //   );
+                      //   _storeData(JSON.stringify(decoded));
+                      //   setAccess_Token(JSON.stringify(decoded));
+                      //   setInvalidUser(false);
+                      // }
+                      //   });
+                      const method = fetch(
+                        `http://192.168.100.7:3002/api/login`,
+                        {
+                          method: "POST",
+                          headers: {
+                            "Content-type": "application/json",
+                          },
+                          body: JSON.stringify({
+                            email: data.email,
+                            password: data.password,
+                            forUser: true,
+                          }),
+                        }
+                      )
+                        .then((res) => res.json())
+                        .then((result) => {
+                          if (result.success != true) {
                             setInvalidUser(true);
                           } else {
-                            let decoded: any = jwt_decode(
-                              result.data.access_token
-                            );
+                            let decoded: any = jwt_decode(result.access_token);
                             _storeData(JSON.stringify(decoded));
                             setAccess_Token(JSON.stringify(decoded));
                             setInvalidUser(false);
+                            navigation.push("Home");
                           }
+                        })
+                        .catch((err) => {
+                          console.log(err);
                         });
                     })}
                     style={{
