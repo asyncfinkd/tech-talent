@@ -14,7 +14,7 @@ export default function CompaniesMap({ item, _id, logged }: any) {
   const [unFollow, setUnFollow] = useState<boolean>(false);
   const [changed, setChanged] = useState<boolean>(false);
   const [followers, setFollowers] = useState<string | any>(
-    item?.followedUsersId.length
+    item.followedUsersId.length
   );
 
   useEffect(() => {
@@ -60,7 +60,7 @@ export default function CompaniesMap({ item, _id, logged }: any) {
                 <div className="label-0-2-146">Active Jobs</div>
               </div>
               <div className="stat-0-2-144">
-                <div className="count-0-2-145">1</div>
+                <div className="count-0-2-145">{followers}</div>
                 <div className="label-0-2-146">Followers</div>
               </div>
             </div>
@@ -85,9 +85,9 @@ export default function CompaniesMap({ item, _id, logged }: any) {
                         { loginData: { id: item._id } },
                         {
                           onSuccess: () => {
+                            setFollowers(followers - 1);
                             setUnFollow(true);
                             setFollowed(false);
-                            setFollowers(followers - 1);
                           },
                         }
                       );
@@ -96,9 +96,9 @@ export default function CompaniesMap({ item, _id, logged }: any) {
                         { loginData: { id: item._id } },
                         {
                           onSuccess: () => {
+                            setFollowers(followers + 1);
                             setUnFollow(false);
                             setFollowed(true);
-                            setFollowers(followers + 1);
                           },
                         }
                       );
