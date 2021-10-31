@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const CompaniesSchema = require("../../schema/companies/index");
 const loginMiddleware = require("../../middlewares/loginMiddleware");
+const UserSchema = require("../../schema/user/index");
 
 router.route("/get/companies").get(async (req, res) => {
   CompaniesSchema.find().then((result) => {
@@ -25,6 +26,7 @@ router
   .all(loginMiddleware)
   .post(async (req, res) => {
     CompaniesSchema.findOne({ _id: req.body.id }).then((result) => {
+      console.log(result);
       let newFollower = result.followedUsersId || [];
       newFollower.push({ id: req._id });
       result.followedUsersId = newFollower;

@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useMutation } from "react-query";
+import { FollowRequest } from "features/follow/follow.api";
+import { Result } from "types/features/follow";
+
+interface Props {
+  id: string;
+}
 
 export default function CompaniesMap({ item, _id, logged }: any) {
   const [followed, setFollowed] = useState<boolean>(false);
@@ -25,6 +32,10 @@ export default function CompaniesMap({ item, _id, logged }: any) {
       setFollowed(false);
     }
   });
+
+  const $follow = useMutation(({ loginData }: { loginData: Props }) =>
+    FollowRequest(loginData)
+  );
   return (
     <>
       <div className="superRoot-0-2-137">
@@ -68,6 +79,16 @@ export default function CompaniesMap({ item, _id, logged }: any) {
                       // code is here to unfollow.
                     } else {
                       // code is here to follow.
+                      $follow.mutate(
+                        { loginData: { id: item._id } },
+                        {
+                          onSuccess: () => {
+                            setUnFollow(false);
+                            setFollowed(true);
+                            setFollowers(followers + 1);
+                          },
+                        }
+                      );
                     }
                   }
                 }}
