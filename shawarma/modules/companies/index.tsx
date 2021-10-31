@@ -10,6 +10,7 @@ export default function CompaniesPage({
   logged,
   data,
   setData,
+  _id,
 }: any) {
   const sanitizer = DOMPurify.sanitize;
   const [search, setSearch] = useState<string>("");
@@ -146,7 +147,7 @@ export default function CompaniesPage({
               {data.map((item: any) => {
                 return (
                   <>
-                    <CompaniesMap item={item} />
+                    <CompaniesMap item={item} _id={_id} />
                   </>
                 );
               })}

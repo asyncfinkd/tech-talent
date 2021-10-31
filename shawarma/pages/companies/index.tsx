@@ -18,11 +18,13 @@ function Companies({
 
   return (
     <>
+      {console.log(access_token)}
       <CompaniesPage
         access_token={access_token}
         logged={logged}
         data={data}
         setData={setData}
+        _id={access_token._id}
       />
     </>
   );

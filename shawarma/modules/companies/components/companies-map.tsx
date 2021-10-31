@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
-export default function CompaniesMap({ item }: any) {
+export default function CompaniesMap({ item, _id }: any) {
+  const [followed, setFollowed] = useState<boolean>(false);
+  const [unFollow, setUnFollow] = useState<boolean>(false);
+  const [changed, setChanged] = useState<boolean>(false);
+  const [followers, setFollowers] = useState<string | any>(
+    item?.followedUsersId.length
+  );
+
+  useEffect(() => {
+    if (!changed) {
+      setFollowers(item.followedUsersId.length);
+    }
+    if (!unFollow) {
+      if (item.followedUsersId.length != 0) {
+        item.followedUsersId.map((item: any) => {
+          if (item.id == _id) {
+            setFollowed(true);
+          }
+        });
+      }
+    } else {
+      setFollowed(false);
+    }
+  });
   return (
     <>
       <div className="superRoot-0-2-137">
