@@ -12,6 +12,8 @@ export default function Footer({ showFullFooter }: any) {
     access_token.fullName != "" && JSON.parse(access_token)
   );
 
+  const ButtonSize = tokenData?.logged ? 138 : 150;
+
   return (
     <>
       {showFullFooter == true && (
@@ -42,7 +44,7 @@ export default function Footer({ showFullFooter }: any) {
                 </Text>
                 <TouchableHighlight
                   onPress={() => console.group(1)}
-                  style={styles.registerButton}
+                  style={[styles.registerButton, { width: ButtonSize }]}
                 >
                   <Text style={{ color: "white", fontFamily: "markpro-bold" }}>
                     {tokenData?.logged ? "Profile" : "Register"}
@@ -195,7 +197,6 @@ const styles = StyleSheet.create({
     paddingRight: 44,
     borderRadius: 10,
     backgroundColor: "#7b7ce6",
-    width: 150,
   },
   footerContainer: {
     paddingLeft: 15,
