@@ -11,6 +11,7 @@ export default function ProfileCompaniesModule({
   logged,
   data,
   companiesData,
+  _id,
 }: any) {
   return (
     <>
@@ -81,7 +82,7 @@ export default function ProfileCompaniesModule({
                     {companiesData.map((item: any) => {
                       return (
                         <>
-                          <ProfileCompaniesMap />
+                          <ProfileCompaniesMap item={item} _id={_id} />
                         </>
                       );
                     })}

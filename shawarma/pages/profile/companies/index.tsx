@@ -26,6 +26,7 @@ function ProfileCompaniesPage({
         logged={logged}
         data={profileData}
         companiesData={companiesData}
+        _id={access_token._id}
       />
     </>
   );
