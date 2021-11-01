@@ -1,4 +1,3 @@
-import { useAuth } from "lib/useAuth";
 import {
   GetServerSideProps,
   GetServerSidePropsContext,
@@ -18,10 +17,10 @@ function ProfileCompaniesPage({
   const [logged, setLogged] = useState<boolean>(data);
   const [access_token, setAccess_Token] = useState<DecodedAccess_Token>(token);
   const [profileData, setProfileData] = useState<any>([]);
+  const [companiesData, setCompaniesData] = useState<any>(followedCompanies);
 
   return (
     <>
-      {console.log(followedCompanies)}
       <ProfileCompaniesModule
         access_token={access_token}
         logged={logged}
