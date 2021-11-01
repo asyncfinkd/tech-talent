@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useMutation } from "react-query";
+import { UnFollowRequest } from "features/unfollow/unfollow.api";
+import { FollowRequest } from "features/follow/follow.api";
 
-export default function ProfileCompaniesMap({ item, _id }: any) {
+interface Props {
+  id: string;
+}
+
+export default function ProfileCompaniesMap({ item, _id, logged }: any) {
   const router = useRouter();
   const [followed, setFollowed] = useState<boolean>(false);
   const [unFollow, setUnFollow] = useState<boolean>(false);
@@ -20,6 +27,14 @@ export default function ProfileCompaniesMap({ item, _id }: any) {
       setFollowed(false);
     }
   });
+
+  const $follow = useMutation(({ loginData }: { loginData: Props }) =>
+    FollowRequest(loginData)
+  );
+
+  const $unfollow = useMutation(({ loginData }: { loginData: Props }) =>
+    UnFollowRequest(loginData)
+  );
   return (
     <>
       <div className="root-0-2-223 rootSlice-0-2-224 root-0-2-217">
@@ -63,6 +78,33 @@ export default function ProfileCompaniesMap({ item, _id }: any) {
                   ? "root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
                   : "root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54"
               }
+              onClick={() => {
+                if (!logged) {
+                  alert("not logged");
+                } else {
+                  if (followed) {
+                    $unfollow.mutate(
+                      { loginData: { id: item._id } },
+                      {
+                        onSuccess: () => {
+                          setUnFollow(true);
+                          setFollowed(false);
+                        },
+                      }
+                    );
+                  } else {
+                    $follow.mutate(
+                      { loginData: { id: item._id } },
+                      {
+                        onSuccess: () => {
+                          setUnFollow(false);
+                          setFollowed(true);
+                        },
+                      }
+                    );
+                  }
+                }
+              }}
             >
               {followed ? "Unfollow" : "Follow"}
             </button>

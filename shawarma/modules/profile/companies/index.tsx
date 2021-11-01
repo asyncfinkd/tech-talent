@@ -9,7 +9,6 @@ import ProfileCompaniesSidebar from "./components/profile-companies-sidebar";
 export default function ProfileCompaniesModule({
   access_token,
   logged,
-  data,
   companiesData,
   _id,
 }: any) {
@@ -24,39 +23,6 @@ export default function ProfileCompaniesModule({
           <ProfileCompaniesSidebar access_token={access_token} />
           <div className="body-0-2-101">
             <div>
-              {/* {spinner ? (
-                <>
-                  <div className="loading-0-2-1">
-                    <svg
-                      className="stroke-0-2-37 spinner-0-2-2"
-                      width="100"
-                      height="100"
-                      viewBox="0 0 100 100"
-                      preserveAspectRatio="xMidYMid"
-                    >
-                      <circle
-                        cx="50"
-                        cy="50"
-                        fill="none"
-                        strokeWidth="10"
-                        r="35"
-                        strokeDasharray="164.93361431346415 56.97787143782138"
-                      >
-                        <animateTransform
-                          attributeName="transform"
-                          type="rotate"
-                          repeatCount="indefinite"
-                          dur="1s"
-                          values="0 50 50;360 50 50"
-                          keyTimes="0;1"
-                        ></animateTransform>
-                      </circle>
-                    </svg>
-                    <span>Loading</span>
-                  </div>
-                </>
-              ) : (
-                <> */}
               {companiesData.length == 0 ? (
                 <div className="root-0-2-416" style={{ margin: "2rem 0px" }}>
                   <img
@@ -82,15 +48,17 @@ export default function ProfileCompaniesModule({
                     {companiesData.map((item: any) => {
                       return (
                         <>
-                          <ProfileCompaniesMap item={item} _id={_id} />
+                          <ProfileCompaniesMap
+                            item={item}
+                            _id={_id}
+                            logged={logged}
+                          />
                         </>
                       );
                     })}
                   </div>
                 </div>
               )}
-              {/* </> */}
-              {/* )} */}
             </div>
           </div>
         </div>

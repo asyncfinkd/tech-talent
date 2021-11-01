@@ -76,33 +76,29 @@ export default function CompaniesMap({ item, _id, logged }: any) {
                     : "root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54"
                 }
                 onClick={() => {
-                  if (!logged) {
-                    alert("not logged");
+                  setChanged(true);
+                  if (followed) {
+                    $unfollow.mutate(
+                      { loginData: { id: item._id } },
+                      {
+                        onSuccess: () => {
+                          setFollowers(followers - 1);
+                          setUnFollow(true);
+                          setFollowed(false);
+                        },
+                      }
+                    );
                   } else {
-                    setChanged(true);
-                    if (followed) {
-                      $unfollow.mutate(
-                        { loginData: { id: item._id } },
-                        {
-                          onSuccess: () => {
-                            setFollowers(followers - 1);
-                            setUnFollow(true);
-                            setFollowed(false);
-                          },
-                        }
-                      );
-                    } else {
-                      $follow.mutate(
-                        { loginData: { id: item._id } },
-                        {
-                          onSuccess: () => {
-                            setFollowers(followers + 1);
-                            setUnFollow(false);
-                            setFollowed(true);
-                          },
-                        }
-                      );
-                    }
+                    $follow.mutate(
+                      { loginData: { id: item._id } },
+                      {
+                        onSuccess: () => {
+                          setFollowers(followers + 1);
+                          setUnFollow(false);
+                          setFollowed(true);
+                        },
+                      }
+                    );
                   }
                 }}
               >
