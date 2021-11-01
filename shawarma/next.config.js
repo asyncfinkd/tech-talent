@@ -8,8 +8,13 @@ module.exports = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    // Important: return the modified config
+  webpack: (config, { webpack }) => {
+    config.plugins.push(
+      new webpack.IgnorePlugin({
+        resourceRegExp: /.*/,
+        contextRegExp: /__tests__/,
+      })
+    );
     return config;
   },
 };
