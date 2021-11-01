@@ -1,7 +1,11 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, TouchableHighlight, View } from "react-native";
 
-export default function RegisterFooter() {
+export default function RegisterFooter({
+  firstStep,
+  secondStep,
+  thirdStep,
+}: any) {
   return (
     <>
       <View
@@ -15,7 +19,11 @@ export default function RegisterFooter() {
       >
         <View style={{ height: 5, backgroundColor: "#eff3ff" }}>
           <View
-            style={{ width: "20%", height: 5, backgroundColor: "#18c729" }}
+            style={{
+              width: firstStep ? "20%" : "40%",
+              height: 5,
+              backgroundColor: "#18c729",
+            }}
           />
         </View>
         <View style={{ marginLeft: 15, marginRight: 15 }}>
@@ -27,6 +35,7 @@ export default function RegisterFooter() {
               paddingRight: 0,
               display: "flex",
               justifyContent: "space-between",
+              flexDirection: "row",
             }}
           >
             <View>
@@ -42,7 +51,7 @@ export default function RegisterFooter() {
                   marginRight: 0,
                 }}
               >
-                Tell us who you are
+                {firstStep ? "Tell us who you are" : "Create Your Account"}
               </Text>
               <Text
                 style={{
@@ -52,10 +61,12 @@ export default function RegisterFooter() {
                   lineHeight: 16,
                 }}
               >
-                Select profession
+                {firstStep ? "Select profession" : "Enter Your Credentials"}
               </Text>
             </View>
-            {/* <View></View> */}
+            <TouchableHighlight>
+              <Text>123</Text>
+            </TouchableHighlight>
           </View>
         </View>
       </View>

@@ -8,7 +8,7 @@ export default function RegisterScreen({ navigation }: any) {
     <>
       <View style={{ flex: 1 }}>
         <RegisterPageModules navigation={navigation} />
-        <RegisterFooter />
+        <RegisterFooter firstStep={true} />
       </View>
     </>
   );

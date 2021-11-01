@@ -8,7 +8,7 @@ export default function RegisterCandidateScreen({ navigation }: any) {
     <>
       <View style={{ flex: 1 }}>
         <RegisterCandidateModules navigation={navigation} />
-        <RegisterFooter />
+        <RegisterFooter secondStep={true} />
       </View>
     </>
   );
