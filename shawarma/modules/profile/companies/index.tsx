@@ -3,12 +3,14 @@ import Link from "next/link";
 import React from "react";
 import Footer from "ui/footer";
 import Header from "ui/header";
+import ProfileCompaniesMap from "./components/profile-companies-map";
 import ProfileCompaniesSidebar from "./components/profile-companies-sidebar";
 
 export default function ProfileCompaniesModule({
   access_token,
   logged,
   data,
+  companiesData,
 }: any) {
   return (
     <>
@@ -54,7 +56,7 @@ export default function ProfileCompaniesModule({
                 </>
               ) : (
                 <> */}
-              {data.length == 0 ? (
+              {companiesData.length == 0 ? (
                 <div className="root-0-2-416" style={{ margin: "2rem 0px" }}>
                   <img
                     src="https://tt.ge/images/empty-jobs.png"
@@ -76,13 +78,13 @@ export default function ProfileCompaniesModule({
               ) : (
                 <div className="root-0-2-215">
                   <div className="root-0-2-216">
-                    {/* {data.map((item: any) => {
-                          return (
-                            <>
-                              <ProfileCompaniesMap item={item} env={env} />
-                            </>
-                          );
-                        })} */}
+                    {companiesData.map((item: any) => {
+                      return (
+                        <>
+                          <ProfileCompaniesMap />
+                        </>
+                      );
+                    })}
                   </div>
                 </div>
               )}
