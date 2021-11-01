@@ -13,6 +13,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import IndexScreen from "./screens/index";
 import RegisterScreen from "./screens/register";
+import RegisterCandidateScreen from "./screens/register/candidate";
 
 const getFonts = () =>
   Font.loadAsync({
@@ -52,7 +53,7 @@ export default function App() {
         <ApplicationContext.Provider value={{ access_token, setAccess_Token }}>
           <NavigationContainer>
             <Stack.Navigator
-              initialRouteName="Home"
+              initialRouteName="Register"
               screenOptions={{
                 headerMode: "screen",
                 headerTintColor: "white",
@@ -79,6 +80,13 @@ export default function App() {
                 }}
                 name="Register"
                 component={RegisterScreen}
+              />
+              <Stack.Screen
+                options={{
+                  headerShown: false,
+                }}
+                name="RegisterCandidate"
+                component={RegisterCandidateScreen}
               />
             </Stack.Navigator>
           </NavigationContainer>

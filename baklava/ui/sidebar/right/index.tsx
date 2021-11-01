@@ -93,31 +93,36 @@ export default function RightSidebar({ ProfileX, navigation }: any) {
           }}
         />
         <View>
-          <View
-            style={{
-              width: "100%",
-              paddingTop: 12,
-              paddingBottom: 12,
-              paddingLeft: 0,
-              paddingRight: 0,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-start",
-              flexDirection: "row",
-            }}
+          <TouchableHighlight
+            underlayColor="none"
+            onPress={() => navigation.push("Register")}
           >
-            <RegisterSVG />
-            <Text
+            <View
               style={{
-                marginLeft: 10,
-                fontFamily: "markpro-bold",
-                fontSize: 16,
-                paddingTop: -3,
+                width: "100%",
+                paddingTop: 12,
+                paddingBottom: 12,
+                paddingLeft: 0,
+                paddingRight: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-start",
+                flexDirection: "row",
               }}
             >
-              Register
-            </Text>
-          </View>
+              <RegisterSVG />
+              <Text
+                style={{
+                  marginLeft: 10,
+                  fontFamily: "markpro-bold",
+                  fontSize: 16,
+                  paddingTop: -3,
+                }}
+              >
+                Register
+              </Text>
+            </View>
+          </TouchableHighlight>
           <TouchableHighlight
             underlayColor="none"
             onPress={() => navigation.push("Login")}

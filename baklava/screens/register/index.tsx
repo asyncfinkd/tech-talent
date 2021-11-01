@@ -1,9 +1,10 @@
 import React from "react";
+import RegisterPageModules from "../../modules/register";
 
-export default function RegisterScreen() {
+export default function RegisterScreen({ navigation }: any) {
   return (
     <>
-      <p>Hello</p>
+      <RegisterPageModules navigation={navigation} />
     </>
   );
 }
