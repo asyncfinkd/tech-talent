@@ -126,7 +126,7 @@ export default function RegisterForm() {
                         <Text
                           style={{
                             fontSize: 14,
-                            fontFamily: "markpro-bold",
+                            fontFamily: "markpro-light",
                             fontWeight: "500",
                           }}
                         >
