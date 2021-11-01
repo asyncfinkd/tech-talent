@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "ui/header";
 import Footer from "ui/footer";
 import DOMPurify from "isomorphic-dompurify";
-import { isServer } from "lib/isServer";
 import Link from "next/link";
 import Head from "next/head";
+import { useMutation } from "react-query";
+import { FollowRequest } from "features/follow/follow.api";
+import { UnFollowRequest } from "features/unfollow/unfollow.api";
+
+interface Props {
+  id: string;
+}
 
 export default function ModuleCompanyDetailPage({
   logged,
@@ -13,6 +19,35 @@ export default function ModuleCompanyDetailPage({
 }: any) {
   const sanitizer = DOMPurify.sanitize;
   const [collapse, setCollapse] = useState<boolean>(true);
+  const [followed, setFollowed] = useState<boolean>(false);
+  const [unFollow, setUnFollow] = useState<boolean>(false);
+  const [followers, setFollowers] = useState<String | any>(
+    data.followedUsersId
+  );
+
+  useEffect(() => {
+    if (data.followedUsersId) {
+      if (!unFollow) {
+        if (data.followedUsersId.length != 0) {
+          data.followedUsersId.map((item: any) => {
+            if (item.id == access_token._id) {
+              setFollowed(true);
+            }
+          });
+        }
+      } else {
+        setFollowed(false);
+      }
+    }
+  });
+
+  const $follow = useMutation(({ loginData }: { loginData: Props }) =>
+    FollowRequest(loginData)
+  );
+
+  const $unfollow = useMutation(({ loginData }: { loginData: Props }) =>
+    UnFollowRequest(loginData)
+  );
   return (
     <>
       <Head>
@@ -135,10 +170,37 @@ export default function ModuleCompanyDetailPage({
                     <div className="buttonContainer-0-2-119">
                       <button
                         className={
-                          "root-0-2-46 button-0-2-136 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+                          followed
+                            ? "root-0-2-46 button-0-2-136 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantSecondary-0-2-55"
+                            : "root-0-2-46 button-0-2-136 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
                         }
+                        onClick={() => {
+                          if (followed) {
+                            $unfollow.mutate(
+                              { loginData: { id: data._id } },
+                              {
+                                onSuccess: () => {
+                                  setFollowers(followers - 1);
+                                  setUnFollow(true);
+                                  setFollowed(false);
+                                },
+                              }
+                            );
+                          } else {
+                            $follow.mutate(
+                              { loginData: { id: data._id } },
+                              {
+                                onSuccess: () => {
+                                  setFollowers(followers + 1);
+                                  setUnFollow(false);
+                                  setFollowed(true);
+                                },
+                              }
+                            );
+                          }
+                        }}
                       >
-                        Follow
+                        {followed ? "Unfollow" : "Follow"}
                       </button>
                     </div>
                     <button
@@ -170,9 +232,11 @@ export default function ModuleCompanyDetailPage({
                 </div>
               </div>
             </div>
-            <div className={`alwaysNoMargin-0-2-138 ${
+            <div
+              className={`alwaysNoMargin-0-2-138 ${
                 !collapse && "hiddenOnDesktop-0-2-121"
-              }`}>
+              }`}
+            >
               <div className="content-0-2-117">
                 <div className="expandedContent-0-2-123">
                   <div className="mobileInfo-0-2-110">
