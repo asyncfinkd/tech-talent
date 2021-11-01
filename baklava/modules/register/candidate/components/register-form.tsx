@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View, TextInput } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 
 export default function RegisterCandidateForm() {
+  const [isEmailFocused, setIsEmailFocused] = useState<boolean>(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState<boolean>(false);
   const {
     control,
     handleSubmit,
@@ -56,23 +58,49 @@ export default function RegisterCandidateForm() {
               >
                 Email <Text style={{ opacity: 0.2 }}>*</Text>
               </Text>
-              <TextInput
-                style={{
-                  width: "100%",
-                  borderWidth: 2,
-                  borderColor: "transparent",
-                  paddingTop: 22,
-                  paddingLeft: 24,
-                  paddingBottom: 22,
-                  paddingRight: 24,
-                  fontSize: 16,
-                  fontFamily: "markpro-light",
-                  lineHeight: 20,
-                  borderRadius: 15,
-                  backgroundColor: "#eff3ff",
+              <Controller
+                // @ts-ignore
+                control={control}
+                rules={{
+                  required: true,
+                  pattern: {
+                    value:
+                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    message: "Valid email is required",
+                  },
                 }}
+                render={({ field: { onChange, value } }) => (
+                  <TextInput
+                    style={{
+                      width: "100%",
+                      borderWidth: 2,
+                      borderColor: `${
+                        errors.email
+                          ? "#d22"
+                          : isEmailFocused
+                          ? "#7b7ce6"
+                          : "transparent"
+                      }`,
+                      paddingTop: 22,
+                      paddingLeft: 24,
+                      paddingBottom: 22,
+                      paddingRight: 24,
+                      fontSize: 16,
+                      fontFamily: "markpro-light",
+                      lineHeight: 20,
+                      borderRadius: 15,
+                      backgroundColor: "#eff3ff",
+                    }}
+                    onBlur={() => setIsEmailFocused(false)}
+                    onFocus={() => setIsEmailFocused(true)}
+                    value={value}
+                    onChangeText={onChange}
+                  />
+                )}
+                name="email"
+                defaultValue=""
               />
-              {/* {errors.email && (
+              {errors.email && (
                 <Text
                   style={{
                     color: "#d22",
@@ -84,7 +112,143 @@ export default function RegisterCandidateForm() {
                 >
                   Valid email is required
                 </Text>
-              )} */}
+              )}
+            </View>
+            <View style={{ width: "100%", marginBottom: 20 }}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontFamily: "markpro-bold",
+                  fontWeight: "700",
+                  lineHeight: 20,
+                  marginBottom: 20,
+                }}
+              >
+                Password <Text style={{ opacity: 0.2 }}>*</Text>
+              </Text>
+              <Controller
+                // @ts-ignore
+                control={control}
+                rules={{
+                  required: true,
+                  pattern: {
+                    value:
+                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    message: "Valid email is required",
+                  },
+                }}
+                render={({ field: { onChange, value } }) => (
+                  <TextInput
+                    style={{
+                      width: "100%",
+                      borderWidth: 2,
+                      borderColor: `${
+                        errors.email
+                          ? "#d22"
+                          : isPasswordFocused
+                          ? "#7b7ce6"
+                          : "transparent"
+                      }`,
+                      paddingTop: 22,
+                      paddingLeft: 24,
+                      paddingBottom: 22,
+                      paddingRight: 24,
+                      fontSize: 16,
+                      fontFamily: "markpro-light",
+                      lineHeight: 20,
+                      borderRadius: 15,
+                      backgroundColor: "#eff3ff",
+                    }}
+                    onBlur={() => setIsPasswordFocused(false)}
+                    onFocus={() => setIsPasswordFocused(true)}
+                    value={value}
+                    onChangeText={onChange}
+                  />
+                )}
+                name="password"
+                defaultValue=""
+              />
+              {errors.password && (
+                <Text
+                  style={{
+                    color: "#d22",
+                    fontSize: 14,
+                    fontFamily: "markpro-light",
+                    lineHeight: 16,
+                    paddingTop: 8,
+                  }}
+                >
+                  Password is required
+                </Text>
+              )}
+            </View>
+            <View style={{ width: "100%", marginBottom: 20 }}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontFamily: "markpro-bold",
+                  fontWeight: "700",
+                  lineHeight: 20,
+                  marginBottom: 20,
+                }}
+              >
+                Repeat Password <Text style={{ opacity: 0.2 }}>*</Text>
+              </Text>
+              <Controller
+                // @ts-ignore
+                control={control}
+                rules={{
+                  required: true,
+                  pattern: {
+                    value:
+                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    message: "Valid email is required",
+                  },
+                }}
+                render={({ field: { onChange, value } }) => (
+                  <TextInput
+                    style={{
+                      width: "100%",
+                      borderWidth: 2,
+                      borderColor: `${
+                        errors.email
+                          ? "#d22"
+                          : isEmailFocused
+                          ? "#7b7ce6"
+                          : "transparent"
+                      }`,
+                      paddingTop: 22,
+                      paddingLeft: 24,
+                      paddingBottom: 22,
+                      paddingRight: 24,
+                      fontSize: 16,
+                      fontFamily: "markpro-light",
+                      lineHeight: 20,
+                      borderRadius: 15,
+                      backgroundColor: "#eff3ff",
+                    }}
+                    onBlur={() => setIsEmailFocused(false)}
+                    onFocus={() => setIsEmailFocused(true)}
+                    value={value}
+                    onChangeText={onChange}
+                  />
+                )}
+                name="email"
+                defaultValue=""
+              />
+              {errors.email && (
+                <Text
+                  style={{
+                    color: "#d22",
+                    fontSize: 14,
+                    fontFamily: "markpro-light",
+                    lineHeight: 16,
+                    paddingTop: 8,
+                  }}
+                >
+                  Valid email is required
+                </Text>
+              )}
             </View>
           </View>
         </View>
