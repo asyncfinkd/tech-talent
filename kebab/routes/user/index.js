@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const env = require("../../environment/app/env.json");
 const loginMiddleware = require("../../middlewares/loginMiddleware");
 const AdminSchema = require("../../schema/admin/index");
+const CompaniesSchema = require("../../schema/companies/index");
 const nodemailer = require("nodemailer");
 
 router.route("/login").post(async (req, res) => {
@@ -303,5 +304,30 @@ router.route("/forgot").post(async (req, res) => {
     }
   });
 });
+
+router
+  .route("/get/followed/companies")
+  .all(loginMiddleware)
+  .post(async (req, res) => {
+    UserSchema.findOne({ _id: req._id }).then((result) => {
+      if (result.followedCompaniesId.length == 0) {
+        res.json([]);
+      } else {
+        let data = [];
+        result.followedCompaniesId.map((item) => {
+          CompaniesSchema.find().then((result2) => {
+            result2.map((resMap) => {
+              if (resMap._id == item.id) {
+                data.push(resMap);
+              }
+            });
+            if (data.length == result.followedCompaniesId.length) {
+              res.json(data);
+            }
+          });
+        });
+      }
+    });
+  });
 
 module.exports = router;
