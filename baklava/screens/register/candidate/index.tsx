@@ -21,9 +21,9 @@ export default function RegisterCandidateScreen({ navigation }: any) {
         />
         <RegisterFooter
           secondStep={true}
-          secondStepOnPress={() => {
-            console.log(1);
-          }}
+          secondStepOnPress={handleSubmit((data: any) => {
+            console.log(data);
+          })}
         />
       </View>
     </>
