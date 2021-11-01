@@ -65,8 +65,28 @@ export default function RegisterFooter({
               </Text>
             </View>
             {secondStep && (
-              <TouchableHighlight>
-                <Text>123</Text>
+              <TouchableHighlight
+                style={{
+                  backgroundColor: "#7b7ce6",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: 10,
+                  paddingTop: 14,
+                  paddingLeft: 28,
+                  paddingBottom: 14,
+                  paddingRight: 28,
+                }}
+              >
+                <Text
+                  style={{
+                    fontWeight: "500",
+                    lineHeight: 20,
+                    color: "white",
+                  }}
+                >
+                  Next
+                </Text>
               </TouchableHighlight>
             )}
           </View>
