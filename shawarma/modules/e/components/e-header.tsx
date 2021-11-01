@@ -30,6 +30,7 @@ export default function EHeader({ data, setCollapse, collapse }: any) {
             <img
               className="logo-0-2-450"
               src={`${process.env.SERVER_APP_API_URL}${data.logoUrl}`}
+              alt=""
             />
             <div className="desktopInfo-0-2-451">
               <div className="name-0-2-453">{data.name}</div>
