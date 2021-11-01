@@ -128,11 +128,6 @@ export default function RegisterCandidateForm({ errors, control }: any) {
                 control={control}
                 rules={{
                   required: true,
-                  pattern: {
-                    value:
-                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                    message: "Valid email is required",
-                  },
                 }}
                 render={({ field: { onChange, value } }) => (
                   <TextInput
@@ -196,11 +191,6 @@ export default function RegisterCandidateForm({ errors, control }: any) {
                 control={control}
                 rules={{
                   required: true,
-                  pattern: {
-                    value:
-                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                    message: "Valid email is required",
-                  },
                 }}
                 render={({ field: { onChange, value } }) => (
                   <TextInput
