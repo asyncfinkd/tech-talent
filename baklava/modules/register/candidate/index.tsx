@@ -37,7 +37,7 @@ export default function RegisterCandidateModules({ navigation }: any) {
   };
   return (
     <>
-      <SafeAreaView style={{ backgroundColor: "white" }}>
+      <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
         <ScrollView>
           <StatusBar backgroundColor="white" />
           <LeftSidebar MenuX={MenuX} />
