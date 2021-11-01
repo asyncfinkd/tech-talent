@@ -5,6 +5,7 @@ export default function RegisterFooter({
   firstStep,
   secondStep,
   thirdStep,
+  secondStepOnPress,
 }: any) {
   return (
     <>
@@ -66,6 +67,7 @@ export default function RegisterFooter({
             </View>
             {secondStep && (
               <TouchableHighlight
+                underlayColor="none"
                 style={{
                   backgroundColor: "#7b7ce6",
                   display: "flex",
@@ -77,6 +79,7 @@ export default function RegisterFooter({
                   paddingBottom: 14,
                   paddingRight: 28,
                 }}
+                onPress={secondStepOnPress}
               >
                 <Text
                   style={{

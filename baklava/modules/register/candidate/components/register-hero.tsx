@@ -9,6 +9,8 @@ export default function RegisterHero({
   Profile,
   ProfileAnimation,
   navigation,
+  errors,
+  control,
 }: any) {
   return (
     <>
@@ -35,7 +37,7 @@ export default function RegisterHero({
         Menu={Menu}
         Profile={Profile}
       />
-      <RegisterCandidateForm />
+      <RegisterCandidateForm errors={errors} control={control} />
     </>
   );
 }

@@ -11,7 +11,11 @@ import LeftSidebar from "../../../ui/sidebar/left";
 import RightSidebar from "../../../ui/sidebar/right";
 import RegisterHero from "./components/register-hero";
 
-export default function RegisterCandidateModules({ navigation }: any) {
+export default function RegisterCandidateModules({
+  navigation,
+  errors,
+  control,
+}: any) {
   const MenuX = useRef(new Animated.Value(-500)).current;
   const ProfileX = useRef(new Animated.Value(500)).current;
 
@@ -48,6 +52,8 @@ export default function RegisterCandidateModules({ navigation }: any) {
             ProfileAnimation={ProfileAnimation}
             Profile={Profile}
             navigation={navigation}
+            errors={errors}
+            control={control}
           />
         </ScrollView>
       </SafeAreaView>

@@ -1,14 +1,30 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import { View } from "react-native";
 import RegisterCandidateModules from "../../../modules/register/candidate";
 import RegisterFooter from "../../../ui/footer/register";
 
 export default function RegisterCandidateScreen({ navigation }: any) {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   return (
     <>
       <View style={{ flex: 1 }}>
-        <RegisterCandidateModules navigation={navigation} />
-        <RegisterFooter secondStep={true} />
+        <RegisterCandidateModules
+          errors={errors}
+          navigation={navigation}
+          control={control}
+        />
+        <RegisterFooter
+          secondStep={true}
+          secondStepOnPress={() => {
+            console.log(1);
+          }}
+        />
       </View>
     </>
   );

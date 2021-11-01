@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import { Text, View, TextInput } from "react-native";
-import { useForm, Controller } from "react-hook-form";
+import { Controller } from "react-hook-form";
 
-export default function RegisterCandidateForm() {
+export default function RegisterCandidateForm({ errors, control }: any) {
   const [isEmailFocused, setIsEmailFocused] = useState<boolean>(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState<boolean>(false);
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const [isRepeatPasswordFocused, setIsRepeatPasswordFocused] =
+    useState<boolean>(false);
 
   return (
     <>
@@ -213,7 +210,7 @@ export default function RegisterCandidateForm() {
                       borderColor: `${
                         errors.email
                           ? "#d22"
-                          : isEmailFocused
+                          : isRepeatPasswordFocused
                           ? "#7b7ce6"
                           : "transparent"
                       }`,
@@ -227,16 +224,16 @@ export default function RegisterCandidateForm() {
                       borderRadius: 15,
                       backgroundColor: "#eff3ff",
                     }}
-                    onBlur={() => setIsEmailFocused(false)}
-                    onFocus={() => setIsEmailFocused(true)}
+                    onBlur={() => setIsRepeatPasswordFocused(false)}
+                    onFocus={() => setIsRepeatPasswordFocused(true)}
                     value={value}
                     onChangeText={onChange}
                   />
                 )}
-                name="email"
+                name="repeatPassword"
                 defaultValue=""
               />
-              {errors.email && (
+              {errors.repeatPassword && (
                 <Text
                   style={{
                     color: "#d22",
@@ -246,7 +243,7 @@ export default function RegisterCandidateForm() {
                     paddingTop: 8,
                   }}
                 >
-                  Valid email is required
+                  Passwords do not match
                 </Text>
               )}
             </View>
