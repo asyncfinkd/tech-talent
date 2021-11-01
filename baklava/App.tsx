@@ -80,6 +80,13 @@ export default function App() {
                 name="Register"
                 component={RegisterScreen}
               />
+              <Stack.Screen
+                options={{
+                  headerShown: false,
+                }}
+                name="RegisterCandidate"
+                component={RegisterScreen}
+              />
             </Stack.Navigator>
           </NavigationContainer>
         </ApplicationContext.Provider>

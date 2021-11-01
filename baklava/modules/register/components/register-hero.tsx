@@ -34,7 +34,7 @@ export default function RegisterHero({
         Menu={Menu}
         Profile={Profile}
       />
-      <RegisterForm />
+      <RegisterForm navigation={navigation} />
     </>
   );
 }

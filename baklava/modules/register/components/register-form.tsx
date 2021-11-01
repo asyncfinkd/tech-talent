@@ -1,11 +1,11 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, TouchableHighlight, View } from "react-native";
 import CompanyIcon from "../../../assets/svg/Company";
 import OtherSVG from "../../../assets/svg/Other";
 import RegisterIcon from "../../../assets/svg/RegisterIcon";
 import { interest } from "../../../fixtures/register";
 
-export default function RegisterForm() {
+export default function RegisterForm({ navigation }: any) {
   const renderSVGs = ({ item }: any) => {
     if (item.text === "Other") {
       return <OtherSVG color="rgb(255, 94, 54)" />;
@@ -60,81 +60,88 @@ export default function RegisterForm() {
             {interest.map((item) => {
               return (
                 <>
-                  <View
-                    style={{
-                      display: "flex",
-                      marginTop: item.id != 0 ? 20 : 0,
+                  <TouchableHighlight
+                    onPress={() => {
+                      navigation.push("RegisterCandidate");
                     }}
+                    underlayColor="none"
                   >
                     <View
                       style={{
-                        width: 240,
-                        borderWidth: 2,
-                        borderColor: "transparent",
-                        paddingTop: 24,
-                        paddingLeft: 19.84,
-                        paddingBottom: 24,
-                        paddingRight: 19.84,
-                        backgroundColor: "white",
-                        borderRadius: 20,
                         display: "flex",
-                        justifyContent: "space-between",
-                        shadowColor: "#000",
-                        shadowOffset: {
-                          width: 0,
-                          height: 12,
-                        },
-                        shadowOpacity: 0.1,
-                        shadowRadius: 16.0,
-
-                        elevation: 24,
+                        marginTop: item.id != 0 ? 20 : 0,
                       }}
                     >
                       <View
                         style={{
+                          width: 240,
+                          borderWidth: 2,
+                          borderColor: "transparent",
+                          paddingTop: 24,
+                          paddingLeft: 19.84,
+                          paddingBottom: 24,
+                          paddingRight: 19.84,
+                          backgroundColor: "white",
+                          borderRadius: 20,
                           display: "flex",
-                          alignItems: "center",
-                          flexDirection: "row",
+                          justifyContent: "space-between",
+                          shadowColor: "#000",
+                          shadowOffset: {
+                            width: 0,
+                            height: 12,
+                          },
+                          shadowOpacity: 0.1,
+                          shadowRadius: 16.0,
+
+                          elevation: 24,
                         }}
                       >
                         <View
                           style={{
-                            backgroundColor: item.backgroundColor,
-                            marginRight: 12,
-                            width: 48,
-                            height: 48,
                             display: "flex",
                             alignItems: "center",
-                            justifyContent: "center",
-                            borderRadius: 18,
+                            flexDirection: "row",
                           }}
                         >
                           <View
                             style={{
-                              width: 36,
-                              height: 36,
-                              borderRadius: 15,
-                              backgroundColor: "white",
+                              backgroundColor: item.backgroundColor,
+                              marginRight: 12,
+                              width: 48,
+                              height: 48,
                               display: "flex",
                               alignItems: "center",
                               justifyContent: "center",
+                              borderRadius: 18,
                             }}
                           >
-                            {renderSVGs({ item })}
+                            <View
+                              style={{
+                                width: 36,
+                                height: 36,
+                                borderRadius: 15,
+                                backgroundColor: "white",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                              }}
+                            >
+                              {renderSVGs({ item })}
+                            </View>
                           </View>
+                          <Text
+                            style={{
+                              fontSize: 14,
+                              fontFamily: "markpro-light",
+                              fontWeight: "500",
+                            }}
+                          >
+                            {item.text}
+                          </Text>
                         </View>
-                        <Text
-                          style={{
-                            fontSize: 14,
-                            fontFamily: "markpro-light",
-                            fontWeight: "500",
-                          }}
-                        >
-                          {item.text}
-                        </Text>
                       </View>
                     </View>
-                  </View>
+                  </TouchableHighlight>
                 </>
               );
             })}

@@ -4,7 +4,7 @@ import RegisterPageModules from "../../modules/register";
 export default function RegisterScreen({ navigation }: any) {
   return (
     <>
-      <RegisterPageModules />
+      <RegisterPageModules navigation={navigation} />
     </>
   );
 }
