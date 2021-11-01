@@ -5,4 +5,7 @@ module.exports = {
     REACT_APP_API_URL: "http://localhost:3002",
     SERVER_APP_API_URL: "https://s3.eu-central-1.amazonaws.com/public.tt.ge",
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
