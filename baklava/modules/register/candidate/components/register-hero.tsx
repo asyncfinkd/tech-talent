@@ -1,6 +1,7 @@
 import React from "react";
 import { Text } from "react-native";
 import Header from "../../../../ui/header";
+import RegisterCandidateForm from "./register-form";
 
 export default function RegisterHero({
   Menu,
@@ -34,6 +35,7 @@ export default function RegisterHero({
         Menu={Menu}
         Profile={Profile}
       />
+      <RegisterCandidateForm />
     </>
   );
 }
