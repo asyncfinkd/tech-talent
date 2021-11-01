@@ -64,9 +64,11 @@ export default function RegisterFooter({
                 {firstStep ? "Select profession" : "Enter Your Credentials"}
               </Text>
             </View>
-            <TouchableHighlight>
-              <Text>123</Text>
-            </TouchableHighlight>
+            {secondStep && (
+              <TouchableHighlight>
+                <Text>123</Text>
+              </TouchableHighlight>
+            )}
           </View>
         </View>
       </View>
