@@ -62,9 +62,10 @@ export const getServerSideProps: GetServerSideProps = async (
         },
       }
     );
-    console.log(followedResponse);
-    followedResponse = followedRequest.json();
 
+    followedResponse = await followedRequest.json();
+
+    console.log(followedResponse);
     token = jwt_decode(cookies.cookie);
 
     const response = await request.json();
