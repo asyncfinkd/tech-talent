@@ -26,6 +26,7 @@ export default function Footer({ showFullFooter }: any) {
                     fontSize: 40,
                     fontFamily: "markpro-bold",
                     fontWeight: "700",
+                    textAlign: "center",
                   }}
                 >
                   Welcome to {"\n"}Tech Talent
@@ -37,19 +38,43 @@ export default function Footer({ showFullFooter }: any) {
                     marginBottom: 32,
                     marginTop: 16,
                     fontSize: 20,
+                    textAlign: "center",
                   }}
                 >
                   Tech companies use our platform {"\n"}to find people that fit
                   their culture.
                 </Text>
-                <TouchableHighlight
-                  onPress={() => console.group(1)}
-                  style={[styles.registerButton, { width: ButtonSize }]}
+                <View
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
                 >
-                  <Text style={{ color: "white", fontFamily: "markpro-bold" }}>
-                    {tokenData?.logged ? "Profile" : "Register"}
-                  </Text>
-                </TouchableHighlight>
+                  <TouchableHighlight
+                    onPress={() => console.group(1)}
+                    style={[
+                      styles.registerButton,
+                      {
+                        width: ButtonSize,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        margin: "auto",
+                      },
+                    ]}
+                  >
+                    <Text
+                      style={{
+                        color: "white",
+                        fontFamily: "markpro-bold",
+                        textAlign: "center",
+                      }}
+                    >
+                      {tokenData?.logged ? "Profile" : "Register"}
+                    </Text>
+                  </TouchableHighlight>
+                </View>
               </View>
             </View>
           </View>
