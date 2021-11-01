@@ -13,6 +13,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import IndexScreen from "./screens/index";
 import RegisterScreen from "./screens/register";
+import RegisterCandidateScreen from "./screens/register/candidate";
 
 const getFonts = () =>
   Font.loadAsync({
@@ -85,7 +86,7 @@ export default function App() {
                   headerShown: false,
                 }}
                 name="RegisterCandidate"
-                component={RegisterScreen}
+                component={RegisterCandidateScreen}
               />
             </Stack.Navigator>
           </NavigationContainer>
