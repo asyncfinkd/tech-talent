@@ -1,13 +1,10 @@
+import Actions from "../../../actions/ui/sidebar/right";
 import React from "react";
-import { Animated, View, Text, TouchableHighlight } from "react-native";
-import { LoginSVG } from "../../../assets/svg/Login";
-import RegisterSVG from "../../../assets/svg/Register";
-import { UserProfile } from "../../../assets/svg/UserProfile";
 
 export default function RightSidebar({ ProfileX, navigation }: any) {
   return (
     <>
-      <Animated.View
+      <Actions.Animated.View
         style={{
           position: "absolute",
           // overflow: "scroll",
@@ -27,14 +24,14 @@ export default function RightSidebar({ ProfileX, navigation }: any) {
           ],
         }}
       >
-        <View
+        <Actions.View
           style={{
             display: "flex",
             alignItems: "center",
             flexDirection: "row",
           }}
         >
-          <View
+          <Actions.View
             style={{
               marginRight: 12,
               width: 48,
@@ -46,7 +43,7 @@ export default function RightSidebar({ ProfileX, navigation }: any) {
               backgroundColor: "#f2f2fc",
             }}
           >
-            <View
+            <Actions.View
               style={{
                 width: 36,
                 height: 36,
@@ -57,11 +54,11 @@ export default function RightSidebar({ ProfileX, navigation }: any) {
                 backgroundColor: "#fff",
               }}
             >
-              <UserProfile />
-            </View>
-          </View>
-          <View>
-            <Text
+              <Actions.UserProfile />
+            </Actions.View>
+          </Actions.View>
+          <Actions.View>
+            <Actions.Text
               style={{
                 fontFamily: "markpro-bold",
                 fontSize: 18,
@@ -71,18 +68,18 @@ export default function RightSidebar({ ProfileX, navigation }: any) {
               }}
             >
               Guest
-            </Text>
-            <Text
+            </Actions.Text>
+            <Actions.Text
               style={{
                 fontSize: 14,
                 fontFamily: "markpro-light",
               }}
             >
               Inactive
-            </Text>
-          </View>
-        </View>
-        <View
+            </Actions.Text>
+          </Actions.View>
+        </Actions.View>
+        <Actions.View
           style={{
             height: 1,
             marginTop: 12,
@@ -92,12 +89,12 @@ export default function RightSidebar({ ProfileX, navigation }: any) {
             backgroundColor: "#e6e6e6",
           }}
         />
-        <View>
-          <TouchableHighlight
+        <Actions.View>
+          <Actions.TouchableHighlight
             underlayColor="none"
             onPress={() => navigation.push("Register")}
           >
-            <View
+            <Actions.View
               style={{
                 width: "100%",
                 paddingTop: 12,
@@ -110,8 +107,8 @@ export default function RightSidebar({ ProfileX, navigation }: any) {
                 flexDirection: "row",
               }}
             >
-              <RegisterSVG />
-              <Text
+              <Actions.RegisterSVG />
+              <Actions.Text
                 style={{
                   marginLeft: 10,
                   fontFamily: "markpro-bold",
@@ -120,14 +117,14 @@ export default function RightSidebar({ ProfileX, navigation }: any) {
                 }}
               >
                 Register
-              </Text>
-            </View>
-          </TouchableHighlight>
-          <TouchableHighlight
+              </Actions.Text>
+            </Actions.View>
+          </Actions.TouchableHighlight>
+          <Actions.TouchableHighlight
             underlayColor="none"
             onPress={() => navigation.push("Login")}
           >
-            <View
+            <Actions.View
               style={{
                 width: "100%",
                 paddingTop: 12,
@@ -140,8 +137,8 @@ export default function RightSidebar({ ProfileX, navigation }: any) {
                 flexDirection: "row",
               }}
             >
-              <LoginSVG />
-              <Text
+              <Actions.LoginSVG />
+              <Actions.Text
                 style={{
                   marginLeft: 10,
                   fontFamily: "markpro-bold",
@@ -150,11 +147,11 @@ export default function RightSidebar({ ProfileX, navigation }: any) {
                 }}
               >
                 Login
-              </Text>
-            </View>
-          </TouchableHighlight>
-        </View>
-      </Animated.View>
+              </Actions.Text>
+            </Actions.View>
+          </Actions.TouchableHighlight>
+        </Actions.View>
+      </Actions.Animated.View>
     </>
   );
 }
