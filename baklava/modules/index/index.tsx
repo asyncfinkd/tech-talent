@@ -1,16 +1,12 @@
-import React, { useRef } from "react";
-import useBoolean from "../../shared-hooks/use-boolean";
-import { SafeAreaView, ScrollView, Animated, StatusBar } from "react-native";
-import LeftSidebar from "../../ui/sidebar/left";
-import RightSidebar from "../../ui/sidebar/right";
-import IndexPageHero from "./components/index-hero";
+import Actions from "../../actions/modules/index";
+import React from "react";
 
 export default function IndexPageModule({ navigation }: any) {
-  const MenuX = useRef(new Animated.Value(-500)).current;
-  const ProfileX = useRef(new Animated.Value(500)).current;
+  const MenuX = Actions.useRef(new Actions.Animated.Value(-500)).current;
+  const ProfileX = Actions.useRef(new Actions.Animated.Value(500)).current;
 
-  const Menu = useBoolean();
-  const Profile = useBoolean();
+  const Menu = Actions.useBoolean();
+  const Profile = Actions.useBoolean();
 
   const Animation = (value: number) => {
     // @ts-ignore
@@ -31,20 +27,20 @@ export default function IndexPageModule({ navigation }: any) {
   };
   return (
     <>
-      <SafeAreaView style={{ backgroundColor: "white" }}>
-        <ScrollView>
-          <StatusBar backgroundColor="white" />
-          <LeftSidebar MenuX={MenuX} />
-          <RightSidebar ProfileX={ProfileX} navigation={navigation} />
-          <IndexPageHero
+      <Actions.SafeAreaView style={{ backgroundColor: "white" }}>
+        <Actions.ScrollView>
+          <Actions.StatusBar backgroundColor="white" />
+          <Actions.LeftSidebar MenuX={MenuX} />
+          <Actions.RightSidebar ProfileX={ProfileX} navigation={navigation} />
+          <Actions.IndexPageHero
             Menu={Menu}
             Animation={Animation}
             ProfileAnimation={ProfileAnimation}
             Profile={Profile}
             navigation={navigation}
           />
-        </ScrollView>
-      </SafeAreaView>
+        </Actions.ScrollView>
+      </Actions.SafeAreaView>
     </>
   );
 }
