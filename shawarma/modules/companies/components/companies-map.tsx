@@ -3,12 +3,14 @@ import Link from "next/link";
 import { useMutation } from "react-query";
 import { FollowRequest } from "features/follow/follow.api";
 import { UnFollowRequest } from "features/unfollow/unfollow.api";
+import { useRouter } from "next/router";
 
 interface Props {
   id: string;
 }
 
 export default function CompaniesMap({ item, _id, logged }: any) {
+  const router = useRouter();
   const [followed, setFollowed] = useState<boolean>(false);
   const [unFollow, setUnFollow] = useState<boolean>(false);
   const [changed, setChanged] = useState<boolean>(false);
@@ -76,29 +78,33 @@ export default function CompaniesMap({ item, _id, logged }: any) {
                     : "root-0-2-46 followButton-0-2-149 animation-0-2-47 weightMedium-0-2-61 sizeSm-0-2-50 variantPrimary-0-2-54"
                 }
                 onClick={() => {
-                  setChanged(true);
-                  if (followed) {
-                    $unfollow.mutate(
-                      { loginData: { id: item._id } },
-                      {
-                        onSuccess: () => {
-                          setFollowers(followers - 1);
-                          setUnFollow(true);
-                          setFollowed(false);
-                        },
-                      }
-                    );
+                  if (!logged) {
+                    router.push("/register");
                   } else {
-                    $follow.mutate(
-                      { loginData: { id: item._id } },
-                      {
-                        onSuccess: () => {
-                          setFollowers(followers + 1);
-                          setUnFollow(false);
-                          setFollowed(true);
-                        },
-                      }
-                    );
+                    setChanged(true);
+                    if (followed) {
+                      $unfollow.mutate(
+                        { loginData: { id: item._id } },
+                        {
+                          onSuccess: () => {
+                            setFollowers(followers - 1);
+                            setUnFollow(true);
+                            setFollowed(false);
+                          },
+                        }
+                      );
+                    } else {
+                      $follow.mutate(
+                        { loginData: { id: item._id } },
+                        {
+                          onSuccess: () => {
+                            setFollowers(followers + 1);
+                            setUnFollow(false);
+                            setFollowed(true);
+                          },
+                        }
+                      );
+                    }
                   }
                 }}
               >
