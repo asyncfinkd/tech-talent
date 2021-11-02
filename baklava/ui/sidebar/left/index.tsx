@@ -1,33 +1,29 @@
+import Actions from "../../../actions/ui/sidebar/left";
 import React from "react";
-import { Animated, View, Text, TouchableHighlight } from "react-native";
-import { AboutSVG } from "../../../assets/svg/about";
-import { CompaniesSVG } from "../../../assets/svg/companies";
-import { EducationSVG } from "../../../assets/svg/education";
-import { JobsSVG } from "../../../assets/svg/jobs";
 
 export default function LeftSidebar({ MenuX }: any) {
   const MenuData = [
     {
       title: "Jobs",
-      svg: JobsSVG,
+      svg: Actions.JobsSVG,
     },
     {
       title: "Companies",
-      svg: CompaniesSVG,
+      svg: Actions.CompaniesSVG,
     },
     {
       title: "Courses",
-      svg: EducationSVG,
+      svg: Actions.EducationSVG,
     },
     {
       title: "Education",
-      svg: EducationSVG,
+      svg: Actions.EducationSVG,
       route: "education",
     },
   ];
   return (
     <>
-      <Animated.View
+      <Actions.Animated.View
         // @ts-ignore
         style={{
           position: "absolute",
@@ -48,11 +44,11 @@ export default function LeftSidebar({ MenuX }: any) {
           ],
         }}
       >
-        <View>
+        <Actions.View>
           {MenuData.map((item: any) => {
             return (
               <>
-                <View
+                <Actions.View
                   style={{
                     width: "100%",
                     paddingTop: 12,
@@ -66,14 +62,16 @@ export default function LeftSidebar({ MenuX }: any) {
                   }}
                 >
                   {item.svg()}
-                  <Text style={{ marginLeft: 10, fontFamily: "markpro-bold" }}>
+                  <Actions.Text
+                    style={{ marginLeft: 10, fontFamily: "markpro-bold" }}
+                  >
                     {item.title}
-                  </Text>
-                </View>
+                  </Actions.Text>
+                </Actions.View>
               </>
             );
           })}
-          <View
+          <Actions.View
             style={{
               display: "flex",
               height: 1,
@@ -84,8 +82,8 @@ export default function LeftSidebar({ MenuX }: any) {
               backgroundColor: "#e6e6e6",
             }}
           />
-          <View>
-            <View
+          <Actions.View>
+            <Actions.View
               style={{
                 width: "100%",
                 paddingTop: 12,
@@ -98,12 +96,14 @@ export default function LeftSidebar({ MenuX }: any) {
                 flexDirection: "row",
               }}
             >
-              <AboutSVG />
-              <Text style={{ marginLeft: 10, fontFamily: "markpro-bold" }}>
+              <Actions.AboutSVG />
+              <Actions.Text
+                style={{ marginLeft: 10, fontFamily: "markpro-bold" }}
+              >
                 About
-              </Text>
-            </View>
-            <View
+              </Actions.Text>
+            </Actions.View>
+            <Actions.View
               style={{
                 display: "flex",
                 height: 1,
@@ -114,9 +114,9 @@ export default function LeftSidebar({ MenuX }: any) {
                 backgroundColor: "#e6e6e6",
               }}
             />
-          </View>
-          <View>
-            <Text
+          </Actions.View>
+          <Actions.View>
+            <Actions.Text
               style={{
                 fontSize: 16,
                 fontFamily: "markpro-bold",
@@ -126,16 +126,16 @@ export default function LeftSidebar({ MenuX }: any) {
               }}
             >
               Language
-            </Text>
-            <View
+            </Actions.Text>
+            <Actions.View
               style={{
                 display: "flex",
                 alignItems: "center",
                 flexDirection: "row",
               }}
             >
-              <TouchableHighlight style={{ marginRight: 16 }}>
-                <Text
+              <Actions.TouchableHighlight style={{ marginRight: 16 }}>
+                <Actions.Text
                   style={{
                     opacity: 0.5,
                     fontWeight: "500",
@@ -145,10 +145,10 @@ export default function LeftSidebar({ MenuX }: any) {
                   }}
                 >
                   English
-                </Text>
-              </TouchableHighlight>
-              <TouchableHighlight style={{ marginRight: 16 }}>
-                <Text
+                </Actions.Text>
+              </Actions.TouchableHighlight>
+              <Actions.TouchableHighlight style={{ marginRight: 16 }}>
+                <Actions.Text
                   style={{
                     opacity: 0.5,
                     fontWeight: "500",
@@ -158,12 +158,12 @@ export default function LeftSidebar({ MenuX }: any) {
                   }}
                 >
                   ქართული
-                </Text>
-              </TouchableHighlight>
-            </View>
-          </View>
-        </View>
-      </Animated.View>
+                </Actions.Text>
+              </Actions.TouchableHighlight>
+            </Actions.View>
+          </Actions.View>
+        </Actions.View>
+      </Actions.Animated.View>
     </>
   );
 }
