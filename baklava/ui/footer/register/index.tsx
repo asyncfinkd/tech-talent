@@ -1,5 +1,5 @@
+import Actions from "../../../actions/ui/footer/register";
 import React from "react";
-import { Text, TouchableHighlight, View } from "react-native";
 
 export default function RegisterFooter({
   firstStep,
@@ -9,7 +9,7 @@ export default function RegisterFooter({
 }: any) {
   return (
     <>
-      <View
+      <Actions.View
         style={{
           left: 0,
           right: 0,
@@ -18,17 +18,17 @@ export default function RegisterFooter({
           backgroundColor: "#fff",
         }}
       >
-        <View style={{ height: 5, backgroundColor: "#eff3ff" }}>
-          <View
+        <Actions.View style={{ height: 5, backgroundColor: "#eff3ff" }}>
+          <Actions.View
             style={{
               width: firstStep ? "20%" : "40%",
               height: 5,
               backgroundColor: "#18c729",
             }}
           />
-        </View>
-        <View style={{ marginLeft: 15, marginRight: 15 }}>
-          <View
+        </Actions.View>
+        <Actions.View style={{ marginLeft: 15, marginRight: 15 }}>
+          <Actions.View
             style={{
               paddingTop: 16,
               paddingLeft: 0,
@@ -39,8 +39,8 @@ export default function RegisterFooter({
               flexDirection: "row",
             }}
           >
-            <View>
-              <Text
+            <Actions.View>
+              <Actions.Text
                 style={{
                   fontSize: 16,
                   fontFamily: "markpro-bold",
@@ -53,8 +53,8 @@ export default function RegisterFooter({
                 }}
               >
                 {firstStep ? "Tell us who you are" : "Create Your Account"}
-              </Text>
-              <Text
+              </Actions.Text>
+              <Actions.Text
                 style={{
                   opacity: 0.5,
                   fontSize: 14,
@@ -63,10 +63,10 @@ export default function RegisterFooter({
                 }}
               >
                 {firstStep ? "Select profession" : "Enter Your Credentials"}
-              </Text>
-            </View>
+              </Actions.Text>
+            </Actions.View>
             {secondStep && (
-              <TouchableHighlight
+              <Actions.TouchableHighlight
                 underlayColor="none"
                 style={{
                   backgroundColor: "#7b7ce6",
@@ -81,7 +81,7 @@ export default function RegisterFooter({
                 }}
                 onPress={secondStepOnPress}
               >
-                <Text
+                <Actions.Text
                   style={{
                     fontWeight: "500",
                     lineHeight: 20,
@@ -89,12 +89,12 @@ export default function RegisterFooter({
                   }}
                 >
                   Next
-                </Text>
-              </TouchableHighlight>
+                </Actions.Text>
+              </Actions.TouchableHighlight>
             )}
-          </View>
-        </View>
-      </View>
+          </Actions.View>
+        </Actions.View>
+      </Actions.View>
     </>
   );
 }

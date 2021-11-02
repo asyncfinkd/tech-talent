@@ -1,9 +1,5 @@
-import { Logo } from "../../assets/svg/Logo";
+import Actions from "../.././actions/ui/header";
 import React from "react";
-import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
-import { BurgerMenu } from "../../assets/svg/BurgerMenu";
-import { UserIcon } from "../../assets/svg/UserIcon";
-import { CloseIconSVG } from "../../assets/svg/closeIcon";
 
 export default function Header({
   MenuFunction,
@@ -14,29 +10,29 @@ export default function Header({
 }: any) {
   return (
     <>
-      <View style={styles.container}>
-        <TouchableHighlight
+      <Actions.View style={styles.container}>
+        <Actions.TouchableHighlight
           onPress={MenuFunction}
           style={styles.BurgerMenuButton}
           underlayColor="none"
         >
-          <BurgerMenu />
-        </TouchableHighlight>
-        <View>
-          <TouchableHighlight
+          <Actions.BurgerMenu />
+        </Actions.TouchableHighlight>
+        <Actions.View>
+          <Actions.TouchableHighlight
             underlayColor="none"
             onPress={() => navigation.navigate("Home")}
           >
-            <View style={styles.HeaderHeroContainer}>
-              <Logo />
-              <View
+            <Actions.View style={styles.HeaderHeroContainer}>
+              <Actions.Logo />
+              <Actions.View
                 style={{
                   display: "flex",
                   alignItems: "center",
                   flexDirection: "row",
                 }}
               >
-                <Text
+                <Actions.Text
                   style={{
                     fontSize: 16,
                     fontWeight: "700",
@@ -46,8 +42,8 @@ export default function Header({
                   }}
                 >
                   Tech
-                </Text>
-                <Text
+                </Actions.Text>
+                <Actions.Text
                   style={{
                     fontSize: 14,
                     fontWeight: "300",
@@ -56,38 +52,38 @@ export default function Header({
                   }}
                 >
                   Talent
-                </Text>
-              </View>
-            </View>
-          </TouchableHighlight>
-        </View>
+                </Actions.Text>
+              </Actions.View>
+            </Actions.View>
+          </Actions.TouchableHighlight>
+        </Actions.View>
         {Menu?.value || Profile?.value ? (
           <>
-            <TouchableHighlight
+            <Actions.TouchableHighlight
               onPress={ProfileFunction}
               style={styles.BurgerMenuButton}
               underlayColor="none"
             >
-              <CloseIconSVG />
-            </TouchableHighlight>
+              <Actions.CloseIconSVG />
+            </Actions.TouchableHighlight>
           </>
         ) : (
           <>
-            <TouchableHighlight
+            <Actions.TouchableHighlight
               onPress={ProfileFunction}
               style={styles.BurgerMenuButton}
               underlayColor="none"
             >
-              <UserIcon />
-            </TouchableHighlight>
+              <Actions.UserIcon />
+            </Actions.TouchableHighlight>
           </>
         )}
-      </View>
+      </Actions.View>
     </>
   );
 }
 
-const styles = StyleSheet.create({
+const styles = Actions.StyleSheet.create({
   container: {
     display: "flex",
     alignItems: "center",
