@@ -290,7 +290,7 @@ export default function LoginPageModule({ navigation }: any) {
                   <TouchableHighlight
                     onPress={handleSubmit((data: any) => {
                       const method = fetch(
-                        `http://192.168.100.7:3002/api/login`,
+                        `https://tech-talent-api.herokuapp.com/api/login`,
                         {
                           method: "POST",
                           headers: {

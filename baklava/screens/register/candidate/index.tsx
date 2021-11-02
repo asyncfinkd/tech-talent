@@ -26,7 +26,7 @@ export default function RegisterCandidateScreen({ navigation }: any) {
         <RegisterFooter
           secondStep={true}
           secondStepOnPress={handleSubmit((data: any) => {
-            console.log(data);
+            // const requestForData = fetch(`https://tech-talent-api.herokuapp.com/`)
           })}
         />
       </View>
