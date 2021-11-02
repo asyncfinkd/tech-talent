@@ -1,12 +1,11 @@
-import ComingSoon from "ui/comingsoon";
-import Header from "ui/header";
+import Actions from "actions/privacy";
 import React from "react";
 
 const Privacy: React.FC = () => {
   return (
     <>
-      <Header ShowShadow={true} />
-      <ComingSoon pageTitle={"Terms & Conditions | Tech Talent"} />
+      <Actions.Header ShowShadow={true} />
+      <Actions.ComingSoon pageTitle={"Terms & Conditions | Tech Talent"} />
     </>
   );
 };

@@ -1,12 +1,11 @@
-import ComingSoon from "ui/comingsoon";
-import Header from "ui/header";
+import Actions from "actions/about";
 import React from "react";
 
 const About: React.FC = () => {
   return (
     <>
-      <Header ShowShadow={true} />
-      <ComingSoon pageTitle={"About | Tech Talent"} />
+      <Actions.Header ShowShadow={true} />
+      <Actions.ComingSoon pageTitle={"About | Tech Talent"} />
     </>
   );
 };
