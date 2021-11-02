@@ -9,6 +9,8 @@ export default function RegisterCandidateScreen({ navigation }: any) {
     control,
     handleSubmit,
     formState: { errors },
+    watch,
+    getValues,
   } = useForm();
 
   return (
@@ -18,6 +20,8 @@ export default function RegisterCandidateScreen({ navigation }: any) {
           errors={errors}
           navigation={navigation}
           control={control}
+          watch={watch}
+          getValues={getValues}
         />
         <RegisterFooter
           secondStep={true}

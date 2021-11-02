@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { Text, View, TextInput } from "react-native";
 import { Controller } from "react-hook-form";
 
-export default function RegisterCandidateForm({ errors, control }: any) {
+export default function RegisterCandidateForm({
+  errors,
+  control,
+  watch,
+  getValues,
+}: any) {
   const [isEmailFocused, setIsEmailFocused] = useState<boolean>(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState<boolean>(false);
   const [isRepeatPasswordFocused, setIsRepeatPasswordFocused] =
@@ -191,6 +196,9 @@ export default function RegisterCandidateForm({ errors, control }: any) {
                 control={control}
                 rules={{
                   required: true,
+                  validate: () => {
+                    return getValues("repeatPassword") == watch("password");
+                  },
                 }}
                 render={({ field: { onChange, value } }) => (
                   <TextInput

@@ -11,6 +11,8 @@ export default function RegisterHero({
   navigation,
   errors,
   control,
+  watch,
+  getValues,
 }: any) {
   return (
     <>
@@ -37,7 +39,12 @@ export default function RegisterHero({
         Menu={Menu}
         Profile={Profile}
       />
-      <RegisterCandidateForm errors={errors} control={control} />
+      <RegisterCandidateForm
+        errors={errors}
+        control={control}
+        watch={watch}
+        getValues={getValues}
+      />
     </>
   );
 }

@@ -15,6 +15,8 @@ export default function RegisterCandidateModules({
   navigation,
   errors,
   control,
+  watch,
+  getValues,
 }: any) {
   const MenuX = useRef(new Animated.Value(-500)).current;
   const ProfileX = useRef(new Animated.Value(500)).current;
@@ -54,6 +56,8 @@ export default function RegisterCandidateModules({
             navigation={navigation}
             errors={errors}
             control={control}
+            watch={watch}
+            getValues={getValues}
           />
         </ScrollView>
       </SafeAreaView>
