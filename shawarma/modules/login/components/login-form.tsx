@@ -1,33 +1,21 @@
-import { Button } from "components/button";
+import Actions from "actions/login/modules/components";
 import React, { useContext, useState } from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginInputsResult, Props } from "types/login";
-import { schema } from "schema/login";
-import { ErrorMessage } from "components/error-message";
-import { LoginRequest } from "features/login/login.api";
-import { useMutation } from "react-query";
 import { Result } from "types/features/login";
-import { ApplicationContext } from "context/application/ApplicationContext";
-import { useRouter } from "next/router";
-import { LoginInputs } from "fixtures/login";
-import { loading } from "constants/app/strings";
-import SVG from "react-inlinesvg";
-import Link from "next/link";
 
 const LoginForm: React.FC = () => {
-  const router = useRouter();
+  const router = Actions.useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Props>({ resolver: yupResolver(schema) });
-  const { setAccess_Token } = useContext(ApplicationContext);
+  } = Actions.useForm<Props>({ resolver: Actions.yupResolver(Actions.schema) });
+  const { setAccess_Token } = useContext(Actions.ApplicationContext);
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
   const [forUser, setForUser] = useState<any>(true);
 
-  const $login = useMutation(({ loginData }: { loginData: Props }) =>
-    LoginRequest(loginData, setErrorMessage, forUser)
+  const $login = Actions.useMutation(({ loginData }: { loginData: Props }) =>
+    Actions.LoginRequest(loginData, setErrorMessage, forUser)
   );
 
   return (
@@ -47,7 +35,7 @@ const LoginForm: React.FC = () => {
         })}
       >
         <div>
-          {LoginInputs.Fields.map((item: LoginInputsResult) => {
+          {Actions.LoginInputs.Fields.map((item: LoginInputsResult) => {
             return (
               <>
                 <div className="root-0-2-247">
@@ -69,47 +57,47 @@ const LoginForm: React.FC = () => {
                     // @ts-ignore
                     {...register(item.name)}
                   />
-                  <ErrorMessage
+                  <Actions.ErrorMessage
                     element="div"
                     // @ts-ignore
                     condition={errors[item.name]}
                     className="invalidMessage-0-2-253"
                   >
                     {item.required.message}
-                  </ErrorMessage>
+                  </Actions.ErrorMessage>
                 </div>
               </>
             );
           })}
         </div>
-        <ErrorMessage
+        <Actions.ErrorMessage
           element="div"
           className="errorMessage-0-2-111"
           condition={errorMessage}
         >
           Incorrect email or password
-        </ErrorMessage>
+        </Actions.ErrorMessage>
         <div className="buttonField-0-2-237">
-          <Link href="/forgot">
+          <Actions.Link href="/forgot">
             <a className="forgotPassword-0-2-243">Forgot Password?</a>
-          </Link>
+          </Actions.Link>
           {$login.isLoading ? (
-            <Button
+            <Actions.Button
               type="submit"
               className="root-0-2-46 button-0-2-105 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
             >
               <div className="loading-0-2-112">
-                <SVG src={loading} />
+                <Actions.SVG src={Actions.loading} />
                 <span>Loading</span>
               </div>
-            </Button>
+            </Actions.Button>
           ) : (
-            <Button
+            <Actions.Button
               type="submit"
               className="root-0-2-46 button-0-2-238 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
             >
               Login
-            </Button>
+            </Actions.Button>
           )}
         </div>
       </form>
