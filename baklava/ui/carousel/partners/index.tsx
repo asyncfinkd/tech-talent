@@ -1,6 +1,5 @@
+import Actions from "../../../actions/ui/carousel/partners";
 import React from "react";
-import { Text, View, Image, StyleSheet, ViewPropTypes } from "react-native";
-import Carousel from "react-native-snap-carousel";
 
 export default function CarouselPartners() {
   const carouselItems = [
@@ -32,17 +31,17 @@ export default function CarouselPartners() {
 
   const renderItem = ({ item }: any) => {
     return (
-      <View style={styles.carouselItemContainer}>
-        <Image
+      <Actions.View style={styles.carouselItemContainer}>
+        <Actions.Image
           source={{ uri: `${item.image}` }}
           style={styles.carouselImageContainer}
         />
-      </View>
+      </Actions.View>
     );
   };
   return (
     <>
-      <View
+      <Actions.View
         style={{
           display: "flex",
           alignItems: "center",
@@ -53,18 +52,18 @@ export default function CarouselPartners() {
           paddingRight: 0,
         }}
       >
-        <Carousel
+        <Actions.Carousel
           data={carouselItems}
           sliderWidth={300}
           itemWidth={300}
           renderItem={renderItem}
         />
-      </View>
+      </Actions.View>
     </>
   );
 }
 
-const styles = StyleSheet.create({
+const styles = Actions.StyleSheet.create({
   carouselItemContainer: {
     padding: 20,
     display: "flex",

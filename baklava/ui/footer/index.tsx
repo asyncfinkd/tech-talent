@@ -1,14 +1,10 @@
-import React, { useContext, useState } from "react";
-import { Text, View, StyleSheet, TouchableHighlight } from "react-native";
-import { CloudSVG } from "../../assets/svg/cloud";
-import { FacebookSVG } from "../../assets/svg/facebook";
-import { LinkedinSVG } from "../../assets/svg/linkedin";
-import { ApplicationContext } from "../../context/application";
+import Actions from "../../actions/ui/footer";
+import React from "react";
 import { TokenProps } from "../../types/app/token";
 
 export default function Footer({ showFullFooter }: any) {
-  const { access_token, setAccess_Token } = useContext(ApplicationContext);
-  const [tokenData, setTokenData] = useState<any>(
+  const { access_token } = Actions.useContext(Actions.ApplicationContext);
+  const [tokenData, setTokenData] = Actions.useState<TokenProps>(
     access_token.fullName != "" && JSON.parse(access_token)
   );
 
@@ -18,10 +14,10 @@ export default function Footer({ showFullFooter }: any) {
     <>
       {showFullFooter == true && (
         <>
-          <View style={styles.container}>
-            <View style={styles.content}>
-              <View>
-                <Text
+          <Actions.View style={styles.container}>
+            <Actions.View style={styles.content}>
+              <Actions.View>
+                <Actions.Text
                   style={{
                     fontSize: 40,
                     fontFamily: "markpro-bold",
@@ -30,8 +26,8 @@ export default function Footer({ showFullFooter }: any) {
                   }}
                 >
                   Welcome to {"\n"}Tech Talent
-                </Text>
-                <Text
+                </Actions.Text>
+                <Actions.Text
                   style={{
                     opacity: 0.5,
                     fontFamily: "markpro-light",
@@ -43,15 +39,15 @@ export default function Footer({ showFullFooter }: any) {
                 >
                   Tech companies use our platform {"\n"}to find people that fit
                   their culture.
-                </Text>
-                <View
+                </Actions.Text>
+                <Actions.View
                   style={{
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                   }}
                 >
-                  <TouchableHighlight
+                  <Actions.TouchableHighlight
                     onPress={() => console.group(1)}
                     style={[
                       styles.registerButton,
@@ -64,7 +60,7 @@ export default function Footer({ showFullFooter }: any) {
                       },
                     ]}
                   >
-                    <Text
+                    <Actions.Text
                       style={{
                         color: "white",
                         fontFamily: "markpro-bold",
@@ -72,19 +68,21 @@ export default function Footer({ showFullFooter }: any) {
                       }}
                     >
                       {tokenData?.logged ? "Profile" : "Register"}
-                    </Text>
-                  </TouchableHighlight>
-                </View>
-              </View>
-            </View>
-          </View>
+                    </Actions.Text>
+                  </Actions.TouchableHighlight>
+                </Actions.View>
+              </Actions.View>
+            </Actions.View>
+          </Actions.View>
         </>
       )}
-      <View style={{ width: "100%", height: 1, backgroundColor: "#f1f1f5" }} />
-      <View style={styles.footerContainer}>
-        <View style={styles.footerContent}>
-          <View style={styles.socialButtonGroup}>
-            <View
+      <Actions.View
+        style={{ width: "100%", height: 1, backgroundColor: "#f1f1f5" }}
+      />
+      <Actions.View style={styles.footerContainer}>
+        <Actions.View style={styles.footerContent}>
+          <Actions.View style={styles.socialButtonGroup}>
+            <Actions.View
               style={{
                 width: 48,
                 height: 48,
@@ -95,7 +93,7 @@ export default function Footer({ showFullFooter }: any) {
                 backgroundColor: "#f2f2fc",
               }}
             >
-              <View
+              <Actions.View
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -106,11 +104,11 @@ export default function Footer({ showFullFooter }: any) {
                   borderRadius: 12,
                 }}
               >
-                <FacebookSVG />
-              </View>
-            </View>
-            <View style={{ width: 8 }} />
-            <View
+                <Actions.FacebookSVG />
+              </Actions.View>
+            </Actions.View>
+            <Actions.View style={{ width: 8 }} />
+            <Actions.View
               style={{
                 width: 48,
                 height: 48,
@@ -121,7 +119,7 @@ export default function Footer({ showFullFooter }: any) {
                 backgroundColor: "#f2f2fc",
               }}
             >
-              <View
+              <Actions.View
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -132,12 +130,12 @@ export default function Footer({ showFullFooter }: any) {
                   borderRadius: 12,
                 }}
               >
-                <LinkedinSVG />
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
+                <Actions.LinkedinSVG />
+              </Actions.View>
+            </Actions.View>
+          </Actions.View>
+        </Actions.View>
+        <Actions.View
           style={{
             marginTop: 12,
             marginLeft: 0,
@@ -149,15 +147,15 @@ export default function Footer({ showFullFooter }: any) {
             justifyContent: "center",
           }}
         >
-          <CloudSVG />
-          <View
+          <Actions.CloudSVG />
+          <Actions.View
             style={{
               display: "flex",
               alignItems: "center",
               flexDirection: "row",
             }}
           >
-            <Text
+            <Actions.Text
               style={{
                 fontSize: 16,
                 fontFamily: "markpro-bold",
@@ -167,8 +165,8 @@ export default function Footer({ showFullFooter }: any) {
               }}
             >
               Talent
-            </Text>
-            <Text
+            </Actions.Text>
+            <Actions.Text
               style={{
                 fontSize: 16,
                 fontFamily: "markpro-light",
@@ -178,16 +176,16 @@ export default function Footer({ showFullFooter }: any) {
               }}
             >
               Cloud
-            </Text>
-          </View>
-        </View>
-        <View
+            </Actions.Text>
+          </Actions.View>
+        </Actions.View>
+        <Actions.View
           style={{
             opacity: 0.5,
             marginBottom: 20,
           }}
         >
-          <Text
+          <Actions.Text
             style={{
               fontSize: 12,
               textAlign: "center",
@@ -196,14 +194,14 @@ export default function Footer({ showFullFooter }: any) {
             }}
           >
             Copyright © 2021 Tech Talent. {"\n"} All rights reserved.
-          </Text>
-        </View>
-      </View>
+          </Actions.Text>
+        </Actions.View>
+      </Actions.View>
     </>
   );
 }
 
-const styles = StyleSheet.create({
+const styles = Actions.StyleSheet.create({
   container: {
     paddingTop: 44,
     paddingLeft: 15,
