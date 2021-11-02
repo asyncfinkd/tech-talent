@@ -1,8 +1,5 @@
 import React from "react";
-import CarouselPartners from "../../../ui/carousel/partners";
-import Footer from "../../../ui/footer";
-import Header from "../../../ui/header";
-import RegisterCompanyNotification from "../../../ui/notification/registerCompany";
+import Actions from "../../../actions/modules/index/components";
 
 export default function IndexPageHero({
   Menu,
@@ -13,7 +10,7 @@ export default function IndexPageHero({
 }: any) {
   return (
     <>
-      <Header
+      <Actions.Header
         MenuFunction={() => {
           if (Menu.value) {
             Animation(-500);
@@ -36,9 +33,9 @@ export default function IndexPageHero({
         Menu={Menu}
         Profile={Profile}
       />
-      <RegisterCompanyNotification />
-      <CarouselPartners />
-      <Footer showFullFooter={true} />
+      <Actions.RegisterCompanyNotification />
+      <Actions.CarouselPartners />
+      <Actions.Footer showFullFooter={true} />
     </>
   );
 }
