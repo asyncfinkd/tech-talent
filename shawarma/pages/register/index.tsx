@@ -1,11 +1,10 @@
-import { useAuthDetector } from "lib/useAuthDetector";
-import RegisterPage from "modules/register/RegisterPage";
+import Actions from "actions/register";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 
 function Register() {
   return (
     <>
-      <RegisterPage />
+      <Actions.RegisterPage />
     </>
   );
 }
@@ -13,7 +12,7 @@ function Register() {
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  return useAuthDetector(context);
+  return Actions.useAuthDetector(context);
 };
 
 export default Register;

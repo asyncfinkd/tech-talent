@@ -1,11 +1,10 @@
-import { useAuthDetector } from "lib/useAuthDetector";
-import LoginPage from "modules/login/LoginPage";
+import Actions from "actions/login";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 
 function Login() {
   return (
     <>
-      <LoginPage />
+      <Actions.LoginPage />
     </>
   );
 }
@@ -13,7 +12,7 @@ function Login() {
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  return useAuthDetector(context);
+  return Actions.useAuthDetector(context);
 };
 
 export default Login;
