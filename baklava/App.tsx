@@ -1,19 +1,8 @@
+import Actions from "./actions/index";
 import "react-native-gesture-handler";
 import React from "react";
 import * as Font from "expo-font";
-import { useState } from "react";
-import AppLoading from "expo-app-loading";
-import LoginScreen from "./screens/login";
-import { useEffect } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ApplicationContext } from "./context/application";
 import { TokenProps } from "./types/app/token";
-import { APP__TOKEN__MOCKS__ } from "./mocks/_app";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import IndexScreen from "./screens/index";
-import RegisterScreen from "./screens/register";
-import RegisterCandidateScreen from "./screens/register/candidate";
 
 const getFonts = () =>
   Font.loadAsync({
@@ -24,12 +13,12 @@ const getFonts = () =>
     // "markpro-medium": require("./assets/fonts/MarkPro-Medium.woff2"),
   });
 
-const Stack = createStackNavigator();
+const Stack = Actions.createStackNavigator();
 
 export default function App() {
   const _retrieveData = async () => {
     try {
-      const value: any = await AsyncStorage.getItem("token");
+      const value: any = await Actions.AsyncStorage.getItem("token");
       if (access_token.fullName == "") {
         if (value !== null) {
           // We have data!!
@@ -40,18 +29,20 @@ export default function App() {
       console.log(error);
     }
   };
-  const [fontsLoaded, setFontsLoaded] = useState<boolean>(false);
-  const [access_token, setAccess_Token] = useState<TokenProps>(
-    APP__TOKEN__MOCKS__()
+  const [fontsLoaded, setFontsLoaded] = Actions.useState<boolean>(false);
+  const [access_token, setAccess_Token] = Actions.useState<TokenProps>(
+    Actions.APP__TOKEN__MOCKS__()
   );
-  useEffect(() => {
+  Actions.useEffect(() => {
     _retrieveData();
   });
   if (fontsLoaded) {
     return (
       <>
-        <ApplicationContext.Provider value={{ access_token, setAccess_Token }}>
-          <NavigationContainer>
+        <Actions.ApplicationContext.Provider
+          value={{ access_token, setAccess_Token }}
+        >
+          <Actions.NavigationContainer>
             <Stack.Navigator
               initialRouteName="Register"
               screenOptions={{
@@ -62,7 +53,7 @@ export default function App() {
             >
               <Stack.Screen
                 name="Home"
-                component={IndexScreen}
+                component={Actions.IndexScreen}
                 options={{
                   headerShown: false,
                 }}
@@ -72,30 +63,30 @@ export default function App() {
                   headerShown: false,
                 }}
                 name="Login"
-                component={LoginScreen}
+                component={Actions.LoginScreen}
               />
               <Stack.Screen
                 options={{
                   headerShown: false,
                 }}
                 name="Register"
-                component={RegisterScreen}
+                component={Actions.RegisterScreen}
               />
               <Stack.Screen
                 options={{
                   headerShown: false,
                 }}
                 name="RegisterCandidate"
-                component={RegisterCandidateScreen}
+                component={Actions.RegisterCandidateScreen}
               />
             </Stack.Navigator>
-          </NavigationContainer>
-        </ApplicationContext.Provider>
+          </Actions.NavigationContainer>
+        </Actions.ApplicationContext.Provider>
       </>
     );
   } else {
     return (
-      <AppLoading
+      <Actions.AppLoading
         startAsync={getFonts}
         onFinish={() => setFontsLoaded(true)}
         onError={console.warn}
