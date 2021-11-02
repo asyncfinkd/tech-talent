@@ -1,4 +1,4 @@
-import Actions from "actions/login";
+import Actions from "actions/login/pages";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 
 function Login() {

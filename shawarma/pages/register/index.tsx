@@ -1,4 +1,4 @@
-import Actions from "actions/register";
+import Actions from "actions/register/pages";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 
 function Register() {
