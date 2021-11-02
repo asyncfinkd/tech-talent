@@ -49,13 +49,15 @@ const Register: NextPage = () => {
                                   style={{ width: "36px", height: "36px" }}
                                 >
                                   {item.ownSVG ? (
-                                    <Actions.SVG
-                                      src={Actions.registerOwnSVG}
-                                      style={{ fill: `${item.fill}` }}
-                                      dangerouslySetInnerHTML={{
-                                        __html: sanitizer(item.ownSVG),
-                                      }}
-                                    />
+                                    <>
+                                      <Actions.SVG
+                                        src={Actions.registerOwnSVG}
+                                        style={{ fill: `${item.fill}` }}
+                                        dangerouslySetInnerHTML={{
+                                          __html: item.ownSVG,
+                                        }}
+                                      />
+                                    </>
                                   ) : (
                                     <Actions.SVG
                                       src={Actions.registerSVG}
