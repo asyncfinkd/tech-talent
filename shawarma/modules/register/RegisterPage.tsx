@@ -1,25 +1,18 @@
-import Header from "ui/header";
+import Actions from "actions/register/modules/index";
 import { NextPage } from "next";
-import { interest } from "fixtures/register";
-import Link from "next/link";
 import { ItemProps } from "types/register/firstPage";
-import Head from "next/head";
-import RegisterFooter from "ui/footer/register";
-import SVG from "react-inlinesvg";
-import { registerOwnSVG, registerSVG } from "constants/app/strings";
-import DOMPurify from "isomorphic-dompurify";
 
 const Register: NextPage = () => {
-  const sanitizer = DOMPurify.sanitize;
+  const sanitizer = Actions.DOMPurify.sanitize;
   const renderLinks = (type: string) => {
     return `/register/candidate?fieldType=${type}`;
   };
   return (
     <>
-      <Head>
+      <Actions.Head>
         <title>Register | Tech Talent</title>
-      </Head>
-      <Header ShowShadow={true} />
+      </Actions.Head>
+      <Actions.Header ShowShadow={true} />
       <main className="main-0-2-2">
         <div className="root-0-2-233">
           <div className="content-0-2-234">
@@ -30,10 +23,10 @@ const Register: NextPage = () => {
                   Choose Link field of interest
                 </div>
                 <div className="grid-0-2-247">
-                  {interest.map((item: ItemProps) => {
+                  {Actions.interest.map((item: ItemProps) => {
                     return (
                       <>
-                        <Link
+                        <Actions.Link
                           href={
                             item.localSlug
                               ? `${item.localSlugName}`
@@ -56,16 +49,16 @@ const Register: NextPage = () => {
                                   style={{ width: "36px", height: "36px" }}
                                 >
                                   {item.ownSVG ? (
-                                    <SVG
-                                      src={registerOwnSVG}
+                                    <Actions.SVG
+                                      src={Actions.registerOwnSVG}
                                       style={{ fill: `${item.fill}` }}
                                       dangerouslySetInnerHTML={{
                                         __html: sanitizer(item.ownSVG),
                                       }}
                                     />
                                   ) : (
-                                    <SVG
-                                      src={registerSVG}
+                                    <Actions.SVG
+                                      src={Actions.registerSVG}
                                       style={{ fill: `${item.fill}` }}
                                     />
                                   )}
@@ -74,7 +67,7 @@ const Register: NextPage = () => {
                               {item.text}
                             </div>
                           </a>
-                        </Link>
+                        </Actions.Link>
                       </>
                     );
                   })}
@@ -82,7 +75,7 @@ const Register: NextPage = () => {
               </div>
             </div>
           </div>
-          <RegisterFooter index={true} />
+          <Actions.RegisterFooter index={true} />
         </div>
       </main>
     </>
