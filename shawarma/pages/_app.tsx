@@ -1,47 +1,36 @@
+import Actions from "actions/index/pages";
 import "styles/globals.css";
 import type { AppProps } from "next/app";
-import Head from "next/head";
 import "styles/index.css";
-import { QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
-import React, { useEffect, useState } from "react";
-import { ApplicationContext } from "context/application/ApplicationContext";
-import { readCookie } from "lib/readCookie";
-import jwt_decode from "jwt-decode";
+import React from "react";
 import { TokenProps } from "types/app/token";
-import { isServer } from "lib/isServer";
-import { init_i18n } from "../i18n";
 import { PageComponent } from "types/app/page";
-import NProgress from "nprogress";
 import "nprogress/nprogress.css";
-import Router from "next/router";
-import { client } from "lib/queryClient";
-import { APP__TOKEN__MOCKS__ } from "mocks/_app";
 
-if (!isServer) {
-  init_i18n();
+if (!Actions.isServer) {
+  Actions.init_i18n();
 }
 
-Router.events.on("routeChangeStart", () => NProgress.start());
-Router.events.on("routeChangeComplete", () => NProgress.done());
-Router.events.on("routeChangeError", () => NProgress.done());
+Actions.Router.events.on("routeChangeStart", () => Actions.NProgress.start());
+Actions.Router.events.on("routeChangeComplete", () => Actions.NProgress.done());
+Actions.Router.events.on("routeChangeError", () => Actions.NProgress.done());
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [access_token, setAccess_Token] = useState<TokenProps>(
-    APP__TOKEN__MOCKS__()
+  const [access_token, setAccess_Token] = Actions.useState<TokenProps>(
+    Actions.APP__TOKEN__MOCKS__()
   );
-  const cookie: string | null | undefined = readCookie("cookie");
+  const cookie: string | null | undefined = Actions.readCookie("cookie");
 
-  useEffect(() => {
+  Actions.useEffect(() => {
     if (cookie) {
-      let decoded: TokenProps = jwt_decode(cookie);
+      let decoded: TokenProps = Actions.jwt_decode(cookie);
       setAccess_Token(decoded);
       console.log(decoded);
     }
   }, [cookie]);
 
   if (
-    isServer &&
+    Actions.isServer &&
     !Component.getInitialProps &&
     (Component as PageComponent<unknown>).ws
   ) {
@@ -49,7 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   }
   return (
     <>
-      <Head>
+      <Actions.Head>
         <link
           rel="icon"
           type="image/png"
@@ -74,15 +63,17 @@ function MyApp({ Component, pageProps }: AppProps) {
           type="text/css"
         />
         <title>Tech Talent</title>
-      </Head>
-      <QueryClientProvider client={client}>
-        <ApplicationContext.Provider value={{ access_token, setAccess_Token }}>
+      </Actions.Head>
+      <Actions.QueryClientProvider client={Actions.client}>
+        <Actions.ApplicationContext.Provider
+          value={{ access_token, setAccess_Token }}
+        >
           <div className="root-0-2-1">
             <Component {...pageProps} />
           </div>
-          <ReactQueryDevtools initialIsOpen={false} />
-        </ApplicationContext.Provider>
-      </QueryClientProvider>
+          <Actions.ReactQueryDevtools initialIsOpen={false} />
+        </Actions.ApplicationContext.Provider>
+      </Actions.QueryClientProvider>
     </>
   );
 }
