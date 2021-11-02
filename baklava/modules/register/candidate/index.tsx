@@ -17,6 +17,7 @@ export default function RegisterCandidateModules({
   control,
   watch,
   getValues,
+  emailIsAlreadyRegistered,
 }: any) {
   const MenuX = useRef(new Animated.Value(-500)).current;
   const ProfileX = useRef(new Animated.Value(500)).current;
@@ -58,6 +59,7 @@ export default function RegisterCandidateModules({
             control={control}
             watch={watch}
             getValues={getValues}
+            emailIsAlreadyRegistered={emailIsAlreadyRegistered}
           />
         </ScrollView>
       </SafeAreaView>

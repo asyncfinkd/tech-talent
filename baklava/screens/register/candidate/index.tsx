@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { View } from "react-native";
 import RegisterCandidateModules from "../../../modules/register/candidate";
@@ -12,6 +12,8 @@ export default function RegisterCandidateScreen({ navigation }: any) {
     watch,
     getValues,
   } = useForm();
+  const [emailIsAlreadyRegistered, setEmailIsAlreadyRegistered] =
+    useState<boolean>(false);
 
   return (
     <>
@@ -22,11 +24,33 @@ export default function RegisterCandidateScreen({ navigation }: any) {
           control={control}
           watch={watch}
           getValues={getValues}
+          emailIsAlreadyRegistered={emailIsAlreadyRegistered}
         />
         <RegisterFooter
           secondStep={true}
           secondStepOnPress={handleSubmit((data: any) => {
-            // const requestForData = fetch(`https://tech-talent-api.herokuapp.com/`)
+            const requestForData = fetch(
+              `https://tech-talent-api.herokuapp.com/api/register`,
+              {
+                method: "POST",
+                headers: { "Content-type": "application/json" },
+                body: JSON.stringify({
+                  email: data.email,
+                  password: data.password,
+                  role: "member",
+                  interest: "dev",
+                }),
+              }
+            )
+              .then((res) => res.json())
+              .then((result) => {
+                if (result.success != true) {
+                  setEmailIsAlreadyRegistered(true);
+                } else {
+                  setEmailIsAlreadyRegistered(false);
+                  console.log(result);
+                }
+              });
           })}
         />
       </View>

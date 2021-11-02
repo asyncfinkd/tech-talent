@@ -7,6 +7,7 @@ export default function RegisterCandidateForm({
   control,
   watch,
   getValues,
+  emailIsAlreadyRegistered,
 }: any) {
   const [isEmailFocused, setIsEmailFocused] = useState<boolean>(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState<boolean>(false);
@@ -244,6 +245,7 @@ export default function RegisterCandidateForm({
                   Passwords do not match
                 </Text>
               )}
+              {emailIsAlreadyRegistered && <Text>123</Text>}
             </View>
           </View>
         </View>

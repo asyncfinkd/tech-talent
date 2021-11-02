@@ -13,6 +13,7 @@ export default function RegisterHero({
   control,
   watch,
   getValues,
+  emailIsAlreadyRegistered,
 }: any) {
   return (
     <>
@@ -44,6 +45,7 @@ export default function RegisterHero({
         control={control}
         watch={watch}
         getValues={getValues}
+        emailIsAlreadyRegistered={emailIsAlreadyRegistered}
       />
     </>
   );
