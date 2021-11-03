@@ -7,6 +7,10 @@ export default function RegisterHero({
   Profile,
   ProfileAnimation,
   navigation,
+  errors,
+  control,
+  watch,
+  getValues,
 }: any) {
   return (
     <>
@@ -33,7 +37,12 @@ export default function RegisterHero({
         Menu={Menu}
         Profile={Profile}
       />
-      <Actions.RegisterCandidateInfoForm />
+      <Actions.RegisterCandidateInfoForm
+        errors={errors}
+        control={control}
+        watch={watch}
+        getValues={getValues}
+      />
     </>
   );
 }
