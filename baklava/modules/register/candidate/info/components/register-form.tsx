@@ -58,18 +58,10 @@ export default function RegisterCandidateInfoForm({
                   marginBottom: 20,
                 }}
               >
-                Email <Actions.Text style={{ opacity: 0.2 }}>*</Actions.Text>
+                First Name & Last Name
               </Actions.Text>
               <Actions.Controller
                 control={control}
-                rules={{
-                  required: true,
-                  pattern: {
-                    value:
-                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                    message: "Valid email is required",
-                  },
-                }}
                 render={({ field: { onChange, value } }) => (
                   <Actions.TextInput
                     style={{
@@ -101,19 +93,6 @@ export default function RegisterCandidateInfoForm({
                 name="email"
                 defaultValue=""
               />
-              {errors.email && (
-                <Actions.Text
-                  style={{
-                    color: "#d22",
-                    fontSize: 14,
-                    fontFamily: "markpro-light",
-                    lineHeight: 16,
-                    paddingTop: 8,
-                  }}
-                >
-                  Valid email is required
-                </Actions.Text>
-              )}
             </Actions.View>
             <Actions.View style={{ width: "100%", marginBottom: 20 }}>
               <Actions.Text
@@ -125,13 +104,10 @@ export default function RegisterCandidateInfoForm({
                   marginBottom: 20,
                 }}
               >
-                Password <Actions.Text style={{ opacity: 0.2 }}>*</Actions.Text>
+                Phone
               </Actions.Text>
               <Actions.Controller
                 control={control}
-                rules={{
-                  required: true,
-                }}
                 render={({ field: { onChange, value } }) => (
                   <Actions.TextInput
                     style={{
@@ -163,19 +139,6 @@ export default function RegisterCandidateInfoForm({
                 name="password"
                 defaultValue=""
               />
-              {errors.password && (
-                <Actions.Text
-                  style={{
-                    color: "#d22",
-                    fontSize: 14,
-                    fontFamily: "markpro-light",
-                    lineHeight: 16,
-                    paddingTop: 8,
-                  }}
-                >
-                  Password is required
-                </Actions.Text>
-              )}
             </Actions.View>
             <Actions.View style={{ width: "100%", marginBottom: 20 }}>
               <Actions.Text
@@ -187,17 +150,10 @@ export default function RegisterCandidateInfoForm({
                   marginBottom: 20,
                 }}
               >
-                Repeat Password{" "}
-                <Actions.Text style={{ opacity: 0.2 }}>*</Actions.Text>
+                LinkedIn/Dribbble/Behance
               </Actions.Text>
               <Actions.Controller
                 control={control}
-                rules={{
-                  required: true,
-                  validate: () => {
-                    return getValues("repeatPassword") == watch("password");
-                  },
-                }}
                 render={({ field: { onChange, value } }) => (
                   <Actions.TextInput
                     style={{
@@ -229,19 +185,6 @@ export default function RegisterCandidateInfoForm({
                 name="repeatPassword"
                 defaultValue=""
               />
-              {errors.repeatPassword && (
-                <Actions.Text
-                  style={{
-                    color: "#d22",
-                    fontSize: 14,
-                    fontFamily: "markpro-light",
-                    lineHeight: 16,
-                    paddingTop: 8,
-                  }}
-                >
-                  Passwords do not match
-                </Actions.Text>
-              )}
             </Actions.View>
           </Actions.View>
         </Actions.View>

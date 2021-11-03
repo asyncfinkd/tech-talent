@@ -60,6 +60,16 @@ export default function RegisterFooter({
     }
   };
 
+  const renderPercent = () => {
+    if (firstStep) {
+      return "20%";
+    } else if (secondStep) {
+      return "40%";
+    } else {
+      return "60%";
+    }
+  };
+
   return (
     <>
       <Actions.View
@@ -74,7 +84,7 @@ export default function RegisterFooter({
         <Actions.View style={{ height: 5, backgroundColor: "#eff3ff" }}>
           <Actions.View
             style={{
-              width: firstStep ? "20%" : "40%",
+              width: renderPercent(),
               height: 5,
               backgroundColor: "#18c729",
             }}
