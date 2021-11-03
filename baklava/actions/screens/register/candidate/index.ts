@@ -5,6 +5,7 @@ import RegisterCandidateModules from "../../../../modules/register/candidate";
 import jwt_decode from "jwt-decode";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ApplicationContext } from "../../../../context/application";
+import RegisterFooter from "../../../../ui/footer/register";
 
 export default {
   useContext,
@@ -15,4 +16,5 @@ export default {
   jwt_decode,
   AsyncStorage,
   ApplicationContext,
+  RegisterFooter,
 };

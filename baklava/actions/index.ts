@@ -10,7 +10,6 @@ import { APP__TOKEN__MOCKS__ } from "../mocks/_app";
 import { ApplicationContext } from "../context/application";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import RegisterCandidateInfoScreen from "../screens/register/candidate/info";
-import RegisterFooter from "../ui/footer/register";
 
 export default {
   LoginScreen,
@@ -26,5 +25,4 @@ export default {
   AsyncStorage,
   useEffect,
   RegisterCandidateInfoScreen,
-  RegisterFooter,
 };
