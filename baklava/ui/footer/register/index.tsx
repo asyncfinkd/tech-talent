@@ -6,7 +6,60 @@ export default function RegisterFooter({
   secondStep,
   thirdStep,
   secondStepOnPress,
+  thirdStepOnPress,
 }: any) {
+  const renderButton = () => {
+    if (secondStep || thirdStep) {
+      return (
+        <>
+          <Actions.TouchableHighlight
+            underlayColor="none"
+            style={{
+              backgroundColor: "#7b7ce6",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 10,
+              paddingTop: 14,
+              paddingLeft: 28,
+              paddingBottom: 14,
+              paddingRight: 28,
+            }}
+            onPress={secondStepOnPress ?? thirdStepOnPress}
+          >
+            <Actions.Text
+              style={{
+                fontWeight: "500",
+                lineHeight: 20,
+                color: "white",
+              }}
+            >
+              Next
+            </Actions.Text>
+          </Actions.TouchableHighlight>
+        </>
+      );
+    }
+  };
+
+  const renderTitle = () => {
+    if (firstStep || thirdStep) {
+      return "Tell us who you are";
+    } else {
+      return "Create Your Account";
+    }
+  };
+
+  const renderSubTitle = () => {
+    if (firstStep) {
+      return "Select profession";
+    } else if (thirdStep) {
+      return "Contact Information";
+    } else {
+      return "Enter Your Credentials";
+    }
+  };
+
   return (
     <>
       <Actions.View
@@ -52,7 +105,7 @@ export default function RegisterFooter({
                   marginRight: 0,
                 }}
               >
-                {firstStep ? "Tell us who you are" : "Create Your Account"}
+                {renderTitle()}
               </Actions.Text>
               <Actions.Text
                 style={{
@@ -62,36 +115,10 @@ export default function RegisterFooter({
                   lineHeight: 16,
                 }}
               >
-                {firstStep ? "Select profession" : "Enter Your Credentials"}
+                {renderSubTitle()}
               </Actions.Text>
             </Actions.View>
-            {secondStep && (
-              <Actions.TouchableHighlight
-                underlayColor="none"
-                style={{
-                  backgroundColor: "#7b7ce6",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderRadius: 10,
-                  paddingTop: 14,
-                  paddingLeft: 28,
-                  paddingBottom: 14,
-                  paddingRight: 28,
-                }}
-                onPress={secondStepOnPress}
-              >
-                <Actions.Text
-                  style={{
-                    fontWeight: "500",
-                    lineHeight: 20,
-                    color: "white",
-                  }}
-                >
-                  Next
-                </Actions.Text>
-              </Actions.TouchableHighlight>
-            )}
+            {renderButton()}
           </Actions.View>
         </Actions.View>
       </Actions.View>

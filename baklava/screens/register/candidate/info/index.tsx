@@ -6,7 +6,12 @@ export default function RegisterCandidateInfoScreen({ navigation }: any) {
     <>
       <Actions.View style={{ flex: 1 }}>
         <Actions.RegisterCandidateInfoModules navigation={navigation} />
-        <Actions.RegisterFooter firstStep={true} />
+        <Actions.RegisterFooter
+          thirdStep={true}
+          thirdStepOnPress={() => {
+            console.log("1");
+          }}
+        />
       </Actions.View>
     </>
   );
