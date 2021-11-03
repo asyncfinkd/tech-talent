@@ -6,6 +6,7 @@ import LeftSidebar from "../../../../../ui/sidebar/left";
 import RightSidebar from "../../../../../ui/sidebar/right";
 import RegisterHero from "../../../../../modules/register/candidate/info/components/register-hero";
 import { useForm } from "react-hook-form";
+import RegisterFooter from "../../../../../ui/footer/register";
 
 export default {
   ScrollView,
@@ -19,4 +20,5 @@ export default {
   RightSidebar,
   RegisterHero,
   useForm,
+  RegisterFooter,
 };

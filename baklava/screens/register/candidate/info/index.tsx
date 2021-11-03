@@ -4,8 +4,9 @@ import React from "react";
 export default function RegisterCandidateInfoScreen({ navigation }: any) {
   return (
     <>
-      <Actions.View>
+      <Actions.View style={{ flex: 1 }}>
         <Actions.RegisterCandidateInfoModules navigation={navigation} />
+        <Actions.RegisterFooter firstStep={true} />
       </Actions.View>
     </>
   );
