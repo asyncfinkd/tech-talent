@@ -64,7 +64,7 @@ export default function RegisterCandidateScreen({ navigation }: any) {
                   let decoded: any = jwt_decode(result.access_token);
                   _storeData(JSON.stringify(decoded));
                   setAccess_Token(JSON.stringify(decoded));
-                  navigation.push("Home");
+                  navigation.push("RegisterCandidateInfo");
                 }
               });
           })}
