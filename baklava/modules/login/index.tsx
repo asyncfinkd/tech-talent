@@ -1,9 +1,10 @@
 import Actions from "../../actions/modules/login";
+import { Animated } from "react-native";
 import React from "react";
 
 export default function LoginPageModule({ navigation }: any) {
-  const MenuX = Actions.useRef(new Actions.Animated.Value(-500)).current;
-  const ProfileX = Actions.useRef(new Actions.Animated.Value(500)).current;
+  const MenuX = Actions.useRef(new Animated.Value(-500)).current;
+  const ProfileX = Actions.useRef(new Animated.Value(500)).current;
   const [isEmailFocused, setIsEmailFocused] = Actions.useState<boolean>(false);
   const [isPasswordFocused, setIsPasswordFocused] =
     Actions.useState<boolean>(false);
