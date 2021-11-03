@@ -19,10 +19,11 @@ export default function App() {
   const _retrieveData = async () => {
     try {
       const value: any = await Actions.AsyncStorage.getItem("token");
-      if (access_token.fullName == "") {
+      const parsedToken: any = JSON.parse(value).decoded;
+      if (access_token.email == "") {
         if (value !== null) {
           // We have data!!
-          setAccess_Token(value);
+          setAccess_Token(parsedToken);
         }
       }
     } catch (error) {
@@ -44,7 +45,7 @@ export default function App() {
         >
           <Actions.NavigationContainer>
             <Stack.Navigator
-              initialRouteName="RegisterCandidateInfo"
+              initialRouteName="Home"
               screenOptions={{
                 headerMode: "screen",
                 headerTintColor: "white",

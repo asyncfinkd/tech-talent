@@ -58,7 +58,12 @@ export default function RegisterCandidateScreen({ navigation }: any) {
                 } else {
                   setEmailIsAlreadyRegistered(false);
                   let decoded: any = Actions.jwt_decode(result.access_token);
-                  _storeData(JSON.stringify(decoded));
+                  _storeData(
+                    JSON.stringify({
+                      decoded,
+                      access_token: result.access_token,
+                    })
+                  );
                   setAccess_Token(JSON.stringify(decoded));
                   navigation.push("RegisterCandidateInfo");
                 }

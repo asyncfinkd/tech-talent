@@ -2,12 +2,18 @@ import { View } from "react-native";
 import RegisterCandidateInfoModules from "../../../../../modules/register/candidate/info";
 import RegisterFooter from "../../../../../ui/footer/register";
 import { useForm } from "react-hook-form";
-import { readCookie } from "../../../../../lib/readCookie";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import jwt_decode from "jwt-decode";
+import { useContext } from "react";
+import { ApplicationContext } from "../../../../../context/application";
 
 export default {
   View,
   RegisterCandidateInfoModules,
   RegisterFooter,
   useForm,
-  readCookie,
+  AsyncStorage,
+  jwt_decode,
+  useContext,
+  ApplicationContext,
 };
