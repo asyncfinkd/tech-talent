@@ -33,6 +33,7 @@ export default function RegisterHero({
         Menu={Menu}
         Profile={Profile}
       />
+      <Actions.RegisterCandidateInfoForm />
     </>
   );
 }
