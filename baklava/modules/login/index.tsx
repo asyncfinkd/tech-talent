@@ -1,42 +1,27 @@
-import React, { useContext, useRef, useState } from "react";
-import { useForm, Controller } from "react-hook-form";
-import {
-  ScrollView,
-  Text,
-  View,
-  Animated,
-  TextInput,
-  TouchableHighlight,
-  StatusBar,
-} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import Header from "../../ui/header";
-import LeftSidebar from "../../ui/sidebar/left";
-import RightSidebar from "../../ui/sidebar/right";
-import jwt_decode from "jwt-decode";
-import { ApplicationContext } from "../../context/application";
-import useBoolean from "../../shared-hooks/use-boolean";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import Footer from "../../ui/footer";
+import Actions from "../../actions/modules/login";
+import React from "react";
 
 export default function LoginPageModule({ navigation }: any) {
-  const MenuX = useRef(new Animated.Value(-500)).current;
-  const ProfileX = useRef(new Animated.Value(500)).current;
-  const [isEmailFocused, setIsEmailFocused] = useState<boolean>(false);
-  const [isPasswordFocused, setIsPasswordFocused] = useState<boolean>(false);
-  const [invalidUser, setInvalidUser] = useState<boolean>(false);
-  const Menu = useBoolean();
-  const Profile = useBoolean();
-  const { access_token, setAccess_Token } = useContext(ApplicationContext);
+  const MenuX = Actions.useRef(new Actions.Animated.Value(-500)).current;
+  const ProfileX = Actions.useRef(new Actions.Animated.Value(500)).current;
+  const [isEmailFocused, setIsEmailFocused] = Actions.useState<boolean>(false);
+  const [isPasswordFocused, setIsPasswordFocused] =
+    Actions.useState<boolean>(false);
+  const [invalidUser, setInvalidUser] = Actions.useState<boolean>(false);
+  const Menu = Actions.useBoolean();
+  const Profile = Actions.useBoolean();
+  const { access_token, setAccess_Token } = Actions.useContext(
+    Actions.ApplicationContext
+  );
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = Actions.useForm();
 
   const _storeData = async (value: any) => {
     try {
-      await AsyncStorage.setItem("token", value);
+      await Actions.AsyncStorage.setItem("token", value);
     } catch (error) {
       // Error saving data
     }
@@ -61,12 +46,12 @@ export default function LoginPageModule({ navigation }: any) {
   };
   return (
     <>
-      <SafeAreaView style={{ backgroundColor: "white" }}>
-        <ScrollView>
-          <StatusBar backgroundColor="white" />
-          <LeftSidebar MenuX={MenuX} />
-          <RightSidebar ProfileX={ProfileX} navigation={navigation} />
-          <Header
+      <Actions.SafeAreaView style={{ backgroundColor: "white" }}>
+        <Actions.ScrollView>
+          <Actions.StatusBar backgroundColor="white" />
+          <Actions.LeftSidebar MenuX={MenuX} />
+          <Actions.RightSidebar ProfileX={ProfileX} navigation={navigation} />
+          <Actions.Header
             MenuFunction={() => {
               if (Menu.value) {
                 Animation(-500);
@@ -89,9 +74,9 @@ export default function LoginPageModule({ navigation }: any) {
             }}
             Profile={Profile}
           />
-          <View style={{ marginLeft: 15, marginRight: 15 }}>
-            <View style={{ marginBottom: 20 }}>
-              <Text
+          <Actions.View style={{ marginLeft: 15, marginRight: 15 }}>
+            <Actions.View style={{ marginBottom: 20 }}>
+              <Actions.Text
                 style={{
                   marginTop: 16,
                   marginLeft: 0,
@@ -105,8 +90,8 @@ export default function LoginPageModule({ navigation }: any) {
                 }}
               >
                 Login
-              </Text>
-              <Text
+              </Actions.Text>
+              <Actions.Text
                 style={{
                   marginTop: 0,
                   marginLeft: 0,
@@ -121,11 +106,11 @@ export default function LoginPageModule({ navigation }: any) {
                 }}
               >
                 Welcome Back
-              </Text>
-              <View>
-                <View>
-                  <View style={{ width: "100%", marginBottom: 20 }}>
-                    <Text
+              </Actions.Text>
+              <Actions.View>
+                <Actions.View>
+                  <Actions.View style={{ width: "100%", marginBottom: 20 }}>
+                    <Actions.Text
                       style={{
                         fontSize: 16,
                         fontFamily: "markpro-bold",
@@ -134,9 +119,10 @@ export default function LoginPageModule({ navigation }: any) {
                         marginBottom: 20,
                       }}
                     >
-                      Email <Text style={{ opacity: 0.2 }}>*</Text>
-                    </Text>
-                    <Controller
+                      Email{" "}
+                      <Actions.Text style={{ opacity: 0.2 }}>*</Actions.Text>
+                    </Actions.Text>
+                    <Actions.Controller
                       // @ts-ignore
                       control={control}
                       rules={{
@@ -148,7 +134,7 @@ export default function LoginPageModule({ navigation }: any) {
                         },
                       }}
                       render={({ field: { onChange, onBlur, value } }) => (
-                        <TextInput
+                        <Actions.TextInput
                           style={{
                             width: "100%",
                             borderWidth: 2,
@@ -179,7 +165,7 @@ export default function LoginPageModule({ navigation }: any) {
                       defaultValue=""
                     />
                     {errors.email && (
-                      <Text
+                      <Actions.Text
                         style={{
                           color: "#d22",
                           fontSize: 14,
@@ -189,11 +175,11 @@ export default function LoginPageModule({ navigation }: any) {
                         }}
                       >
                         Valid email is required
-                      </Text>
+                      </Actions.Text>
                     )}
-                  </View>
-                  <View style={{ width: "100%", marginBottom: 20 }}>
-                    <Text
+                  </Actions.View>
+                  <Actions.View style={{ width: "100%", marginBottom: 20 }}>
+                    <Actions.Text
                       style={{
                         fontSize: 16,
                         fontFamily: "markpro-bold",
@@ -202,13 +188,14 @@ export default function LoginPageModule({ navigation }: any) {
                         marginBottom: 20,
                       }}
                     >
-                      Password <Text style={{ opacity: 0.2 }}>*</Text>
-                    </Text>
-                    <Controller
+                      Password{" "}
+                      <Actions.Text style={{ opacity: 0.2 }}>*</Actions.Text>
+                    </Actions.Text>
+                    <Actions.Controller
                       control={control}
                       rules={{ required: true }}
                       render={({ field: { onChange, value, onBlur } }) => (
-                        <TextInput
+                        <Actions.TextInput
                           style={{
                             width: "100%",
                             borderWidth: 2,
@@ -240,7 +227,7 @@ export default function LoginPageModule({ navigation }: any) {
                       defaultValue=""
                     />
                     {errors.password && (
-                      <Text
+                      <Actions.Text
                         style={{
                           color: "#d22",
                           fontSize: 14,
@@ -250,12 +237,12 @@ export default function LoginPageModule({ navigation }: any) {
                         }}
                       >
                         Password is required
-                      </Text>
+                      </Actions.Text>
                     )}
-                  </View>
-                </View>
+                  </Actions.View>
+                </Actions.View>
                 {invalidUser && (
-                  <Text
+                  <Actions.Text
                     style={{
                       color: "#d22",
                       fontSize: 14,
@@ -265,9 +252,9 @@ export default function LoginPageModule({ navigation }: any) {
                     }}
                   >
                     Incorrect email or password
-                  </Text>
+                  </Actions.Text>
                 )}
-                <View
+                <Actions.View
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -275,7 +262,7 @@ export default function LoginPageModule({ navigation }: any) {
                     flexDirection: "row",
                   }}
                 >
-                  <Text
+                  <Actions.Text
                     style={{
                       color: "#696974",
                       opacity: 0.8,
@@ -286,8 +273,8 @@ export default function LoginPageModule({ navigation }: any) {
                     }}
                   >
                     Forgot Password?
-                  </Text>
-                  <TouchableHighlight
+                  </Actions.Text>
+                  <Actions.TouchableHighlight
                     onPress={handleSubmit((data: any) => {
                       const method = fetch(
                         `https://tech-talent-api.herokuapp.com/api/login`,
@@ -308,7 +295,9 @@ export default function LoginPageModule({ navigation }: any) {
                           if (result.success != true) {
                             setInvalidUser(true);
                           } else {
-                            let decoded: any = jwt_decode(result.access_token);
+                            let decoded: any = Actions.jwt_decode(
+                              result.access_token
+                            );
                             _storeData(JSON.stringify(decoded));
                             setAccess_Token(JSON.stringify(decoded));
                             setInvalidUser(false);
@@ -329,7 +318,7 @@ export default function LoginPageModule({ navigation }: any) {
                       borderRadius: 10,
                     }}
                   >
-                    <Text
+                    <Actions.Text
                       style={{
                         textAlign: "center",
                         fontFamily: "markpro-bold",
@@ -338,15 +327,15 @@ export default function LoginPageModule({ navigation }: any) {
                       }}
                     >
                       Login
-                    </Text>
-                  </TouchableHighlight>
-                </View>
-              </View>
-            </View>
-          </View>
-          <Footer showFullFooter={false} />
-        </ScrollView>
-      </SafeAreaView>
+                    </Actions.Text>
+                  </Actions.TouchableHighlight>
+                </Actions.View>
+              </Actions.View>
+            </Actions.View>
+          </Actions.View>
+          <Actions.Footer showFullFooter={false} />
+        </Actions.ScrollView>
+      </Actions.SafeAreaView>
     </>
   );
 }
