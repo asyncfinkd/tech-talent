@@ -79,6 +79,13 @@ export default function App() {
                 name="RegisterCandidate"
                 component={Actions.RegisterCandidateScreen}
               />
+              <Stack.Screen
+                options={{
+                  headerShown: false,
+                }}
+                name="RegisterCandidateInfo"
+                component={Actions.RegisterCandidateInfoScreen}
+              />
             </Stack.Navigator>
           </Actions.NavigationContainer>
         </Actions.ApplicationContext.Provider>

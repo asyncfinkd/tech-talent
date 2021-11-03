@@ -9,6 +9,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { APP__TOKEN__MOCKS__ } from "../mocks/_app";
 import { ApplicationContext } from "../context/application";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import RegisterCandidateInfoScreen from "../screens/register/candidate/info";
 
 export default {
   LoginScreen,
@@ -23,4 +24,5 @@ export default {
   ApplicationContext,
   AsyncStorage,
   useEffect,
+  RegisterCandidateInfoScreen,
 };

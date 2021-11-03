@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { View } from "react-native";
 import RegisterCandidateModules from "../../../modules/register/candidate";
 import RegisterFooter from "../../../ui/footer/register";
+import jwt_decode from "jwt-decode";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ApplicationContext } from "../../../context/application";
 
 export default function RegisterCandidateScreen({ navigation }: any) {
   const {
@@ -14,6 +17,16 @@ export default function RegisterCandidateScreen({ navigation }: any) {
   } = useForm();
   const [emailIsAlreadyRegistered, setEmailIsAlreadyRegistered] =
     useState<boolean>(false);
+
+  const _storeData = async (value: any) => {
+    try {
+      await AsyncStorage.setItem("token", value);
+    } catch (error) {
+      // Error saving data
+    }
+  };
+
+  const { access_token, setAccess_Token } = useContext(ApplicationContext);
 
   return (
     <>
@@ -48,7 +61,10 @@ export default function RegisterCandidateScreen({ navigation }: any) {
                   setEmailIsAlreadyRegistered(true);
                 } else {
                   setEmailIsAlreadyRegistered(false);
-                  console.log(result);
+                  let decoded: any = jwt_decode(result.access_token);
+                  _storeData(JSON.stringify(decoded));
+                  setAccess_Token(JSON.stringify(decoded));
+                  navigation.push("Home");
                 }
               });
           })}
