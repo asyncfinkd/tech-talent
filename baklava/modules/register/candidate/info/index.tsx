@@ -2,15 +2,10 @@ import Actions from "../../../../actions/modules/register/candidate/info";
 import { Animated } from "react-native";
 import React from "react";
 
-export default function RegisterCandidateInfoModules({ navigation }: any) {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-    watch,
-    getValues,
-  } = Actions.useForm();
-
+export default function RegisterCandidateInfoModules({
+  navigation,
+  control,
+}: any) {
   const MenuX = Actions.useRef(new Animated.Value(-500)).current;
   const ProfileX = Actions.useRef(new Animated.Value(500)).current;
 
@@ -47,10 +42,7 @@ export default function RegisterCandidateInfoModules({ navigation }: any) {
             ProfileAnimation={ProfileAnimation}
             Profile={Profile}
             navigation={navigation}
-            errors={errors}
             control={control}
-            watch={watch}
-            getValues={getValues}
           />
         </Actions.ScrollView>
       </Actions.SafeAreaView>

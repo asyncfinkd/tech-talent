@@ -1,12 +1,7 @@
 import Actions from "../../../../../actions/modules/register/candidate/info/components/register-form-actions";
 import React from "react";
 
-export default function RegisterCandidateInfoForm({
-  errors,
-  control,
-  watch,
-  getValues,
-}: any) {
+export default function RegisterCandidateInfoForm({ control }: any) {
   const [fullNameFocused, setFullNameFocused] =
     Actions.useState<boolean>(false);
   const [phoneFocused, setPhoneFocused] = Actions.useState<boolean>(false);
@@ -68,11 +63,7 @@ export default function RegisterCandidateInfoForm({
                       width: "100%",
                       borderWidth: 2,
                       borderColor: `${
-                        errors.email
-                          ? "#d22"
-                          : fullNameFocused
-                          ? "#7b7ce6"
-                          : "transparent"
+                        fullNameFocused ? "#7b7ce6" : "transparent"
                       }`,
                       paddingTop: 22,
                       paddingLeft: 24,
@@ -90,7 +81,7 @@ export default function RegisterCandidateInfoForm({
                     onChangeText={onChange}
                   />
                 )}
-                name="email"
+                name="fullName"
                 defaultValue=""
               />
             </Actions.View>
@@ -114,11 +105,7 @@ export default function RegisterCandidateInfoForm({
                       width: "100%",
                       borderWidth: 2,
                       borderColor: `${
-                        errors.email
-                          ? "#d22"
-                          : phoneFocused
-                          ? "#7b7ce6"
-                          : "transparent"
+                        phoneFocused ? "#7b7ce6" : "transparent"
                       }`,
                       paddingTop: 22,
                       paddingLeft: 24,
@@ -136,7 +123,7 @@ export default function RegisterCandidateInfoForm({
                     onChangeText={onChange}
                   />
                 )}
-                name="password"
+                name="phone"
                 defaultValue=""
               />
             </Actions.View>
@@ -160,11 +147,7 @@ export default function RegisterCandidateInfoForm({
                       width: "100%",
                       borderWidth: 2,
                       borderColor: `${
-                        errors.email
-                          ? "#d22"
-                          : socialNetworkFocused
-                          ? "#7b7ce6"
-                          : "transparent"
+                        socialNetworkFocused ? "#7b7ce6" : "transparent"
                       }`,
                       paddingTop: 22,
                       paddingLeft: 24,
@@ -182,7 +165,7 @@ export default function RegisterCandidateInfoForm({
                     onChangeText={onChange}
                   />
                 )}
-                name="repeatPassword"
+                name="socialNetwork"
                 defaultValue=""
               />
             </Actions.View>
