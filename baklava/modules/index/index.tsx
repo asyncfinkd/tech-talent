@@ -1,9 +1,10 @@
 import Actions from "../../actions/modules/index";
+import { Animated } from "react-native";
 import React from "react";
 
 export default function IndexPageModule({ navigation }: any) {
-  const MenuX = Actions.useRef(new Actions.Animated.Value(-500)).current;
-  const ProfileX = Actions.useRef(new Actions.Animated.Value(500)).current;
+  const MenuX = Actions.useRef(new Animated.Value(-500)).current;
+  const ProfileX = Actions.useRef(new Animated.Value(500)).current;
 
   const Menu = Actions.useBoolean();
   const Profile = Actions.useBoolean();
