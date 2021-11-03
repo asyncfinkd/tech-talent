@@ -5,6 +5,7 @@ import useBoolean from "../../../../../shared-hooks/use-boolean";
 import LeftSidebar from "../../../../../ui/sidebar/left";
 import RightSidebar from "../../../../../ui/sidebar/right";
 import RegisterHero from "../../../../../modules/register/candidate/info/components/register-hero";
+import { useForm } from "react-hook-form";
 
 export default {
   ScrollView,
@@ -17,4 +18,5 @@ export default {
   LeftSidebar,
   RightSidebar,
   RegisterHero,
+  useForm,
 };
