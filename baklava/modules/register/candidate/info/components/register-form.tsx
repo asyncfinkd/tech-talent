@@ -7,8 +7,10 @@ export default function RegisterCandidateInfoForm({
   watch,
   getValues,
 }: any) {
-  const [isEmailFocused, setIsEmailFocused] = Actions.useState<boolean>(false);
-  const [isPasswordFocused, setIsPasswordFocused] =
+  const [fullNameFocused, setFullNameFocused] =
+    Actions.useState<boolean>(false);
+  const [phoneFocused, setPhoneFocused] = Actions.useState<boolean>(false);
+  const [socialNetworkFocused, setSocialNetworkFocused] =
     Actions.useState<boolean>(false);
 
   return (
