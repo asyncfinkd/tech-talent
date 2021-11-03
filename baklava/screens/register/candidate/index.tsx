@@ -1,11 +1,6 @@
-import React, { useContext, useState } from "react";
-import { useForm } from "react-hook-form";
-import { View } from "react-native";
-import RegisterCandidateModules from "../../../modules/register/candidate";
+import Actions from "../../../actions/screens/register/candidate";
+import React from "react";
 import RegisterFooter from "../../../ui/footer/register";
-import jwt_decode from "jwt-decode";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ApplicationContext } from "../../../context/application";
 
 export default function RegisterCandidateScreen({ navigation }: any) {
   const {
@@ -14,24 +9,26 @@ export default function RegisterCandidateScreen({ navigation }: any) {
     formState: { errors },
     watch,
     getValues,
-  } = useForm();
+  } = Actions.useForm();
   const [emailIsAlreadyRegistered, setEmailIsAlreadyRegistered] =
-    useState<boolean>(false);
+    Actions.useState<boolean>(false);
 
   const _storeData = async (value: any) => {
     try {
-      await AsyncStorage.setItem("token", value);
+      await Actions.AsyncStorage.setItem("token", value);
     } catch (error) {
       // Error saving data
     }
   };
 
-  const { access_token, setAccess_Token } = useContext(ApplicationContext);
+  const { access_token, setAccess_Token } = Actions.useContext(
+    Actions.ApplicationContext
+  );
 
   return (
     <>
-      <View style={{ flex: 1 }}>
-        <RegisterCandidateModules
+      <Actions.View style={{ flex: 1 }}>
+        <Actions.RegisterCandidateModules
           errors={errors}
           navigation={navigation}
           control={control}
@@ -61,7 +58,7 @@ export default function RegisterCandidateScreen({ navigation }: any) {
                   setEmailIsAlreadyRegistered(true);
                 } else {
                   setEmailIsAlreadyRegistered(false);
-                  let decoded: any = jwt_decode(result.access_token);
+                  let decoded: any = Actions.jwt_decode(result.access_token);
                   _storeData(JSON.stringify(decoded));
                   setAccess_Token(JSON.stringify(decoded));
                   navigation.push("RegisterCandidateInfo");
@@ -69,7 +66,7 @@ export default function RegisterCandidateScreen({ navigation }: any) {
               });
           })}
         />
-      </View>
+      </Actions.View>
     </>
   );
 }

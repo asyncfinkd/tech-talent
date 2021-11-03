@@ -44,7 +44,7 @@ export default function App() {
         >
           <Actions.NavigationContainer>
             <Stack.Navigator
-              initialRouteName="RegisterCandidateInfo"
+              initialRouteName="Register"
               screenOptions={{
                 headerMode: "screen",
                 headerTintColor: "white",
