@@ -1,6 +1,5 @@
 import Actions from "../../../actions/screens/register/candidate";
 import React from "react";
-import RegisterFooter from "../../../ui/footer/register";
 
 export default function RegisterCandidateScreen({ navigation }: any) {
   const {
@@ -36,7 +35,7 @@ export default function RegisterCandidateScreen({ navigation }: any) {
           getValues={getValues}
           emailIsAlreadyRegistered={emailIsAlreadyRegistered}
         />
-        <RegisterFooter
+        <Actions.RegisterFooter
           secondStep={true}
           secondStepOnPress={handleSubmit((data: any) => {
             const requestForData = fetch(
