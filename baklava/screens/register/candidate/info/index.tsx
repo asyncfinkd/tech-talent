@@ -1,10 +1,12 @@
+import Actions from "../../../../actions/screens/register/candidate/info";
 import React from "react";
-import { Text } from "react-native";
 
 export default function RegisterCandidateInfoScreen() {
   return (
     <>
-      <Text>123</Text>
+      <Actions.View>
+        <Actions.RegisterCandidateInfoModules />
+      </Actions.View>
     </>
   );
 }

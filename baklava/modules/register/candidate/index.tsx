@@ -1,11 +1,5 @@
 import React, { useRef } from "react";
-import {
-  Text,
-  ScrollView,
-  SafeAreaView,
-  StatusBar,
-  Animated,
-} from "react-native";
+import { ScrollView, SafeAreaView, StatusBar, Animated } from "react-native";
 import useBoolean from "../../../shared-hooks/use-boolean";
 import LeftSidebar from "../../../ui/sidebar/left";
 import RightSidebar from "../../../ui/sidebar/right";
