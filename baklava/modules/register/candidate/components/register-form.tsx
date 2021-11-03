@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { Text, View, TextInput } from "react-native";
-import { Controller } from "react-hook-form";
+import Actions from "../../../../actions/modules/register/candidate/components/register-form-actions";
+import React from "react";
 
 export default function RegisterCandidateForm({
   errors,
@@ -9,16 +8,17 @@ export default function RegisterCandidateForm({
   getValues,
   emailIsAlreadyRegistered,
 }: any) {
-  const [isEmailFocused, setIsEmailFocused] = useState<boolean>(false);
-  const [isPasswordFocused, setIsPasswordFocused] = useState<boolean>(false);
+  const [isEmailFocused, setIsEmailFocused] = Actions.useState<boolean>(false);
+  const [isPasswordFocused, setIsPasswordFocused] =
+    Actions.useState<boolean>(false);
   const [isRepeatPasswordFocused, setIsRepeatPasswordFocused] =
-    useState<boolean>(false);
+    Actions.useState<boolean>(false);
 
   return (
     <>
-      <View style={{ marginLeft: 15, marginRight: 15 }}>
-        <View>
-          <Text
+      <Actions.View style={{ marginLeft: 15, marginRight: 15 }}>
+        <Actions.View>
+          <Actions.Text
             style={{
               marginTop: 16,
               marginLeft: 0,
@@ -32,8 +32,8 @@ export default function RegisterCandidateForm({
             }}
           >
             Register
-          </Text>
-          <Text
+          </Actions.Text>
+          <Actions.Text
             style={{
               opacity: 0.5,
               marginTop: 0,
@@ -47,10 +47,10 @@ export default function RegisterCandidateForm({
             }}
           >
             Enter Your Credentials
-          </Text>
-          <View style={{ display: "flex", flexDirection: "column" }}>
-            <View style={{ width: "100%", marginBottom: 20 }}>
-              <Text
+          </Actions.Text>
+          <Actions.View style={{ display: "flex", flexDirection: "column" }}>
+            <Actions.View style={{ width: "100%", marginBottom: 20 }}>
+              <Actions.Text
                 style={{
                   fontSize: 16,
                   fontFamily: "markpro-bold",
@@ -59,10 +59,9 @@ export default function RegisterCandidateForm({
                   marginBottom: 20,
                 }}
               >
-                Email <Text style={{ opacity: 0.2 }}>*</Text>
-              </Text>
-              <Controller
-                // @ts-ignore
+                Email <Actions.Text style={{ opacity: 0.2 }}>*</Actions.Text>
+              </Actions.Text>
+              <Actions.Controller
                 control={control}
                 rules={{
                   required: true,
@@ -73,7 +72,7 @@ export default function RegisterCandidateForm({
                   },
                 }}
                 render={({ field: { onChange, value } }) => (
-                  <TextInput
+                  <Actions.TextInput
                     style={{
                       width: "100%",
                       borderWidth: 2,
@@ -104,7 +103,7 @@ export default function RegisterCandidateForm({
                 defaultValue=""
               />
               {errors.email && (
-                <Text
+                <Actions.Text
                   style={{
                     color: "#d22",
                     fontSize: 14,
@@ -114,10 +113,10 @@ export default function RegisterCandidateForm({
                   }}
                 >
                   Valid email is required
-                </Text>
+                </Actions.Text>
               )}
               {emailIsAlreadyRegistered && (
-                <Text
+                <Actions.Text
                   style={{
                     color: "#d22",
                     fontSize: 14,
@@ -127,11 +126,11 @@ export default function RegisterCandidateForm({
                   }}
                 >
                   User with this email is already registered
-                </Text>
+                </Actions.Text>
               )}
-            </View>
-            <View style={{ width: "100%", marginBottom: 20 }}>
-              <Text
+            </Actions.View>
+            <Actions.View style={{ width: "100%", marginBottom: 20 }}>
+              <Actions.Text
                 style={{
                   fontSize: 16,
                   fontFamily: "markpro-bold",
@@ -140,16 +139,15 @@ export default function RegisterCandidateForm({
                   marginBottom: 20,
                 }}
               >
-                Password <Text style={{ opacity: 0.2 }}>*</Text>
-              </Text>
-              <Controller
-                // @ts-ignore
+                Password <Actions.Text style={{ opacity: 0.2 }}>*</Actions.Text>
+              </Actions.Text>
+              <Actions.Controller
                 control={control}
                 rules={{
                   required: true,
                 }}
                 render={({ field: { onChange, value } }) => (
-                  <TextInput
+                  <Actions.TextInput
                     style={{
                       width: "100%",
                       borderWidth: 2,
@@ -180,7 +178,7 @@ export default function RegisterCandidateForm({
                 defaultValue=""
               />
               {errors.password && (
-                <Text
+                <Actions.Text
                   style={{
                     color: "#d22",
                     fontSize: 14,
@@ -190,11 +188,11 @@ export default function RegisterCandidateForm({
                   }}
                 >
                   Password is required
-                </Text>
+                </Actions.Text>
               )}
-            </View>
-            <View style={{ width: "100%", marginBottom: 20 }}>
-              <Text
+            </Actions.View>
+            <Actions.View style={{ width: "100%", marginBottom: 20 }}>
+              <Actions.Text
                 style={{
                   fontSize: 16,
                   fontFamily: "markpro-bold",
@@ -203,10 +201,10 @@ export default function RegisterCandidateForm({
                   marginBottom: 20,
                 }}
               >
-                Repeat Password <Text style={{ opacity: 0.2 }}>*</Text>
-              </Text>
-              <Controller
-                // @ts-ignore
+                Repeat Password{" "}
+                <Actions.Text style={{ opacity: 0.2 }}>*</Actions.Text>
+              </Actions.Text>
+              <Actions.Controller
                 control={control}
                 rules={{
                   required: true,
@@ -215,7 +213,7 @@ export default function RegisterCandidateForm({
                   },
                 }}
                 render={({ field: { onChange, value } }) => (
-                  <TextInput
+                  <Actions.TextInput
                     style={{
                       width: "100%",
                       borderWidth: 2,
@@ -246,7 +244,7 @@ export default function RegisterCandidateForm({
                 defaultValue=""
               />
               {errors.repeatPassword && (
-                <Text
+                <Actions.Text
                   style={{
                     color: "#d22",
                     fontSize: 14,
@@ -256,12 +254,12 @@ export default function RegisterCandidateForm({
                   }}
                 >
                   Passwords do not match
-                </Text>
+                </Actions.Text>
               )}
-            </View>
-          </View>
-        </View>
-      </View>
+            </Actions.View>
+          </Actions.View>
+        </Actions.View>
+      </Actions.View>
     </>
   );
 }
