@@ -78,7 +78,7 @@ export default function RegisterCandidateForm({
                       width: "100%",
                       borderWidth: 2,
                       borderColor: `${
-                        errors.email
+                        errors.email || emailIsAlreadyRegistered
                           ? "#d22"
                           : isEmailFocused
                           ? "#7b7ce6"
@@ -114,6 +114,19 @@ export default function RegisterCandidateForm({
                   }}
                 >
                   Valid email is required
+                </Text>
+              )}
+              {emailIsAlreadyRegistered && (
+                <Text
+                  style={{
+                    color: "#d22",
+                    fontSize: 14,
+                    fontFamily: "markpro-light",
+                    lineHeight: 16,
+                    paddingTop: 8,
+                  }}
+                >
+                  User with this email is already registered
                 </Text>
               )}
             </View>
@@ -245,7 +258,6 @@ export default function RegisterCandidateForm({
                   Passwords do not match
                 </Text>
               )}
-              {emailIsAlreadyRegistered && <Text>123</Text>}
             </View>
           </View>
         </View>
