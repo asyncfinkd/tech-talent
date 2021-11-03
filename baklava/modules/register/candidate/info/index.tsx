@@ -1,7 +1,5 @@
 import Actions from "../../../../actions/modules/register/candidate/info";
 import React from "react";
-import LeftSidebar from "../../../../ui/sidebar/left";
-import RightSidebar from "../../../../ui/sidebar/right";
 
 export default function RegisterCandidateInfoModules({ navigation }: any) {
   const MenuX = Actions.useRef(new Actions.Animated.Value(-500)).current;
@@ -32,8 +30,8 @@ export default function RegisterCandidateInfoModules({ navigation }: any) {
       <Actions.SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
         <Actions.ScrollView>
           <Actions.StatusBar backgroundColor="white" />
-          <LeftSidebar MenuX={MenuX} />
-          <RightSidebar ProfileX={ProfileX} navigation={navigation} />
+          <Actions.LeftSidebar MenuX={MenuX} />
+          <Actions.RightSidebar ProfileX={ProfileX} navigation={navigation} />
         </Actions.ScrollView>
       </Actions.SafeAreaView>
     </>
