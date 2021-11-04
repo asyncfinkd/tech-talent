@@ -12,7 +12,6 @@ export default function Footer({ showFullFooter }: any) {
 
   return (
     <>
-      {console.log(tokenData)}
       {showFullFooter == true && (
         <>
           <Actions.View style={styles.container}>
