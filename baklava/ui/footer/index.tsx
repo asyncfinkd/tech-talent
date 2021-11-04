@@ -4,12 +4,15 @@ import { TokenProps } from "../../types/app/token";
 
 export default function Footer({ showFullFooter }: any) {
   const { access_token } = Actions.useContext(Actions.ApplicationContext);
-  const [tokenData, setTokenData] = Actions.useState<TokenProps>(access_token);
+  const [tokenData, setTokenData] = Actions.useState<TokenProps>(
+    typeof access_token != "object" && JSON.parse(access_token)
+  );
 
   const ButtonSize = tokenData?.logged ? 138 : 150;
 
   return (
     <>
+      {console.log(tokenData)}
       {showFullFooter == true && (
         <>
           <Actions.View style={styles.container}>

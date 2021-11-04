@@ -21,7 +21,7 @@ export default function App() {
       const value: any = await Actions.AsyncStorage.getItem("token");
       const parsedToken: any = JSON.parse(value).decoded;
       if (access_token.email == "") {
-        if (value !== null) {
+        if (value != null) {
           // We have data!!
           setAccess_Token(parsedToken);
         }
