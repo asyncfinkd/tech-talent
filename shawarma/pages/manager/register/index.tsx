@@ -1,9 +1,12 @@
+import ManagerRegisterModules from "modules/manager/register";
 import React from "react";
 
-export default function ManagerRegisterPages() {
+function ManagerRegisterPages() {
   return (
     <>
-      <p>Hello</p>
+      <ManagerRegisterModules />
     </>
   );
 }
+
+export default ManagerRegisterPages;
