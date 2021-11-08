@@ -1,13 +1,7 @@
 import React from "react";
-import Link from "next/link";
 import * as s from "constants/app/strings";
-import SVG from "react-inlinesvg";
-
-interface Props {
-  wantSponsors?: boolean;
-  access_token?: any;
-  logged?: any;
-}
+import Actions from "actions/ui/footer";
+import { Props } from "types/ui/footer";
 
 const Footer: React.FC<Props> = ({ wantSponsors, access_token, logged }) => {
   return (
@@ -85,13 +79,13 @@ const Footer: React.FC<Props> = ({ wantSponsors, access_token, logged }) => {
                     Tech companies use our platform <br /> to find people that
                     fit their culture.
                   </div>
-                  <Link
+                  <Actions.Link
                     href={`${logged ? `/profile/information` : `/register`}`}
                   >
                     <a className="root-0-2-46 register-0-2-214 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54">
                       {logged ? "Profile" : "Register"}
                     </a>
-                  </Link>
+                  </Actions.Link>
                 </div>
                 <div className="right-0-2-215">
                   <div className="colContainer-0-2-219">
@@ -284,19 +278,19 @@ const Footer: React.FC<Props> = ({ wantSponsors, access_token, logged }) => {
                     <div className="col-0-2-220">
                       <div className="titleEntry-0-2-216">Company</div>
                       <div>
-                        <Link href="/about">
+                        <Actions.Link href="/about">
                           <a className="entry-0-2-218">About</a>
-                        </Link>
+                        </Actions.Link>
                       </div>
                       <div>
-                        <Link href="/terms">
+                        <Actions.Link href="/terms">
                           <a className="entry-0-2-218">Terms & Conditions</a>
-                        </Link>
+                        </Actions.Link>
                       </div>
                       <div>
-                        <Link href="/privacy">
+                        <Actions.Link href="/privacy">
                           <a className="entry-0-2-218">Privacy Policy</a>
-                        </Link>
+                        </Actions.Link>
                       </div>
                     </div>
                   </div>
@@ -309,7 +303,7 @@ const Footer: React.FC<Props> = ({ wantSponsors, access_token, logged }) => {
         <div className="marginOnMobile-0-2-134">
           <div className="bottom-0-2-206">
             <div className="root-0-2-228 logo-0-2-207">
-              <SVG src={s.TalentCloudSVG} />
+              <Actions.SVG src={s.TalentCloudSVG} />
               <div>
                 <span className="primaryText-0-2-230">Talent</span>
                 <span className="secondaryText-0-2-231">Cloud</span>
@@ -328,7 +322,7 @@ const Footer: React.FC<Props> = ({ wantSponsors, access_token, logged }) => {
               >
                 <div className="root-0-2-30 sizeMd-0-2-31 capsule-0-2-222">
                   <div className="rectangle-0-2-33">
-                    <SVG src={s.FacebookSVG} />
+                    <Actions.SVG src={s.FacebookSVG} />
                   </div>
                 </div>
               </a>
@@ -341,7 +335,7 @@ const Footer: React.FC<Props> = ({ wantSponsors, access_token, logged }) => {
               >
                 <div className="root-0-2-30 sizeMd-0-2-31 capsule-0-2-222">
                   <div className="rectangle-0-2-33">
-                    <SVG src={s.LinkedinSVG} />
+                    <Actions.SVG src={s.LinkedinSVG} />
                   </div>
                 </div>
               </a>

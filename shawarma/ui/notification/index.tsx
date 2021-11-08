@@ -1,8 +1,8 @@
 import React from "react";
-import DOMPurify from "isomorphic-dompurify";
+import Actions from "actions/ui/notification";
 
 const Notification: React.FC = () => {
-  const sanitizer = DOMPurify.sanitize;
+  const sanitizer = Actions.DOMPurify.sanitize;
   return (
     <>
       <div className="root-0-2-196">
@@ -22,12 +22,11 @@ const Notification: React.FC = () => {
             ),
           }}
         ></div>
-        <a
-          className="root-0-2-46 button-0-2-199 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-          href="/manager/register"
-        >
-          Register Company
-        </a>
+        <Actions.Link href="/manager/register">
+          <a className="root-0-2-46 button-0-2-199 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54">
+            Register Company
+          </a>
+        </Actions.Link>
       </div>
     </>
   );
