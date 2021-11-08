@@ -17,6 +17,7 @@
     "axios": "^0.23.0",
     "better-scroll": "^2.4.2",
     "canvas": "^2.8.0",
+    "crypto-js": "^4.1.1",
     "css-loader": "^6.4.0",
     "dompurify": "^2.3.3",
     "dotenv": "^10.0.0",
