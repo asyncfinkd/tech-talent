@@ -1,7 +1,7 @@
 import RegisterFooter from "ui/footer/register";
 import Header from "ui/header";
 import type { NextPage } from "next";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Head from "next/head";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -18,9 +18,9 @@ import { ApplicationContext } from "context/application/ApplicationContext";
 
 const CandidatePage: NextPage = () => {
   const router = useRouter();
-  const interest = router.query.fieldType;
+  const interest: any = router.query.fieldType;
 
-  const [errorMessage, setErrorMessage] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
 
   const { setAccess_Token } = useContext(ApplicationContext);
 
@@ -28,20 +28,23 @@ const CandidatePage: NextPage = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<Input>({ resolver: yupResolver(RegisterSchema) });
 
   const $register = useMutation(
     ({
       loginData,
-      interest,
-      setErrorMessage,
+      setError,
     }: {
       loginData: Input;
-      interest: string | string[] | undefined;
-      setErrorMessage: React.Dispatch<React.SetStateAction<boolean>>;
-    }) => RegisterRequest(loginData, interest, setErrorMessage)
+      setError: React.Dispatch<React.SetStateAction<boolean>>;
+    }) => RegisterRequest({ loginData: loginData, setError })
   );
 
+  useEffect(() => {
+    setValue("interest", interest);
+    setValue("role", "member");
+  });
   return (
     <>
       <Head>
@@ -57,7 +60,7 @@ const CandidatePage: NextPage = () => {
                 <RegisterForm
                   register={register}
                   errors={errors}
-                  errorMessage={errorMessage}
+                  errorMessage={error}
                 />
                 <RegisterCandidatePagesFooter />
               </div>
@@ -69,7 +72,7 @@ const CandidatePage: NextPage = () => {
         candidate={true}
         candidateOnClick={handleSubmit((data: Input) => {
           $register.mutate(
-            { loginData: data, interest, setErrorMessage },
+            { loginData: data, setError },
             {
               onSuccess: (data: Result) => {
                 document.cookie = `cookie=${data.access_token}`;

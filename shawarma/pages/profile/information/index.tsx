@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ProfileInformation from "modules/profile/information";
-import jwt_decode from "jwt-decode";
 import {
   GetServerSideProps,
   GetServerSidePropsContext,

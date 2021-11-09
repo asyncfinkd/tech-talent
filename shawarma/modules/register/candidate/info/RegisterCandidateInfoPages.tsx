@@ -15,7 +15,10 @@ import Header from "ui/header";
 import RegisterCandidateInfoForm from "./components/register-candidate-info-form";
 import RegisterCandidateInfoHeader from "./components/register-candidate-info-header";
 
-const RegisterCandidateInfoPages: NextPage = () => {
+const RegisterCandidateInfoPages: NextPage = ({
+  access_token,
+  logged,
+}: any) => {
   const router = useRouter();
 
   const { register, handleSubmit } = useForm<Input>({
@@ -32,7 +35,7 @@ const RegisterCandidateInfoPages: NextPage = () => {
       <Head>
         <title>Register | Tech Talent</title>
       </Head>
-      <Header ShowShadow={true} />
+      <Header access_token={access_token} logged={logged} ShowShadow={true} />
       <main className="main-0-2-2">
         <div className="root-0-2-276">
           <div className="content-0-2-277">
