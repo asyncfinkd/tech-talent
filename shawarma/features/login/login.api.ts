@@ -1,30 +1,10 @@
-import { Result } from "types/features/login";
+import { request } from "api";
+import { Props } from "types/login";
 
-export const LoginRequest = async (
-  loginData: {
-    email: string;
-    password: string;
-  },
-  setErrorMessage: React.Dispatch<React.SetStateAction<boolean>>,
-  forUser: boolean
-): Promise<Result> => {
-  const { email, password } = loginData;
-  const response = await fetch(`${process.env.REACT_APP_API_URL}/api/login`, {
-    method: "POST",
-    headers: { "Content-type": "application/json" },
-    body: JSON.stringify({ email, password, forUser }),
-  });
-  if (response.ok) setErrorMessage(false);
-
-  if (response.ok) {
-    return response.json();
-  } else {
-    const error = await response.json();
-    if (error) {
-      setErrorMessage(true);
-    }
-    return Promise.reject({
-      ...error,
-    });
-  }
-};
+export const LoginRequest = async ({
+  loginData,
+  setError,
+}: {
+  loginData: Props;
+  setError: boolean | any;
+}) => request("/api/login", "POST", "JSON", loginData, setError);
