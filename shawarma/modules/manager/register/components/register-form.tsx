@@ -85,7 +85,7 @@ export default function RegisterForm() {
                 `email=${data.email}?password=${data.password}`,
                 "lm3k123kl123kNJ#!#NJ!K#N!@K#Mxnamnx"
               );
-              router.push(`/manager/register/info??${ciphertext}`);
+              router.push(`/manager/register/info?crc__ssl?${ciphertext}`);
             })}
           >
             Next

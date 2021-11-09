@@ -3,13 +3,14 @@ import CryptoAES from "crypto-js/aes";
 import CryptoENC from "crypto-js/enc-utf8";
 import { isServer } from "lib/isServer";
 import { useState } from "react";
+import ManagerRegisterInfoModules from "modules/manager/register/info";
 
 export default function ManagerRegisterInfoPages() {
   const [decryptedURL, setDecryptedURL] = useState({});
 
   const decryptURL = () => {
     if (!isServer) {
-      let cipherText = window.location.href.split("??")[1];
+      let cipherText = window.location.href.split("?crc__ssl?")[1];
       let decryptText = CryptoAES.decrypt(
         cipherText,
         "lm3k123kl123kNJ#!#NJ!K#N!@K#Mxnamnx"
@@ -28,7 +29,7 @@ export default function ManagerRegisterInfoPages() {
   }, []);
   return (
     <>
-      <p>Hello</p>
+      <ManagerRegisterInfoModules />
     </>
   );
 }
