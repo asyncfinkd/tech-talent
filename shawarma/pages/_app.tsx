@@ -19,6 +19,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [access_token, setAccess_Token] = Actions.useState<TokenProps>(
     Actions.APP__TOKEN__MOCKS__()
   );
+  const [managerInfo, setManagerInfo] = Actions.useState({
+    email: "",
+    password: "",
+  });
   const [managerEmail, setManagerEmail] = Actions.useState("");
   const [managerPassword, setManagerPassword] = Actions.useState("");
   const cookie: string | null | undefined = Actions.readCookie("cookie");
@@ -71,8 +75,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           value={{
             access_token,
             setAccess_Token,
-            managerEmail,
-            managerPassword,
+            managerInfo,
+            setManagerInfo,
           }}
         >
           <div className="root-0-2-1">
