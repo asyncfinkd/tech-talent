@@ -10,6 +10,7 @@ export default function RegisterForm() {
   } = Actions.useForm<Props>({
     resolver: Actions.yupResolver(Actions.ManagerRegisterSchema),
   });
+  const router = Actions.useRouter();
 
   return (
     <>
@@ -80,6 +81,11 @@ export default function RegisterForm() {
             className="root-0-2-46 button-0-2-238 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
             onClick={handleSubmit((data: Props) => {
               console.log(data);
+              var ciphertext = Actions.CryptoAES.encrypt(
+                `email=${data.email}?password=${data.password}`,
+                "lm3k123kl123kNJ#!#NJ!K#N!@K#Mxnamnx"
+              );
+              router.push(`/manager/register/info??${ciphertext}`);
             })}
           >
             Next
