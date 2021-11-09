@@ -19,6 +19,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [access_token, setAccess_Token] = Actions.useState<TokenProps>(
     Actions.APP__TOKEN__MOCKS__()
   );
+  const [email, setEmail] = Actions.useState("");
+  const [password, setPassword] = Actions.useState("");
   const cookie: string | null | undefined = Actions.readCookie("cookie");
 
   Actions.useEffect(() => {
@@ -66,7 +68,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Actions.Head>
       <Actions.QueryClientProvider client={Actions.client}>
         <Actions.ApplicationContext.Provider
-          value={{ access_token, setAccess_Token }}
+          value={{ access_token, setAccess_Token, email, password }}
         >
           <div className="root-0-2-1">
             <Component {...pageProps} />

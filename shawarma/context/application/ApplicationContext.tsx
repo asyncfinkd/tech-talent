@@ -4,6 +4,8 @@ import { TokenProps } from "types/app/token";
 interface Props {
   access_token?: TokenProps;
   setAccess_Token?: React.Dispatch<React.SetStateAction<TokenProps>> | any;
+  email?: string;
+  password?: string;
 }
 
 export const ApplicationContext = React.createContext<Props>({
@@ -17,4 +19,6 @@ export const ApplicationContext = React.createContext<Props>({
     role: "",
   },
   setAccess_Token: "",
+  email: "",
+  password: "",
 });
