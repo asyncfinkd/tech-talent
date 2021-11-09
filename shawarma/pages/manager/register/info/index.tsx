@@ -28,7 +28,6 @@ export default function ManagerRegisterInfoPages() {
   }, []);
   return (
     <>
-    {console.log(decryptedURL)}
       <p>Hello</p>
     </>
   );
