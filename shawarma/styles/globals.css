@@ -8425,3 +8425,146 @@
   margin-right: 26px;
   background-color: #5051de;
 }
+
+.root-0-2-99 {
+  width: 100%;
+  margin-bottom: 1.375rem;
+}
+.label-0-2-100 {
+  color: #171725;
+  display: block;
+  font-size: 1rem;
+  font-family: MarkPro, Helvetica;
+  font-weight: bold;
+  line-height: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.asteriskValid-0-2-101 {
+  opacity: 0.2;
+}
+.asteriskInvalid-0-2-102 {
+  color: #dd2222;
+}
+.input-0-2-103 {
+  border: 2px solid transparent;
+  display: flex;
+  padding: 0.5rem;
+  position: relative;
+  align-items: center;
+  border-radius: 15px;
+  background-color: #eff3ff;
+}
+.input-0-2-103:hover,
+.input-0-2-103:focus {
+  border: 2px solid #7b7ce6;
+  outline: none;
+}
+.color-0-2-104 {
+  color: #696974;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  font-size: 0.875rem;
+  align-items: center;
+  font-family: MarkPro, Helvetica;
+  line-height: 1rem;
+  margin-right: 1.125rem;
+  border-radius: 10px;
+  justify-content: center;
+}
+.text-0-2-105 {
+  flex: 1;
+  display: flex;
+  padding: 0 1rem;
+  font-size: 1rem;
+  font-family: MarkPro, Helvetica;
+  line-height: 1.25rem;
+}
+.placeholder-0-2-106 {
+  color: #696974;
+}
+.preview-0-2-107 {
+  width: 48px;
+  cursor: pointer;
+  height: 48px;
+  border-radius: 10px;
+}
+.valueContainer-0-2-108 {
+  color: #171725;
+  display: flex;
+  align-items: center;
+}
+.valueContainer-0-2-108:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.valueContainer-0-2-108:hover svg {
+  display: inline-block;
+}
+.eyeIcon-0-2-109 {
+  width: 22px;
+  height: 22px;
+  display: none;
+  margin-right: 0.625rem;
+}
+.pickColorButton-0-2-110 {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background-color: #ffffff !important;
+}
+.spinner-0-2-111 {
+  fill: #171725;
+  width: 20px;
+  height: 20px;
+  margin-right: 0.375rem;
+}
+.downloadButton-0-2-112 {
+  padding: 0;
+}
+.closeIcon-0-2-113 {
+  fill: #dd2222;
+  width: 20px;
+  height: 20px;
+  stroke: #dd2222;
+}
+.downloadIcon-0-2-114 {
+  fill: #8c8c91;
+  margin-right: 0.5rem;
+}
+.downloadIcon-0-2-114:hover {
+  fill: #171725;
+}
+.invalid-0-2-115 {
+  border: 2px solid #e44e4e;
+}
+.invalid-0-2-115:hover {
+  border: 2px solid #e44e4e !important;
+  outline: none;
+}
+.invalid-0-2-115:focus {
+  border: 2px solid #dd2222 !important;
+  outline: none;
+}
+.invalidMessage-0-2-116 {
+  color: #dd2222;
+  font-size: 0.875rem;
+  font-family: MarkPro, Helvetica;
+  line-height: 1rem;
+  padding-top: 0.5rem;
+}
+
+.stroke-0-2-29 {
+  stroke: #7b7ce6;
+}
+.fill-0-2-30 {
+  fill: #7b7ce6;
+}
+
+.hover__logoqweqlewm {
+  cursor: pointer;
+}
+
+.hover__logoqweqlewm:hover {
+  box-shadow: 0px 0px 4px 1px rgb(0 0 0 / 20%);
+}
