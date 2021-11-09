@@ -1,5 +1,6 @@
 import Actions from "actions/manager/register/components/register-form";
-import React from "react";
+import { ApplicationContext } from "context/application/ApplicationContext";
+import React, { useContext } from "react";
 import { Props } from "types/manager/register";
 
 export default function RegisterForm() {
@@ -11,6 +12,7 @@ export default function RegisterForm() {
     resolver: Actions.yupResolver(Actions.ManagerRegisterSchema),
   });
   const router = Actions.useRouter();
+  const { setManagerInfo } = useContext(ApplicationContext);
 
   return (
     <>
@@ -80,7 +82,7 @@ export default function RegisterForm() {
             type="submit"
             className="root-0-2-46 button-0-2-238 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
             onClick={handleSubmit((data: Props) => {
-              console.log(data);
+              setManagerInfo(data);
               router.push(`/manager/register/info`);
             })}
           >
