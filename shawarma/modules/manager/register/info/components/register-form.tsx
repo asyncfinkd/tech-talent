@@ -1,23 +1,18 @@
+import Actions from "actions/manager/info/components/register-form";
 import React from "react";
-import { useRouter } from "next/router";
-import { Form } from "fixtures/register/manager/info";
-import { useForm, get, useFormContext } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { schema } from "schema/register/manager/info";
 import { Props } from "types/register/manager/info";
-import { ErrorMessage } from "components/error-message";
 
 export default function RegisterForm() {
-  const { register, handleSubmit, formState } = useForm<Props>({
-    resolver: yupResolver(schema),
+  const { register, handleSubmit, formState } = Actions.useForm<Props>({
+    resolver: Actions.yupResolver(Actions.schema),
   });
 
-  const router = useRouter();
+  const router = Actions.useRouter();
 
   return (
     <>
       <div className="inputGroup-0-2-116">
-        {Form.Fields.map((item: any) => {
+        {Actions.Form.Fields.map((item: any) => {
           return (
             <>
               <div className="root-0-2-126 input-0-2-117">
@@ -33,18 +28,19 @@ export default function RegisterForm() {
                 <input
                   type={item.type}
                   className={`input-0-2-251 ${
-                    get(formState.errors, item.name) && "invalid-0-2-252"
+                    Actions.get(formState.errors, item.name) &&
+                    "invalid-0-2-252"
                   }`}
                   placeholder={item.placeholder}
                   {...register(item.name)}
                 />
-                <ErrorMessage
+                <Actions.ErrorMessage
                   element="div"
-                  condition={get(formState.errors, item.name)}
+                  condition={Actions.get(formState.errors, item.name)}
                   className="invalidMessage-0-2-253"
                 >
                   {item?.required?.message}
-                </ErrorMessage>
+                </Actions.ErrorMessage>
               </div>
             </>
           );
