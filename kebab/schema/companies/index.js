@@ -32,6 +32,7 @@ const companiesSchema = mongoose.Schema({
   primaryTextColor: { type: String },
   secondaryText: { type: String },
   secondaryTextColor: { type: String },
+  name: { type: String },
 });
 
 const Companies = mongoose.model("companies", companiesSchema);

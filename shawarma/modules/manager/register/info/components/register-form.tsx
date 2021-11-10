@@ -1,15 +1,23 @@
 import Actions from "actions/manager/info/components/register-form";
 import { ApplicationContext } from "context/application/ApplicationContext";
-import React, { useContext } from "react";
+import { ManagerRegisterRequest } from "features/register/manager/info/manager.register.api";
+import React, { useContext, useState } from "react";
+import { useMutation } from "react-query";
 import { Props } from "types/register/manager/info";
 
 export default function RegisterForm() {
+  const [error, setError] = useState<boolean>(false);
   const { register, handleSubmit, formState } = Actions.useForm<Props>({
     resolver: Actions.yupResolver(Actions.schema),
   });
 
   const { managerInfo } = useContext(ApplicationContext);
   const router = Actions.useRouter();
+
+  const $register = useMutation(
+    ({ loginData, setError }: { loginData: any; setError: any }) =>
+      ManagerRegisterRequest({ loginData, setError })
+  );
   return (
     <>
       <div className="inputGroup-0-2-116">
@@ -100,6 +108,14 @@ export default function RegisterForm() {
                 password: managerInfo.password,
               };
 
+              $register.mutate(
+                { loginData: reData, setError },
+                {
+                  onSuccess: (data: any) => {
+                    console.log(data);
+                  },
+                }
+              );
               console.log(reData);
             })}
           >

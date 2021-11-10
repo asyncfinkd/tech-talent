@@ -18,13 +18,20 @@ router.route("/manager/register").post(async (req, res) => {
           .status(502)
           .json({ message: "Email is already registered", success: false });
       } else {
-        const User = new UserSchema({
-          email: req.body.email,
-          password: hashedPassword,
-          role: "manager",
-        }).save();
-
-        res.json({ message: "Successfuly", success: true });
+        const Companies = new CompaniesSchema({
+          name: req.body.companyName,
+        }).save(function (err, user) {
+          const User = new UserSchema({
+            email: req.body.email,
+            password: hashedPassword,
+            role: "manager",
+            myCompany: user._id,
+          })
+            .save()
+            .then(() => {
+              res.json({ message: "Successfuly", success: true });
+            });
+        });
       }
     });
   } catch (err) {

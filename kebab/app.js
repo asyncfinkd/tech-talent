@@ -33,6 +33,9 @@ app.use("/api", Edu);
 const Companies = require("./routes/companies/index");
 app.use("/api", Companies);
 
+const Manager = require("./routes/manager/index");
+app.use("/api", Manager);
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
