@@ -1,6 +1,5 @@
 import Actions from "actions/manager/register/components/register-form";
 import { ApplicationContext } from "context/application/ApplicationContext";
-import { values } from "fixtures/register/company";
 import React, { useContext } from "react";
 import { Props } from "types/manager/register";
 
@@ -17,6 +16,21 @@ export default function RegisterForm() {
   const { managerInfo, setManagerInfo } = useContext(ApplicationContext);
 
   Actions.useEffect(() => {
+    const values = [
+      {
+        condition: managerInfo.email,
+        value: "email",
+      },
+      {
+        condition: managerInfo.password,
+        value: "password",
+      },
+      {
+        condition: managerInfo.repeatPassword,
+        value: "repeatPassword",
+      },
+    ];
+
     values.map((item: any) => {
       if (item.condition) {
         setValue(item.value, item.condition);
