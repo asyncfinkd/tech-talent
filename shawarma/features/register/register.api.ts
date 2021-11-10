@@ -7,4 +7,4 @@ export const RegisterRequest = async ({
 }: {
   loginData: Input;
   setError: React.Dispatch<React.SetStateAction<boolean>>;
-}) => request("/api/register", "POST", "JSON", setError, loginData);
+}) => request("/api/register", "POST", "JSON", setError, loginData, false);

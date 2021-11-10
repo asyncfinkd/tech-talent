@@ -14,6 +14,7 @@ import RegisterFooter from "ui/footer/register";
 import Header from "ui/header";
 import RegisterCandidateInfoForm from "./components/register-candidate-info-form";
 import RegisterCandidateInfoHeader from "./components/register-candidate-info-header";
+import { useState } from "react";
 
 const RegisterCandidateInfoPages = ({ access_token, logged }: any) => {
   const router = useRouter();
@@ -21,11 +22,17 @@ const RegisterCandidateInfoPages = ({ access_token, logged }: any) => {
   const { register, handleSubmit } = useForm<Input>({
     resolver: yupResolver(RegisterCandidateInfoSchema),
   });
-
+  const [error, setError] = useState<boolean>(false);
   const { setAccess_Token } = useContext(ApplicationContext);
 
-  const $register = useMutation(({ loginData }: { loginData: Input }) =>
-    RegisterInfoRequest(loginData)
+  const $register = useMutation(
+    ({
+      loginData,
+      setError,
+    }: {
+      loginData: Input;
+      setError: React.Dispatch<React.SetStateAction<boolean>>;
+    }) => RegisterInfoRequest({ loginData: loginData, setError })
   );
   return (
     <>
@@ -47,7 +54,7 @@ const RegisterCandidateInfoPages = ({ access_token, logged }: any) => {
             candidateinfo={true}
             candidateInfoOnClick={handleSubmit((data: Input) => {
               $register.mutate(
-                { loginData: data },
+                { loginData: data, setError },
                 {
                   onSuccess: (data: Result) => {
                     document.cookie = `cookie=${data.access_token}`;
