@@ -31,8 +31,8 @@ export const request = async <T extends { message: string; success: boolean }>(
   api: string,
   method: "GET" | "POST" | "DELETE",
   contentType: "FORM" | "JSON",
-  body?: Record<string | number, any> | BodyInit | null,
-  setError?: boolean | any // change any of type next time...
+  setError: React.Dispatch<React.SetStateAction<boolean>>, // change any of type next time...
+  body?: Record<string | number, any> | BodyInit | null
   // serverSideToken?: string
 ) => {
   const reqObject = {
