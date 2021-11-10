@@ -1,74 +1,64 @@
-import RegisterFooter from "ui/footer/register";
-import Header from "ui/header";
+import Actions from "actions/register/modules/candidate";
 import type { NextPage } from "next";
-import React, { useContext, useEffect, useState } from "react";
-import Head from "next/head";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { RegisterSchema } from "schema/register/candidate";
+import React from "react";
 import { Input } from "types/register/candidate";
-import RegisterForm from "./components/register-form";
-import RegisterHeader from "./components/register-header";
-import RegisterCandidatePagesFooter from "./components/register-footer";
-import { useMutation } from "react-query";
-import { RegisterRequest } from "features/register/register.api";
 import { Result } from "types/features/register";
-import { useRouter } from "next/router";
-import { ApplicationContext } from "context/application/ApplicationContext";
 
 const CandidatePage: NextPage = () => {
-  const router = useRouter();
+  const router = Actions.useRouter();
   const interest: any = router.query.fieldType;
 
-  const [error, setError] = useState<boolean>(false);
+  const [error, setError] = Actions.useState<boolean>(false);
 
-  const { setAccess_Token } = useContext(ApplicationContext);
+  const { setAccess_Token } = Actions.useContext(Actions.ApplicationContext);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
-  } = useForm<Input>({ resolver: yupResolver(RegisterSchema) });
+  } = Actions.useForm<Input>({
+    resolver: Actions.yupResolver(Actions.RegisterSchema),
+  });
 
-  const $register = useMutation(
+  const $register = Actions.useMutation(
     ({
       loginData,
       setError,
     }: {
       loginData: Input;
       setError: React.Dispatch<React.SetStateAction<boolean>>;
-    }) => RegisterRequest({ loginData: loginData, setError })
+    }) => Actions.RegisterRequest({ loginData: loginData, setError })
   );
 
-  useEffect(() => {
+  Actions.useEffect(() => {
     setValue("interest", interest);
     setValue("role", "member");
   });
   return (
     <>
-      <Head>
+      <Actions.Head>
         <title>Register | Tech Talent</title>
-      </Head>
-      <Header ShowShadow={true} />
+      </Actions.Head>
+      <Actions.Header ShowShadow={true} />
       <main className="main-0-2-2">
         <div>
           <div className="content-0-2-101">
             <div className="marginOnMobile-0-2-111">
               <div className="root-0-2-113">
-                <RegisterHeader />
-                <RegisterForm
+                <Actions.RegisterHeader />
+                <Actions.RegisterForm
                   register={register}
                   errors={errors}
                   errorMessage={error}
                 />
-                <RegisterCandidatePagesFooter />
+                <Actions.RegisterCandidatePagesFooter />
               </div>
             </div>
           </div>
         </div>
       </main>
-      <RegisterFooter
+      <Actions.RegisterFooter
         candidate={true}
         candidateOnClick={handleSubmit((data: Input) => {
           $register.mutate(
