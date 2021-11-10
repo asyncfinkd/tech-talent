@@ -1,34 +1,11 @@
-import { readCookie } from "lib/read-cookie";
-import { Result } from "types/features/profile/security";
+import { request } from "api";
 
-export const ProfileSecurityRequest = async (
-  loginData: { currentPassword: string; newPassword: string },
-  setCurrentPasswordError: any
-): Promise<Result> => {
-  const { currentPassword, newPassword } = loginData;
-  const response = await fetch(
-    `${process.env.REACT_APP_API_URL}/api/update/profile/security`,
-    {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${readCookie("cookie")}`,
-      },
-      body: JSON.stringify({ currentPassword, newPassword }),
-    }
+export const ProfileSecurityRequest = async ({ loginData, setError }: any) =>
+  request(
+    "/api/update/profile/security",
+    "POST",
+    "JSON",
+    setError,
+    loginData,
+    true
   );
-  if (response.ok) setCurrentPasswordError(false);
-
-  if (response.ok) {
-    return response.json();
-  } else {
-    const error = await response.json();
-    if (error) {
-      setCurrentPasswordError(true);
-    }
-
-    return Promise.reject({
-      ...error,
-    });
-  }
-};

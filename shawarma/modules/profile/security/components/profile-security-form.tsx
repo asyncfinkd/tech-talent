@@ -24,10 +24,15 @@ export default function ProfileSecurityForm({
   const $edit = useMutation(
     ({
       loginData,
+      setError,
     }: {
       loginData: SecurityInputProps;
-      setCurrentPasswordError: any;
-    }) => ProfileSecurityRequest(loginData, setCurrentPasswordError)
+      setError: any;
+    }) =>
+      ProfileSecurityRequest({
+        loginData: loginData,
+        setError: setCurrentPasswordError,
+      })
   );
 
   const renderCurrentPasswordInputClassName = () => {
@@ -48,7 +53,7 @@ export default function ProfileSecurityForm({
               $edit.mutate(
                 {
                   loginData: data,
-                  setCurrentPasswordError,
+                  setError: setCurrentPasswordError,
                 },
                 {
                   onSuccess: () => {
