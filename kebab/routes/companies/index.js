@@ -5,7 +5,14 @@ const UserSchema = require("../../schema/user/index");
 
 router.route("/get/companies").get(async (req, res) => {
   CompaniesSchema.find().then((result) => {
-    res.status(200).json(result);
+    let data = [];
+    result.map((item) => {
+      if (item.approved) {
+        data.push(item);
+      }
+    });
+
+    res.status(200).json(data);
   });
 });
 
