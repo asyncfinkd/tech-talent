@@ -27,7 +27,6 @@ const userSchema = mongoose.Schema({
   followedEdusId: [FollowedEdusId],
   cv: { type: String },
   myCompany: { type: mongoose.Types.ObjectId },
-  approved: { type: Boolean },
 });
 
 const User = mongoose.model("users", userSchema);

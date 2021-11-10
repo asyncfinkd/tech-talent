@@ -20,13 +20,15 @@ router.route("/manager/register").post(async (req, res) => {
       } else {
         const Companies = new CompaniesSchema({
           name: req.body.companyName,
+          approved: false,
         }).save(function (err, user) {
           const User = new UserSchema({
             email: req.body.email,
             password: hashedPassword,
             role: "manager",
             myCompany: user._id,
-            approved: false
+            followedCompaniesId: null,
+            followedEdusId: null,
           })
             .save()
             .then(() => {

@@ -33,6 +33,7 @@ const companiesSchema = mongoose.Schema({
   secondaryText: { type: String },
   secondaryTextColor: { type: String },
   name: { type: String },
+  approved: { type: Boolean },
 });
 
 const Companies = mongoose.model("companies", companiesSchema);
