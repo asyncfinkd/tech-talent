@@ -7,4 +7,4 @@ export const LoginRequest = async ({
 }: {
   loginData: Props;
   setError: React.Dispatch<React.SetStateAction<boolean>>;
-}) => request("/api/login", "POST", "JSON", setError, loginData);
+}) => request("/api/login", "POST", "JSON", setError, loginData, false);
