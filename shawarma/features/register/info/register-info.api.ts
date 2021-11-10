@@ -1,34 +1,4 @@
-import { readCookie } from "lib/read-cookie";
-import { Result } from "types/features/register";
+import { request } from "api";
 
-export const RegisterInfoRequest = async (loginData: {
-  fullName: string;
-  phone: string;
-  socialNetwork: string;
-}): Promise<Result> => {
-  const { fullName, phone, socialNetwork } = loginData;
-  const response = await fetch(
-    `${process.env.REACT_APP_API_URL}/api/register/second/step`,
-    {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${readCookie("cookie")}`,
-      },
-      body: JSON.stringify({ fullName, phone, socialNetwork }),
-    }
-  );
-
-  if (response.ok) {
-    return response.json();
-  } else {
-    const error = await response.json();
-    if (error) {
-      alert("SYS ERROR");
-    }
-
-    return Promise.reject({
-      ...error,
-    });
-  }
-};
+export const RegisterInfoRequest = async ({ loginData }: any) =>
+  request("/api/register/second/step", "POST", "JSON", false, loginData, true);

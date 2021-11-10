@@ -6,6 +6,7 @@ import React from "react";
 import { TokenProps } from "types/app/token";
 import { PageComponent } from "types/app/page";
 import "nprogress/nprogress.css";
+import { readCookie } from "lib/read-cookie";
 
 if (!Actions.isServer) {
   Actions.init_i18n();

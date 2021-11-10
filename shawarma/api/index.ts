@@ -32,15 +32,15 @@ export const request = async <T extends { message: string; success: boolean }>(
   api: string,
   method: "GET" | "POST" | "DELETE",
   contentType: "FORM" | "JSON",
-  setError: React.Dispatch<React.SetStateAction<boolean>>,
+  setError: React.Dispatch<React.SetStateAction<boolean>> | any,
   body?: Record<string | number, any> | BodyInit | null,
-  serverSideToken?: string
+  serverSideToken?: boolean
 ) => {
-  const token = serverSideToken ?? readCookie("cookie");
+  const token: any = serverSideToken && readCookie("cookie");
 
   const reqObject = {
     method,
-    headers: generateHeader(JSON.stringify(token), contentType),
+    headers: generateHeader(JSON.stringify(JSON.parse(token)), contentType),
     body: body ? JSON.stringify(body) : null,
   };
 
