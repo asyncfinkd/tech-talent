@@ -25,10 +25,16 @@ export default function ProfileInformationForm({
   });
   const { fullName, phone, socialNetwork } = watch();
   const [fullNameError, setFullNameError] = useState<boolean>(false);
+  const [error, setError] = useState(false);
 
   const $edit = useMutation(
-    ({ loginData }: { loginData: ProfileInformationInputProps }) =>
-      ProfileInformationRequest(loginData)
+    ({
+      loginData,
+      setError,
+    }: {
+      loginData: ProfileInformationInputProps;
+      setError: any;
+    }) => ProfileInformationRequest({ loginData: loginData, setError })
   );
 
   useEffect(() => {
@@ -166,7 +172,7 @@ export default function ProfileInformationForm({
                   onClick={handleSubmit(
                     (data: ProfileInformationInputProps) => {
                       $edit.mutate(
-                        { loginData: data },
+                        { loginData: data, setError },
                         {
                           onSuccess: (result: Result) => {
                             let token: string | undefined | any =
