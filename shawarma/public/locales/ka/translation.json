@@ -4,5 +4,8 @@
   "COURSES": "კურსები",
   "EDUCATION": "განათლება",
   "LOGIN": "შესვლა",
-  "REGISTER": "რეგისტრაცია"
+  "REGISTER": "რეგისტრაცია",
+  "DOYOUWANTOJOIN": "გინდა შემოუერთდე <br /> ჩვენს პლატფორმას?",
+  "SUBMITYOURCONTACTINFORMATION": "შეავსე რეგისტრაციის ფორმა <br /> და ჩვენ მალე დაგიკავშირებით",
+  "REGISTERCOMPANY": "კომპანიის რეგისტრაცია"
 }

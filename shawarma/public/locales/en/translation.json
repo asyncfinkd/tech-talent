@@ -4,5 +4,8 @@
   "COURSES": "Courses",
   "EDUCATION": "Education",
   "LOGIN": "Login",
-  "REGISTER": "Register"
+  "REGISTER": "Register",
+  "DOYOUWANTOJOIN": "Do you want to join <br /> the <span>Tech Talent</span> platform?",
+  "SUBMITYOURCONTACTINFORMATION": "Submit your contact information <br /> and we will contact you shortly",
+  "REGISTERCOMPANY": "Register Company"
 }
