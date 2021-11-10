@@ -1,3 +1,4 @@
+import { returnEmptyProps } from "lib/return-empty-props";
 import { GetServerSidePropsContext } from "next";
 
 export const useAuthDetector = (context: GetServerSidePropsContext) => {
@@ -11,6 +12,6 @@ export const useAuthDetector = (context: GetServerSidePropsContext) => {
       },
     };
   } else {
-    return { props: {} };
+    return returnEmptyProps();
   }
 };
