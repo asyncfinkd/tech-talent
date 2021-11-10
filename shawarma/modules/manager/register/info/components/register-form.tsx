@@ -1,6 +1,9 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 export default function RegisterForm() {
+  const router = useRouter();
+
   return (
     <>
       <div className="inputGroup-0-2-116">
@@ -98,6 +101,23 @@ export default function RegisterForm() {
             </button>
             <input type="file" accept="image/*" hidden />
           </div>
+        </div>
+        <div className="buttonField-0-2-237">
+          <button
+            type="submit"
+            className="root-0-2-46 button-0-2-238 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+            onClick={() => {
+              router.push("/manager/register");
+            }}
+          >
+            Back
+          </button>
+          <button
+            type="submit"
+            className="root-0-2-46 button-0-2-238 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+          >
+            Next
+          </button>
         </div>
       </div>
     </>

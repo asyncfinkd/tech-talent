@@ -7,6 +7,7 @@ interface Props {
   managerInfo: {
     email: string;
     password: string;
+    repeatPassword: "";
   };
   setManagerInfo?: any;
 }
@@ -25,5 +26,6 @@ export const ApplicationContext = React.createContext<Props>({
   managerInfo: {
     email: "",
     password: "",
+    repeatPassword: "",
   },
 });

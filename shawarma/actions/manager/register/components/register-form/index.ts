@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ManagerRegisterSchema } from "schema/manager/register";
 import { useRouter } from "next/router";
 import CryptoAES from "crypto-js/aes";
+import { useEffect } from "react";
 
 export default {
   Link,
@@ -12,4 +13,5 @@ export default {
   ManagerRegisterSchema,
   useRouter,
   CryptoAES,
+  useEffect,
 };

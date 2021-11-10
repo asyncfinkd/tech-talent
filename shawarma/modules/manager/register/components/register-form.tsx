@@ -8,12 +8,35 @@ export default function RegisterForm() {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = Actions.useForm<Props>({
     resolver: Actions.yupResolver(Actions.ManagerRegisterSchema),
   });
   const router = Actions.useRouter();
-  const { setManagerInfo } = useContext(ApplicationContext);
+  const { managerInfo, setManagerInfo } = useContext(ApplicationContext);
 
+  Actions.useEffect(() => {
+    const values = [
+      {
+        condition: managerInfo.email,
+        value: "email",
+      },
+      {
+        condition: managerInfo.password,
+        value: "password",
+      },
+      {
+        condition: managerInfo.repeatPassword,
+        value: "repeatPassword",
+      },
+    ];
+
+    values.map((item: any) => {
+      if (item.condition) {
+        setValue(item.value, item.condition);
+      }
+    });
+  });
   return (
     <>
       <div className="inputGroup-0-2-116">
