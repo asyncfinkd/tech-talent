@@ -6,7 +6,7 @@ import {
   InferGetServerSidePropsType,
 } from "next";
 import { DecodedAccess_Token } from "types/global";
-import { useAuth } from "lib/useAuth";
+import { useAuth } from "lib/use-auth";
 
 function Index({
   data,

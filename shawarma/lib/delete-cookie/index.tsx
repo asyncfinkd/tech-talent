@@ -1,4 +1,4 @@
-import { readCookie } from "lib/readCookie";
+import { readCookie } from "lib/read-cookie";
 
 export function deleteCookie(name: any, path: any, domain: any) {
   if (readCookie(name)) {

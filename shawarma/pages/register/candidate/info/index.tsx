@@ -4,7 +4,7 @@ import {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
 } from "next";
-import { useAuth } from "lib/useAuth";
+import { useAuth } from "lib/use-auth";
 import { DecodedAccess_Token } from "types/global";
 import { useState } from "react";
 
@@ -17,10 +17,7 @@ function RegisterCandidateInfo({
 
   return (
     <>
-      <RegisterCandidateInfoPages
-        access_token={access_token}
-        logged={logged}
-      />
+      <RegisterCandidateInfoPages access_token={access_token} logged={logged} />
     </>
   );
 }

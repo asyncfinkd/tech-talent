@@ -1,4 +1,4 @@
-import { isServer } from "lib/isServer";
+import { isServer } from "lib/is-server";
 
 export function readCookie(name: string | null) {
   if (!isServer) {

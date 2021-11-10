@@ -1,6 +1,6 @@
-import { readCookie } from "lib/readCookie";
+import { readCookie } from "lib/read-cookie";
 import { useRouter } from "next/router";
-import { isServer } from "lib/isServer";
+import { isServer } from "lib/is-server";
 
 // @ts-ignore
 const withAuth = (WrappedComponent: any) => {

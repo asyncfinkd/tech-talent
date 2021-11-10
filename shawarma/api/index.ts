@@ -1,6 +1,6 @@
 import axios from "axios";
-import { generateHeader } from "lib/cookie";
-import { readCookie } from "lib/readCookie";
+import { generateHeader } from "lib/use-header";
+import { readCookie } from "lib/read-cookie";
 
 export const LoggedAPI = (setAccess_Token: any, router: any) => {
   axios

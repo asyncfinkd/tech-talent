@@ -1,5 +1,5 @@
 import { ApplicationContext } from "context/application/ApplicationContext";
-import { deleteCookie } from "lib/deleteCookie";
+import { deleteCookie } from "lib/delete-cookie";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useContext } from "react";

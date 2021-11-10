@@ -1,4 +1,4 @@
-import { useAuthDetector } from "lib/useAuthDetector";
+import { useAuthDetector } from "lib/use-auth-detector";
 import LoginPage from "modules/login/LoginPage";
 
 export default {

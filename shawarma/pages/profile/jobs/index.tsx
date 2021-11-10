@@ -6,7 +6,7 @@ import {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
 } from "next";
-import { useAuth } from "lib/useAuth";
+import { useAuth } from "lib/use-auth";
 
 function ProfileJobsPages({
   data,

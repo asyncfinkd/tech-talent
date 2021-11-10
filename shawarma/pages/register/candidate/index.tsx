@@ -1,4 +1,4 @@
-import { useAuthDetector } from "lib/useAuthDetector";
+import { useAuthDetector } from "lib/use-auth-detector";
 import RegisterCandidatePages from "modules/register/candidate/RegisterCandidatePages";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 

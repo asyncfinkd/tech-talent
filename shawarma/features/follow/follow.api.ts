@@ -1,4 +1,4 @@
-import { readCookie } from "lib/readCookie";
+import { readCookie } from "lib/read-cookie";
 import { Result } from "types/features/follow";
 
 export const FollowRequest = async (loginData: {

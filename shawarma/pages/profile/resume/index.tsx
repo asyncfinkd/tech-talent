@@ -1,4 +1,4 @@
-import { useAuth } from "lib/useAuth";
+import { useAuth } from "lib/use-auth";
 import {
   GetServerSideProps,
   GetServerSidePropsContext,

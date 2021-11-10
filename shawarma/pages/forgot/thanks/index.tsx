@@ -5,7 +5,7 @@ import {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
 } from "next";
-import { useAuth } from "lib/useAuth";
+import { useAuth } from "lib/use-auth";
 
 export default function ForgotThanksPages({
   data,

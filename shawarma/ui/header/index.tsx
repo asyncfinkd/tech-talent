@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "components/button";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
-import { isServer } from "lib/isServer";
+import { isServer } from "lib/is-server";
 import SVG from "react-inlinesvg";
 import * as s from "constants/app/strings";
 

@@ -1,4 +1,4 @@
-import { filterDate } from "lib/filterDate";
+import { filterDate } from "lib/filter-date";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 

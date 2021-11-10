@@ -1,5 +1,5 @@
-import { filterDate } from "lib/filterDate";
-import { readCookie } from "lib/readCookie";
+import { filterDate } from "lib/filter-date";
+import { readCookie } from "lib/read-cookie";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
