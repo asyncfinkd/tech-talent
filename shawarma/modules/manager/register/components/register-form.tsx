@@ -6,14 +6,11 @@ import React, { useContext } from "react";
 import { Props } from "types/manager/register";
 
 export default function RegisterForm() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setValue,
-  } = Actions.useForm<Props>({
-    resolver: Actions.yupResolver(Actions.ManagerRegisterSchema),
-  });
+  const { register, handleSubmit, formState, setValue } =
+    Actions.useForm<Props>({
+      resolver: Actions.yupResolver(Actions.ManagerRegisterSchema),
+    });
+
   const router = Actions.useRouter();
   const { managerInfo, setManagerInfo } = useContext(ApplicationContext);
 
@@ -58,15 +55,14 @@ export default function RegisterForm() {
                 <input
                   type={item.type}
                   className={`input-0-2-251 ${
-                    // @ts-ignore
-                    errors[item.name] && "invalid-0-2-252"
+                    Actions.get(formState.errors, item.name) &&
+                    "invalid-0-2-252"
                   }`}
                   {...register(item.name)}
                 />
                 <ErrorMessage
                   element="div"
-                  // @ts-ignore
-                  condition={errors[item.name]}
+                  condition={Actions.get(formState.errors, item.name)}
                   className="invalidMessage-0-2-253"
                 >
                   {item.required.message}

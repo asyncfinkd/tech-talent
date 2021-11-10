@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useForm } from "react-hook-form";
+import { useForm, get, useFormContext } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ManagerRegisterSchema } from "schema/manager/register";
 import { useRouter } from "next/router";
@@ -14,4 +14,6 @@ export default {
   useRouter,
   CryptoAES,
   useEffect,
+  get,
+  useFormContext,
 };
