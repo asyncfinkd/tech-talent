@@ -17,6 +17,7 @@ Actions.Router.events.on("routeChangeComplete", () => Actions.NProgress.done());
 Actions.Router.events.on("routeChangeError", () => Actions.NProgress.done());
 
 function MyApp({ Component, pageProps }: AppProps) {
+  Actions.NProgress.settings.showSpinner = false;
   const [access_token, setAccess_Token] = Actions.useState<TokenProps>(
     Actions.APP__TOKEN__MOCKS__()
   );
