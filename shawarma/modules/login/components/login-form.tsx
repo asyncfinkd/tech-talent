@@ -5,11 +5,10 @@ import { Result } from "types/features/login";
 
 const LoginForm: React.FC = () => {
   const router = Actions.useRouter();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = Actions.useForm<Props>({ resolver: Actions.yupResolver(Actions.schema) });
+  const { register, handleSubmit, formState } = Actions.useForm<Props>({
+    resolver: Actions.yupResolver(Actions.schema),
+  });
+
   const { setAccess_Token } = useContext(Actions.ApplicationContext);
   const [error, setError] = useState<boolean>(false);
 
@@ -34,7 +33,7 @@ const LoginForm: React.FC = () => {
         })}
       >
         <div>
-          {Actions.LoginInputs.Fields.map((item: LoginInputsResult) => {
+          {Actions.LoginInputs.Fields.map((item: any) => {
             return (
               <>
                 <div className="root-0-2-247">
@@ -50,16 +49,14 @@ const LoginForm: React.FC = () => {
                   <input
                     type={item.type}
                     className={`input-0-2-251 ${
-                      // @ts-ignore
-                      errors[item.name] && "invalid-0-2-252"
+                      Actions.get(formState.errors, item.name) &&
+                      "invalid-0-2-252"
                     }`}
-                    // @ts-ignore
                     {...register(item.name)}
                   />
                   <Actions.ErrorMessage
                     element="div"
-                    // @ts-ignore
-                    condition={errors[item.name]}
+                    condition={Actions.get(formState.errors, item.name)}
                     className="invalidMessage-0-2-253"
                   >
                     {item.required.message}

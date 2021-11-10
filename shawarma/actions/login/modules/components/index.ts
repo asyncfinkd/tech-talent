@@ -6,7 +6,7 @@ import { ApplicationContext } from "context/application/ApplicationContext";
 import { LoginInputs } from "fixtures/login";
 import { loading } from "constants/app/strings";
 import SVG from "react-inlinesvg";
-import { useForm } from "react-hook-form";
+import { useForm, get, useFormContext } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "react-query";
 import Link from "next/link";
@@ -26,4 +26,6 @@ export default {
   useMutation,
   Link,
   useRouter,
+  get,
+  useFormContext,
 };
