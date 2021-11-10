@@ -37,7 +37,6 @@ export const request = async <T extends { message: string; success: boolean }>(
   serverSideToken?: boolean
 ) => {
   const token: any = serverSideToken && readCookie("cookie");
-  console.log(token);
 
   const reqObject = {
     method,
