@@ -26,6 +26,7 @@ const userSchema = mongoose.Schema({
   followedCompaniesId: [FollowedCompaniesId],
   followedEdusId: [FollowedEdusId],
   cv: { type: String },
+  myCompany: { type: mongoose.Types.ObjectId },
 });
 
 const User = mongoose.model("users", userSchema);

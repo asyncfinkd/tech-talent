@@ -1,5 +1,6 @@
 import Actions from "actions/manager/info/components/register-form";
-import React from "react";
+import { ApplicationContext } from "context/application/ApplicationContext";
+import React, { useContext } from "react";
 import { Props } from "types/register/manager/info";
 
 export default function RegisterForm() {
@@ -7,8 +8,8 @@ export default function RegisterForm() {
     resolver: Actions.yupResolver(Actions.schema),
   });
 
+  const { managerInfo } = useContext(ApplicationContext);
   const router = Actions.useRouter();
-
   return (
     <>
       <div className="inputGroup-0-2-116">
@@ -90,7 +91,16 @@ export default function RegisterForm() {
             type="submit"
             className="root-0-2-46 button-0-2-238 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
             onClick={handleSubmit((data: any) => {
-              console.log(data);
+              const reData = {
+                companyName: data.companyName,
+                industry: data.industry,
+                phone: data.phone,
+                website: data.website,
+                email: managerInfo.email,
+                password: managerInfo.password,
+              };
+
+              console.log(reData);
             })}
           >
             Next
