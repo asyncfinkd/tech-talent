@@ -1,8 +1,17 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { Form } from "fixtures/register/manager/info";
+import { useForm, get, useFormContext } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schema } from "schema/register/manager/info";
+import { Props } from "types/register/manager/info";
+import { ErrorMessage } from "components/error-message";
 
 export default function RegisterForm() {
+  const { register, handleSubmit, formState } = useForm<Props>({
+    resolver: yupResolver(schema),
+  });
+
   const router = useRouter();
 
   return (
@@ -23,9 +32,19 @@ export default function RegisterForm() {
                 </label>
                 <input
                   type={item.type}
-                  className={`input-0-2-251`}
+                  className={`input-0-2-251 ${
+                    get(formState.errors, item.name) && "invalid-0-2-252"
+                  }`}
                   placeholder={item.placeholder}
+                  {...register(item.name)}
                 />
+                <ErrorMessage
+                  element="div"
+                  condition={get(formState.errors, item.name)}
+                  className="invalidMessage-0-2-253"
+                >
+                  {item?.required?.message}
+                </ErrorMessage>
               </div>
             </>
           );
@@ -74,6 +93,9 @@ export default function RegisterForm() {
           <button
             type="submit"
             className="root-0-2-46 button-0-2-238 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+            onClick={handleSubmit((data: any) => {
+              console.log(data);
+            })}
           >
             Next
           </button>

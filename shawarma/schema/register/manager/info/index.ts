@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const ManagerRegisterCandidateSchema = yup
+export const schema = yup
   .object()
   .shape({
     companyName: yup.string().trim().required("Provide company name"),
