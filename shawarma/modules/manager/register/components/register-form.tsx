@@ -1,8 +1,5 @@
 import Actions from "actions/manager/register/components/register-form";
-import { ErrorMessage } from "components/error-message";
-import { ApplicationContext } from "context/application/ApplicationContext";
-import { Form } from "fixtures/register/company";
-import React, { useContext } from "react";
+import React from "react";
 import { Props } from "types/manager/register";
 
 export default function RegisterForm() {
@@ -12,7 +9,9 @@ export default function RegisterForm() {
     });
 
   const router = Actions.useRouter();
-  const { managerInfo, setManagerInfo } = useContext(ApplicationContext);
+  const { managerInfo, setManagerInfo } = Actions.useContext(
+    Actions.ApplicationContext
+  );
 
   Actions.useEffect(() => {
     const values = [
@@ -39,7 +38,7 @@ export default function RegisterForm() {
   return (
     <>
       <div className="inputGroup-0-2-116">
-        {Form.Fields.map((item: any) => {
+        {Actions.Form.Fields.map((item: any) => {
           return (
             <>
               <div className="root-0-2-126 input-0-2-117">
@@ -60,13 +59,13 @@ export default function RegisterForm() {
                   }`}
                   {...register(item.name)}
                 />
-                <ErrorMessage
+                <Actions.ErrorMessage
                   element="div"
                   condition={Actions.get(formState.errors, item.name)}
                   className="invalidMessage-0-2-253"
                 >
                   {item.required.message}
-                </ErrorMessage>
+                </Actions.ErrorMessage>
               </div>
             </>
           );
