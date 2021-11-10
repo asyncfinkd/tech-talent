@@ -26,6 +26,7 @@ router.route("/manager/register").post(async (req, res) => {
             password: hashedPassword,
             role: "manager",
             myCompany: user._id,
+            approved: false
           })
             .save()
             .then(() => {
