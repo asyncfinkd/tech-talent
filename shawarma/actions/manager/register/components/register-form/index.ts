@@ -5,7 +5,7 @@ import { ManagerRegisterSchema } from "schema/manager/register";
 import { useRouter } from "next/router";
 import CryptoAES from "crypto-js/aes";
 import { useEffect, useContext } from "react";
-import { Form } from "fixtures/register/company";
+import { Form } from "fixtures/register/manager";
 import { ErrorMessage } from "components/error-message";
 import { ApplicationContext } from "context/application/ApplicationContext";
 
