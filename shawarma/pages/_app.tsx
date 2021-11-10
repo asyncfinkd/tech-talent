@@ -6,7 +6,6 @@ import React from "react";
 import { TokenProps } from "types/app/token";
 import { PageComponent } from "types/app/page";
 import "nprogress/nprogress.css";
-import { readCookie } from "lib/read-cookie";
 
 if (!Actions.isServer) {
   Actions.init_i18n();
@@ -18,6 +17,7 @@ Actions.Router.events.on("routeChangeError", () => Actions.NProgress.done());
 
 function MyApp({ Component, pageProps }: AppProps) {
   Actions.NProgress.settings.showSpinner = false;
+
   const [access_token, setAccess_Token] = Actions.useState<TokenProps>(
     Actions.APP__TOKEN__MOCKS__()
   );
