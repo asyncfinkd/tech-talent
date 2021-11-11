@@ -8,12 +8,16 @@ import { Props } from "types/register/manager/info";
 import SVG from "react-inlinesvg";
 import { loading } from "constants/app/strings";
 
-export default function RegisterForm() {
+export default function RegisterForm({
+  previewImage,
+  setPreviewImage,
+  image,
+  setImage,
+}: any) {
   const [error, setError] = useState<boolean>(false);
   const { register, handleSubmit, formState } = Actions.useForm<Props>({
     resolver: Actions.yupResolver(Actions.schema),
   });
-  const [image, setImage] = useState<any>("");
 
   const { managerInfo, setAccess_Token } = useContext(ApplicationContext);
   const router = Actions.useRouter();
@@ -77,9 +81,20 @@ export default function RegisterForm() {
           <div className="input-0-2-103" tabIndex={0}>
             {image.length > 0 ? (
               <>
-                <img className="preview-0-2-107" src={image} />
+                <img
+                  className="preview-0-2-107"
+                  src={image}
+                  onClick={() => {
+                    setPreviewImage(true);
+                  }}
+                />
                 <div className="text-0-2-105">
-                  <div className="valueContainer-0-2-108">
+                  <div
+                    className="valueContainer-0-2-108"
+                    onClick={() => {
+                      setPreviewImage(true);
+                    }}
+                  >
                     <svg
                       className="stroke-0-2-61 eyeIcon-0-2-109"
                       width="24"
