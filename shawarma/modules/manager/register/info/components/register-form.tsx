@@ -13,6 +13,7 @@ export default function RegisterForm({
   setPreviewImage,
   image,
   setImage,
+  onChangeForImage,
 }: any) {
   const [error, setError] = useState<boolean>(false);
   const { register, handleSubmit, formState } = Actions.useForm<Props>({
@@ -27,14 +28,6 @@ export default function RegisterForm({
       ManagerRegisterRequest({ loginData, setError })
   );
 
-  const onChangeForImage = (e: any) => {
-    const image = e.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(image);
-    reader.onload = (e: any) => {
-      setImage(e.target.result);
-    };
-  };
   return (
     <>
       <div className="inputGroup-0-2-116">

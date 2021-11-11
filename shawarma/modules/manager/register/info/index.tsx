@@ -7,6 +7,14 @@ export default function ManagerRegisterInfoModules({}) {
   const [previewImage, setPreviewImage] = useState<boolean>(false);
   const [image, setImage] = useState<any>("");
 
+  const onChangeForImage = (e: any) => {
+    const image = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(image);
+    reader.onload = (e: any) => {
+      setImage(e.target.result);
+    };
+  };
   return (
     <>
       <Actions.Header />
@@ -21,6 +29,7 @@ export default function ManagerRegisterInfoModules({}) {
                   setPreviewImage={setPreviewImage}
                   image={image}
                   setImage={setImage}
+                  onChangeForImage={onChangeForImage}
                 />
               </div>
             </div>
