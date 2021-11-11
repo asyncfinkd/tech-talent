@@ -8568,3 +8568,64 @@
 .hover__logoqweqlewm:hover {
   box-shadow: 0px 0px 4px 1px rgb(0 0 0 / 20%);
 }
+
+.root-0-2-39 {
+  display: flex;
+  margin-right: 2.5rem;
+}
+.button-0-2-40 {
+  display: flex;
+  align-items: center;
+}
+.button-0-2-40:hover {
+  font-weight: 500;
+}
+.buttonActive-0-2-41 {
+  font-weight: 500;
+}
+.loginButton-0-2-42 {
+  padding: 0.875rem 1.375rem;
+  margin-right: 0.5rem;
+}
+.registerButton-0-2-43 {
+  padding: 0.875rem 1.375rem;
+}
+.capsule-0-2-44 {
+  margin-right: 0.75rem;
+}
+.caret-0-2-45 {
+  fill: #171725;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem;
+}
+@media (min-width: 1280px) {
+  .caret-0-2-45 {
+    margin-right: 0;
+  }
+}
+.accountOptionsLink-0-2-46 {
+  color: #171725;
+  width: 100%;
+  display: flex;
+  padding: 1rem 0;
+  align-items: center;
+  font-family: MarkPro, Helvetica;
+  margin-right: 0.75rem;
+  justify-content: flex-start;
+  text-decoration: none;
+}
+.accountOptionsLink-0-2-46:hover {
+  color: #5344a3;
+  font-weight: 500;
+}
+.accountOptionsLink-0-2-46 svg {
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
+.image-0-2-47 {
+  width: 3rem;
+  border: 2px solid #f4f4f7;
+  height: 3rem;
+  margin-right: 0.75rem;
+  border-radius: 18px;
+}

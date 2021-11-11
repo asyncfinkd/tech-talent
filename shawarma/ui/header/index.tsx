@@ -38,6 +38,18 @@ const Header: React.FC<Props> = ({
     }
   }, [router.pathname]);
 
+  const RenderLinker = ({ children }: any) => {
+    if (access_token.role == "manager") {
+      return (
+        <a className="root-0-2-46 button-0-2-38 weightLight-0-2-60 sizeZero-0-2-48 variantBlank-0-2-59">
+          {children}
+        </a>
+      );
+    } else {
+      return <Link href="/profile/information">{children}</Link>;
+    }
+  };
+
   return (
     <>
       <div className="root-0-2-4 fixed-0-2-5 onlyOnDesktop-0-2-6">
@@ -174,7 +186,7 @@ const Header: React.FC<Props> = ({
             {logged ? (
               <>
                 <div className="root-0-2-37 profile-0-2-15">
-                  <Link href="/profile/information">
+                  <RenderLinker>
                     <a className="root-0-2-46 button-0-2-38 weightLight-0-2-60 sizeZero-0-2-48 variantBlank-0-2-59">
                       <div
                         className="root-0-2-30 sizeMd-0-2-31 capsule-0-2-42"
@@ -191,9 +203,19 @@ const Header: React.FC<Props> = ({
                         {!access_token?.fullName
                           ? access_token?.email
                           : access_token?.fullName}
+                        <svg
+                          className="fill-0-2-38 caret-0-2-45"
+                          width="10"
+                          height="6"
+                          viewBox="0 0 10 6"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M0.30133 0.298616C0.66658 -0.0633426 1.23813 -0.096248 1.64089 0.1999L1.75628 0.298616L5 3.53895L8.24372 0.298617C8.60897 -0.0633419 9.18052 -0.0962473 9.58328 0.199901L9.69867 0.298617C10.0639 0.660575 10.0971 1.22698 9.79828 1.62611L9.69867 1.74046L5.72748 5.70138C5.36223 6.06334 4.79067 6.09625 4.38791 5.8001L4.27252 5.70138L0.30133 1.74046C-0.100444 1.34231 -0.100444 0.69677 0.30133 0.298616Z"></path>
+                        </svg>
                       </div>
                     </a>
-                  </Link>
+                  </RenderLinker>
                 </div>
               </>
             ) : (

@@ -11,7 +11,7 @@ export default function RegisterForm() {
     resolver: Actions.yupResolver(Actions.schema),
   });
 
-  const { managerInfo } = useContext(ApplicationContext);
+  const { managerInfo, setAccess_Token } = useContext(ApplicationContext);
   const router = Actions.useRouter();
 
   const $register = useMutation(
@@ -112,7 +112,9 @@ export default function RegisterForm() {
                 { loginData: reData, setError },
                 {
                   onSuccess: (data: any) => {
-                    console.log(data);
+                    document.cookie = `cookie=${data.access_token};path=/`;
+                    setAccess_Token({ access_token: data.access_token });
+                    router.push("/manager/branding");
                   },
                 }
               );

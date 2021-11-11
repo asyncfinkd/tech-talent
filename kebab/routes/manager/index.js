@@ -50,11 +50,11 @@ router.route("/manager/register").post(async (req, res) => {
             myCompany: user._id,
             followedCompaniesId: null,
             followedEdusId: null,
-          }).save(function (err, user) {
-            const { email, role, _id } = user;
+          }).save(function (err, newUser) {
+            const { email, role, _id, myCompany } = newUser;
             const logged = true;
             const access_token = jwt.sign(
-              { email, role, _id, logged },
+              { email, role, _id, logged, myCompany },
               env.ACCESS_TOKEN,
               { expiresIn: "12h" }
             );
