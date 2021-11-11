@@ -208,6 +208,7 @@ export default function RegisterForm({
                   fullName: managerInfo.fullName,
                   email: managerInfo.email,
                   password: managerInfo.password,
+                  logo: image,
                 };
 
                 // $register.mutate(
