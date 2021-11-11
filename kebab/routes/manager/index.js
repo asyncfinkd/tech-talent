@@ -58,10 +58,11 @@ router.route("/manager/register").post(async (req, res) => {
             function (err) {}
           );
         }
+
         const Companies = new CompaniesSchema({
           name: req.body.companyName,
           approved: false,
-          logoUrl: `public/images/${image}`,
+          logoUrl: image.length == 0 ? null : `public/images/${image}`,
           slug: slug,
         }).save(function (err, user) {
           const User = new UserSchema({
