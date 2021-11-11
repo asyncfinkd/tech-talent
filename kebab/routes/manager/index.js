@@ -39,6 +39,7 @@ router.route("/manager/register").post(async (req, res) => {
           .status(502)
           .json({ message: "Email is already registered", success: false });
       } else {
+        const slug = Math.random().toString(36).substring(2);
         const dir = path.join(__dirname, "../../public/images/");
 
         let image = "";
@@ -48,10 +49,10 @@ router.route("/manager/register").post(async (req, res) => {
             ""
           );
 
-          image = `${req.body.companyName}_img.jpg`;
+          image = `${slug}_company_img.jpg`;
 
           require("fs").writeFile(
-            `${dir}${req.body.companyName}_img.jpg`,
+            `${dir}${slug}_company_img.jpg`,
             base64Data,
             "base64",
             function (err) {}
@@ -61,6 +62,7 @@ router.route("/manager/register").post(async (req, res) => {
           name: req.body.companyName,
           approved: false,
           logoUrl: `public/images/${image}`,
+          slug: slug,
         }).save(function (err, user) {
           const User = new UserSchema({
             email: req.body.email,
