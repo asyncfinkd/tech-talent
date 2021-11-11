@@ -1,9 +1,12 @@
 import Actions from "actions/manager/info/components/register-form";
+import { Button } from "components/button";
 import { ApplicationContext } from "context/application/ApplicationContext";
 import { ManagerRegisterRequest } from "features/register/manager/info/manager.register.api";
 import React, { useContext, useState } from "react";
 import { useMutation } from "react-query";
 import { Props } from "types/register/manager/info";
+import SVG from "react-inlinesvg";
+import { loading } from "constants/app/strings";
 
 export default function RegisterForm() {
   const [error, setError] = useState<boolean>(false);
@@ -95,35 +98,47 @@ export default function RegisterForm() {
           >
             Back
           </button>
-          <button
-            type="submit"
-            className="root-0-2-46 button-0-2-238 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
-            onClick={handleSubmit((data: any) => {
-              const reData = {
-                companyName: data.companyName,
-                industry: data.industry,
-                phone: data.phone,
-                website: data.website,
-                fullName: managerInfo.fullName,
-                email: managerInfo.email,
-                password: managerInfo.password,
-              };
+          {$register.isLoading ? (
+            <Button
+              type="submit"
+              className="root-0-2-46 button-0-2-105 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+            >
+              <div className="loading-0-2-112">
+                <SVG src={loading} />
+                <span>Loading</span>
+              </div>
+            </Button>
+          ) : (
+            <button
+              type="submit"
+              className="root-0-2-46 button-0-2-238 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
+              onClick={handleSubmit((data: any) => {
+                const reData = {
+                  companyName: data.companyName,
+                  industry: data.industry,
+                  phone: data.phone,
+                  website: data.website,
+                  fullName: managerInfo.fullName,
+                  email: managerInfo.email,
+                  password: managerInfo.password,
+                };
 
-              $register.mutate(
-                { loginData: reData, setError },
-                {
-                  onSuccess: (data: any) => {
-                    document.cookie = `cookie=${data.access_token};path=/`;
-                    setAccess_Token({ access_token: data.access_token });
-                    router.push("/manager/branding");
-                  },
-                }
-              );
-              console.log(reData);
-            })}
-          >
-            Next
-          </button>
+                $register.mutate(
+                  { loginData: reData, setError },
+                  {
+                    onSuccess: (data: any) => {
+                      document.cookie = `cookie=${data.access_token};path=/`;
+                      setAccess_Token({ access_token: data.access_token });
+                      router.push("/manager/branding");
+                    },
+                  }
+                );
+                console.log(reData);
+              })}
+            >
+              Next
+            </button>
+          )}
         </div>
       </div>
     </>
