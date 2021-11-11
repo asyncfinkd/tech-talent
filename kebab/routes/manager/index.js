@@ -8,7 +8,6 @@ const env = require("../../environment/app/env.json");
 router.route("/check/registered").post(async (req, res) => {
   try {
     UserSchema.find({ email: req.body.email }).then((result) => {
-      console.log(result);
       if (result.length > 0) {
         res
           .status(502)
