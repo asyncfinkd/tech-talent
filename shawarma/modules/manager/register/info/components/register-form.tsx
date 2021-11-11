@@ -130,6 +130,8 @@ export default function RegisterForm({
               onClick={() => {
                 if (image.length > 0) {
                   setImage("");
+                } else {
+                  document.getElementById("mqwelqwmelqwmelqwmel")?.click();
                 }
               }}
             >
@@ -165,15 +167,9 @@ export default function RegisterForm({
               <input
                 type="file"
                 accept="image/*"
+                id="mqwelqwmelqwmelqwmel"
                 onChange={onChangeForImage}
-                style={{
-                  position: "absolute",
-                  right: "6px",
-                  height: 50,
-                  width: 50,
-                  opacity: 0,
-                  cursor: "pointer",
-                }}
+                hidden={true}
                 className="logogmqqweml__input"
               />
             )}

@@ -77,6 +77,9 @@ export default function ManagerRegisterInfoModules({}) {
                 <button
                   className="root-0-2-41 button-0-2-125 weightMedium-0-2-56 sizeMd-0-2-46 variantBlank-0-2-54"
                   style={{ padding: "0 0.625rem" }}
+                  onClick={() => {
+                    document.getElementById("1m1mmlml2m3lml")?.click();
+                  }}
                 >
                   <svg
                     className="fill-0-2-62"
@@ -119,7 +122,13 @@ export default function ManagerRegisterInfoModules({}) {
                 </button>
               </div>
             </div>
-            {/* <input type="file" accept="image/*" hidden="" /> */}
+            <input
+              type="file"
+              accept="image/*"
+              onChange={onChangeForImage}
+              id="1m1mmlml2m3lml"
+              hidden={true}
+            />
           </div>
         </div>
       )}
