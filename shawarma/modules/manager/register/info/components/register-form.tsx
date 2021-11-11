@@ -20,7 +20,8 @@ export default function RegisterForm({
     resolver: Actions.yupResolver(Actions.schema),
   });
 
-  const { managerInfo, setAccess_Token } = useContext(ApplicationContext);
+  const { managerInfo, setAccess_Token, setManagerInfo } =
+    useContext(ApplicationContext);
   const router = Actions.useRouter();
 
   const $register = useMutation(

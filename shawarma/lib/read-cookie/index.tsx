@@ -1,6 +1,6 @@
 import { isServer } from "lib/is-server";
 
-export function readCookie(name: string | null) {
+export function readCookie<T>(name: T) {
   if (!isServer) {
     let nameEQ = name + "=";
     let ca = document.cookie.split(";");

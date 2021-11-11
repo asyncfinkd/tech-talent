@@ -1,6 +1,6 @@
 import { readCookie } from "lib/read-cookie";
 
-export function deleteCookie(name: any, path: any, domain: any) {
+export function deleteCookie<T = any>(name: T, path: T, domain: T) {
   if (readCookie(name)) {
     document.cookie =
       name +
