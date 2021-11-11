@@ -54,4 +54,19 @@ router.route("/manager/register").post(async (req, res) => {
   }
 });
 
+router.route("/check/registered").post(async (req, res) => {
+  UserSchema.find({ email: req.body.email }).then((result) => {
+    console.log(result);
+    if (result.length > 0) {
+      res
+        .status(502)
+        .json({ message: "Email is already registered", success: false });
+    } else {
+      res
+        .status(200)
+        .json({ message: "User is not registered", success: true });
+    }
+  });
+});
+
 module.exports = router;
