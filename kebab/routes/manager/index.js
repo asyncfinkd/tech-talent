@@ -50,6 +50,9 @@ router.route("/manager/register").post(async (req, res) => {
             myCompany: user._id,
             followedCompaniesId: null,
             followedEdusId: null,
+            fullName: req.body.fullName,
+            socialNetwork: "",
+            phone: "",
           }).save(function (err, newUser) {
             const { email, role, _id, myCompany } = newUser;
             const logged = true;

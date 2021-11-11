@@ -104,6 +104,7 @@ export default function RegisterForm() {
                 industry: data.industry,
                 phone: data.phone,
                 website: data.website,
+                fullName: managerInfo.fullName,
                 email: managerInfo.email,
                 password: managerInfo.password,
               };
