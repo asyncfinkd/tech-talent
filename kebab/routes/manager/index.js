@@ -5,6 +5,25 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const env = require("../../environment/app/env.json");
 
+router.route("/check/registered").post(async (req, res) => {
+  try {
+    UserSchema.find({ email: req.body.email }).then((result) => {
+      console.log(result);
+      if (result.length > 0) {
+        res
+          .status(502)
+          .json({ message: "Email is already registered", success: false });
+      } else {
+        res
+          .status(200)
+          .json({ message: "User is not registered", success: true });
+      }
+    });
+  } catch (err) {
+    res.json(err);
+  }
+});
+
 router.route("/manager/register").post(async (req, res) => {
   try {
     var salt = await bcrypt.genSalt();
@@ -52,21 +71,6 @@ router.route("/manager/register").post(async (req, res) => {
   } catch (err) {
     res.status(502).json(err);
   }
-});
-
-router.route("/check/registered").post(async (req, res) => {
-  UserSchema.find({ email: req.body.email }).then((result) => {
-    console.log(result);
-    if (result.length > 0) {
-      res
-        .status(502)
-        .json({ message: "Email is already registered", success: false });
-    } else {
-      res
-        .status(200)
-        .json({ message: "User is not registered", success: true });
-    }
-  });
 });
 
 module.exports = router;

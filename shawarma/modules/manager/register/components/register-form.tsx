@@ -108,7 +108,7 @@ export default function RegisterForm() {
               $registeredCheck.mutate(
                 { loginData: data, setError },
                 {
-                  onSuccess: (data: Result) => {
+                  onSuccess: (res: Result) => {
                     setManagerInfo(data);
                     router.push(`/manager/register/info`);
                   },
