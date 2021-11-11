@@ -211,16 +211,16 @@ export default function RegisterForm({
                   logo: image,
                 };
 
-                // $register.mutate(
-                //   { loginData: reData, setError },
-                //   {
-                //     onSuccess: (data: any) => {
-                //       document.cookie = `cookie=${data.access_token};path=/`;
-                //       setAccess_Token({ access_token: data.access_token });
-                //       router.push("/manager/branding");
-                //     },
-                //   }
-                // );
+                $register.mutate(
+                  { loginData: reData, setError },
+                  {
+                    onSuccess: (data: any) => {
+                      document.cookie = `cookie=${data.access_token};path=/`;
+                      setAccess_Token({ access_token: data.access_token });
+                      router.push("/manager/branding");
+                    },
+                  }
+                );
                 console.log(reData);
               })}
             >

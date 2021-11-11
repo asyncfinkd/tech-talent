@@ -4,6 +4,7 @@ const UserSchema = require("../../schema/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const env = require("../../environment/app/env.json");
+const path = require("path");
 
 router.route("/check/registered").post(async (req, res) => {
   try {
@@ -38,9 +39,28 @@ router.route("/manager/register").post(async (req, res) => {
           .status(502)
           .json({ message: "Email is already registered", success: false });
       } else {
+        const dir = path.join(__dirname, "../../public/images/");
+
+        let image = "";
+        if (req.body.logo) {
+          let base64Data = req.body.logo.replace(
+            /^data:image\/\w+;base64,/,
+            ""
+          );
+
+          image = `${req.body.companyName}_img.jpg`;
+
+          require("fs").writeFile(
+            `${dir}${req.body.companyName}_img.jpg`,
+            base64Data,
+            "base64",
+            function (err) {}
+          );
+        }
         const Companies = new CompaniesSchema({
           name: req.body.companyName,
           approved: false,
+          logoUrl: `public/images/${image}`,
         }).save(function (err, user) {
           const User = new UserSchema({
             email: req.body.email,
