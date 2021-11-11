@@ -48,10 +48,33 @@ export default function CompaniesMap({ item, _id, logged }: any) {
         <div className="root-0-2-138">
           <div className="container-0-2-139">
             <Link href={`/c/${item.slug}`}>
-              <img
-                className="logo-0-2-140"
-                src={`${process.env.SERVER_APP_API_URL}${item.logoUrl}`}
-              />
+              {item.logoUrl == null ? (
+                <p
+                  className="logo-0-2-140"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontWeight: "bold",
+                    marginTop: 0,
+                    fontSize: 19,
+                    textTransform: "uppercase",
+                    cursor: "pointer",
+                    border: "1px solid lightgray",
+                    background: "#fff",
+                  }}
+                >
+                  {item.name[0]}
+                </p>
+              ) : (
+                <img
+                  className="logo-0-2-140"
+                  style={{
+                    cursor: "pointer",
+                  }}
+                  src={`${process.env.SERVER_APP_API_URL}${item.logoUrl}`}
+                />
+              )}
             </Link>
             <div className="name-0-2-141">{item.name}</div>
             <div className="secondaryText-0-2-142">&nbsp;</div>

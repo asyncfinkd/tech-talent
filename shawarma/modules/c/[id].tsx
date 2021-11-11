@@ -86,10 +86,28 @@ export default function ModuleCompanyDetailPage({
                     data.backgroundColor == null && "headerContentWhite-0-2-107"
                   }`}
                 >
-                  <img
-                    className="logo-0-2-108"
-                    src={`${process.env.SERVER_APP_API_URL}${data.logoUrl}`}
-                  />
+                  {data.logoUrl == null ? (
+                    <p
+                      className="logo-0-2-108"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontWeight: "bold",
+                        fontSize: 35,
+                        textTransform: "uppercase",
+                        cursor: "pointer",
+                        background: "#fff",
+                      }}
+                    >
+                      {data.name[0]}
+                    </p>
+                  ) : (
+                    <img
+                      className="logo-0-2-108"
+                      src={`${process.env.SERVER_APP_API_URL}${data.logoUrl}`}
+                    />
+                  )}
                   <div className="desktopInfo-0-2-109">
                     <div className="name-0-2-111">{data.name}</div>
                     <div

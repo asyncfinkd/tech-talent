@@ -1,9 +1,11 @@
 import React from "react";
 
-export default function ManagerBrandingPages() {
+function ManagerBrandingPages() {
   return (
     <>
       <p>Hello</p>
     </>
   );
 }
+
+export default ManagerBrandingPages;
