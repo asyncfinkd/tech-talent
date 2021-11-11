@@ -1,6 +1,11 @@
 export const Form = {
   Fields: [
     {
+      name: "fullName",
+      title: "First Name & Last Name",
+      type: "text",
+    },
+    {
       name: "email",
       title: "Email",
       type: "text",

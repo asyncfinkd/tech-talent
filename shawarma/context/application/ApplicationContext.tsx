@@ -5,9 +5,10 @@ interface Props {
   access_token?: TokenProps;
   setAccess_Token?: React.Dispatch<React.SetStateAction<TokenProps>> | any;
   managerInfo: {
+    fullName: string;
     email: string;
     password: string;
-    repeatPassword: "";
+    repeatPassword: string;
   };
   setManagerInfo?: any;
 }
@@ -24,6 +25,7 @@ export const ApplicationContext = React.createContext<Props>({
   },
   setAccess_Token: "",
   managerInfo: {
+    fullName: "",
     email: "",
     password: "",
     repeatPassword: "",

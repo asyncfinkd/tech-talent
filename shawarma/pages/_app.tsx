@@ -22,11 +22,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     Actions.APP__TOKEN__MOCKS__()
   );
   const [managerInfo, setManagerInfo] = Actions.useState({
+    fullName: "",
     email: "",
     password: "",
+    repeatPassword: "",
   });
-  const [managerEmail, setManagerEmail] = Actions.useState("");
-  const [managerPassword, setManagerPassword] = Actions.useState("");
   const cookie: string | null | undefined = Actions.readCookie("cookie");
 
   Actions.useEffect(() => {

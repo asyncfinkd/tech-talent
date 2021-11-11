@@ -73,7 +73,7 @@ export default function ProfileInformationForm({
             <div className="inputGroup-0-2-117">
               <div className="root-0-2-119">
                 <label className="label-0-2-120">
-                  Full Name
+                  First Name & Last Name
                   <span
                     className="asteriskValid-0-2-121"
                     style={{ display: "none" }}

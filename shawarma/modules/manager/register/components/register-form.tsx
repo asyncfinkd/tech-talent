@@ -26,6 +26,10 @@ export default function RegisterForm() {
   Actions.useEffect(() => {
     const values = [
       {
+        condition: managerInfo.fullName,
+        value: "fullName",
+      },
+      {
         condition: managerInfo.email,
         value: "email",
       },
@@ -45,6 +49,7 @@ export default function RegisterForm() {
       }
     });
   });
+
   const renderClassname = (item: any) => {
     if (item.props) {
       if (Actions.get(formState.errors, item.name) || error) {
@@ -65,12 +70,14 @@ export default function RegisterForm() {
               <div className="root-0-2-126 input-0-2-117">
                 <label className="label-0-2-127">
                   {item.title}{" "}
-                  <span
-                    className="asteriskValid-0-2-249"
-                    style={{ display: "inline" }}
-                  >
-                    *
-                  </span>
+                  {item?.required?.message && (
+                    <span
+                      className="asteriskValid-0-2-249"
+                      style={{ display: "inline" }}
+                    >
+                      *
+                    </span>
+                  )}
                 </label>
                 <input
                   type={item.type}
@@ -82,7 +89,7 @@ export default function RegisterForm() {
                   condition={Actions.get(formState.errors, item.name)}
                   className="invalidMessage-0-2-253"
                 >
-                  {item.required.message}
+                  {item?.required?.message}
                 </Actions.ErrorMessage>
                 {item.props && (
                   <Actions.ErrorMessage

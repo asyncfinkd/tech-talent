@@ -29,6 +29,7 @@ const Header: React.FC<Props> = ({
   const [companies, setCompanies] = useState<Boolean>(false);
   const [focusedTranslate, setFocusedTranslate] = useState<any>("");
   const router = useRouter();
+  useState<boolean>(false);
   const { t, i18n } = useTranslation();
   const changeLanguage = (language: any) => {
     i18n.changeLanguage(language);
@@ -267,7 +268,7 @@ const Header: React.FC<Props> = ({
                         </Link>
                       </li>
                       <li
-                        className="li-0-2-70"
+                        className={`li-0-2-70`}
                         id="tc-header-account-item-1"
                         role="option"
                         aria-selected="false"
