@@ -154,7 +154,7 @@ router
   .route("/update/profile/information")
   .all(loginMiddleware)
   .post(async (req, res) => {
-    UserSchema.findOne({ emai: req.email }).then((result) => {
+    UserSchema.findOne({ email: req.email }).then((result) => {
       try {
         const { fullName, phone, socialNetwork } = req.body;
         const { email, interest, _id, role } = req;
