@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ManagerRegisterSchema } from "schema/manager/register";
 import { useRouter } from "next/router";
 import CryptoAES from "crypto-js/aes";
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { Form } from "fixtures/register/manager";
 import { ErrorMessage } from "components/error-message";
 import { ApplicationContext } from "context/application/ApplicationContext";
@@ -23,4 +23,5 @@ export default {
   Form,
   ErrorMessage,
   ApplicationContext,
+  useState,
 };

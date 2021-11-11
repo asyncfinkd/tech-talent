@@ -7,6 +7,7 @@ export const Form = {
       required: {
         message: "Valid email is required",
       },
+      props: true,
     },
     {
       name: "password",

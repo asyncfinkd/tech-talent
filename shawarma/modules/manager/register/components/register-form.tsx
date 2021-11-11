@@ -1,8 +1,13 @@
 import Actions from "actions/manager/register/components/register-form";
+import { ManagerRegisterRequest } from "features/register/manager/manager.register.api";
 import React from "react";
+import { useMutation } from "react-query";
+import { Result } from "types/features/profile/security";
 import { Props } from "types/manager/register";
 
 export default function RegisterForm() {
+  const [error, setError] = Actions.useState<boolean>(false);
+
   const { register, handleSubmit, formState, setValue } =
     Actions.useForm<Props>({
       resolver: Actions.yupResolver(Actions.ManagerRegisterSchema),
@@ -11,6 +16,11 @@ export default function RegisterForm() {
   const router = Actions.useRouter();
   const { managerInfo, setManagerInfo } = Actions.useContext(
     Actions.ApplicationContext
+  );
+
+  const $registeredCheck = useMutation(
+    ({ loginData, setError }: { loginData: Props; setError: any }) =>
+      ManagerRegisterRequest({ loginData, setError })
   );
 
   Actions.useEffect(() => {
@@ -35,6 +45,17 @@ export default function RegisterForm() {
       }
     });
   });
+  const renderClassname = (item: any) => {
+    if (item.props) {
+      if (Actions.get(formState.errors, item.name) || error) {
+        return "invalid-0-2-252";
+      }
+    } else {
+      if (Actions.get(formState.errors, item.name)) {
+        return "invalid-0-2-252";
+      }
+    }
+  };
   return (
     <>
       <div className="inputGroup-0-2-116">
@@ -53,10 +74,7 @@ export default function RegisterForm() {
                 </label>
                 <input
                   type={item.type}
-                  className={`input-0-2-251 ${
-                    Actions.get(formState.errors, item.name) &&
-                    "invalid-0-2-252"
-                  }`}
+                  className={`input-0-2-251 ${renderClassname(item)}`}
                   {...register(item.name)}
                 />
                 <Actions.ErrorMessage
@@ -66,6 +84,15 @@ export default function RegisterForm() {
                 >
                   {item.required.message}
                 </Actions.ErrorMessage>
+                {item.props && (
+                  <Actions.ErrorMessage
+                    element="div"
+                    condition={error}
+                    className="invalidMessage-0-2-253"
+                  >
+                    User with this email is already registered
+                  </Actions.ErrorMessage>
+                )}
               </div>
             </>
           );
@@ -78,8 +105,15 @@ export default function RegisterForm() {
             type="submit"
             className="root-0-2-46 button-0-2-238 animation-0-2-47 weightMedium-0-2-61 sizeMd-0-2-51 variantPrimary-0-2-54"
             onClick={handleSubmit((data: Props) => {
-              setManagerInfo(data);
-              router.push(`/manager/register/info`);
+              $registeredCheck.mutate(
+                { loginData: data, setError },
+                {
+                  onSuccess: (data: Result) => {
+                    setManagerInfo(data);
+                    router.push(`/manager/register/info`);
+                  },
+                }
+              );
             })}
           >
             Next
