@@ -8565,8 +8565,9 @@
   cursor: pointer;
 }
 
-.hover__logoqweqlewm:hover {
-  box-shadow: 0px 0px 4px 1px rgb(0 0 0 / 20%);
+.hover__logoqweqlewm:hover,
+.logogmqqweml__input:hover .hover__logoqweqlewm {
+  box-shadow: 0px 0px 4px 1px rgb(0 0 0 / 20%) !important;
 }
 
 .root-0-2-39 {
@@ -8664,8 +8665,15 @@
   text-transform: none;
 }
 .li-0-2-70:hover {
-  background-color: #FAFAFB;
+  background-color: #fafafb;
 }
 .liActive-0-2-71 {
   background-color: #fafafb;
+}
+
+.stroke-0-2-61 {
+  stroke: #7B7CE6;
+}
+.fill-0-2-62 {
+  fill: #7B7CE6;
 }
