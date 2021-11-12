@@ -293,12 +293,6 @@
 .talentCloud0280:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
-.talentCloudLogo0281 {
-  fill: #ffffff;
-  width: 40px;
-  height: 40px;
-  margin-right: 0.25rem;
-}
 
 .stroke0238 {
   stroke: #24242d;
@@ -309,4 +303,11 @@
 .itemIcon0276 {
   fill: rgba(255, 255, 255, 0.65);
   margin-right: 0.75rem;
+}
+
+.talentCloudLogo0281 {
+  fill: #ffffff;
+  width: 40px;
+  height: 40px;
+  margin-right: 0.25rem;
 }
