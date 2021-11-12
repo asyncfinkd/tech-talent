@@ -1,0 +1,312 @@
+.masterDetail02140 {
+  display: flex;
+  font-family: sans-serif;
+}
+
+.root02197 {
+  height: 100vh;
+  display: flex;
+  overflow: auto;
+  max-width: 250px;
+  flex-direction: column;
+  background-color: #242426;
+}
+
+.onlyOnDesktop02200 {
+  display: none;
+}
+@media (min-width: 1280px) {
+  .onlyOnDesktop02200 {
+    display: flex;
+  }
+}
+.companyHeader02201 {
+  color: #ffffff;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+@media (max-width: 1600px) {
+  .companyHeader02201 {
+    padding: 1rem 0;
+  }
+}
+.companyContainer02202 {
+  display: flex;
+  padding: 0.5rem;
+  align-items: center;
+  border-radius: 10px;
+}
+.companyContainer02202:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.companyLogo02203 {
+  width: 48px;
+  height: 48px;
+  margin-right: 0.75rem;
+  border-radius: 18px;
+}
+.companyCaret02205 {
+  fill: #ffffff;
+  margin-right: 0.5rem;
+}
+.companyNamePair02206 {
+  display: flex;
+  align-items: center;
+}
+.companyName02207 {
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.25;
+  margin-right: 0.5rem;
+}
+.companyCaption02208 {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.75rem;
+  line-height: 1.25;
+}
+.section02209 {
+  color: #ffffff;
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.item-02210 {
+  display: flex;
+  padding: 0.5rem;
+  font-size: 1rem;
+  align-items: center;
+  line-height: 1.5rem;
+  border-radius: 10px;
+}
+.item-02210:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.item-02210:focus svg {
+  fill: #ffffff;
+}
+.item-02210:focus div {
+  color: #ffffff;
+}
+.item-02210:hover svg {
+  fill: #ffffff;
+}
+.item-02210:hover div {
+  color: #ffffff;
+}
+.itemActive02211 svg {
+  fill: #ffffff;
+}
+.itemActive02211 div {
+  color: #ffffff;
+  font-weight: bold;
+}
+.itemIcon02212 {
+  fill: rgba(255, 255, 255, 0.65);
+  margin-right: 0.75rem;
+}
+.itemName02213 {
+  color: rgba(255, 255, 255, 0.65);
+}
+.dot02214 {
+  width: 8px;
+  height: 8px;
+  display: none;
+  margin-right: 0.75rem;
+  border-radius: 4px;
+  background-color: #0062ff;
+}
+.gap02215 {
+  flex: 1;
+}
+.talentCloud02216 {
+  color: #ffffff;
+  margin: 1rem;
+  display: flex;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  align-items: center;
+  border-radius: 15px;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.talentCloud02216:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.talentCloudLogo02217 {
+  fill: #ffffff;
+  width: 40px;
+  height: 40px;
+  margin-right: 0.25rem;
+}
+
+.root02218 {
+  display: flex;
+  align-items: center;
+  font-family: MarkPro, Helvetica;
+  line-height: 1.25;
+  justify-content: center;
+  text-decoration: none !important;
+}
+.light02219 {
+  color: #171725;
+  background-color: #ffffff;
+}
+.dark02220 {
+  color: #ffffff;
+  background-color: #0062ff;
+}
+.lg02221 {
+  font-size: 1.25rem;
+}
+@media (min-width: 1280px) {
+  .lg02221 {
+    font-size: 3rem;
+  }
+}
+.md02222 {
+  font-size: 1.25rem;
+}
+.sm02223 {
+  font-size: 1rem;
+}
+
+.root0261 {
+  height: 100vh;
+  display: flex;
+  overflow: auto;
+  max-width: 250px;
+  flex-direction: column;
+  background-color: #242426;
+}
+.onlyOnDesktop0264 {
+  display: none;
+}
+@media (min-width: 1280px) {
+  .onlyOnDesktop0264 {
+    display: flex;
+  }
+}
+.companyHeader0265 {
+  color: #ffffff;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+@media (max-width: 1600px) {
+  .companyHeader0265 {
+    padding: 1rem 0;
+  }
+}
+.companyContainer0266 {
+  display: flex;
+  padding: 0.5rem;
+  align-items: center;
+  border-radius: 10px;
+}
+.companyContainer0266:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.companyLogo0267 {
+  width: 48px;
+  height: 48px;
+  margin-right: 0.75rem;
+  border-radius: 18px;
+}
+.companyCaret0269 {
+  fill: #ffffff;
+  margin-right: 0.5rem;
+}
+.companyNamePair0270 {
+  display: flex;
+  align-items: center;
+}
+.companyName0271 {
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.25;
+  margin-right: 0.5rem;
+}
+.companyCaption0272 {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.75rem;
+  line-height: 1.25;
+}
+.section0273 {
+  color: #ffffff;
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.item0274 {
+  display: flex;
+  padding: 0.5rem;
+  font-size: 1rem;
+  align-items: center;
+  line-height: 1.5rem;
+  border-radius: 10px;
+}
+.item0274:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.item0274:focus svg {
+  fill: #ffffff;
+}
+.item0274:focus div {
+  color: #ffffff;
+}
+.item0274:hover svg {
+  fill: #ffffff;
+}
+.item0274:hover div {
+  color: #ffffff;
+}
+.itemActive0275 svg {
+  fill: #ffffff;
+}
+.itemActive0275 div {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.itemName0277 {
+  color: rgba(255, 255, 255, 0.65);
+}
+.dot0278 {
+  width: 8px;
+  height: 8px;
+  display: none;
+  margin-right: 0.75rem;
+  border-radius: 4px;
+  background-color: #0062ff;
+}
+.gap0279 {
+  flex: 1;
+}
+.talentCloud0280 {
+  color: #ffffff;
+  margin: 1rem;
+  display: flex;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  align-items: center;
+  border-radius: 15px;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.talentCloud0280:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.talentCloudLogo0281 {
+  fill: #ffffff;
+  width: 40px;
+  height: 40px;
+  margin-right: 0.25rem;
+}
+
+.stroke0238 {
+  stroke: #24242d;
+}
+.fill0239 {
+  fill: #24242d;
+}
+.itemIcon0276 {
+  fill: rgba(255, 255, 255, 0.65);
+  margin-right: 0.75rem;
+}
