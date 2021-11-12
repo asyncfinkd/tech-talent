@@ -451,6 +451,16 @@ export default function ManagerBrandingModules({
                           <div className={css.value02102}>&nbsp;</div>
                         </div>
                       </div>
+                      <div className={css.column02100}>
+                        <div>
+                          <div className={css.label02101}>Industry</div>
+                          <div className={css.label02101}>Employees</div>
+                        </div>
+                        <div>
+                          <div className={css.value02102}>&nbsp;</div>
+                          <div className={css.value02102}>&nbsp;</div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
