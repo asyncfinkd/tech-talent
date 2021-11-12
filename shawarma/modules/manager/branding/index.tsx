@@ -425,7 +425,9 @@ export default function ManagerBrandingModules({
                 className={`${css.alwaysNoMargin02124} ${css.container0290}`}
               >
                 <div className={css.primaryText0291}>Good Luck</div>
-                <div className={css.headerContent0292}>
+                <div
+                  className={`${css.headerContent0292} ${css.headerContentWhite0293}`}
+                >
                   <div
                     className={`${css.root0282} ${css.light0283} ${css.lg0285} ${css.logo0294}`}
                     style={{ fontWeight: "lighter" }}
