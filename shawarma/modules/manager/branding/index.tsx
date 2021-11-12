@@ -463,6 +463,31 @@ export default function ManagerBrandingModules({
                       </div>
                     </div>
                   </div>
+                  <div className={css.buttonGroup02104}>
+                    <div className={css.buttonContainer02105}></div>
+                    <button
+                      className={`${css.expandButton02106} ${css.root0218} ${css.weightMedium0233} ${css.sizeMd0223} ${css.variantBlank0231}`}
+                      style={{
+                        background: "transparent",
+                        padding: "2px",
+                        paddingLeft: "12px",
+                      }}
+                    >
+                      <span>Expand</span>
+                      <div className={css.caret02108}>
+                        <svg
+                          className={css.fill0239}
+                          width="10"
+                          height="6"
+                          viewBox="0 0 10 6"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M0.30133 0.298616C0.66658 -0.0633426 1.23813 -0.096248 1.64089 0.1999L1.75628 0.298616L5 3.53895L8.24372 0.298617C8.60897 -0.0633419 9.18052 -0.0962473 9.58328 0.199901L9.69867 0.298617C10.0639 0.660575 10.0971 1.22698 9.79828 1.62611L9.69867 1.74046L5.72748 5.70138C5.36223 6.06334 4.79067 6.09625 4.38791 5.8001L4.27252 5.70138L0.30133 1.74046C-0.100444 1.34231 -0.100444 0.69677 0.30133 0.298616Z"></path>
+                        </svg>
+                      </div>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
