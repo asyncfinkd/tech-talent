@@ -462,27 +462,27 @@
 .row0299 {
   display: flex;
 }
-.column-0-2-100 {
+.column02100 {
   display: flex;
 }
-.column-0-2-100:first-child {
+.column02100:first-child {
   margin-right: 4.6875rem;
 }
-.label-0-2-101 {
+.label02101 {
   color: #696974;
   font-size: 0.875rem;
   font-family: MarkPro, Helvetica;
   line-height: 1.375rem;
   margin-right: 1.875rem;
 }
-.value-0-2-102 {
+.value02102 {
   color: #171725;
   font-size: 0.875rem;
   font-family: MarkPro, Helvetica;
   font-weight: 500;
   line-height: 1.375rem;
 }
-.content-0-2-103 {
+.content02103 {
   border-radius: 0 0 20px 20px;
   background-color: #ffffff;
 }
@@ -721,4 +721,36 @@
     margin: auto;
     max-width: 1280px;
   }
+}
+
+.root0282 {
+  display: flex;
+  align-items: center;
+  font-family: MarkPro, Helvetica;
+  font-weight: 500;
+  line-height: 1.25;
+  justify-content: center;
+  text-decoration: none !important;
+}
+.light0283 {
+  color: #171725;
+  background-color: #ffffff;
+}
+.dark0284 {
+  color: #ffffff;
+  background-color: #0062ff;
+}
+.lg0285 {
+  font-size: 1.25rem;
+}
+@media (min-width: 1280px) {
+  .lg0285 {
+    font-size: 3rem;
+  }
+}
+.md0286 {
+  font-size: 1.25rem;
+}
+.sm0287 {
+  font-size: 1rem;
 }

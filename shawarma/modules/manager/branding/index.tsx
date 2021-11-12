@@ -425,6 +425,35 @@ export default function ManagerBrandingModules({
                 className={`${css.alwaysNoMargin02124} ${css.container0290}`}
               >
                 <div className={css.primaryText0291}>Good Luck</div>
+                <div className={css.headerContent0292}>
+                  <div
+                    className={`${css.root0282} ${css.light0283} ${css.lg0285} ${css.logo0294}`}
+                    style={{ fontWeight: "lighter" }}
+                  >
+                    X
+                  </div>
+                  <div className={css.desktopInfo0295}>
+                    <div className={css.name0297}>x</div>
+                    <div
+                      className={css.secondaryText0298}
+                      style={{ color: "rgb(208, 2, 27)" }}
+                    >
+                      &nbsp;
+                    </div>
+                    <div className={css.row0299}>
+                      <div className={css.column02100}>
+                        <div>
+                          <div className={css.label02101}>Remote Friendly</div>
+                          <div className={css.label02101}>Head Office</div>
+                        </div>
+                        <div>
+                          <div className={css.value02102}>Yes</div>
+                          <div className={css.value02102}>&nbsp;</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
