@@ -387,6 +387,48 @@ export default function ManagerBrandingModules({
             </div>
           </a>
         </div>
+        <main className={css.main025}>
+          <div className={css.warningMessageContainer027}>
+            <div>
+              Your account is in review mode. You can still add jobs and modify
+              your content but it won't be visible on platform until your
+              application is approved.
+            </div>
+            <div>
+              <svg
+                className={`${css.closeIcon026} ${css.stroke0238}`}
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M14.3955 9.59473L9.60352 14.3867"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <path
+                  d="M14.3971 14.3898L9.60107 9.59277"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <circle cx="12" cy="12" r="9.25" stroke-width="1.5"></circle>
+              </svg>
+            </div>
+          </div>
+          <div className={css.root0288}>
+            <div className="header-0-2-89">
+              <div
+                className={`${css.alwaysNoMargin02124} ${css.container0290}`}
+              >
+                <div className={css.primaryText0291}>Good Luck</div>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
     </>
   );
