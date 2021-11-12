@@ -615,7 +615,7 @@
     width: 3rem;
     height: 3rem;
     border-radius: 18px;
-    background-color: #ede3ff;
+    background-color: #ede3ff !important;
   }
   .capsule02113 div {
     background-color: #ffffff;
@@ -920,4 +920,38 @@
 .disabled-0-2-37:focus {
   color: #8c8c91;
   background-color: #dcdcdc;
+}
+
+.root0256 {
+  display: flex;
+  align-items: center;
+  border-radius: 18px;
+  justify-content: center;
+  background-color: #f3f3f3;
+}
+.sizeMd0257 {
+  width: 3rem;
+  height: 3rem;
+}
+.sizeLg0258 {
+  width: 3.625rem;
+  height: 3.625rem;
+}
+.rectangle0259 {
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  justify-content: center;
+  background-color: #ffffff;
+}
+.circle0260 {
+  width: 1.875rem;
+  height: 1.875rem;
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  justify-content: center;
+  background-color: #ffffff;
 }
