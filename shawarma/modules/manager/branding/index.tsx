@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import Header from "ui/header";
 import css from "styles/manager.module.css";
@@ -8,6 +8,8 @@ export default function ManagerBrandingModules({
   logged,
   access_token,
 }: any) {
+  const [expand, setExpand] = useState(true);
+
   return (
     <>
       <Head>
@@ -469,18 +471,24 @@ export default function ManagerBrandingModules({
                     <div className={css.buttonContainer02105}></div>
                     <button
                       className={`${css.expandButton02106} ${css.root0218} ${css.weightMedium0233} ${css.sizeMd0223} ${css.variantBlank0231}`}
+                      onClick={() => {
+                        setExpand(!expand);
+                      }}
                       style={{
                         background: "transparent",
                         padding: "2px",
                         paddingLeft: "12px",
                       }}
                     >
-                      <span>Expand</span>
+                      <span>{expand ? "Expand" : "Collapse"}</span>
                       <div className={css.caret02108}>
                         <svg
                           className={css.fill0239}
                           width="10"
                           height="6"
+                          style={{
+                            transform: `rotate(${!expand ? "180deg" : "0deg"})`,
+                          }}
                           viewBox="0 0 10 6"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -495,8 +503,11 @@ export default function ManagerBrandingModules({
             </div>
             <div className={css.alwaysNoMargin02124}>
               <div className={css.content02103}>
-                {/* ${css.hiddenOnDesktop02107} for hide in expandedcontent div!!! */}
-                <div className={`${css.expandedContent02109}`}>
+                <div
+                  className={`${css.expandedContent02109} ${
+                    expand && css.hiddenOnDesktop02107
+                  }`}
+                >
                   <div className={css.mobileInfo0296}>
                     <div className={css.name0297}>x</div>
                     <div
