@@ -14,8 +14,8 @@ async function bootstrap() {
     AppModule,
     new FastifyAdapter(),
     {
-      cors: true
-    }
+      cors: true,
+    },
   );
 
   process.env.PWD = process.cwd();
@@ -23,6 +23,9 @@ async function bootstrap() {
 
   app.use(compression());
   // app.use(helmet());
+
+  app.use(bodyParser.json({ limit: '50mb' }));
+  app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
   await app.listen(process.env.PORT, () => {
     console.log(`server is already started ${process.env.PORT}`);
